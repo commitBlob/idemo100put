@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedMaterialModule } from './sharedMaterialModule';
+import { FooterComponent } from './shared/footer/footer.component';
 
 
 import { AppComponent } from './app.component';
@@ -11,7 +12,8 @@ import 'hammerjs';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FooterComponent
   ],
   imports: [
     SharedMaterialModule,
