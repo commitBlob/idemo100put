@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedMaterialModule } from './sharedMaterialModule';
 import { FooterComponent } from './shared/footer/footer.component';
+import { AppRouting } from './routes/route-definitions';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 
 import { AppComponent } from './app.component';
@@ -13,14 +15,16 @@ import 'hammerjs';
 @NgModule({
   declarations: [
     AppComponent,
-    FooterComponent
+    FooterComponent,
+    LandingPageComponent
   ],
   imports: [
     SharedMaterialModule,
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AppRouting
   ],
   providers: [],
   bootstrap: [AppComponent]
