@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // App specific
 import { FooterComponent } from './shared/footer/footer.component';
@@ -13,6 +14,10 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AppComponent } from './app.component';
 import { PageNotFoundModule } from './page-not-found/page-not-found.module';
 import { ApartmentComponent } from './apartments/apartment.component';
+import { LoveAndHopeComponent } from './apartments/love-and-hope/love-and-hope.component';
+import { LavandaComponent } from './apartments/lavanda/lavanda.component';
+import { OldTownComponent } from './apartments/old-town/old-town.component';
+import { OldPortComponent } from './apartments/old-port/old-port.component';
 
 // External
 import 'hammerjs';
@@ -23,7 +28,11 @@ import 'hammerjs';
     AppComponent,
     FooterComponent,
     LandingPageComponent,
-    ApartmentComponent
+    ApartmentComponent,
+    LoveAndHopeComponent,
+    LavandaComponent,
+    OldTownComponent,
+    OldPortComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -32,6 +41,7 @@ import 'hammerjs';
     FormsModule,
     HttpModule,
     PageNotFoundModule,
+    BrowserAnimationsModule,
   ],
   exports: [
     MaterialModule
