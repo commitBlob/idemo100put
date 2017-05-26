@@ -9,6 +9,5 @@ export class ApartmentComponent implements OnInit {
   constructor() { }
 
   public ngOnInit() {
-    console.log('apartments component loaded');
   }
 }

@@ -10,10 +10,9 @@ import { MaterialModule } from '@angular/material';
 import { FooterComponent } from './shared/footer/footer.component';
 import { appRoutes } from './routes/route-definitions';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 import { PageNotFoundModule } from './page-not-found/page-not-found.module';
-
+import { ApartmentComponent } from './apartments/apartment.component';
 
 // External
 import 'hammerjs';
@@ -24,6 +23,7 @@ import 'hammerjs';
     AppComponent,
     FooterComponent,
     LandingPageComponent,
+    ApartmentComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -31,7 +31,6 @@ import 'hammerjs';
     BrowserModule,
     FormsModule,
     HttpModule,
-    SharedModule,
     PageNotFoundModule,
   ],
   exports: [
