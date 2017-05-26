@@ -1,10 +1,10 @@
-import { Routes, RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
 import { LandingPageComponent } from '.././landing-page/landing-page.component';
+import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
 
-const appRoutes: Routes = [
+export const appRoutes: Routes = [
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
   { path: 'welcome', component: LandingPageComponent },
-  // { path: '**', component: NotFound }, //always last
+  { path: '**', component: PageNotFoundComponent },
 ];
 
-export const AppRouting = RouterModule.forRoot(appRoutes);
