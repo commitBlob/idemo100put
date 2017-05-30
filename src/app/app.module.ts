@@ -13,14 +13,10 @@ import { appRoutes } from './routes/route-definitions';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AppComponent } from './app.component';
 import { PageNotFoundModule } from './page-not-found/page-not-found.module';
-import { ApartmentComponent } from './apartments/apartment.component';
-import { LoveAndHopeComponent } from './apartments/love-and-hope/love-and-hope.component';
-import { LavandaComponent } from './apartments/lavanda/lavanda.component';
-import { OldTownComponent } from './apartments/old-town/old-town.component';
-import { OldPortComponent } from './apartments/old-port/old-port.component';
 
 // External
 import 'hammerjs';
+
 
 
 @NgModule({
@@ -28,11 +24,6 @@ import 'hammerjs';
     AppComponent,
     FooterComponent,
     LandingPageComponent,
-    ApartmentComponent,
-    LoveAndHopeComponent,
-    LavandaComponent,
-    OldTownComponent,
-    OldPortComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
