@@ -1,4 +1,7 @@
+// Core
 import { Routes } from '@angular/router';
+
+// App specific
 import { LandingPageComponent } from '.././landing-page/landing-page.component';
 import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
 

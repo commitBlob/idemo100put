@@ -1,5 +1,8 @@
-import { NgModule } from '@angular/core';
+// Core
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+
+// App specific
 import { LoveAndHopeComponent } from './love-and-hope.component';
 
 @NgModule({

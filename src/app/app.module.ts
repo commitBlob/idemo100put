@@ -1,23 +1,21 @@
 // Core
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router';
 import { MaterialModule } from '@angular/material';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 // App specific
-import { FooterComponent } from './shared/footer/footer.component';
-import { appRoutes } from './routes/route-definitions';
-import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AppComponent } from './app.component';
+import { appRoutes } from './routes/route-definitions';
+import { FooterComponent } from './shared/footer/footer.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 import { PageNotFoundModule } from './page-not-found/page-not-found.module';
 
 // External
 import 'hammerjs';
-
-
 
 @NgModule({
   declarations: [
@@ -26,13 +24,13 @@ import 'hammerjs';
     LandingPageComponent,
   ],
   imports: [
-    RouterModule.forRoot(appRoutes),
-    MaterialModule,
+    BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
     HttpModule,
+    RouterModule.forRoot(appRoutes),
+    MaterialModule,
     PageNotFoundModule,
-    BrowserAnimationsModule,
   ],
   exports: [
     MaterialModule
