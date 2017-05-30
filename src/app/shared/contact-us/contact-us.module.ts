@@ -3,18 +3,18 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 // App specific
-import { OldPortComponent } from './old-port.component';
+import { ContactUsComponent } from './contact-us.component';
 
 @NgModule({
   imports: [
     CommonModule
   ],
   declarations: [
-    OldPortComponent
+    ContactUsComponent
   ],
   exports: [
-    OldPortComponent
+    ContactUsComponent
   ]
 })
-export class OldPortModule {
+export class ContactUsModule {
 }

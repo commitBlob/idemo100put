@@ -6,9 +6,15 @@ import { NgModule } from '@angular/core';
 import { OldTownComponent } from './old-town.component';
 
 @NgModule({
-  imports: [CommonModule],
-  declarations: [OldTownComponent],
-  exports: [OldTownComponent]
+  imports: [
+    CommonModule
+  ],
+  declarations: [
+    OldTownComponent
+  ],
+  exports: [
+    OldTownComponent
+  ]
 })
 export class OldTownModule {
 }

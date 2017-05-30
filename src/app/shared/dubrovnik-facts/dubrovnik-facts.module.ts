@@ -3,18 +3,18 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 // App specific
-import { OldPortComponent } from './old-port.component';
+import {DubrovnikFactsComponent} from './dubrovnik-facts.component';
 
 @NgModule({
   imports: [
     CommonModule
   ],
   declarations: [
-    OldPortComponent
+    DubrovnikFactsComponent
   ],
   exports: [
-    OldPortComponent
+    DubrovnikFactsComponent
   ]
 })
-export class OldPortModule {
+export class DubrovnikFactsModule {
 }

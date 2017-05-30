@@ -6,9 +6,15 @@ import { NgModule } from '@angular/core';
 import { LavandaComponent } from './lavanda.component';
 
 @NgModule({
-  imports: [CommonModule],
-  declarations: [LavandaComponent],
-  exports: [LavandaComponent]
+  imports: [
+    CommonModule
+  ],
+  declarations: [
+    LavandaComponent
+  ],
+  exports: [
+    LavandaComponent
+  ]
 })
 export class LavandaModule {
 }

@@ -6,9 +6,15 @@ import { NgModule } from '@angular/core';
 import { LoveAndHopeComponent } from './love-and-hope.component';
 
 @NgModule({
-  imports: [CommonModule],
-  declarations: [LoveAndHopeComponent],
-  exports: [LoveAndHopeComponent]
+  imports: [
+    CommonModule
+  ],
+  declarations: [
+    LoveAndHopeComponent
+  ],
+  exports: [
+    LoveAndHopeComponent
+  ]
 })
 export class LoveAndHopeModule {
 }
