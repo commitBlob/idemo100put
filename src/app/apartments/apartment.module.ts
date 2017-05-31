@@ -5,11 +5,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 // App specific
+import { AboutUsComponent } from '../shared/about-us/about-us.component';
 import { ApartmentComponent } from './apartment.component';
 import { ApartmentRoutes } from './apartment.routes';
-import { LoveAndHopeComponent } from './love-and-hope/love-and-hope.component';
-import { OldPortComponent } from './old-port/old-port.component';
-import { OldTownComponent } from './old-town/old-town.component';
+import { ContactUsComponent } from '../shared/contact-us/contact-us.component';
+import { CroatiaFactsComponent } from '../shared/croatia-facts/croatia-facts.component';
+import { DubrovnikFactsComponent } from '../shared/dubrovnik-facts/dubrovnik-facts.component';
+import { LocationComponent } from '../shared/location/location.component';
+import { SurroundingsComponent } from '../shared/surroundings/surroundings.component';
+import { ApartmentsPolicyComponent } from '../shared/apartments-policy/apartments-policy.component';
 
 @NgModule({
   imports: [
@@ -18,16 +22,24 @@ import { OldTownComponent } from './old-town/old-town.component';
     RouterModule.forChild(ApartmentRoutes)
   ],
   declarations: [
+    AboutUsComponent,
     ApartmentComponent,
-    LoveAndHopeComponent,
-    OldPortComponent,
-    OldTownComponent
+    ApartmentsPolicyComponent,
+    ContactUsComponent,
+    CroatiaFactsComponent,
+    DubrovnikFactsComponent,
+    LocationComponent,
+    SurroundingsComponent
   ],
   exports: [
+    AboutUsComponent,
     ApartmentComponent,
-    LoveAndHopeComponent,
-    OldPortComponent,
-    OldTownComponent
+    ApartmentsPolicyComponent,
+    ContactUsComponent,
+    CroatiaFactsComponent,
+    DubrovnikFactsComponent,
+    LocationComponent,
+    SurroundingsComponent
   ]
 })
 export class ApartmentModule {
