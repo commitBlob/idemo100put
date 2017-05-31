@@ -18,7 +18,7 @@ import { PageNotFoundModule } from './page-not-found/page-not-found.module';
 import 'hammerjs';
 
 
-// NOTE: RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules}), supposed to preload all lazy modules
+// TODO: create custom preloading strategy
 @NgModule({
   declarations: [
     AppComponent,

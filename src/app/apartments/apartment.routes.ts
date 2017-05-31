@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 // App specific
 import { ApartmentComponent } from './apartment.component';
-import { LavandaComponent } from './lavanda/lavanda.component';
 import { LoveAndHopeComponent } from './love-and-hope/love-and-hope.component';
 import { OldPortComponent } from './old-port/old-port.component';
 import { OldTownComponent } from './old-town/old-town.component';
@@ -17,10 +16,6 @@ export const ApartmentRoutes: Routes = [
   {
     path: 'love-and-hope',
     component: LoveAndHopeComponent,
-  },
-  {
-    path: 'lavanda',
-    component: LavandaComponent
   },
   {
     path: 'old-port',

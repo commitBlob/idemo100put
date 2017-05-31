@@ -7,7 +7,6 @@ import { RouterModule } from '@angular/router';
 // App specific
 import { ApartmentComponent } from './apartment.component';
 import { ApartmentRoutes } from './apartment.routes';
-import { LavandaComponent } from './lavanda/lavanda.component';
 import { LoveAndHopeComponent } from './love-and-hope/love-and-hope.component';
 import { OldPortComponent } from './old-port/old-port.component';
 import { OldTownComponent } from './old-town/old-town.component';
@@ -21,14 +20,12 @@ import { OldTownComponent } from './old-town/old-town.component';
   declarations: [
     ApartmentComponent,
     LoveAndHopeComponent,
-    LavandaComponent,
     OldPortComponent,
     OldTownComponent
   ],
   exports: [
     ApartmentComponent,
     LoveAndHopeComponent,
-    LavandaComponent,
     OldPortComponent,
     OldTownComponent
   ]
