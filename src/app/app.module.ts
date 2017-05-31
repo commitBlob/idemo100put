@@ -31,7 +31,7 @@ import 'hammerjs';
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes, {preloadingStrategy: CustomPreload}),
+    RouterModule.forRoot(appRoutes,{preloadingStrategy: CustomPreload}),
     MaterialModule,
     PageNotFoundModule,
   ],

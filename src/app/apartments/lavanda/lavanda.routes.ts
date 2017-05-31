@@ -6,7 +6,6 @@ import { LavandaComponent } from './lavanda.component';
 import { LavandaFacilitiesComponent } from './lavanda-facilities/lavanda-facilities.component';
 import { LavandaPricelistComponent } from './lavanda-pricelist/lavanda-pricelist.component';
 
-
 export const LavandaRoutes: Routes = [
   {
     path: '',
