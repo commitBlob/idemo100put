@@ -10,6 +10,7 @@ import { RouterModule, PreloadAllModules } from '@angular/router';
 // App specific
 import { AppComponent } from './app.component';
 import { appRoutes } from './routes/route-definitions';
+import { CustomPreload } from './routes/custom-preload';
 import { FooterComponent } from './shared/footer/footer.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { PageNotFoundModule } from './page-not-found/page-not-found.module';
@@ -30,14 +31,14 @@ import 'hammerjs';
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules}),
+    RouterModule.forRoot(appRoutes, {preloadingStrategy: CustomPreload}),
     MaterialModule,
     PageNotFoundModule,
   ],
   exports: [
     MaterialModule
   ],
-  providers: [],
+  providers: [CustomPreload],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
