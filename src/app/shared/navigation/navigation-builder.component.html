@@ -1,0 +1,9 @@
+<!-- TODO: style navigation and build proper paths -->
+
+<p>Nav builder works!</p>
+
+<ul>
+  <li *ngFor="let link of nav" [routerLink]="[link.linkPath]" >
+   {{link.linkName}}
+  </li>
+</ul>
