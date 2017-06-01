@@ -3,7 +3,7 @@
 <p>Nav builder works!</p>
 
 <ul>
-  <li *ngFor="let link of nav" [routerLink]="[link.linkPath]">
+  <li ngClass="{{linkPath}}" *ngFor="let link of nav" [routerLink]="[link.linkPath]" routerLinkActive="active">
       {{link.linkName}}
   </li>
 </ul>

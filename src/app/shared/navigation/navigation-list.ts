@@ -55,4 +55,9 @@ export const Navigation: NavLinks[] = [
     linkPath: 'surroundings',
     unique: true,
   },
+  {
+    linkName: 'Apartments',
+    linkPath: 'apartments',
+    unique: true,
+  },
 ];
