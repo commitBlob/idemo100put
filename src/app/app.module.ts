@@ -20,7 +20,7 @@ import { PageNotFoundModule } from './page-not-found/page-not-found.module';
 import 'hammerjs';
 
 
-// TODO: create custom preloading strategy
+// NOTE: navigation service is not used at the moment
 @NgModule({
   declarations: [
     AppComponent,

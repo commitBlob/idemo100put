@@ -12,7 +12,8 @@ import { NavigationService } from './navigation-service/navigation-service';
 })
 export class NavigationBuilderComponent implements OnInit {
   public nav: NavLinks[];
-  constructor(private _navigationService: NavigationService) {}
+  constructor(private _navigationService: NavigationService) {
+  }
 
   getNavigation() {
     this._navigationService.getNavigation().then((nav: NavLinks[]) => this.nav = nav)

@@ -12,5 +12,4 @@ export interface NavLinks {
   linkPath: string;
   linkIcon?: string;
   unique: boolean;
-  dropdown: boolean;
 }
