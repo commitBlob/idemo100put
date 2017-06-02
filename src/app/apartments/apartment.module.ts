@@ -1,5 +1,6 @@
 // Core
 import { CommonModule } from '@angular/common';
+import { MaterialModule } from '@angular/material';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -14,10 +15,12 @@ import { DubrovnikFactsComponent } from '../shared/dubrovnik-facts/dubrovnik-fac
 import { LocationComponent } from '../shared/location/location.component';
 import { SurroundingsComponent } from '../shared/surroundings/surroundings.component';
 import { ApartmentsPolicyComponent } from '../shared/apartments-policy/apartments-policy.component';
+import { NavigationBuilderComponent } from '../shared/navigation/navigation-builder.component';
 
 @NgModule({
   imports: [
     CommonModule,
+    MaterialModule,
     ReactiveFormsModule,
     RouterModule.forChild(ApartmentRoutes)
   ],
@@ -29,7 +32,9 @@ import { ApartmentsPolicyComponent } from '../shared/apartments-policy/apartment
     CroatiaFactsComponent,
     DubrovnikFactsComponent,
     LocationComponent,
-    SurroundingsComponent
+    NavigationBuilderComponent,
+    SurroundingsComponent,
+
   ],
   exports: [
     AboutUsComponent,
@@ -39,7 +44,8 @@ import { ApartmentsPolicyComponent } from '../shared/apartments-policy/apartment
     CroatiaFactsComponent,
     DubrovnikFactsComponent,
     LocationComponent,
-    SurroundingsComponent
+    MaterialModule,
+    SurroundingsComponent,
   ]
 })
 export class ApartmentModule {

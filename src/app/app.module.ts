@@ -13,7 +13,6 @@ import { appRoutes } from './routes/route-definitions';
 import { CustomPreload } from './routes/custom-preload';
 import { FooterComponent } from './shared/footer/footer.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import { NavigationBuilderComponent } from './shared/navigation/navigation-builder.component';
 import { PageNotFoundModule } from './page-not-found/page-not-found.module';
 
 // External
@@ -26,7 +25,6 @@ import 'hammerjs';
     AppComponent,
     FooterComponent,
     LandingPageComponent,
-    NavigationBuilderComponent,
   ],
   imports: [
     BrowserAnimationsModule,

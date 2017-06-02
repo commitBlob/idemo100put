@@ -1,9 +1,28 @@
 <!-- TODO: style navigation and build proper paths -->
+<md-sidenav-container class="example-container">
+  <md-sidenav mode="push" #sidenav class="example-sidenav">
+    <ul>
+      <li ngClass="{{link.linkPath}}" *ngFor="let link of nav" [routerLink]="[link.linkPath]" routerLinkActive="active">
+        {{link.linkName}}
+      </li>
+    </ul>
+    <ul>
+      <li> Apartments
+        <ul>
+          <li *ngFor="let apLink of apLinks" [routerLink]="'/'+[apLink.linkPath]">{{apLink.linkName}}</li>
+        </ul>
+      </li>
+    </ul>
+  </md-sidenav>
 
-<p>Nav builder works!</p>
+  <div class="example-sidenav-content">
 
-<ul>
-  <li ngClass="{{linkPath}}" *ngFor="let link of nav" [routerLink]="[link.linkPath]" routerLinkActive="active">
-      {{link.linkName}}
-  </li>
-</ul>
+    <button md-button (click)="sidenav.open()">
+      Open sidenav
+    </button>
+  </div>
+
+</md-sidenav-container>
+
+
+

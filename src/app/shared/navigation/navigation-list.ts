@@ -31,6 +31,20 @@ export const Navigation: NavLinks[] = [
     unique: true,
   },
   {
+    linkName: 'Surroundings',
+    linkPath: 'surroundings',
+    unique: true,
+  }
+];
+
+export const ApartmentsNav: NavLinks[] = [
+  {
+    linkName: 'Home',
+    linkPath: 'welcome',
+    linkIcon: 'fa-home',
+    unique: true,
+  },
+  {
     linkName: 'Facilities',
     linkPath: 'facilities',
     unique: false,
@@ -50,14 +64,27 @@ export const Navigation: NavLinks[] = [
     linkPath: 'pricelist',
     unique: false,
   },
+];
+
+export const ApartmentSelectorNav: NavLinks[] = [
   {
-    linkName: 'Surroundings',
-    linkPath: 'surroundings',
+    linkName: 'Lavanda',
+    linkPath: 'lavanda',
     unique: true,
   },
   {
-    linkName: 'Apartments',
-    linkPath: 'apartments',
+    linkName: 'Love & Hope',
+    linkPath: 'love-and-hope',
     unique: true,
   },
+  {
+    linkName: 'Old Port',
+    linkPath: 'old-port',
+    unique: true,
+  },
+  {
+    linkName: 'Old Town',
+    linkPath: 'old-town',
+    unique: true,
+  }
 ];
