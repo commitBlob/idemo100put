@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 // App specific
+import { ApartmentNavBuilderComponent } from '../../shared/navigation/apartment-selected-nav/selected-nav-builder.component';
 import { LavandaComponent } from './lavanda.component';
 import { LavandaFacilitiesComponent } from './lavanda-facilities/lavanda-facilities.component';
 import { LavandaPricelistComponent } from './lavanda-pricelist/lavanda-pricelist.component';
@@ -15,9 +16,10 @@ import { LavandaRoutes } from './lavanda.routes';
     RouterModule.forChild(LavandaRoutes)
   ],
   declarations: [
+    ApartmentNavBuilderComponent,
     LavandaComponent,
     LavandaPricelistComponent,
-    LavandaFacilitiesComponent
+    LavandaFacilitiesComponent,
   ],
   exports: [
     LavandaComponent,
