@@ -2,14 +2,14 @@
 <md-sidenav-container class="example-container">
   <md-sidenav mode="push" #sidenav class="example-sidenav">
     <ul>
-      <li ngClass="{{link.linkPath}}" *ngFor="let link of nav" [routerLink]="[link.linkPath]" routerLinkActive="active">
+      <li ngClass="{{link.linkPath}}" *ngFor="let link of glavnaNavigacija" [routerLink]="[link.linkPath]" routerLinkActive="active">
         {{link.linkName}}
       </li>
     </ul>
     <ul>
       <li> Apartments
         <ul>
-          <li *ngFor="let apLink of apLinks" [routerLink]="'/'+[apLink.linkPath]">{{apLink.linkName}}</li>
+          <li *ngFor="let apLink of glavnaNavigacija" [routerLink]="'/'+[apLink.linkPath]">{{apLink.linkName}}</li>
         </ul>
       </li>
     </ul>
@@ -20,6 +20,11 @@
     <button md-button (click)="sidenav.open()">
       Open sidenav
     </button>
+    <ul>
+      <li ngClass="{{elements.linkPath}}" *ngFor="let elements of glavnaNavigacija" [routerLink]="[elements.linkPath]" routerLinkActive="active">
+        {{elements.linkName}}
+      </li>
+    </ul>
   </div>
 
 </md-sidenav-container>

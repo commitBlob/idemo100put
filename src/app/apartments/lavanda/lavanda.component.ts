@@ -1,12 +1,31 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationService } from '../../shared/navigation/navigation-service/navigation-service';
 
 @Component({
-  selector: 'app-lavanda',
   templateUrl: 'lavanda.component.html',
+  providers: [ NavigationService ]
 })
 export class LavandaComponent implements OnInit {
-  constructor() { }
+  private _navigation: any;
+  // public glavnaNavigacija: any;
+  // public apLinks: any;
+  constructor(private _navigationService: NavigationService) { }
 
   public ngOnInit() {
+    // this.getMainNavigation();
+    // this.getAptLinks();
   }
+
+  getNavigation() {
+    // this._navigation = this._navigationService
+  }
+
+  // getMainNavigation() {
+  //   this.glavnaNavigacija = this._navigationService.getMainNavigation()
+  //   console.log(this.glavnaNavigacija);
+  // }
+  //
+  // getAptLinks() {
+  //   this.apLinks = this._navigationService.getAptLinks()
+  // }
 }

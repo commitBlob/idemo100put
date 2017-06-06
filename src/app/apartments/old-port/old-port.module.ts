@@ -17,7 +17,7 @@ import { OldPortRoutes } from './old-port.routes';
   declarations: [
     OldPortComponent,
     OldPortFacilitiesComponent,
-    OldPortPricelistComponent
+    OldPortPricelistComponent,
   ],
   exports: [
     OldPortComponent,

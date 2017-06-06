@@ -1,5 +1,5 @@
 // Core
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 // App specific
@@ -12,38 +12,19 @@ import { NavigationService } from './navigation-service/navigation-service';
   styleUrls: ['navigation-builder.component.scss'],
   providers: [ NavigationService ]
 })
-export class NavigationBuilderComponent implements OnInit, OnDestroy {
-  mainNavigation: NavLinks[];
-  subscription: Subscription;
-  public nav: NavLinks[];
-  public apLinks: NavLinks[];
+export class NavigationBuilderComponent implements OnInit {
+  public glavnaNavigacija: any;
 
   constructor(private _navigationService: NavigationService) {
   }
 
   getMainNavigation() {
-    this.subscription = this._navigationService.getMainNavigation().subscribe(mainNavigation => { this.mainNavigation = mainNavigation; });
-    console.log('data?', this.subscription);
+    this.glavnaNavigacija = this._navigationService.getMainNavigation()
+    console.log(this.glavnaNavigacija);
   }
 
-  getNavigation() {
-    this._navigationService.getNavigation().then((nav: NavLinks[]) => this.nav = nav)
-  }
-
-  getApartmentsList() {
-    this._navigationService.getApartmentsList().then(( apLinks: NavLinks[]) => this.apLinks = apLinks)
-  }
-
-  /* observable */
-
-  ngOnDestroy() {
-    // unsubscribe to ensure no memory leaks
-    this.subscription.unsubscribe();
-  }
 
   ngOnInit() {
-    this.getNavigation();
-    this.getApartmentsList();
     this.getMainNavigation();
   }
 }
