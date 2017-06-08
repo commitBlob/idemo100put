@@ -1,8 +1,22 @@
 <!--TODO: add content-->
 
-<p>Apartment 1 components works! (L&H)</p>
-<!--<ul>-->
-  <!--<li ngClass="{{elements.linkPath}}" *ngFor="let elements of glavnaNavigacija" [routerLink]="[elements.linkPath]" routerLinkActive="active">-->
-    <!--{{elements.linkName}}-->
-  <!--</li>-->
-<!--</ul>-->
+<md-sidenav-container fullscreen>
+  <md-sidenav #sidenav mode="push">
+    <md-toolbar>
+      <span>First Row</span>
+      <md-toolbar-row>
+        <span>Second Row</span>
+      </md-toolbar-row>
+      <md-toolbar-row>
+        <span>Third Row</span>
+      </md-toolbar-row>
+    </md-toolbar>
+  </md-sidenav>
+
+  <md-toolbar color="primary">
+    <button md-button (click)="sidenav.toggle()">
+      <md-icon>menu</md-icon>
+    </button>
+  </md-toolbar>
+  <p>Apartment 1 components works! (L&H)</p>
+</md-sidenav-container>

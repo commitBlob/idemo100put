@@ -1,9 +1,16 @@
 html {
     font-family: 'Raleway', sans-serif;
     box-sizing: border-box;
-    height: 100%;
+}
+
+body {
+  height: 100vh;
 }
 
 *, *:before, *:after {
     box-sizing: inherit;
+}
+
+md-sidenav-container {
+  height: 100%;
 }

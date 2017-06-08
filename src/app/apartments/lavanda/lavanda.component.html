@@ -1,15 +1,32 @@
 <!--TODO: add content-->
 
-<p>Apartment 2 components works! (Lav)</p>
-<button [routerLink]="['pricelist']" class="button type1">Pricelist</button>
-<button [routerLink]="['facilities']" class="button type1">Facilities</button>
-
-<!--<ul>-->
-  <!--<li ngClass="{{elements.linkPath}}" *ngFor="let elements of glavnaNavigacija" [routerLink]="'/apartments/'+[elements.linkPath]" routerLinkActive="active">-->
-    <!--{{elements.linkName}}-->
-  <!--</li>-->
-<!--</ul>-->
-<!--<p>Lorem</p>-->
-<!--<ul>-->
-  <!--<li *ngFor="let apLink of apLinks" [routerLink]="'/'+[apLink.linkPath]">{{apLink.linkName}}</li>-->
-<!--</ul>-->
+<!--<p>Apartment 2 components works! (Lav)</p>-->
+<!--<button [routerLink]="['pricelist']" class="button type1">Pricelist</button>-->
+<!--<button [routerLink]="['facilities']" class="button type1">Facilities</button>-->
+<md-sidenav-container fullscreen>
+  <md-sidenav #sidenav mode="push">
+    <md-toolbar>
+      <span>First Row</span>
+      <md-toolbar-row>
+        <span>Second Row</span>
+      </md-toolbar-row>
+      <md-toolbar-row>
+        <span>Third Row</span>
+      </md-toolbar-row>
+    </md-toolbar>
+  </md-sidenav>
+<!--</md-sidenav-container>-->
+<!--<md-sidenav-container>-->
+  <!--<md-sidenav #sidenav>-->
+    <!--<ul>-->
+      <!--<li *ngFor="let links of _navigation" [routerLink]="[links.linkPath]">-->
+        <!--{{links.linkName}}-->
+      <!--</li>-->
+    <!--</ul>-->
+  <!--</md-sidenav>-->
+  <md-toolbar color="primary">
+    <button md-button (click)="sidenav.toggle()">
+      <md-icon>menu</md-icon>
+    </button>
+  </md-toolbar>
+</md-sidenav-container>

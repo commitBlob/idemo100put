@@ -1,5 +1,6 @@
 // Core
 import { CommonModule } from '@angular/common';
+import { MaterialModule } from '@angular/material';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
@@ -12,6 +13,7 @@ import { LoveAndHopeRoutes } from './love-and-hope.routes';
 @NgModule({
   imports: [
     CommonModule,
+    MaterialModule,
     RouterModule.forChild(LoveAndHopeRoutes)
   ],
   declarations: [
@@ -20,6 +22,7 @@ import { LoveAndHopeRoutes } from './love-and-hope.routes';
     LoveAndHopePricelistComponent
   ],
   exports: [
+    MaterialModule,
     LoveAndHopeComponent,
     LoveAndHopeFacilitiesComponent,
     LoveAndHopePricelistComponent

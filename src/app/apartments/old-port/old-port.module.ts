@@ -1,5 +1,6 @@
 // Core
 import { CommonModule } from '@angular/common';
+import { MaterialModule } from '@angular/material';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
@@ -11,6 +12,7 @@ import { OldPortRoutes } from './old-port.routes';
 
 @NgModule({
   imports: [
+    MaterialModule,
     CommonModule,
     RouterModule.forChild(OldPortRoutes)
   ],
@@ -20,6 +22,7 @@ import { OldPortRoutes } from './old-port.routes';
     OldPortPricelistComponent,
   ],
   exports: [
+    MaterialModule,
     OldPortComponent,
     OldPortFacilitiesComponent,
     OldPortPricelistComponent

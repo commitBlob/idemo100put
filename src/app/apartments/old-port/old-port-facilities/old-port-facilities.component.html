@@ -1,3 +1,22 @@
 <!--TODO: add content-->
 
-<p>Facilities components works! (OP)</p>
+<md-sidenav-container fullscreen>
+  <md-sidenav #sidenav mode="push">
+    <md-toolbar>
+      <span>First Row</span>
+      <md-toolbar-row>
+        <span>Second Row</span>
+      </md-toolbar-row>
+      <md-toolbar-row>
+        <span>Third Row</span>
+      </md-toolbar-row>
+    </md-toolbar>
+  </md-sidenav>
+
+  <md-toolbar color="primary">
+    <button md-button (click)="sidenav.toggle()">
+      <md-icon>menu</md-icon>
+    </button>
+  </md-toolbar>
+  <p>Facilities components works! (OP)</p>
+</md-sidenav-container>

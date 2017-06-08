@@ -1,3 +1,23 @@
 <!--TODO: add content-->
 
-<p>Apartment 3 components works! (O-P)</p>
+<md-sidenav-container fullscreen>
+  <md-sidenav #sidenav mode="push">
+    <md-toolbar>
+      <span>First Row</span>
+      <md-toolbar-row>
+        <span>Second Row</span>
+      </md-toolbar-row>
+      <md-toolbar-row>
+        <span>Third Row</span>
+      </md-toolbar-row>
+    </md-toolbar>
+  </md-sidenav>
+
+  <md-toolbar color="primary">
+    <button md-button (click)="sidenav.toggle()">
+      <md-icon>menu</md-icon>
+    </button>
+  </md-toolbar>
+  <p>Apartment 3 components works! (O-P)</p>
+</md-sidenav-container>
+

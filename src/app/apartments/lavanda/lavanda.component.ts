@@ -14,10 +14,11 @@ export class LavandaComponent implements OnInit {
   public ngOnInit() {
     // this.getMainNavigation();
     // this.getAptLinks();
+    this.getNavigation();
   }
 
   getNavigation() {
-    // this._navigation = this._navigationService
+    this._navigation = this._navigationService.getApartmentNavigation()
   }
 
   // getMainNavigation() {

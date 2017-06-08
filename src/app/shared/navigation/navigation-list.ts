@@ -40,7 +40,7 @@ export const Navigation: NavLinks[] = [
 export const ApartmentsNav: NavLinks[] = [
   {
     linkName: 'Home',
-    linkPath: 'welcome',
+    linkPath: '../welcome',
     linkIcon: 'fa-home',
     unique: true,
   },
@@ -51,12 +51,12 @@ export const ApartmentsNav: NavLinks[] = [
   },
   {
     linkName: 'Location',
-    linkPath: 'location',
+    linkPath: '/apartments/location',
     unique: true,
   },
   {
     linkName: 'Policy',
-    linkPath: 'policy',
+    linkPath: '/apartments/policy',
     unique: true,
   },
   {

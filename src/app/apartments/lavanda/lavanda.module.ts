@@ -1,6 +1,8 @@
 // Core
 import { CommonModule } from '@angular/common';
+import { MaterialModule } from '@angular/material';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 // App specific
@@ -12,6 +14,8 @@ import { LavandaRoutes } from './lavanda.routes';
 @NgModule({
   imports: [
     CommonModule,
+    MaterialModule,
+    ReactiveFormsModule,
     RouterModule.forChild(LavandaRoutes)
   ],
   declarations: [
@@ -22,8 +26,8 @@ import { LavandaRoutes } from './lavanda.routes';
   exports: [
     LavandaComponent,
     LavandaPricelistComponent,
-    LavandaFacilitiesComponent
-
+    LavandaFacilitiesComponent,
+    MaterialModule,
   ]
 })
 export class LavandaModule {
