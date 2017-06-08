@@ -19,7 +19,7 @@ import { PageNotFoundModule } from './page-not-found/page-not-found.module';
 import 'hammerjs';
 
 
-// NOTE: navigation service is not used at the moment
+// TODO: Add AoT Compilation
 @NgModule({
   declarations: [
     AppComponent,

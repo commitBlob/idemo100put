@@ -33,6 +33,7 @@ export const Navigation: NavLinks[] = [
   {
     linkName: 'Surroundings',
     linkPath: 'surroundings',
+    linkIcon: 'landscape',
     unique: true,
   }
 ];
@@ -41,27 +42,31 @@ export const ApartmentsNav: NavLinks[] = [
   {
     linkName: 'Home',
     linkPath: '../welcome',
-    linkIcon: 'fa-home',
+    linkIcon: 'home',
     unique: true,
   },
   {
     linkName: 'Facilities',
     linkPath: 'facilities',
+    linkIcon: 'list',
     unique: false,
   },
   {
     linkName: 'Location',
     linkPath: '/apartments/location',
+    linkIcon: 'place',
     unique: true,
   },
   {
     linkName: 'Policy',
     linkPath: '/apartments/policy',
+    linkIcon: 'content_paste',
     unique: true,
   },
   {
     linkName: 'Price List',
     linkPath: 'pricelist',
+    linkIcon: 'local_atm',
     unique: false,
   },
 ];
