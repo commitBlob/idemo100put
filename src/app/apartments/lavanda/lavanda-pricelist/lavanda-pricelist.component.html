@@ -1,22 +1,31 @@
 <!--TODO: add content-->
 
 <md-sidenav-container fullscreen>
-  <md-sidenav #sidenav mode="push">
-    <md-toolbar>
-      <span>First Row</span>
-      <md-toolbar-row>
-        <span>Second Row</span>
+  <md-sidenav #sidenav mode="push" class="sidenav">
+    <md-toolbar class="toolbar">
+      <md-toolbar-row [routerLink]="'../../'" class="toolbar_elements">
+        <i class="material-icons toolbar_icons">home</i><span>Home</span>
       </md-toolbar-row>
-      <md-toolbar-row>
-        <span>Third Row</span>
+      <md-toolbar-row [routerLink]="'../facilities''" class="toolbar_elements ">
+        <i class="material-icons toolbar_icons">list</i><span>Facilities</span>
+      </md-toolbar-row>
+      <md-toolbar-row [routerLink]="'../../apartments/location'" class="toolbar_elements">
+        <i class="material-icons toolbar_icons">place</i><span>Location</span>
+      </md-toolbar-row>
+      <md-toolbar-row [routerLink]="'../../apartments/policy'" class="toolbar_elements">
+        <i class="material-icons toolbar_icons">content_paste</i><span>Policy</span>
+      </md-toolbar-row>
+      <md-toolbar-row [routerLink]="" class="toolbar_elements is-active">
+        <i class="material-icons toolbar_icons">local_atm</i><span>Price List</span>
       </md-toolbar-row>
     </md-toolbar>
   </md-sidenav>
-
   <md-toolbar color="primary">
     <button md-button (click)="sidenav.toggle()">
       <md-icon>menu</md-icon>
     </button>
   </md-toolbar>
-  <p>Pricelist components works! (Lav)</p>
+  <div class="content_wrapper">
+    <p>Love and Hope pricelist works! (LH)</p>
+  </div>
 </md-sidenav-container>

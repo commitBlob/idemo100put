@@ -1,23 +1,20 @@
 <!--TODO: add content-->
 
 <md-sidenav-container fullscreen>
-  <md-sidenav #sidenav mode="push">
-    <md-toolbar>
-      <span>First Row</span>
-      <md-toolbar-row>
-        <span>Second Row</span>
-      </md-toolbar-row>
-      <md-toolbar-row>
-        <span>Third Row</span>
+  <md-sidenav #sidenav mode="push" class="sidenav">
+    <md-toolbar class="toolbar">
+      <md-toolbar-row *ngFor="let links of _navigation" [routerLink]="[links.linkPath]" class="toolbar_elements">
+        <i class="material-icons toolbar_icons">{{links.linkIcon}}</i><span>{{links.linkName}}</span>
       </md-toolbar-row>
     </md-toolbar>
   </md-sidenav>
-
   <md-toolbar color="primary">
     <button md-button (click)="sidenav.toggle()">
       <md-icon>menu</md-icon>
     </button>
   </md-toolbar>
-  <button [routerLink]="['/apartments/about-us']" class="button type1">About Us</button>
-  <p>Apartments component works!</p>
+  <div class="content_wrapper">
+    <p>Apartment components works!</p>
+  </div>
 </md-sidenav-container>
+

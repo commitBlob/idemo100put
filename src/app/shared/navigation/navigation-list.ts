@@ -7,27 +7,31 @@ export const Navigation: NavLinks[] = [
   {
     linkName: 'Home',
     linkPath: 'welcome',
-    linkIcon: 'fa-home',
+    linkIcon: 'home',
     unique: true,
   },
   {
     linkName: 'About Us',
     linkPath: 'about-us',
+    linkIcon: 'people',
     unique: true,
   },
   {
     linkName: 'Contact Us',
     linkPath: 'contact-us',
+    linkIcon: 'chat',
     unique: true,
   },
   {
-    linkName: 'Cro Facts',
+    linkName: 'Croatia Facts',
     linkPath: 'cro-facts',
+    linkIcon: 'assistant_photo',
     unique: true,
   },
   {
-    linkName: 'Du Facts',
+    linkName: 'Dubrovnik Facts',
     linkPath: 'du-facts',
+    linkIcon: 'local_activity',
     unique: true,
   },
   {
@@ -35,7 +39,7 @@ export const Navigation: NavLinks[] = [
     linkPath: 'surroundings',
     linkIcon: 'landscape',
     unique: true,
-  }
+  },
 ];
 
 export const ApartmentsNav: NavLinks[] = [

@@ -3,20 +3,18 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationService } from '../../shared/navigation/navigation-service/navigation-service';
 
 @Component({
-  selector: 'app-love-and-hope',
   templateUrl: 'love-and-hope.component.html',
   providers: [ NavigationService ]
 })
 export class LoveAndHopeComponent implements OnInit {
-  public glavnaNavigacija: any;
+  private _navigation: any;
   constructor(private _navigationService: NavigationService) { }
 
   public ngOnInit() {
-    this.getMainNavigation();
+    this.getNavigation();
   }
 
-  getMainNavigation() {
-    this.glavnaNavigacija = this._navigationService.getMainNavigation()
-    console.log(this.glavnaNavigacija);
+  getNavigation() {
+    this._navigation = this._navigationService.getApartmentNavigation()
   }
 }

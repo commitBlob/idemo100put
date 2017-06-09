@@ -17,6 +17,6 @@ export class NavigationService {
   }
 
   getApartmentsList() {
-    return ApartmentSelectorNav
+    return ApartmentSelectorNav;
   }
 }

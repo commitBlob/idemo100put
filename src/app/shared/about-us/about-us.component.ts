@@ -1,14 +1,25 @@
 // Core
 import { Component, OnInit } from '@angular/core';
+import { NavigationService } from '../navigation/navigation-service/navigation-service';
 
 @Component({
-  selector: 'app-about-us',
   templateUrl: './about-us.component.html',
+  providers: [ NavigationService ]
 })
 export class AboutUsComponent implements OnInit {
-  constructor() { }
+  private _navigation: any;
+  private _apartmentsList: any;
+  constructor(private _navigationService: NavigationService) { }
 
-  ngOnInit() {
+  public ngOnInit() {
+    this.getNavigation();
+    this.getApartmentsList();
   }
 
+  getNavigation() {
+    this._navigation = this._navigationService.getMainNavigation();
+  }
+  getApartmentsList() {
+    this._apartmentsList = this._navigationService.getApartmentsList();
+  }
 }

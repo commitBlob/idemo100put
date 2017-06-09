@@ -4,8 +4,6 @@
 * if 'unique' === true content is static
 * if 'unique' === false content is not static (eg. facilities)
 *
-* 'dropdown' variable used to determine if the link
-* will be part of the dropdown list
 */
 export interface NavLinks {
   linkName: string;
