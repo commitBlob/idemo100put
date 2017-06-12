@@ -6,7 +6,7 @@
       <md-toolbar-row [routerLink]="'../../'" class="toolbar_elements">
         <i class="material-icons toolbar_icons">home</i><span>Home</span>
       </md-toolbar-row>
-      <md-toolbar-row [routerLink]="'../facilities''" class="toolbar_elements ">
+      <md-toolbar-row [routerLink]="'../facilities'" class="toolbar_elements ">
         <i class="material-icons toolbar_icons">list</i><span>Facilities</span>
       </md-toolbar-row>
       <md-toolbar-row [routerLink]="'../../apartments/location'" class="toolbar_elements">
@@ -17,6 +17,9 @@
       </md-toolbar-row>
       <md-toolbar-row [routerLink]="" class="toolbar_elements is-active">
         <i class="material-icons toolbar_icons">local_atm</i><span>Price List</span>
+      </md-toolbar-row>
+      <md-toolbar-row class="toolbar_elements" (click)="goBack()">
+        <i class="material-icons toolbar_icons">undo</i><span>Back</span>
       </md-toolbar-row>
     </md-toolbar>
   </md-sidenav>

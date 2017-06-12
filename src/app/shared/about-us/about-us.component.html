@@ -3,8 +3,11 @@
 <md-sidenav-container fullscreen>
   <md-sidenav #sidenav mode="push" class="sidenav">
     <md-toolbar class="toolbar">
-      <md-toolbar-row *ngFor="let links of _navigation" [routerLink]="[links.linkPath]" routerLinkActive="is-active" class="toolbar_elements">
+      <md-toolbar-row *ngFor="let links of _navigation" routerLinkActive="is-active" [routerLink]="'../'+[links.linkPath]" class="toolbar_elements">
         <i class="material-icons toolbar_icons">{{links.linkIcon}}</i><span>{{links.linkName}}</span>
+      </md-toolbar-row>
+      <md-toolbar-row class="toolbar_elements" (click)="goBack()">
+        <i class="material-icons toolbar_icons">undo</i><span>Back</span>
       </md-toolbar-row>
     </md-toolbar>
   </md-sidenav>

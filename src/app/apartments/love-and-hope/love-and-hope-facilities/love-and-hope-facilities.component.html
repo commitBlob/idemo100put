@@ -18,6 +18,9 @@
       <md-toolbar-row [routerLink]="'../pricelist'" class="toolbar_elements">
         <i class="material-icons toolbar_icons">local_atm</i><span>Price List</span>
       </md-toolbar-row>
+      <md-toolbar-row class="toolbar_elements" (click)="goBack()">
+        <i class="material-icons toolbar_icons">undo</i><span>Back</span>
+      </md-toolbar-row>
     </md-toolbar>
   </md-sidenav>
   <md-toolbar color="primary">

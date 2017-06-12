@@ -1,12 +1,17 @@
+// Core
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-old-port-pricelist',
   templateUrl: 'old-port-pricelist.component.html',
 })
 export class OldPortPricelistComponent implements OnInit {
-  constructor() { }
+  constructor(private _location: Location) { }
 
   public ngOnInit() {
+  }
+
+  goBack() {
+    this._location.back();
   }
 }

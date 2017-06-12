@@ -6,7 +6,7 @@ import { NavLinks } from './navigation-links.interface';
 export const Navigation: NavLinks[] = [
   {
     linkName: 'Home',
-    linkPath: 'welcome',
+    linkPath: '../welcome',
     linkIcon: 'home',
     unique: true,
   },

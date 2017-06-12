@@ -1,12 +1,17 @@
+// Core
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-love-and-hope-pricelist',
   templateUrl: 'love-and-hope-pricelist.component.html',
 })
 export class LoveAndHopePricelistComponent implements OnInit {
-  constructor() { }
+  constructor(private _location: Location) { }
 
   public ngOnInit() {
+  }
+
+  goBack() {
+    this._location.back();
   }
 }
