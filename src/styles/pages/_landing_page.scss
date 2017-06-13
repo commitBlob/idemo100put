@@ -1,3 +1,10 @@
+// Do not delete this value
+$card-footer-height: 2em;
+
+md-card-content {
+  margin-bottom: 1.5 * $card-footer-height !important;
+}
+
 
 .landing_page_wrapper {
   height: 100%;
@@ -12,6 +19,7 @@
       margin: 1em .5em !important;
       cursor: pointer;
       padding: 0;
+      border-radius: .2em;
 
       img {
         width: 100%;
@@ -19,9 +27,46 @@
       }
 
       @include respond((max: 599px)) {
+        margin-top: 50px !important;
+        border-top: solid 2px $brand-primary;
         img {
-          height: 150px;
-          width: 150px;
+          height: 180px;
+          width: 180px;
+          border-radius: 50%;
+          margin: -40px auto 0;
+          border: solid 3px $brand-primary;
+          display: block;
+        }
+      }
+    }
+
+    .apartment_name {
+      font-family: 'Marck Script', cursive;
+      font-weight: $font-weight-base;
+      font-size: 2 * $font-size-base;
+      text-align: center;
+      margin-top: .4em;
+      margin-bottom: 0;
+    }
+
+    .apartment_slogan {
+      font-family: 'Marck Script', cursive;
+      font-weight: lighter;
+      font-size: 1.3 * $font-size-base;
+      text-align: center;
+      margin-top: 0;
+    }
+
+    .apartment_card_footer {
+      height: $card-footer-height;
+      border-top: solid 1px $dirty-white;
+      padding: .3em;
+      text-align: center;
+      color: $brand-primary;
+
+      .love {
+        &:hover {
+          color: $brand-danger;
         }
       }
     }
