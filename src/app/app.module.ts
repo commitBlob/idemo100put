@@ -1,6 +1,7 @@
 // Core
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
@@ -29,6 +30,7 @@ import 'hammerjs';
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
+    FlexLayoutModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes, {preloadingStrategy: CustomPreload}),

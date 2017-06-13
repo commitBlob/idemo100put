@@ -13,17 +13,19 @@
 <!--</md-card>-->
 
 <div class="landing_page_wrapper">
-  <div class="landing_page_container">
-    <md-card>
+  <div class="landing_page_container"  fxLayout.gt-xs="row" fxLayout.xs="column" fxLayoutGap.xs="0.5em">
+    <md-card class="apartments_item"  fxFlex.xs="100" [routerLink]="['/love-and-hope']">
+      <img src="{{_globalImagePath}}ap_LandH.jpg">
+      <h2 class="mdl-card__title-text">Welcome</h2>
       <p>Lorem Ipsum</p>
     </md-card>
-    <md-card>
+    <md-card class="apartments_item" fxFlex.xs="100" [routerLink]="['/lavanda']">
       <p>Lorem Ipsum</p>
     </md-card>
-    <md-card>
+    <md-card class="apartments_item" fxFlex.xs="100" [routerLink]="['/old-port']">
       <p>Lorem Ipsum</p>
     </md-card>
-    <md-card>
+    <md-card class="apartments_item" fxFlex.xs="100" [routerLink]="['/old-town']">
       <p>Lorem Ipsum</p>
     </md-card>
   </div>

@@ -1,9 +1,34 @@
 
 .landing_page_wrapper {
+  height: 100%;
   background-color: $dirty-white;
-  height: $container-landing-height;
+  //height: $container-landing-height;
 
   .landing_page_container {
-    width: 800px;
+    max-width: $mainWidth;
+    margin: 0 auto;
+
+    .apartments_item {
+      margin: 1em .5em !important;
+      cursor: pointer;
+      padding: 0;
+
+      img {
+        width: 100%;
+        min-height: 150px;
+      }
+
+      @include respond((max: 599px)) {
+        img {
+          height: 150px;
+          width: 150px;
+        }
+      }
+    }
+
+    @include respond((max: 599px)) {
+      margin:0 1em;
+
+    }
   }
 }

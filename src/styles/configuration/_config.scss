@@ -1,3 +1,4 @@
+// Colors
 $brand-primary: #7e69b4;
 $brand-secondary: #f3cb51;
 $brand-success: #4cd964;
@@ -20,10 +21,13 @@ $brand-facebook: #3764a3;
 $brand-google: #dc4938;
 $brand-twitter: #588eca;
 
+// Layout
+$mainWidth: 900px;
 
+// Typography
 $font-size-base:   14px !default;
 $font-weight-base: 300;
 
-
-$footer-height: 3vh;
-$container-landing-height: calc(100vh - #{$footer-height});
+//
+//$footer-height: 3vh;
+//$container-landing-height: calc(100vh - #{$footer-height});
