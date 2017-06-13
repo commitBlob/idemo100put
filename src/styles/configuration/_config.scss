@@ -23,3 +23,7 @@ $brand-twitter: #588eca;
 
 $font-size-base:   14px !default;
 $font-weight-base: 300;
+
+
+$footer-height: 3vh;
+$container-landing-height: calc(100vh - #{$footer-height});
