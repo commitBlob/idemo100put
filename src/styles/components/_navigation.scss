@@ -1,9 +1,12 @@
-
 .sidenav {
   background-color: $dirty-white !important;
   min-width: 215px !important;
-}
 
+  .logo {
+    display: block;
+    margin:1em auto -2em;
+  }
+}
 .toolbar {
   background-color: $dirty-white;
 

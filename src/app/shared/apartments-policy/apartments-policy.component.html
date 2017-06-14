@@ -1,6 +1,7 @@
 <!--TODO: add content-->
 
 <md-sidenav-container fullscreen>
+  <img class="logo" src="http://via.placeholder.com/180x60">
   <md-sidenav #sidenav mode="push" class="sidenav">
     <md-toolbar class="toolbar">
       <md-toolbar-row *ngFor="let links of _navigation" routerLinkActive="is-active" [routerLink]="'../'+[links.linkPath]" class="toolbar_elements">

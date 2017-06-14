@@ -67,12 +67,19 @@ md-card-content {
     }
 
     .apartment_card_footer {
-      height: $card-footer-height;
+
       border-top: solid 1px $dirty-white;
       padding: .3em;
       text-align: center;
       color: $brand-primary;
 
+      .find_out {
+        float: left;
+        font-size: $font-size-base;
+        text-transform: uppercase;
+        font-weight: bold;
+        padding: .4em;
+      }
     }
   }
 
