@@ -5,19 +5,28 @@ md-card-content {
   margin-bottom: 1.5 * $card-footer-height !important;
 }
 
-
 .landing_page_wrapper {
-  height: 100%;
-  background-color: $dirty-white;
-  //height: $container-landing-height;
+  max-width: $mainWidth;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
 
   .landing_page_container {
     max-width: $mainWidth;
     margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
 
     .apartments_item {
-      margin: 1em .5em !important;
+      $marginCalc: 1em .2em;
       cursor: pointer;
+      margin: $marginCalc;
       padding: 0;
       border-radius: .2em;
 
@@ -64,16 +73,22 @@ md-card-content {
       text-align: center;
       color: $brand-primary;
 
-      .love {
-        &:hover {
-          color: $brand-danger;
-        }
-      }
     }
+  }
+
+  .apartments_item {
+    position: relative;
 
     @include respond((max: 599px)) {
-      margin:0 1em;
+      width: calc(100% - 2em);
+    }
 
+    @include respond((min: 600px, max: 959px)) {
+      width: calc(50% - .5em);
+    }
+
+    @include respond((min: 960px)){
+      width: calc(25% - .5em);
     }
   }
 }

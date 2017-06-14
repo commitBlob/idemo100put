@@ -20,7 +20,9 @@ import { PageNotFoundModule } from './page-not-found/page-not-found.module';
 import 'hammerjs';
 
 
-// TODO: Add AoT Compilation
+/* TODO: Add AoT Compilation
+** BUG: Footer flies around
+*/
 @NgModule({
   declarations: [
     AppComponent,
