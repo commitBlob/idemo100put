@@ -15,6 +15,7 @@ md-card-content {
   align-items: center;
 
   .landing_page_container {
+    //min-height: 400px;
     max-width: $mainWidth;
     margin: 0 auto;
     width: 100%;
@@ -29,6 +30,11 @@ md-card-content {
       margin: $marginCalc;
       padding: 0;
       border-radius: .2em;
+
+      //&:hover {
+      //  transform: scale(1.2);
+      //  z-index:1;
+      //}
 
       img {
         width: 100%;
@@ -95,7 +101,19 @@ md-card-content {
     }
 
     @include respond((min: 960px)){
+
       width: calc(25% - .5em);
     }
   }
 }
+
+/*
+ul:hover li {
+  opacity: .5;
+}
+
+ul li:hover {
+  opacity: 1;
+}
+
+*/
