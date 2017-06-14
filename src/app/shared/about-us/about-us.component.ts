@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 
 // App specific
+import { GlobalVariables } from '../../globals';
 import { NavigationService } from '../navigation/navigation-service/navigation-service';
 
 @Component({
@@ -10,6 +11,7 @@ import { NavigationService } from '../navigation/navigation-service/navigation-s
   providers: [ NavigationService ]
 })
 export class AboutUsComponent implements OnInit {
+  private _globalLogoPath = GlobalVariables.logoPath;
   private _navigation: any;
   private _apartmentsList: any;
   constructor(private _navigationService: NavigationService, private _location: Location) { }

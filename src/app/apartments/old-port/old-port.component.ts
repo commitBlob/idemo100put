@@ -4,12 +4,14 @@ import { Location } from '@angular/common';
 
 // App specific
 import { NavigationService } from '../../shared/navigation/navigation-service/navigation-service';
+import { GlobalVariables } from '../../globals';
 
 @Component({
   templateUrl: 'old-port.component.html',
   providers: [ NavigationService ]
 })
 export class OldPortComponent implements OnInit {
+  private _globalLogoPath = GlobalVariables.logoPath;
   private _navigation: any;
   constructor(private _navigationService: NavigationService, private _location: Location) { }
 

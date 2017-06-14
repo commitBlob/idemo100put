@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 
 // App specific
+import { GlobalVariables } from '../../globals';
 import { NavigationService } from '../../shared/navigation/navigation-service/navigation-service';
 
 @Component({
@@ -11,6 +12,7 @@ import { NavigationService } from '../../shared/navigation/navigation-service/na
 })
 export class LoveAndHopeComponent implements OnInit {
   private _navigation: any;
+  private _globalLogoPath = GlobalVariables.logoPath;
   constructor(private _navigationService: NavigationService, private _location: Location) { }
 
   public ngOnInit() {
