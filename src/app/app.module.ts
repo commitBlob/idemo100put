@@ -4,7 +4,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { MaterialModule } from '@angular/material';
 import { NgModule } from '@angular/core';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 
@@ -14,6 +13,7 @@ import { appRoutes } from './routes/route-definitions';
 import { CustomPreload } from './routes/custom-preload';
 import { FooterComponent } from './shared/footer/footer.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { MaterialModule } from './sharedMaterialModule';
 import { PageNotFoundModule } from './page-not-found/page-not-found.module';
 
 // External
@@ -21,7 +21,7 @@ import 'hammerjs';
 
 
 /* TODO: Add AoT Compilation
-** BUG: Footer flies around
+*
 */
 @NgModule({
   declarations: [

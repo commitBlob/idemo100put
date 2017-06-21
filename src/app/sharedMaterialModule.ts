@@ -1,9 +1,9 @@
 // Core
-import { MaterialModule } from '@angular/material';
+import { MdTabsModule, MdCheckboxModule, MdInputModule, MdSelectModule, MdButtonModule } from '@angular/material';
 import { NgModule } from '@angular/core';
 
 @NgModule({
-  imports: [MaterialModule],
-  exports: [ MaterialModule],
+  imports: [ MdTabsModule, MdCheckboxModule, MdInputModule, MdSelectModule, MdButtonModule],
+  exports: [ MdTabsModule, MdCheckboxModule, MdInputModule, MdSelectModule, MdButtonModule],
 })
-export class SharedMaterialModule { }
+export class MaterialModule { }

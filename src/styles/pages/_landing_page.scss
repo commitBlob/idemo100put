@@ -30,6 +30,7 @@ md-card-content {
       margin: $marginCalc;
       padding: 0;
       border-radius: .2em;
+      box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
 
       //&:hover {
       //  transform: scale(1.2);
@@ -97,12 +98,12 @@ md-card-content {
     }
 
     @include respond((min: 600px, max: 959px)) {
-      width: calc(50% - .5em);
+      width: calc(50% - .7em);
     }
 
     @include respond((min: 960px)){
 
-      width: calc(25% - .5em);
+      width: calc(25% - .7em);
     }
   }
 }
