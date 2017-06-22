@@ -1,24 +1,37 @@
 <!--TODO: add content-->
 
-<md-sidenav-container fullscreen>
-  <md-sidenav #sidenav mode="push" class="sidenav">
-    <img class="logo" src="{{_globalLogoPath}}">
-    <md-toolbar class="toolbar">
-      <md-toolbar-row *ngFor="let links of _navigation" [routerLink]="[links.linkPath]" class="toolbar_elements">
-        <i class="material-icons toolbar_icons">{{links.linkIcon}}</i><span>{{links.linkName}}</span>
-      </md-toolbar-row>
-      <md-toolbar-row class="toolbar_elements" (click)="goBack()">
-        <i class="material-icons toolbar_icons">undo</i><span>Back</span>
-      </md-toolbar-row>
-    </md-toolbar>
-  </md-sidenav>
-  <md-toolbar class="nav_bar" color="primary">
-    <button md-button (click)="sidenav.toggle()">
-      <md-icon>menu</md-icon>
-    </button>
-  </md-toolbar>
-  <div class="content_wrapper">
-    <p>Apartment components works!</p>
-  </div>
-</md-sidenav-container>
+<!--<md-sidenav-container fullscreen>-->
+  <!--<md-sidenav #sidenav mode="push" class="sidenav">-->
+    <!--<img class="logo" src="{{_globalLogoPath}}">-->
+    <!--<md-toolbar class="toolbar">-->
+      <!--<md-toolbar-row *ngFor="let links of _navigation" [routerLink]="[links.linkPath]" class="toolbar_elements">-->
+        <!--<i class="material-icons toolbar_icons">{{links.linkIcon}}</i><span>{{links.linkName}}</span>-->
+      <!--</md-toolbar-row>-->
+      <!--<md-toolbar-row class="toolbar_elements" (click)="goBack()">-->
+        <!--<i class="material-icons toolbar_icons">undo</i><span>Back</span>-->
+      <!--</md-toolbar-row>-->
+    <!--</md-toolbar>-->
+  <!--</md-sidenav>-->
+  <!--<md-toolbar class="nav_bar" color="primary">-->
+    <!--<button md-button (click)="sidenav.toggle()">-->
+      <!--<md-icon>menu</md-icon>-->
+    <!--</button>-->
+  <!--</md-toolbar>-->
+  <!--<div class="content_wrapper">-->
+    <!--<p>Apartment components works!</p>-->
+  <!--</div>-->
+<!--</md-sidenav-container>-->
+<div id="mySidenav" class="side_nav" [ngClass]="{
+    'menu-open': menuOpen}">
+  <a href="#">About</a>
+  <a href="#">Services</a>
+  <a href="#">Clients</a>
+  <a href="#">Contact</a>
+</div>
 
+<div id="main" [ngClass]="{
+    'menu-open': menuOpen}">
+  <h2>Sidenav Push Example</h2>
+  <p>Click on the element below to open the side navigation menu, and push this content to the right.</p>
+  <span style="font-size:30px;cursor:pointer;" (click)="toggleMenu()">&#9776; open</span>
+</div>

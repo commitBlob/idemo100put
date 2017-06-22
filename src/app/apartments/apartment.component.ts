@@ -1,5 +1,5 @@
 // Core
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 
 // App specific
@@ -11,6 +11,7 @@ import { NavigationService } from '../shared/navigation/navigation-service/navig
   providers: [ NavigationService ]
 })
 export class ApartmentComponent implements OnInit {
+  @HostBinding('class.menu-open') public menuOpen = false;
   private _globalLogoPath = GlobalVariables.logoPath;
   private _navigation: any;
   private _apartmentsList: any;
@@ -28,7 +29,17 @@ export class ApartmentComponent implements OnInit {
   getNavigation() {
     this._navigation = this._navigationService.getMainNavigation();
   }
+
   getApartmentsList() {
     this._apartmentsList = this._navigationService.getApartmentsList();
+  }
+
+  public toggleMenu() {
+    console.log('triggered');
+    if (this.menuOpen) {
+      this.menuOpen = false;
+    } else {
+      this.menuOpen = true;
+    }
   }
 }
