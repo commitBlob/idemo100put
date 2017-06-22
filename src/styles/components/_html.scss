@@ -1,11 +1,14 @@
 html {
-    font-family: 'Raleway', sans-serif;
-    box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
+  box-sizing: border-box;
+  height: 100%;
+  overflow-y: scroll;
 }
 
 body {
   height: 100%;
   background-color: $dirty-white;
+  margin: 0;
 }
 
 md-sidenav-container {
