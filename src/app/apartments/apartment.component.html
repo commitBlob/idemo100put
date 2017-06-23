@@ -21,17 +21,21 @@
     <!--<p>Apartment components works!</p>-->
   <!--</div>-->
 <!--</md-sidenav-container>-->
-<div id="mySidenav" class="side_nav" [ngClass]="{
-    'menu-open': menuOpen}">
-  <a href="#">About</a>
-  <a href="#">Services</a>
-  <a href="#">Clients</a>
-  <a href="#">Contact</a>
+<div class="side_nav" [ngClass]="{'menu_open': menuOpen}">
+  <img class="logo" src="{{_globalLogoPath}}">
+  <ul class="navigation">
+    <li *ngFor="let links of _navigation" [routerLink]="[links.linkPath]" class="navigation_elements"><i class="material-icons element_icons">{{links.linkIcon}}</i><a> {{links.linkName}}</a></li>
+  </ul>
 </div>
 
-<div id="main" [ngClass]="{
-    'menu-open': menuOpen}">
+<div id="main" [ngClass]="{'menu_open': menuOpen}">
+  <span style="font-size:30px;cursor:pointer;" (click)="toggleMenu()">&#9776; open</span>
   <h2>Sidenav Push Example</h2>
   <p>Click on the element below to open the side navigation menu, and push this content to the right.</p>
-  <span style="font-size:30px;cursor:pointer;" (click)="toggleMenu()">&#9776; open</span>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
 </div>
