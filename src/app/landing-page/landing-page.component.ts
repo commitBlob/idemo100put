@@ -1,5 +1,5 @@
 // Core
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 
 // App specific
 import { GlobalVariables } from '../globals';
@@ -9,12 +9,17 @@ import { GlobalVariables } from '../globals';
   templateUrl: './landing-page.component.html',
 })
 export class LandingPageComponent implements OnInit {
-
+  @HostBinding('class.menu_open') public menuOpen = false;
+  private _globalLogoPath = GlobalVariables.logoPath;
   private _globalImagePath = GlobalVariables.imagesPath;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  public toggleMenu() {
+    this.menuOpen = !this.menuOpen;
   }
 
 }

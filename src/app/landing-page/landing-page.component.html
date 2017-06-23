@@ -12,54 +12,72 @@
   <!--<button [routerLink]="['/apartments/']" class="button type1">General</button>-->
 <!--</md-card>-->
 
-<div class="landing_page_wrapper">
-  <p>Lorem ipsum dolor sit amet</p>
-  <div class="landing_page_container">
 
-    <md-card class="apartments_item mat-card" [routerLink]="['/love-and-hope']">
-      <md-card-content>
-        <img src="{{_globalImagePath}}ap_LandH.jpg">
-        <h2 class="apartment_name">Love & Hope</h2>
-        <h3 class="apartment_slogan">Slogan goes here</h3>
-        <p>Lorem Ipsum</p>
-      </md-card-content>
-      <md-card-footer class="apartment_card_footer">
-        <a class="find_out">Find Out More</a>
-      </md-card-footer>
-    </md-card>
-    <md-card class="apartments_item mat-card" [routerLink]="['/lavanda']">
-      <md-card-content>
-        <img src="{{_globalImagePath}}ap_lavanda.jpg">
-        <h2 class="apartment_name">Lavanda</h2>
-        <h3 class="apartment_slogan">Slogan goes here</h3>
-        <p>Lorem Ipsum</p>
-      </md-card-content>
-      <md-card-footer class="apartment_card_footer">
-        <a class="find_out">Find Out More</a>
-      </md-card-footer>
-    </md-card>
-    <md-card class="apartments_item mat-card" [routerLink]="['/old-port']">
-      <md-card-content>
-        <img src="{{_globalImagePath}}ap_old_port.jpg">
-        <h2 class="apartment_name">Old Port</h2>
-        <h3 class="apartment_slogan">Slogan goes here</h3>
-        <p>Lorem Ipsum</p>
-      </md-card-content>
-      <md-card-footer class="apartment_card_footer">
-        <a class="find_out">Find Out More</a>
-      </md-card-footer>
-    </md-card>
-    <md-card class="apartments_item mat-card" [routerLink]="['/old-town']">
-      <md-card-content>
-        <img src="{{_globalImagePath}}ap_old_town.jpg">
-        <h2 class="apartment_name">Old Town</h2>
-        <h3 class="apartment_slogan">Slogan goes here</h3>
-        <p>Lorem Ipsum</p>
-      </md-card-content>
-      <md-card-footer class="apartment_card_footer">
-        <a class="find_out">Find Out More</a>
-      </md-card-footer>
-    </md-card>
+
+<div class="side_nav" [ngClass]="{'menu_open': menuOpen}">
+  <img class="logo" src="{{_globalLogoPath}}">
+  <ul class="navigation">
+    <li class="navigation_elements"><i class="material-icons element_icons">assistant_photo</i><a> One</a></li>
+    <li class="navigation_elements"><i class="material-icons element_icons">assistant_photo</i><a> Two</a></li>
+    <li class="navigation_elements"><i class="material-icons element_icons">assistant_photo</i><a> Three</a></li>
+    <li class="navigation_elements"><i class="material-icons element_icons">assistant_photo</i><a> Four</a></li>
+    <li class="navigation_elements"><i class="material-icons element_icons">assistant_photo</i><a> Five</a></li>
+    <li class="navigation_elements"><i class="material-icons element_icons">assistant_photo</i><a> Six</a></li>
+  </ul>
+</div>
+
+<div id="main" [ngClass]="{'menu_open': menuOpen}">
+  <span style="font-size:30px;cursor:pointer;" (click)="toggleMenu()">&#9776; open</span>
+
+  <div class="landing_page_wrapper">
+    <p>Lorem ipsum dolor sit amet</p>
+    <div class="landing_page_container">
+
+      <md-card class="apartments_item mat-card" [routerLink]="['/love-and-hope']">
+        <md-card-content>
+          <img src="{{_globalImagePath}}ap_LandH.jpg">
+          <h2 class="apartment_name">Love & Hope</h2>
+          <h3 class="apartment_slogan">Slogan goes here</h3>
+          <p>Lorem Ipsum</p>
+        </md-card-content>
+        <md-card-footer class="apartment_card_footer">
+          <a class="find_out">Find Out More</a>
+        </md-card-footer>
+      </md-card>
+      <md-card class="apartments_item mat-card" [routerLink]="['/lavanda']">
+        <md-card-content>
+          <img src="{{_globalImagePath}}ap_lavanda.jpg">
+          <h2 class="apartment_name">Lavanda</h2>
+          <h3 class="apartment_slogan">Slogan goes here</h3>
+          <p>Lorem Ipsum</p>
+        </md-card-content>
+        <md-card-footer class="apartment_card_footer">
+          <a class="find_out">Find Out More</a>
+        </md-card-footer>
+      </md-card>
+      <md-card class="apartments_item mat-card" [routerLink]="['/old-port']">
+        <md-card-content>
+          <img src="{{_globalImagePath}}ap_old_port.jpg">
+          <h2 class="apartment_name">Old Port</h2>
+          <h3 class="apartment_slogan">Slogan goes here</h3>
+          <p>Lorem Ipsum</p>
+        </md-card-content>
+        <md-card-footer class="apartment_card_footer">
+          <a class="find_out">Find Out More</a>
+        </md-card-footer>
+      </md-card>
+      <md-card class="apartments_item mat-card" [routerLink]="['/old-town']">
+        <md-card-content>
+          <img src="{{_globalImagePath}}ap_old_town.jpg">
+          <h2 class="apartment_name">Old Town</h2>
+          <h3 class="apartment_slogan">Slogan goes here</h3>
+          <p>Lorem Ipsum</p>
+        </md-card-content>
+        <md-card-footer class="apartment_card_footer">
+          <a class="find_out">Find Out More</a>
+        </md-card-footer>
+      </md-card>
+    </div>
+    <p>Lorem ipsum dolor sit amet <a [routerLink]="['/apartments/']"> More</a></p>
   </div>
-  <p>Lorem ipsum dolor sit amet <a [routerLink]="['/apartments/']"> More</a></p>
 </div>
