@@ -3,14 +3,14 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 
 // App specific
-import { GlobalVariables } from '../../globals';
-import { NavigationService } from '../navigation/navigation-service/navigation-service';
+import { GlobalVariables } from '../globals';
+import { NavigationService } from '../shared/navigation/navigation-service/navigation-service';
 
 @Component({
-  templateUrl: 'contact-us.component.html',
+  templateUrl: './about-us.component.html',
   providers: [ NavigationService ]
 })
-export class ContactUsComponent implements OnInit {
+export class AboutUsComponent implements OnInit {
   private _globalLogoPath = GlobalVariables.logoPath;
   private _navigation: any;
   private _apartmentsList: any;
