@@ -12,6 +12,7 @@ import { NavigationService } from '../shared/navigation/navigation-service/navig
 })
 export class ApartmentComponent implements OnInit {
   @HostBinding('class.menu_open') public menuOpen = false;
+  @HostBinding('class.is-active') public hamburgerOpen = false;
   private _globalLogoPath = GlobalVariables.logoPath;
   private _navigation: any;
   private _apartmentsList: any;
@@ -36,5 +37,6 @@ export class ApartmentComponent implements OnInit {
 
   public toggleMenu() {
     this.menuOpen = !this.menuOpen;
+    this.hamburgerOpen = !this.hamburgerOpen;
   }
 }

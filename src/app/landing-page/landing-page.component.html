@@ -27,8 +27,11 @@
 </div>
 
 <div id="main" [ngClass]="{'menu_open': menuOpen}">
-  <span style="font-size:30px;cursor:pointer;" (click)="toggleMenu()">&#9776; open</span>
-
+  <div class="hamburger hamburger--spring" (click)="toggleMenu()" [ngClass]="{'is-active': hamburgerOpen}">
+    <div class="hamburger-box">
+      <div class="hamburger-inner"></div>
+    </div>
+  </div>
   <div class="landing_page_wrapper">
     <p>Lorem ipsum dolor sit amet</p>
     <div class="landing_page_container">
