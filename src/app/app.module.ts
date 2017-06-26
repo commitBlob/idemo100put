@@ -13,6 +13,7 @@ import { appRoutes } from './shared/routes/route-definitions';
 import { CustomPreload } from './shared/routes/custom-preload';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MaterialModule } from './sharedMaterialModule';
+import { NavigationService } from './shared/navigation/navigation-service/navigation-service';
 import { PageNotFoundModule } from './page-not-found/page-not-found.module';
 import { SharedModule } from './shared/shared.module';
 
@@ -46,7 +47,10 @@ import 'hammerjs';
   exports: [
     MaterialModule
   ],
-  providers: [CustomPreload],
+  providers: [
+    CustomPreload,
+    NavigationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
