@@ -1,27 +1,5 @@
 <!--TODO: add content-->
 
-<!--<md-sidenav-container fullscreen>-->
-  <!--<md-sidenav #sidenav mode="push" class="sidenav">-->
-    <!--<img class="logo" src="{{_globalLogoPath}}">-->
-    <!--<md-toolbar class="toolbar">-->
-      <!--<md-toolbar-row *ngFor="let links of _navigation" routerLinkActive="is-active" [routerLink]="'../'+[links.linkPath]" class="toolbar_elements">-->
-        <!--<i class="material-icons toolbar_icons">{{links.linkIcon}}</i><span>{{links.linkName}}</span>-->
-      <!--</md-toolbar-row>-->
-      <!--<md-toolbar-row class="toolbar_elements" (click)="goBack()">-->
-        <!--<i class="material-icons toolbar_icons">undo</i><span>Back</span>-->
-      <!--</md-toolbar-row>-->
-    <!--</md-toolbar>-->
-  <!--</md-sidenav>-->
-  <!--<md-toolbar class="nav_bar" color="primary">-->
-    <!--<button md-button (click)="sidenav.toggle()">-->
-      <!--<md-icon>menu</md-icon>-->
-    <!--</button>-->
-  <!--</md-toolbar>-->
-  <!--<div class="content_wrapper">-->
-    <!--<p>About us components works!</p>-->
-  <!--</div>-->
-<!--</md-sidenav-container>-->
-
 <div class="side_nav" [ngClass]="{'menu_open': menuOpen}">
   <img class="logo" src="{{_globalLogoPath}}">
   <ul class="navigation">

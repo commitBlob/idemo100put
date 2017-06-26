@@ -20,9 +20,13 @@ import { PageNotFoundModule } from './page-not-found/page-not-found.module';
 import 'hammerjs';
 
 
-/* TODO: Add AoT Compilation
+/* ***************************************************************
 *
-*/
+*  TODO: 1. Add AoT Compilation
+*  TODO: 2. Make Global navigation place it in app.component.html
+*  TODO: 3. Delete Apartments (L&H,Lav,OP,OT) as apartments data will be retrieved from backend (atm. apartments_data.json)
+*
+*****************************************************************/
 @NgModule({
   declarations: [
     AppComponent,
