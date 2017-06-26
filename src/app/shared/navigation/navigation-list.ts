@@ -12,13 +12,13 @@ export const Navigation: NavLinks[] = [
   },
   {
     linkName: 'About Us',
-    linkPath: 'about-us',
+    linkPath: '+about-us',
     linkIcon: 'people',
     unique: true,
   },
   {
     linkName: 'Contact Us',
-    linkPath: 'contact-us',
+    linkPath: '+contact-us',
     linkIcon: 'chat',
     unique: true,
   },
@@ -57,13 +57,13 @@ export const ApartmentsNav: NavLinks[] = [
   },
   {
     linkName: 'Location',
-    linkPath: '/apartments/location',
+    linkPath: '/+apartments/+location',
     linkIcon: 'place',
     unique: true,
   },
   {
     linkName: 'Policy',
-    linkPath: '/apartments/policy',
+    linkPath: '/+apartments/policy',
     linkIcon: 'content_paste',
     unique: true,
   },
@@ -102,13 +102,13 @@ export const ApartmentSelectorNav: NavLinks[] = [
 export const GlobalNavigation: NavLinks[] = [
   {
     linkName: 'About Us',
-    linkPath: 'about-us',
+    linkPath: '+about-us',
     linkIcon: 'people',
     unique: true,
   },
   {
     linkName: 'Contact Us',
-    linkPath: 'contact-us',
+    linkPath: '+contact-us',
     linkIcon: 'chat',
     unique: true,
   },

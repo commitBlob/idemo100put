@@ -9,8 +9,8 @@ import { RouterModule, PreloadAllModules } from '@angular/router';
 
 // App specific
 import { AppComponent } from './app.component';
-import { appRoutes } from './routes/route-definitions';
-import { CustomPreload } from './routes/custom-preload';
+import { appRoutes } from './shared/routes/route-definitions';
+import { CustomPreload } from './shared/routes/custom-preload';
 import { FooterComponent } from './shared/footer/footer.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MaterialModule } from './sharedMaterialModule';
@@ -24,7 +24,7 @@ import 'hammerjs';
 *
 *  TODO: 1. Add AoT Compilation
 *  TODO: 2. Make Global navigation place it in app.component.html
-*  TODO: 3. Delete Apartments (L&H,Lav,OP,OT) as apartments data will be retrieved from backend (atm. apartments_data.json)
+*  TODO: 3. Delete Apartments (L&H,Lav,OP,OT) as +apartments data will be retrieved from backend (atm. apartments_data.json)
 *
 *****************************************************************/
 @NgModule({
