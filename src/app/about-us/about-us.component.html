@@ -1,24 +1,46 @@
 <!--TODO: add content-->
 
-<md-sidenav-container fullscreen>
-  <md-sidenav #sidenav mode="push" class="sidenav">
-    <img class="logo" src="{{_globalLogoPath}}">
-    <md-toolbar class="toolbar">
-      <md-toolbar-row *ngFor="let links of _navigation" routerLinkActive="is-active" [routerLink]="'../'+[links.linkPath]" class="toolbar_elements">
-        <i class="material-icons toolbar_icons">{{links.linkIcon}}</i><span>{{links.linkName}}</span>
-      </md-toolbar-row>
-      <md-toolbar-row class="toolbar_elements" (click)="goBack()">
-        <i class="material-icons toolbar_icons">undo</i><span>Back</span>
-      </md-toolbar-row>
-    </md-toolbar>
-  </md-sidenav>
-  <md-toolbar class="nav_bar" color="primary">
-    <button md-button (click)="sidenav.toggle()">
-      <md-icon>menu</md-icon>
-    </button>
-  </md-toolbar>
-  <div class="content_wrapper">
-    <p>About us components works!</p>
-  </div>
-</md-sidenav-container>
+<!--<md-sidenav-container fullscreen>-->
+  <!--<md-sidenav #sidenav mode="push" class="sidenav">-->
+    <!--<img class="logo" src="{{_globalLogoPath}}">-->
+    <!--<md-toolbar class="toolbar">-->
+      <!--<md-toolbar-row *ngFor="let links of _navigation" routerLinkActive="is-active" [routerLink]="'../'+[links.linkPath]" class="toolbar_elements">-->
+        <!--<i class="material-icons toolbar_icons">{{links.linkIcon}}</i><span>{{links.linkName}}</span>-->
+      <!--</md-toolbar-row>-->
+      <!--<md-toolbar-row class="toolbar_elements" (click)="goBack()">-->
+        <!--<i class="material-icons toolbar_icons">undo</i><span>Back</span>-->
+      <!--</md-toolbar-row>-->
+    <!--</md-toolbar>-->
+  <!--</md-sidenav>-->
+  <!--<md-toolbar class="nav_bar" color="primary">-->
+    <!--<button md-button (click)="sidenav.toggle()">-->
+      <!--<md-icon>menu</md-icon>-->
+    <!--</button>-->
+  <!--</md-toolbar>-->
+  <!--<div class="content_wrapper">-->
+    <!--<p>About us components works!</p>-->
+  <!--</div>-->
+<!--</md-sidenav-container>-->
 
+<div class="side_nav" [ngClass]="{'menu_open': menuOpen}">
+  <img class="logo" src="{{_globalLogoPath}}">
+  <ul class="navigation">
+    <li *ngFor="let links of _navigation" routerLinkActive="is-active" [routerLink]="'../'+[links.linkPath]" class="navigation_elements"><i class="material-icons element_icons">{{links.linkIcon}}</i><a> {{links.linkName}}</a></li>
+  </ul>
+</div>
+
+<div id="main" [ngClass]="{'menu_open': menuOpen}">
+  <div class="hamburger hamburger--spring" (click)="toggleMenu()" [ngClass]="{'is-active': hamburgerOpen}">
+    <div class="hamburger-box">
+      <div class="hamburger-inner"></div>
+    </div>
+  </div>
+  <h2>Sidenav Push Example</h2>
+  <p>Click on the element below to open the side navigation menu, and push this content to the right.</p>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
+</div>

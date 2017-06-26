@@ -1,5 +1,5 @@
 // Core
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 
 // App specific
@@ -11,6 +11,8 @@ import { NavigationService } from '../shared/navigation/navigation-service/navig
   providers: [ NavigationService ]
 })
 export class AboutUsComponent implements OnInit {
+  @HostBinding('class.menu_open') public menuOpen = false;
+  @HostBinding('class.is-active') public hamburgerOpen = false;
   private _globalLogoPath = GlobalVariables.logoPath;
   private _navigation: any;
   private _apartmentsList: any;
@@ -30,5 +32,10 @@ export class AboutUsComponent implements OnInit {
   }
   getApartmentsList() {
     this._apartmentsList = this._navigationService.getApartmentsList();
+  }
+
+  public toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+    this.hamburgerOpen = !this.hamburgerOpen;
   }
 }

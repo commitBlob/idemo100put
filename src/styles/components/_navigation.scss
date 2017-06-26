@@ -79,7 +79,7 @@
   left: 0;
   top: 0;
   bottom: 0;
-  transition: all 1s cubic-bezier(.05,1.1,.38,.99);
+  transition: all 1s cubic-bezier(.05,1.1,.38,1.05);
   transform: translate3d(-250px, 0, 0);
   flex: 1 1 0;
   box-shadow: 60px 0px 100px -90px $black;
