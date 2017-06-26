@@ -1,6 +1,26 @@
 <div class="page_wrapper">
   <div class="main_wrapper">
+    <div class="side_nav" [ngClass]="{'menu_open': menuOpen}">
+      <img class="logo" src="{{_globalLogoPath}}">
+      <ul class="navigation">
+        <li class="navigation_elements">
+          <i class="material-icons element_icons">assistant_photo</i>
+          <a> One</a>
+        </li>
+        <li class="navigation_elements">
+          <i class="material-icons element_icons">assistant_photo</i>
+          <a> Two</a>
+        </li>
+      </ul>
+    </div>
+    <div id="main" [ngClass]="{'menu_open': menuOpen}">
+      <div class="hamburger hamburger--spring" (click)="toggleMenu()" [ngClass]="{'is-active': hamburgerOpen}">
+        <div class="hamburger-box">
+          <div class="hamburger-inner"></div>
+        </div>
+      </div>
     <router-outlet></router-outlet>
+    </div>
   </div>
   <app-footer class="footer"></app-footer>
 </div>

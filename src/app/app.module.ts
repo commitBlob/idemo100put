@@ -11,10 +11,10 @@ import { RouterModule, PreloadAllModules } from '@angular/router';
 import { AppComponent } from './app.component';
 import { appRoutes } from './shared/routes/route-definitions';
 import { CustomPreload } from './shared/routes/custom-preload';
-import { FooterComponent } from './shared/footer/footer.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MaterialModule } from './sharedMaterialModule';
 import { PageNotFoundModule } from './page-not-found/page-not-found.module';
+import { SharedModule } from './shared/shared.module';
 
 // External
 import 'hammerjs';
@@ -30,7 +30,6 @@ import 'hammerjs';
 @NgModule({
   declarations: [
     AppComponent,
-    FooterComponent,
     LandingPageComponent,
   ],
   imports: [
@@ -42,6 +41,7 @@ import 'hammerjs';
     RouterModule.forRoot(appRoutes, {preloadingStrategy: CustomPreload}),
     MaterialModule,
     PageNotFoundModule,
+    SharedModule
   ],
   exports: [
     MaterialModule
