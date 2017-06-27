@@ -15,7 +15,9 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MaterialModule } from './sharedMaterialModule';
 import { NavigationService } from './shared/navigation/navigation-service/navigation-service';
 import { PageNotFoundModule } from './page-not-found/page-not-found.module';
+import { ResponsiveService } from './shared/responsive-service/responsive.service';
 import { SharedModule } from './shared/shared.module';
+import { WindowRef } from './shared/responsive-service/window.service';
 
 // External
 import 'hammerjs';
@@ -49,7 +51,9 @@ import 'hammerjs';
   ],
   providers: [
     CustomPreload,
-    NavigationService
+    NavigationService,
+    ResponsiveService,
+    WindowRef
   ],
   bootstrap: [AppComponent]
 })

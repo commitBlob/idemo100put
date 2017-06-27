@@ -8,6 +8,6 @@ import { PageNotFoundComponent } from '../../page-not-found/page-not-found.compo
 export const appRoutes: Routes = [
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
   { path: 'welcome', component: LandingPageComponent },
-  { path: '+apartments', loadChildren: './+apartments/apartment.module#ApartmentModule', data: { preload: true } },
+  { path: 'apartments', loadChildren: './+apartments/apartment.module#ApartmentModule', data: { preload: true } },
   { path: '**', component: PageNotFoundComponent },
 ];

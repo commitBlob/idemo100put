@@ -33,7 +33,6 @@ export class AppComponent implements OnInit {
   }
 
   public toggleMenu() {
-    console.log(this._navigationList, 'should be data');
     this.menuOpen = !this.menuOpen;
     this.hamburgerOpen = !this.hamburgerOpen;
   }

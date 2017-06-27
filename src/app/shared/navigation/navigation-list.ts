@@ -102,56 +102,44 @@ export const ApartmentSelectorNav: NavLinks[] = [
 export const GlobalNavigation: NavLinks[] = [
   {
     linkName: 'About Us',
-    linkPath: '+about-us',
+    linkPath: 'apartments/about-us',
     linkIcon: 'people',
     unique: true,
   },
   {
     linkName: 'Contact Us',
-    linkPath: '+contact-us',
+    linkPath: 'apartments/contact-us',
     linkIcon: 'chat',
     unique: true,
   },
   {
     linkName: 'Croatia Facts',
-    linkPath: 'cro-facts',
+    linkPath: 'apartments/cro-facts',
     linkIcon: 'assistant_photo',
     unique: true,
   },
   {
     linkName: 'Dubrovnik Facts',
-    linkPath: 'du-facts',
+    linkPath: 'apartments/du-facts',
     linkIcon: 'local_activity',
     unique: true,
   },
   {
-    linkName: 'Surroundings',
-    linkPath: 'surroundings',
-    linkIcon: 'landscape',
-    unique: true,
-  },
-  {
-    linkName: 'Facilities',
-    linkPath: 'facilities',
-    linkIcon: 'list',
-    unique: false,
-  },
-  {
     linkName: 'Location',
-    linkPath: 'location',
+    linkPath: 'apartments/location',
     linkIcon: 'place',
     unique: true,
   },
   {
     linkName: 'Policy',
-    linkPath: 'policy',
+    linkPath: 'apartments/policy',
     linkIcon: 'content_paste',
     unique: true,
   },
   {
-    linkName: 'Price List',
-    linkPath: 'pricelist',
-    linkIcon: 'local_atm',
-    unique: false,
+    linkName: 'Surroundings',
+    linkPath: 'apartments/surroundings',
+    linkIcon: 'landscape',
+    unique: true,
   }
 ]

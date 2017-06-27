@@ -22,11 +22,11 @@ export const ApartmentRoutes: Routes = [
     component: ApartmentsPolicyComponent
   },
   {
-    path: '+about-us',
+    path: 'about-us',
     component: AboutUsComponent
   },
   {
-    path: '+contact-us',
+    path: 'contact-us',
     component: ContactUsComponent
   },
   {
@@ -42,7 +42,7 @@ export const ApartmentRoutes: Routes = [
     component: LocationComponent
   },
   {
-    path: '+surroundings',
+    path: 'surroundings',
     component: SurroundingsComponent
   },
 ];
