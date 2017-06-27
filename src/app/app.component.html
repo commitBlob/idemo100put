@@ -8,38 +8,13 @@
       </ul>
     </div>
     <div id="main" [ngClass]="{'menu_open': menuOpen}">
-      <div class="tabs_wrapper">
+      <div class="top_navigation">
         <div class="hamburger hamburger--spring" (click)="toggleMenu()" [ngClass]="{'is-active': hamburgerOpen}">
           <div class="hamburger-box">
             <div class="hamburger-inner"></div>
           </div>
         </div>
-        <md-tab-group>
-          <md-tab label="Pricelist">
-            <h1>First</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-              ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-              laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-              voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-              cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </md-tab>
-          <md-tab label="Facitilites">
-            <h1>Second</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-              ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-              laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-              voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-              cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </md-tab>
-          <md-tab label="Location">
-            <h1>Third</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-              ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-              laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-              voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-              cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </md-tab>
-        </md-tab-group>
+        <app-logo class="logo_wrapper"></app-logo>
       </div>
       <div class="content_wrapper">
         <router-outlet></router-outlet>

@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 
 // App specific
 import { FooterModule } from './footer/footer.module';
+import { LogoModule } from './logo/logo.module';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { FooterModule } from './footer/footer.module';
   ],
   exports: [
     CommonModule,
+    LogoModule,
     FooterModule,
     FormsModule,
     RouterModule
