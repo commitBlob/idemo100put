@@ -1,4 +1,28 @@
-.tabs_wrapper{
+.tabs_wrapper {
   border: solid 3px magenta;
-  display: flex;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+  }
+
+  li{
+    padding: 1.25em 0.8em;
+    font-size: $font-size-base;
+    max-width: 140px;
+    text-decoration: none;
+    display: flex;
+    align-items: flex-start;
+    color: $gray-base;
+    &:hover, &:focus {
+      background: $gray;
+      color: $black;
+    }
+  }
+  a {
+
+  }
 }

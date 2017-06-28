@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 // App specific
 import { FooterModule } from './footer/footer.module';
 import { LogoModule } from './logo/logo.module';
+import { TabsNavigationModule } from './tabs_navigation/tabs_navigation.module';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { LogoModule } from './logo/logo.module';
     LogoModule,
     FooterModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    TabsNavigationModule
   ],
   declarations: []
 })
