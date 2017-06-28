@@ -26,8 +26,7 @@ import 'hammerjs';
 /* ***************************************************************
 *
 *  TODO: 1. Add AoT Compilation
-*  TODO: 2. Make Global navigation place it in app.component.html
-*  TODO: 3. Delete Apartments (L&H,Lav,OP,OT) as +apartments data will be retrieved from backend (atm. apartments_data.json)
+*  TODO: 2. Delete Apartments (L&H,Lav,OP,OT) as +apartments data will be retrieved from backend (atm. apartments_data.json)
 *
 *****************************************************************/
 @NgModule({

@@ -3,6 +3,7 @@ import { Component, HostBinding, OnInit } from '@angular/core';
 
 // App specific
 import { GlobalVariables } from '../globals';
+import { TabsNavigationService } from '../shared/tabs_navigation/tabs_navigation.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -14,9 +15,13 @@ export class LandingPageComponent implements OnInit {
   private _globalLogoPath = GlobalVariables.logoPath;
   private _globalImagePath = GlobalVariables.imagesPath;
 
-  constructor() { }
+  public loadNavTabs = false;
+
+  constructor(private _tabsNavService: TabsNavigationService) { }
 
   ngOnInit() {
+    console.log('triggered');
+    this._tabsNavService.displayNavTabs(this.loadNavTabs);
   }
 
   public toggleMenu() {
