@@ -24,26 +24,12 @@ import { ApartmentsPolicyComponent } from '../apartments-policy/apartments-polic
     RouterModule.forChild(ApartmentRoutes)
   ],
   declarations: [
-    AboutUsComponent,
     ApartmentComponent,
-    ApartmentsPolicyComponent,
-    ContactUsComponent,
-    CroatiaFactsComponent,
-    DubrovnikFactsComponent,
-    LocationComponent,
-    SurroundingsComponent,
 
   ],
   exports: [
-    AboutUsComponent,
     ApartmentComponent,
-    ApartmentsPolicyComponent,
-    ContactUsComponent,
-    CroatiaFactsComponent,
-    DubrovnikFactsComponent,
-    LocationComponent,
     MaterialModule,
-    SurroundingsComponent,
   ]
 })
 export class ApartmentModule {

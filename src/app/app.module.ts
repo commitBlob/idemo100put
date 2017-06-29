@@ -14,7 +14,6 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 import { MaterialModule } from './sharedMaterialModule';
 import { NavigationService } from './shared/navigation/navigation-service/navigation-service';
 import { PageNotFoundModule } from './pages/page-not-found/page-not-found.module';
-import {PagesModule} from './pages/pages.module';
 import { ResponsiveService } from './shared/responsive-service/responsive.service';
 import { SharedModule } from './shared/shared.module';
 import { WindowRef } from './shared/responsive-service/window.service';
@@ -42,7 +41,6 @@ import 'hammerjs';
     RouterModule.forRoot(appRoutes),
     MaterialModule,
     PageNotFoundModule,
-    PagesModule,
     SharedModule.forRoot()
   ],
   exports: [

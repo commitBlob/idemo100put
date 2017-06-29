@@ -12,9 +12,9 @@ import { NavigationService } from './shared/navigation/navigation-service/naviga
 export class AppComponent implements OnInit {
   @HostBinding('class.menu_open') public menuOpen = false;
   @HostBinding('class.is-active') public hamburgerOpen = false;
-  private _globalLogoPath = GlobalVariables.logoPath;
-  private _globalImagePath = GlobalVariables.imagesPath;
-  private _navigationList: any;
+  public globalLogoPath = GlobalVariables.logoPath;
+  public globalImagePath = GlobalVariables.imagesPath;
+  public navigationList: any;
 
   constructor(private _navigationService: NavigationService) { }
 
@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
   }
 
   getNavigation() {
-    this._navigationList = this._navigationService.getAppNavigation();
+    this.navigationList = this._navigationService.getAppNavigation();
   }
 
   public toggleMenu() {

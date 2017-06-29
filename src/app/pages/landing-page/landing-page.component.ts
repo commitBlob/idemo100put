@@ -11,7 +11,11 @@ export class LandingPageComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.metoda();
   }
 
+  public metoda() {
+    console.log('ello');
+  }
 
 }
