@@ -20,8 +20,6 @@ export class LandingPageComponent implements OnInit {
   constructor(private _tabsNavService: TabsNavigationService) { }
 
   ngOnInit() {
-    console.log('triggered');
-    this._tabsNavService.displayNavTabs(this.loadNavTabs);
   }
 
   public toggleMenu() {

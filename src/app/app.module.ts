@@ -43,7 +43,7 @@ import 'hammerjs';
     RouterModule.forRoot(appRoutes, {preloadingStrategy: CustomPreload}),
     MaterialModule,
     PageNotFoundModule,
-    SharedModule
+    SharedModule.forRoot()
   ],
   exports: [
     MaterialModule

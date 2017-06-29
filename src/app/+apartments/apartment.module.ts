@@ -32,7 +32,6 @@ import { ApartmentsPolicyComponent } from '../+apartments-policy/apartments-poli
     DubrovnikFactsComponent,
     LocationComponent,
     SurroundingsComponent,
-
   ],
   exports: [
     AboutUsComponent,

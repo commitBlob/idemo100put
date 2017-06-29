@@ -1,12 +1,15 @@
 // Core
+import {CommonModule} from '@angular/common';
 import { NgModule } from '@angular/core';
 
 // App specific
 import { TabsNavigationComponent } from './tabs_navigation.component';
-import {TabsNavigationService} from './tabs_navigation.service';
+import { TabsNavigationService } from './tabs_navigation.service';
+
+
 
 @NgModule({
-  imports: [],
+  imports: [CommonModule],
   declarations: [TabsNavigationComponent],
   exports: [TabsNavigationComponent],
   providers: [TabsNavigationService]
