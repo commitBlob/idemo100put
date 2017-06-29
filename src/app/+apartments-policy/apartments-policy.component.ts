@@ -1,34 +1,17 @@
 // Core
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
 
 // App specific
-import { GlobalVariables } from '../globals';
-import { NavigationService } from '../shared/navigation/navigation-service/navigation-service';
 
 @Component({
   templateUrl: './apartments-policy.component.html',
-  providers: [ NavigationService ]
+  providers: [ ]
 })
 export class ApartmentsPolicyComponent implements OnInit {
-  private _globalLogoPath = GlobalVariables.logoPath;
-  private _navigation: any;
-  private _apartmentsList: any;
-  constructor(private _navigationService: NavigationService, private _location: Location) { }
+  constructor() { }
 
   public ngOnInit() {
-    this.getNavigation();
-    this.getApartmentsList();
+
   }
 
-  goBack() {
-    this._location.back();
-  }
-
-  getNavigation() {
-    this._navigation = this._navigationService.getMainNavigation();
-  }
-  getApartmentsList() {
-    this._apartmentsList = this._navigationService.getApartmentsList();
-  }
 }

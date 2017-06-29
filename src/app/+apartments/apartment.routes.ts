@@ -21,10 +21,10 @@ export const ApartmentRoutes: Routes = [
     path: 'policy',
     component: ApartmentsPolicyComponent
   },
-  {
-    path: 'about-us',
-    component: AboutUsComponent
-  },
+  // {
+  //   path: 'about-us',
+  //   component: AboutUsComponent
+  // },
   {
     path: 'contact-us',
     component: ContactUsComponent
