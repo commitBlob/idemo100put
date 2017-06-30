@@ -1,6 +1,5 @@
 // Core
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '@angular/material';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -10,7 +9,6 @@ import { ApartmentComponent } from './apartment.component';
 @NgModule({
   imports: [
     CommonModule,
-    MaterialModule,
     ReactiveFormsModule,
   ],
   declarations: [
@@ -18,7 +16,6 @@ import { ApartmentComponent } from './apartment.component';
   ],
   exports: [
     ApartmentComponent,
-    MaterialModule,
   ]
 })
 export class ApartmentModule {

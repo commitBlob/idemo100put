@@ -5,7 +5,6 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   templateUrl: './apartment.component.html',
-  providers: []
 })
 export class ApartmentComponent implements OnInit {
   constructor() { }

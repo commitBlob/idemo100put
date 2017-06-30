@@ -1,6 +1,5 @@
 // Core
 import {Component, OnInit} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
 
 // App specific
 import { TabsNavigationService } from './tabs_navigation.service';

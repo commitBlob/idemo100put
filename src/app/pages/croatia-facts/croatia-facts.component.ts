@@ -5,7 +5,6 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   templateUrl: './croatia-facts.component.html',
-  providers: []
 })
 export class CroatiaFactsComponent implements OnInit {
   constructor() { }

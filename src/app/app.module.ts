@@ -22,12 +22,6 @@ import { WindowRef } from './shared/responsive-service/window.service';
 // External
 import 'hammerjs';
 
-
-/* ***************************************************************
-*
-*  TODO: 1. Add AoT Compilation
-*
-*****************************************************************/
 @NgModule({
   declarations: [
     AppComponent,
