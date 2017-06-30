@@ -12,17 +12,21 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { CroatiaFactsComponent } from './croatia-facts/croatia-facts.component';
 import { DubrovnikFactsComponent } from './dubrovnik-facts/dubrovnik-facts.component';
 import { LocationComponent } from './location/location.component';
+import { SharedModule } from '../shared/shared.module';
 import { SurroundingsComponent } from './surroundings/surroundings.component';
+
+
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
+    SharedModule
   ],
   exports: [
     CommonModule,
     FormsModule,
-    RouterModule,
+    RouterModule
   ],
   declarations: [
     AboutUsComponent,

@@ -1,27 +1,66 @@
 .tabs_wrapper {
-  border: solid 3px magenta;
+  opacity: 1;
+  padding-bottom: .3em;
+  -moz-box-shadow: 1px 2px 4px rgba($black, .5);
+  -webkit-box-shadow: 1px 2px 4px rgba($black, .5);
+  box-shadow: 1px 2px 4px rgba($black, .5);
 
-  ul {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
 
-    li{
-      padding: 1.25em 0.8em;
-      font-size: $font-size-base;
-      max-width: 140px;
-      text-decoration: none;
-      display: flex;
-      align-items: flex-start;
-      color: $gray-base;
+  .tab_button {
+    margin: .25em;
+    padding: 1.25em 0.8em;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: $font-size-base;
+    background: transparent;
+    outline: none !important;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative;
+    display: inline-block;
+    color: $black;
 
-      &:hover, &:focus {
-        background: $gray;
-        color: $black;
-      }
+    &:hover {
+      background-color: $gray-light;
     }
   }
 
+  .tabs {
+    width: 100px;
+    height: 40px;
+    line-height: 42px;
+    padding: 0;
+    border: none;
+
+    span {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    span {
+      &:before, &:after {
+        position: absolute;
+        content: "";
+        background: $brand-primary;
+      }
+      &:before {
+        left: 0;
+        top: 0;
+        width: 0;
+        height: 2px;
+        transition: all 0.2s 0.2s ease;
+      }
+      &:after {
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+      }
+      &:hover:before {
+        width: 100%;
+      }
+    }
+  }
 }
