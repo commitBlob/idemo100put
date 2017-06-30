@@ -5,7 +5,14 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 // App specific
-import { ApartmentModule } from './apartments/apartment.module';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { ApartmentComponent } from './apartments/apartment.component';
+import { ApartmentsPolicyComponent } from './apartments-policy/apartments-policy.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { CroatiaFactsComponent } from './croatia-facts/croatia-facts.component';
+import { DubrovnikFactsComponent } from './dubrovnik-facts/dubrovnik-facts.component';
+import { LocationComponent } from './location/location.component';
+import { SurroundingsComponent } from './surroundings/surroundings.component';
 
 @NgModule({
   imports: [
@@ -17,7 +24,16 @@ import { ApartmentModule } from './apartments/apartment.module';
     FormsModule,
     RouterModule,
   ],
-  declarations: []
+  declarations: [
+    AboutUsComponent,
+    ApartmentComponent,
+    ApartmentsPolicyComponent,
+    ContactUsComponent,
+    CroatiaFactsComponent,
+    DubrovnikFactsComponent,
+    LocationComponent,
+    SurroundingsComponent
+  ]
 })
 export class PagesModule {
   public static forRoot(): ModuleWithProviders {

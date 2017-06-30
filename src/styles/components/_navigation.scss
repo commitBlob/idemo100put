@@ -1,3 +1,5 @@
+/* easy TODO: remove all until custom sidenav*/
+
 .nav_bar {
   box-shadow: 0 1px 6px 0 rgba(0,0,0,.56);
 }
@@ -6,7 +8,7 @@
   background-color: $dirty-white !important;
   min-width: 215px !important;
 
-  .logo {
+  .side_logo {
     display: block;
     margin:1em auto -2em;
   }
@@ -89,9 +91,10 @@
     transform: translate3d(0, 0, 0);
   }
 
-  .logo {
+  .side_logo {
     display: block;
     margin:1em auto;
+    cursor: pointer;
   }
 
   .navigation {

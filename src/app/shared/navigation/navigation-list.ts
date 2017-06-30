@@ -7,43 +7,43 @@ import { NavLinks } from './navigation-links.interface';
 export const GlobalNavigation: NavLinks[] = [
   {
     linkName: 'About Us',
-    linkPath: 'apartments/about-us',
+    linkPath: 'about-us',
     linkIcon: 'people',
     unique: true,
   },
   {
     linkName: 'Contact Us',
-    linkPath: 'apartments/contact-us',
+    linkPath: 'contact-us',
     linkIcon: 'chat',
     unique: true,
   },
   {
     linkName: 'Croatia Facts',
-    linkPath: 'apartments/cro-facts',
+    linkPath: 'cro-facts',
     linkIcon: 'assistant_photo',
     unique: true,
   },
   {
     linkName: 'Dubrovnik Facts',
-    linkPath: 'apartments/du-facts',
+    linkPath: 'du-facts',
     linkIcon: 'local_activity',
     unique: true,
   },
   {
     linkName: 'Location',
-    linkPath: 'apartments/location',
+    linkPath: 'location',
     linkIcon: 'place',
     unique: true,
   },
   {
     linkName: 'Policy',
-    linkPath: 'apartments/policy',
+    linkPath: 'policy',
     linkIcon: 'content_paste',
     unique: true,
   },
   {
     linkName: 'Surroundings',
-    linkPath: 'apartments/surroundings',
+    linkPath: 'surroundings',
     linkIcon: 'landscape',
     unique: true,
   }

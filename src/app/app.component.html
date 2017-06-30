@@ -1,7 +1,7 @@
 <div class="page_wrapper">
   <div class="main_wrapper">
     <div class="side_nav" [ngClass]="{'menu_open': menuOpen}">
-      <img class="logo" src="{{globalLogoPath}}">
+      <img class="side_logo" src="{{globalLogoPath}}" [routerLink]="['welcome']">
       <ul class="navigation">
         <li *ngFor="let links of navigationList" routerLinkActive="is-active" [routerLink]="[links.linkPath]" class="navigation_elements">
           <i class="material-icons element_icons">{{links.linkIcon}}</i><a> {{links.linkName}}</a></li>

@@ -1,7 +1,9 @@
+<!-- TODO: routerLink shouldn't be ../apartment -->
+
 <nav role='navigation' class="tabs_wrapper">
   <ul id="main-nav-list">
     <li *ngFor="let links of apartmentList" class="tabs">
-      <a href="#">
+      <a [routerLink]="['../apartments']">
         <div>
           {{links.apartmentName}}
         </div>

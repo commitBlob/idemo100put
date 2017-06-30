@@ -20,9 +20,10 @@ import { TabsNavigationModule } from './tabs_navigation/tabs_navigation.module';
     FooterModule,
     FormsModule,
     RouterModule,
-    TabsNavigationModule
+    TabsNavigationModule,
   ],
-  declarations: []
+  declarations: [
+  ]
 })
 export class SharedModule {
   public static forRoot(): ModuleWithProviders {
