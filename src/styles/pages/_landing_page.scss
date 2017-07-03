@@ -1,106 +1,6 @@
-// Do not delete this value
-//$card-footer-height: 2em;
-//
-//md-card-content {
-//  margin-bottom: 1.5 * $card-footer-height !important;
-//}
-//
-//.landing_page_wrapper {
-//  max-width: $mainWidth;
-//  margin: 0 auto;
-//  width: 100%;
-//  display: flex;
-//  flex-flow: row wrap;
-//  justify-content: space-around;
-//  align-items: center;
-//  height: 100%;
-//
-//  .landing_page_container {
-//    //min-height: 400px;
-//    max-width: $mainWidth;
-//    margin: 0 auto;
-//    width: 100%;
-//    display: flex;
-//    flex-flow: row wrap;
-//    justify-content: space-around;
-//    align-items: center;
-//
-//    .apartments_item {
-//      $marginCalc: 1em .2em;
-//      cursor: pointer;
-//      margin: $marginCalc;
-//      padding: 0;
-//      border-radius: .2em;
-//      box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
-//
-//      //&:hover {
-//      //  transform: scale(1.2);
-//      //  z-index:1;
-//      //}
-//
-//      img {
-//        width: 100%;
-//        min-height: 150px;
-//      }
-//
-//      @include respond((max: 599px)) {
-//        margin-top: 50px !important;
-//        border-top: solid 2px $brand-primary;
-//        img {
-//          height: 180px;
-//          width: 180px;
-//          border-radius: 50%;
-//          margin: -40px auto 0;
-//          border: solid 3px $brand-primary;
-//          display: block;
-//        }
-//      }
-//    }
-//
-//    .apartment_name {
-//      font-family: 'Marck Script', cursive;
-//      font-weight: $font-weight-base;
-//      font-size: 2 * $font-size-base;
-//      text-align: center;
-//      margin-top: .4em;
-//      margin-bottom: 0;
-//    }
-//
-//    .apartment_slogan {
-//      font-family: 'Marck Script', cursive;
-//      font-weight: lighter;
-//      font-size: 1.3 * $font-size-base;
-//      text-align: center;
-//      margin-top: 0;
-//    }
-//
-//    .apartment_card_footer {
-//
-//      border-top: solid 1px $dirty-white;
-//      padding: .3em;
-//      text-align: center;
-//      color: $brand-primary;
-//
-//      .find_out {
-//        float: left;
-//        font-size: $font-size-base;
-//        text-transform: uppercase;
-//        font-weight: bold;
-//        padding: .4em;
-//      }
-//    }
-//  }
-//}
-
-
-/* APP REBUILD STUFF */
-
-/* TODO: responsive flex */
 
 .apartments_container {
   display: flex;
-  //flex-flow: row wrap;
-  //justify-content: space-around;
   align-items: center;
 
   @include respond((max: 1200px)) {
@@ -118,10 +18,9 @@
 
     .apartment_content {
       cursor: pointer;
-      margin:.25em;
-      border: solid 3px gold;
+      margin: .5em .25em;
       border-radius: .2em;
-      box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+      box-shadow: 2px 5px 8px rgba($black, .5);
 
       .apartment_image {
         width:100%;
@@ -130,7 +29,7 @@
 
       .apartment_name {
         font-weight: $font-weight-base;
-        font-size: 2 * $font-size-base;
+        font-size: 1.8 * $font-size-base;
         text-align: center;
         margin-top: .4em;
         margin-bottom: 0;
@@ -140,6 +39,7 @@
         font-weight: $font-weight-base;
         font-size: 1.5 * $font-size-base;
         margin-top: 0;
+        padding-bottom: 1em;
         text-align: center;
         font-style: italic;
       }

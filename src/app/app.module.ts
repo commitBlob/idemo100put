@@ -8,6 +8,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 // App specific
+import { ApartmentService } from './shared/apartments-service/apartments.service';
 import { AppComponent } from './app.component';
 import { appRoutes } from './shared/routes/route-definitions';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
@@ -43,6 +44,7 @@ import 'hammerjs';
     MaterialModule
   ],
   providers: [
+    ApartmentService,
     NavigationService,
     ResponsiveService,
     WindowRef
