@@ -90,23 +90,6 @@
 //      }
 //    }
 //  }
-//
-//  .apartments_item {
-//    position: relative;
-//
-//    @include respond((max: 599px)) {
-//      width: calc(100% - 2em);
-//    }
-//
-//    @include respond((min: 600px, max: 959px)) {
-//      width: calc(50% - .7em);
-//    }
-//
-//    @include respond((min: 960px)){
-//
-//      width: calc(25% - .7em);
-//    }
-//  }
 //}
 
 
@@ -116,12 +99,70 @@
 
 .apartments_container {
   display: flex;
+  //flex-flow: row wrap;
+  //justify-content: space-around;
+  align-items: center;
+
+  @include respond((max: 1200px)) {
+    flex-wrap: wrap;
+  }
+
+  @include respond((max: 599px)) {
+    flex: 1 1 100%;
+  }
+
 
   .apartments_item {
-    min-width: 300px;
-    border: solid 3px gold;
-    -webkit-flex: 1;
-    flex: 1;
-    margin: 0 .25em;
+    flex: 1 1 25%;
+    justify-content: center;
+
+    .apartment_content {
+      cursor: pointer;
+      margin:.25em;
+      border: solid 3px gold;
+      border-radius: .2em;
+      box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+
+      .apartment_image {
+        width:100%;
+        height: auto;
+      }
+
+      .apartment_name {
+        font-weight: $font-weight-base;
+        font-size: 2 * $font-size-base;
+        text-align: center;
+        margin-top: .4em;
+        margin-bottom: 0;
+      }
+
+      .apartment_subtitle {
+        font-weight: $font-weight-base;
+        font-size: 1.5 * $font-size-base;
+        margin-top: 0;
+        text-align: center;
+        font-style: italic;
+      }
+
+    }
+
+    @include respond((max: 1200px)) {
+      flex: 1 1 50%;
+    }
+
+    @include respond((max: 599px)) {
+      flex: 1 1 100%;
+      margin-top: 50px !important;
+      border-top: solid 2px $brand-primary;
+      .apartment_image {
+        height: 200px !important;
+        width: 200px !important;
+        border-radius: 50%;
+        margin: -40px auto 0;
+        border: solid 3px $brand-primary;
+        display: block;
+      }
+    }
+
   }
 }

@@ -85,15 +85,13 @@
     font-size: 15px;
 
     .element_icons {
-      -ms-transform: scale(1.2); /* IE 9 */
-      -webkit-transform: scale(1.2); /* Safari */
       transform: scale(1.2);
     }
   }
 }
 
 #main {
-  transition: margin-left .5s;
+  //transition: margin-left .5s;
   background-color: $grayish;
   padding: 16px;
   transform: translate3d(0, 0, 0);
