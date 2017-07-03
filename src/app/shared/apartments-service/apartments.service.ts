@@ -12,7 +12,6 @@ export class ApartmentService {
   }
 
   public getApartments(): Observable<string[]> {
-    console.log('getApartment triggered');
     return this._http.get('media/apartments_data.json').map((res: Response) => res.json()).catch(this.handleError);
   }
 

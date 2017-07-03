@@ -18,6 +18,7 @@ export const appRoutes: Routes = [
   { path: 'welcome', component: LandingPageComponent },
   { path: 'about-us', component: AboutUsComponent },
   { path: 'apartments', component: ApartmentComponent },
+  { path: 'apartments/:apartmentName', component: ApartmentComponent },
   { path: 'policy', component: ApartmentsPolicyComponent },
   { path: 'contact-us', component: ContactUsComponent },
   { path: 'cro-facts', component: CroatiaFactsComponent },
