@@ -11,14 +11,12 @@ import { ApartmentService } from '../../shared/apartments-service/apartments.ser
 export class LandingPageComponent implements OnInit {
   public apartmentsData: String[];
   public errorMessage: string;
-
   constructor(private  _aptSer: ApartmentService) { }
 
   ngOnInit() {
     this._aptSer.getApartments().subscribe(
       (response) => this.apartmentsData = response,
       (error) => this.errorMessage = <any>error
-    )
+    );
   }
-
 }

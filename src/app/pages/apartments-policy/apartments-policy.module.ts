@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 
 // App specific
 import { ApartmentsPolicyComponent } from './apartments-policy.component';
-import {SharedModule} from '../../shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   imports: [

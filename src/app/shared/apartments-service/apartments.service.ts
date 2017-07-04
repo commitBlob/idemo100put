@@ -7,7 +7,6 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class ApartmentService {
-
   constructor(private _http: Http) {
   }
 

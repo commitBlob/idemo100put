@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 // App specific
 import { ApartmentComponent } from './apartment.component';
-import {SharedModule} from '../../shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   imports: [
