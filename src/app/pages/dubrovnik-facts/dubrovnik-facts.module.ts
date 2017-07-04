@@ -4,10 +4,12 @@ import { NgModule } from '@angular/core';
 
 // App specific
 import {DubrovnikFactsComponent} from './dubrovnik-facts.component';
+import {SharedModule} from '../../shared/shared.module';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule
   ],
   declarations: [
     DubrovnikFactsComponent
