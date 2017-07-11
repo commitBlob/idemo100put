@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 // App specific
 import { FooterModule } from './footer/footer.module';
 import { GoogleMapsModule } from './google-maps/google-maps.module';
+import { LanguagesModule } from './languages/languages.module';
 import { LogoModule } from './logo/logo.module';
 import { TabsNavigationModule } from './tabs_navigation/tabs_navigation.module';
 
@@ -21,6 +22,7 @@ import { TabsNavigationModule } from './tabs_navigation/tabs_navigation.module';
     FooterModule,
     FormsModule,
     GoogleMapsModule,
+    LanguagesModule,
     RouterModule,
     TabsNavigationModule,
   ],

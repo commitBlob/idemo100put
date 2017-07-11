@@ -1,0 +1,18 @@
+[
+  {
+    "countryFlag": "cro",
+    "folder": "/flags/",
+    "size": {
+      "small": "cro_flag_small.png",
+      "large": "cro_flag_large.png"
+    }
+  },
+  {
+    "countryFlag": "eng",
+    "folder": "/flags/",
+    "size": {
+      "small": "uk_flag_small.png",
+      "large": "uk_flag_large.png"
+    }
+  }
+]
