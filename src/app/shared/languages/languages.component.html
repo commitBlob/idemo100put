@@ -1,2 +1,4 @@
-<p>Eng</p>
-<p>Cro</p>
+<div *ngFor="let elements of flagItems">
+  <img (click)="setLanguage(elements.countryFlag)" [src]="globalImagePath+elements.folder+elements.size.small" alt="{{elements.countryFlag}}">
+</div>
+

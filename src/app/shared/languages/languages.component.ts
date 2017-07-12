@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 
 // App specific
 import { GlobalVariables } from '../../globals';
+import { LanguagesService } from './languages.service';
 
 @Component({
   selector: 'app-lang',
@@ -10,12 +11,23 @@ import { GlobalVariables } from '../../globals';
 })
 export class LanguagesComponent implements OnInit {
   public globalImagePath = GlobalVariables.imagesPath;
-  public croFlag = this.globalImagePath;
+  public flagItems: any;
 
-  /* TODO: create flag service*/
-  constructor() { }
+  constructor(private _ls: LanguagesService) { }
 
   ngOnInit() {
+    this.getFlags();
   }
 
+  public getFlags() {
+    this._ls.getFlags().subscribe(
+      (values) => {
+        this.flagItems = values;
+      }
+    );
+  }
+
+  public setLanguage(value) {
+    console.log('language selected: ', value);
+  }
 }

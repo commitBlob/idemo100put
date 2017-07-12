@@ -1,0 +1,11 @@
+.languages_container {
+  margin-left: auto;
+  display: inline;
+  min-width: 100px;
+
+  img {
+    float:right;
+    margin: 0 .2em;
+    cursor: pointer;
+  }
+}

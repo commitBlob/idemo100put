@@ -10,6 +10,7 @@ import { GoogleMapsModule } from './google-maps/google-maps.module';
 import { LanguagesModule } from './languages/languages.module';
 import { LogoModule } from './logo/logo.module';
 import { TabsNavigationModule } from './tabs_navigation/tabs_navigation.module';
+import { LanguagesService } from './languages/languages.service';
 
 @NgModule({
   imports: [
@@ -18,11 +19,11 @@ import { TabsNavigationModule } from './tabs_navigation/tabs_navigation.module';
   ],
   exports: [
     CommonModule,
+    LanguagesModule,
     LogoModule,
     FooterModule,
     FormsModule,
     GoogleMapsModule,
-    LanguagesModule,
     RouterModule,
     TabsNavigationModule,
   ],
@@ -34,6 +35,7 @@ export class SharedModule {
     return {
       ngModule: SharedModule,
       providers: [
+        LanguagesService
     ]};
   }
 }
