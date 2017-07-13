@@ -1,5 +1,5 @@
 // Core
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 // App specific
 import { GlobalVariables } from '../../globals';
@@ -10,6 +10,7 @@ import { LanguagesService } from './languages.service';
   templateUrl: './languages.component.html',
 })
 export class LanguagesComponent implements OnInit {
+
   public globalImagePath = GlobalVariables.imagesPath;
   public flagItems: any;
 
@@ -27,7 +28,7 @@ export class LanguagesComponent implements OnInit {
     );
   }
 
-  public setLanguage(value) {
-    console.log('language selected: ', value);
+  public setLanguage(languageValue) {
+    this._ls.languageChange(languageValue);
   }
 }
