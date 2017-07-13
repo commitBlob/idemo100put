@@ -20,7 +20,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.getNavigation();
-    localStorage.setItem('localLanguage', 'ENG');
   }
 
   getNavigation() {
