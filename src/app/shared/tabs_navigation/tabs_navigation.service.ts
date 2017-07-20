@@ -5,7 +5,6 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class TabsNavigationService {
-
   constructor(private _http: Http) {
   }
 
@@ -20,7 +19,7 @@ export class TabsNavigationService {
    * Handle HTTP error
    */
   private handleError(error: any) {
-    let errMsg = (error.message) ? error.message :
+    const errMsg = (error.message) ? error.message :
       error.status ? `${error.status} - ${error.statusText}` : 'Server error';
     console.error('Error occurred', errMsg); // log to console instead
     return Observable.throw(errMsg);
