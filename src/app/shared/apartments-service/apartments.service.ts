@@ -11,7 +11,8 @@ export class ApartmentService {
   }
 
   public getApartments(): Observable<string[]> {
-    return this._http.get('media/apartments_data.json').map((res: Response) => res.json()).catch(this.handleError);
+    return this._http.get('http://localhost:5005/api/apartments').map((res: Response) => res.json()).catch(this.handleError);
+    // return this._http.get('media/apartments_data.json').map((res: Response) => res.json()).catch(this.handleError);
   }
 
   /**
