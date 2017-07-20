@@ -1,13 +1,9 @@
 <!--TODO: add content-->
 <app-tabs-nav></app-tabs-nav>
 <div class="content">
-  <h2>Sidenav Push Example</h2>
   <p>Lang: {{language}}</p>
-  <p>Click on the element below to open the side navigation menu, and push this content to the right.</p>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  </p>
+  <div *ngIf="aboutUsContent">
+    <h2>{{aboutUsContent[0].header}}</h2>
+    <p>{{aboutUsContent[0].content}}</p>
+  </div>
 </div>

@@ -11,6 +11,7 @@ import { LanguagesModule } from './languages/languages.module';
 import { LogoModule } from './logo/logo.module';
 import { TabsNavigationModule } from './tabs_navigation/tabs_navigation.module';
 import { LanguagesService } from './languages/languages.service';
+import { ContentService } from './content-service/content.service';
 
 @NgModule({
   imports: [
@@ -35,6 +36,7 @@ export class SharedModule {
     return {
       ngModule: SharedModule,
       providers: [
+        ContentService,
         LanguagesService
     ]};
   }
