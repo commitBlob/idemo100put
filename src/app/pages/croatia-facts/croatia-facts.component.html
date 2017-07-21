@@ -1,6 +1,7 @@
 <!--TODO: add content-->
 
 <app-tabs-nav></app-tabs-nav>
-<div class="content">
-  <p>Croatia Facts component works!</p>
+<div class="content" *ngIf="croatiaFactsContent">
+  <h2>{{croatiaFactsContent[0].header}}</h2>
+  <p>{{croatiaFactsContent[0].content}}</p>
 </div>

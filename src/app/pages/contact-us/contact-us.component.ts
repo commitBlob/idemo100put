@@ -3,9 +3,9 @@ import { Component, OnInit } from '@angular/core';
 
 // App specific
 import { ApartmentService } from '../../shared/apartments-service/apartments.service';
+import { ContentService } from '../../shared/content-service/content.service';
 import { LanguagesService } from '../../shared/languages/languages.service';
 import { Subscription } from 'rxjs/Subscription';
-import { ContentService } from '../../shared/content-service/content.service';
 
 // Models
 import { Content } from '../../shared/content-service/content.interface';
@@ -17,18 +17,18 @@ export class ContactUsComponent implements OnInit {
 
   public apartmentsData: String[];
   public apartmentSelected: any;
-  public optionSelected = false;
   public apartmentURL: String = '';
-  public errorMessage: string;
   public contactUsContent: Content[] = null;
-  public language: String;
+  public errorMessage: string;
   public langSubscription: Subscription;
+  public language: String;
+  public optionSelected = false;
 
   constructor(
     private  _apartmentService: ApartmentService,
     private _languageService: LanguagesService,
-    private _contentService: ContentService) {
-
+    private _contentService: ContentService
+  ) {
     this.langSubscription = _languageService.subjectSourceAnnounced$.subscribe(
       (value) => {
         this.language = value;

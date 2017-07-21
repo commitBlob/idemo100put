@@ -8,11 +8,11 @@
     <md-select [(ngModel)]="apartmentSelected"
                (ngModelChange)="apartmentSelect($event)"
                placeholder="Select Apartment">
-      <md-option value="{{apartment.bookingLink}}" *ngFor="let apartment of apartmentsData">{{apartment.apartmentName}}
+      <md-option *ngFor="let apartment of apartmentsData" value="{{apartment.bookingLink}}">{{apartment.apartmentName}}
       </md-option>
     </md-select>
   </div>
   <div *ngIf="optionSelected">
-    <a>Check availability</a>
+    <a [href]="apartmentURL" target="_blank">Check availability</a>
   </div>
 </div>

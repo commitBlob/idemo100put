@@ -25,6 +25,18 @@ export class ContentService {
     ).catch(this.handleError);
   }
 
+  public getCroatiaFactsContent(language): Observable<Content[]> {
+    return this._http.get('http://localhost:5005/api/crofacts/' + language).map(
+      (res: Response) => res.json()
+    ).catch(this.handleError);
+  }
+
+  public getDubrovnikFactsContent(language): Observable<Content[]> {
+    return this._http.get('http://localhost:5005/api/dufacts/' + language).map(
+      (res: Response) => res.json()
+    ).catch(this.handleError);
+  }
+
   /**
    * Handle HTTP error
    */
