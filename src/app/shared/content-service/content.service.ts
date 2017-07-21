@@ -13,8 +13,16 @@ export class ContentService {
   constructor(private _http: Http) {
   }
 
-  public getContent(language): Observable<Content[]> {
-    return this._http.get('http://localhost:5005/api/aboutcontent/' + language).map((res: Response) => res.json()).catch(this.handleError);
+  public getAboutUsContent(language): Observable<Content[]> {
+    return this._http.get('http://localhost:5005/api/aboutcontent/' + language).map(
+      (res: Response) => res.json()
+    ).catch(this.handleError);
+  }
+
+  public getContactUsContent(language): Observable<Content[]> {
+    return this._http.get('http://localhost:5005/api/contactcontent/' + language).map(
+      (res: Response) => res.json()
+    ).catch(this.handleError);
   }
 
   /**

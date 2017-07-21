@@ -1,0 +1,18 @@
+.select-wrapper {
+  margin-top: 1.5em;
+  display: flex;
+  align-items: center;
+
+  & > * {
+    padding-right: 15px;
+  }
+
+  & > button {
+    flex: 1 1 auto;
+
+  }
+
+  & > md-select {
+    flex: 0 1 20%;
+  }
+}

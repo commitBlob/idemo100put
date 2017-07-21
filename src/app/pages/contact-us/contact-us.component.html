@@ -1,15 +1,18 @@
 <!--TODO: add content-->
 
 <app-tabs-nav></app-tabs-nav>
-<div class="content">
-  <h2>Get in Touch</h2>
-  <p>Contact us component</p>
-  <div class="tabs_wrapper fade_in">
-    <button class="">
-      <span>General Inquiry</span>
-    </button>
-    <button class="">
-      <span>Booking Inquiry</span>
-    </button>
+<div class="content" *ngIf="contactUsContent">
+  <h2>{{contactUsContent[0].header}}</h2>
+  <p>{{contactUsContent[0].content}}</p>
+  <div class="select-wrapper">
+    <md-select [(ngModel)]="apartmentSelected"
+               (ngModelChange)="apartmentSelect($event)"
+               placeholder="Select Apartment">
+      <md-option value="{{apartment.bookingLink}}" *ngFor="let apartment of apartmentsData">{{apartment.apartmentName}}
+      </md-option>
+    </md-select>
+  </div>
+  <div *ngIf="optionSelected">
+    <a>Check availability</a>
   </div>
 </div>

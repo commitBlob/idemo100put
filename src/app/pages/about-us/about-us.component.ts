@@ -33,7 +33,7 @@ export class AboutUsComponent implements OnInit {
   }
 
   public getContent(language) {
-    this._contentService.getContent(language).subscribe(
+    this._contentService.getAboutUsContent(language).subscribe(
       (content) => {
         this.aboutUsContent = <Content[]>content;
       }

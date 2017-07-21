@@ -12,10 +12,12 @@ import { LogoModule } from './logo/logo.module';
 import { TabsNavigationModule } from './tabs_navigation/tabs_navigation.module';
 import { LanguagesService } from './languages/languages.service';
 import { ContentService } from './content-service/content.service';
+import { MaterialModule } from '../sharedMaterialModule';
 
 @NgModule({
   imports: [
     CommonModule,
+    MaterialModule,
     RouterModule,
   ],
   exports: [
