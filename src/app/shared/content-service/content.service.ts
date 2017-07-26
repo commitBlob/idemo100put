@@ -37,6 +37,18 @@ export class ContentService {
     ).catch(this.handleError);
   }
 
+  public getSurroundingsContent(language): Observable<Content[]> {
+    return this._http.get('http://localhost:5005/api/surroundings/' + language).map(
+      (res: Response) => res.json()
+    ).catch(this.handleError);
+  }
+
+  public getPolicyContent(language): Observable<Content[]> {
+    return this._http.get('http://localhost:5005/api/policy/' + language).map(
+      (res: Response) => res.json()
+    ).catch(this.handleError);
+  }
+
   /**
    * Handle HTTP error
    */

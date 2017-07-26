@@ -15,7 +15,6 @@ import { Content } from '../../shared/content-service/content.interface';
 export class CroatiaFactsComponent implements OnInit {
 
   public croatiaFactsContent: Content[] = null;
-  public errorMessage: string;
   public langSubscription: Subscription;
   public language: String;
 
