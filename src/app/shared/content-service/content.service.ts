@@ -14,37 +14,37 @@ export class ContentService {
   }
 
   public getAboutUsContent(language): Observable<Content[]> {
-    return this._http.get('http://localhost:5005/api/aboutcontent/' + language).map(
+    return this._http.get('./api/aboutcontent/' + language).map(
       (res: Response) => res.json()
     ).catch(this.handleError);
   }
 
   public getContactUsContent(language): Observable<Content[]> {
-    return this._http.get('http://localhost:5005/api/contactcontent/' + language).map(
+    return this._http.get('./api/contactcontent/' + language).map(
       (res: Response) => res.json()
     ).catch(this.handleError);
   }
 
   public getCroatiaFactsContent(language): Observable<Content[]> {
-    return this._http.get('http://localhost:5005/api/crofacts/' + language).map(
+    return this._http.get('./api/crofacts/' + language).map(
       (res: Response) => res.json()
     ).catch(this.handleError);
   }
 
   public getDubrovnikFactsContent(language): Observable<Content[]> {
-    return this._http.get('http://localhost:5005/api/dufacts/' + language).map(
+    return this._http.get('./api/dufacts/' + language).map(
       (res: Response) => res.json()
     ).catch(this.handleError);
   }
 
   public getSurroundingsContent(language): Observable<Content[]> {
-    return this._http.get('http://localhost:5005/api/surroundings/' + language).map(
+    return this._http.get('./api/surroundings/' + language).map(
       (res: Response) => res.json()
     ).catch(this.handleError);
   }
 
   public getPolicyContent(language): Observable<Content[]> {
-    return this._http.get('http://localhost:5005/api/policy/' + language).map(
+    return this._http.get('./api/policy/' + language).map(
       (res: Response) => res.json()
     ).catch(this.handleError);
   }

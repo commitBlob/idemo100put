@@ -17,7 +17,7 @@ export class LanguagesService {
 
   public getFlags(): Observable<string[]> {
     // return this._http.get('media/flags_data.json').map((res: Response) => res.json()).catch(this.handleError);
-    return this._http.get('http://localhost:5005/api/flags').map((res: Response) => res.json()).catch(this.handleError);
+    return this._http.get('./api/flags').map((res: Response) => res.json()).catch(this.handleError);
   }
 
   public languageChange(value) {

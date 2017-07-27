@@ -20,7 +20,7 @@ export class NavigationService {
 
   public getNavigation(): Observable<string[]> {
     // return this._http.get('media/navigation_data.json').map((res: Response) => res.json()).catch(this.handleError);
-    return this._http.get('http://localhost:5005/api/apartments').map((res: Response) => res.json()).catch(this.handleError);
+    return this._http.get('./api/apartments').map((res: Response) => res.json()).catch(this.handleError);
   }
 
 
