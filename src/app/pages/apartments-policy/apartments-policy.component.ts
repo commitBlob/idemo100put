@@ -14,7 +14,7 @@ import { Content } from '../../shared/content-service/content.interface';
 })
 export class ApartmentsPolicyComponent implements OnInit {
 
-  public apartmentsPolicyContent: Content[] = null;
+  public apartmentsPolicyContent: Content[];
   public langSubscription: Subscription;
   public language: String;
 
@@ -24,15 +24,17 @@ export class ApartmentsPolicyComponent implements OnInit {
   ) {
     this.langSubscription = _languageService.subjectSourceAnnounced$.subscribe(
       (value) => {
-        this.language = value;
-        this.getContent(this.language);
+        if ( this.language !== value) {
+          this.language = value;
+          this.getContent(this.language);
+        }
       }
     );
   }
 
   public ngOnInit() {
     this._languageService.getLanguage();
-    this.getContent(this.language);
+    // this.getContent(this.language);
   }
 
   public getContent(language) {

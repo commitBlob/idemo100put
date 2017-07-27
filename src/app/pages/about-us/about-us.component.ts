@@ -13,7 +13,7 @@ import { Content } from '../../shared/content-service/content.interface';
   templateUrl: './about-us.component.html',
 })
 export class AboutUsComponent implements OnInit {
-  public aboutUsContent: Content[] = null;
+  public aboutUsContent: Content[];
   public language: String;
   public langSubscription: Subscription;
 
@@ -21,15 +21,17 @@ export class AboutUsComponent implements OnInit {
 
     this.langSubscription = _languageService.subjectSourceAnnounced$.subscribe(
       (value) => {
-        this.language = value;
-        this.getContent(this.language);
+        if ( this.language !== value) {
+          this.language = value;
+          this.getContent(this.language);
+        }
       }
     );
   }
 
   public ngOnInit() {
     this._languageService.getLanguage();
-    this.getContent(this.language);
+    // this.getContent(this.language);
   }
 
   public getContent(language) {
