@@ -19,7 +19,6 @@ export class NavigationService {
   }
 
   public getNavigation(): Observable<string[]> {
-    // return this._http.get('media/navigation_data.json').map((res: Response) => res.json()).catch(this.handleError);
     return this._http.get('./api/apartments').map((res: Response) => res.json()).catch(this.handleError);
   }
 
@@ -30,7 +29,7 @@ export class NavigationService {
   private handleError(error: any) {
     const errMsg = (error.message) ? error.message :
       error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-    console.error(errMsg); // log to console instead
+    console.error(errMsg);
     return Observable.throw(errMsg);
   }
 }

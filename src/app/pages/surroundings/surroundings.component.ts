@@ -2,9 +2,9 @@
 import { Component, OnInit } from '@angular/core';
 
 // App specific
+import { ContentService } from '../../shared/content-service/content.service';
 import { LanguagesService } from '../../shared/languages/languages.service';
 import { Subscription } from 'rxjs/Subscription';
-import { ContentService } from '../../shared/content-service/content.service';
 
 // Models
 import { Content } from '../../shared/content-service/content.interface';
@@ -34,7 +34,6 @@ export class SurroundingsComponent implements OnInit {
 
   public ngOnInit() {
     this._languageService.getLanguage();
-    // this.getContent(this.language);
   }
 
   public getContent(language) {

@@ -43,7 +43,6 @@ export class ContactUsComponent implements OnInit {
 
   public ngOnInit() {
     this._languageService.getLanguage();
-    // this.getContent(this.language);
     this._apartmentService.getApartments().subscribe(
       (response) => this.apartmentsData = response,
       (error) => this.errorMessage = <any>error

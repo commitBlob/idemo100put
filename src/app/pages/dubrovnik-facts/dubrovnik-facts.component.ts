@@ -34,7 +34,6 @@ export class DubrovnikFactsComponent implements OnInit {
 
   public ngOnInit() {
     this._languageService.getLanguage();
-    // this.getContent(this.language);
   }
 
   public getContent(language) {

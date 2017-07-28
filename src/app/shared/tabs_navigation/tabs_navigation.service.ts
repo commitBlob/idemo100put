@@ -9,7 +9,6 @@ export class TabsNavigationService {
   }
 
   public getApartments(): Observable<string[]> {
-    // return this._http.get('/media/apartments_data.json')
     return this._http.get('./api/apartments')
       .map((res: Response) => res.json())
       .catch(this.handleError);
@@ -21,7 +20,7 @@ export class TabsNavigationService {
   private handleError(error: any) {
     const errMsg = (error.message) ? error.message :
       error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-    console.error('Error occurred', errMsg); // log to console instead
+    console.error('Error occurred', errMsg);
     return Observable.throw(errMsg);
   }
 }

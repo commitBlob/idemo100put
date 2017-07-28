@@ -16,37 +16,37 @@ export class ContentService {
   public getAboutUsContent(language): Observable<Content[]> {
     return this._http.get('./api/aboutcontent/' + language).map(
       (res: Response) => res.json()
-    ).share().catch(this.handleError);
+    ).catch(this.handleError);
   }
 
   public getContactUsContent(language): Observable<Content[]> {
     return this._http.get('./api/contactcontent/' + language).map(
       (res: Response) => res.json()
-    ).share().catch(this.handleError);
+    ).catch(this.handleError);
   }
 
   public getCroatiaFactsContent(language): Observable<Content[]> {
     return this._http.get('./api/crofacts/' + language).map(
       (res: Response) => res.json()
-    ).share().catch(this.handleError);
+    ).catch(this.handleError);
   }
 
   public getDubrovnikFactsContent(language): Observable<Content[]> {
     return this._http.get('./api/dufacts/' + language).map(
       (res: Response) => res.json()
-    ).share().catch(this.handleError);
+    ).catch(this.handleError);
   }
 
   public getSurroundingsContent(language): Observable<Content[]> {
     return this._http.get('./api/surroundings/' + language).map(
       (res: Response) => res.json()
-    ).share().catch(this.handleError);
+    ).catch(this.handleError);
   }
 
   public getPolicyContent(language): Observable<Content[]> {
     return this._http.get('./api/policy/' + language).map(
       (res: Response) => res.json()
-    ).share().catch(this.handleError);
+    ).catch(this.handleError);
   }
 
   /**
@@ -55,7 +55,7 @@ export class ContentService {
   private handleError(error: any) {
     const errMsg = (error.message) ? error.message :
       error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-    console.error(errMsg); // log to console instead
+    console.error(errMsg);
     return Observable.throw(errMsg);
   }
 }

@@ -31,7 +31,6 @@ export class AboutUsComponent implements OnInit {
 
   public ngOnInit() {
     this._languageService.getLanguage();
-    // this.getContent(this.language);
   }
 
   public getContent(language) {
