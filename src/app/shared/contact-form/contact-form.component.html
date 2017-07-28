@@ -1,14 +1,22 @@
-<!-- TODO: add email and message fields -->
+<!-- TODO: validation  -->
 
 <form>
   <div class="form-group">
-    <md-input-container>
-      <input mdInput placeholder="Name" align="start" type="text" required >
+    <md-input-container class="app-input">
+      <input mdInput placeholder="Your Name" align="start" type="text" name="name" minlength="2" maxlength="30" id="name" required >
+    </md-input-container>
+    <md-input-container class="app-input">
+      <input mdInput placeholder="Your Email" align="start" type="email" name="email" [pattern]="emailRegex" id="email" required >
     </md-input-container>
   </div>
   <div class="form-group">
-    <md-input-container>
-      <input mdInput placeholder="Subject" align="start" type="text" required >
+    <md-input-container class="app-input-subject">
+      <input mdInput placeholder="Subject" align="start" type="text" name="subject" id="subject" required >
+    </md-input-container>
+  </div>
+  <div class="form-group">
+    <md-input-container class="app-textarea" >
+      <textarea mdInput placeholder="Your Message" align="start" type="text" rows="6" name="message" id="message" required></textarea>
     </md-input-container>
   </div>
   <button class="app-button--">
