@@ -4,6 +4,10 @@
 <div class="content" *ngIf="contactUsContent">
   <h2>{{contactUsContent[0].header}}</h2>
   <p>{{contactUsContent[0].content}}</p>
+  <hr />
+  <app-contact-form></app-contact-form>
+  <hr />
+  <h3>Check availability</h3>
   <div class="select-wrapper">
     <md-select [(ngModel)]="apartmentSelected"
                (ngModelChange)="apartmentSelect($event)"
@@ -12,7 +16,7 @@
       </md-option>
     </md-select>
   </div>
-  <div *ngIf="optionSelected">
-    <a [href]="apartmentURL" target="_blank">Check availability</a>
+  <div class="options" *ngIf="optionSelected">
+    <a [href]="apartmentURL" target="_blank">Booking Link</a>
   </div>
 </div>

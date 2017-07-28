@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 // App specific
+import { ContactFormModule } from './contact-form/contact-form.module';
 import { FooterModule } from './footer/footer.module';
 import { GoogleMapsModule } from './google-maps/google-maps.module';
 import { LanguagesModule } from './languages/languages.module';
@@ -22,6 +23,7 @@ import { MaterialModule } from '../sharedMaterialModule';
   ],
   exports: [
     CommonModule,
+    ContactFormModule,
     LanguagesModule,
     LogoModule,
     FooterModule,

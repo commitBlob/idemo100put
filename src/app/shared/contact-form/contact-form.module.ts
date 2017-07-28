@@ -1,27 +1,25 @@
 // Core
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-// App specific
-import { ContactUsComponent } from './contact-us.component';
-import { MaterialModule } from '../../sharedMaterialModule';
-import { SharedModule } from '../../shared/shared.module';
 
+// App specific
+import { ContactFormComponent } from './contact-form.component';
+import { MaterialModule } from '../../sharedMaterialModule';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    MaterialModule,
-    SharedModule
+    MaterialModule
   ],
   declarations: [
-    ContactUsComponent
+    ContactFormComponent
   ],
   exports: [
-    ContactUsComponent
+    ContactFormComponent
   ]
 })
-export class ContactUsModule {
+export class ContactFormModule {
 }
