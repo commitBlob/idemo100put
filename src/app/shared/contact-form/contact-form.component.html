@@ -19,7 +19,7 @@
       <textarea mdInput placeholder="Your Message" align="start" type="text" rows="6" name="message" id="message" required></textarea>
     </md-input-container>
   </div>
-  <button class="app-button--">
+  <button class="app-button--" [disabled]="formValid">
     Submit
     <i class="material-icons icon">send</i>
   </button>

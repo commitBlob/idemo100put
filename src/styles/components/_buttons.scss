@@ -1,5 +1,5 @@
 
-[class*="app-button--"]{
+.app-button-- {
   background-color: $brand-primary;
   color: $gray-light;
   padding: 10px 15px;
@@ -42,5 +42,15 @@
 
   &.white {
     color: $white;
+  }
+}
+
+button[class*="disabled"], button[disabled] {
+  background-color: $gray-darker;
+  color: $gray;
+  cursor: not-allowed!important;
+
+  &:hover {
+    color: $gray !important;
   }
 }
