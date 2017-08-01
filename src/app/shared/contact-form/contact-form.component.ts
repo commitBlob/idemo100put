@@ -80,7 +80,6 @@ export class ContactFormComponent implements OnInit {
   }
 
   public submitForm(formData: FormGroup) {
-    // if (this.form.valid && !this.formSent) {
     if (this.form.valid) {
       this.formObject = {
         name: formData.value.name,
@@ -91,13 +90,12 @@ export class ContactFormComponent implements OnInit {
       this._contactFormService.submitForm(this.formObject).subscribe(
         (response) => {
           this.messageDialog(response.header, response.message);
-          console.log(response);
         },
         (error) => {
+          this.messageDialog(error.header, error.message);
           console.log(error, 'error');
         }
       );
-      console.log(this.formObject, 'email object');
       this.formSent = true;
       console.log('form is valid');
       return this.formSent;
