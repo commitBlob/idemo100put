@@ -1,6 +1,6 @@
 <!-- TODO: validation  -->
 
-<form [formGroup]="form" (ngSubmit)="submitForm()">
+<form [formGroup]="form" (ngSubmit)="submitForm(form)">
   <div class="form-group">
     <md-input-container class="flexer" id="nameContainer">
       <input mdInput placeholder="Your Name" align="start" type="text" formControlName="name" minlength="2" maxlength="30" required>

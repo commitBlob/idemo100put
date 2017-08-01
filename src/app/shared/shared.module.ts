@@ -14,6 +14,7 @@ import { TabsNavigationModule } from './tabs_navigation/tabs_navigation.module';
 import { LanguagesService } from './languages/languages.service';
 import { ContentService } from './content-service/content.service';
 import { MaterialModule } from '../sharedMaterialModule';
+import { ContactFormService } from '../shared/contact-form/contact-form-service/contact-form.service';
 
 @NgModule({
   imports: [
@@ -42,6 +43,7 @@ export class SharedModule {
       ngModule: SharedModule,
       providers: [
         ContentService,
+        ContactFormService,
         LanguagesService
     ]};
   }

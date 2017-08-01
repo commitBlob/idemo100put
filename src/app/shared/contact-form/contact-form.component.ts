@@ -3,6 +3,7 @@ import { Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 // App specific
+import { ContactFormService } from './contact-form-service/contact-form.service';
 
 @Component({
   selector: 'app-contact-form',
@@ -24,7 +25,9 @@ export class ContactFormComponent implements OnInit {
   public messageHasErrors = true;
   public emailRegex = /^(([^<>()\[\]\\.,;:\s@']+(\.[^<>()\[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-  constructor(public formBuilder: FormBuilder) {
+  public formObject: any;
+
+  constructor(public formBuilder: FormBuilder, private _contactFormService: ContactFormService) {
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
       email: ['', Validators.required],
@@ -70,9 +73,19 @@ export class ContactFormComponent implements OnInit {
   public ngOnInit() {
   }
 
-  public submitForm() {
-    console.log(this.formSent, 'has form been sent already?');
-    if (this.form.valid && !this.formSent) {
+  public submitForm(formData: FormGroup) {
+    console.log(formData, 'FORM DATA');
+    console.log(formData.value.email, 'form email');
+    // if (this.form.valid && !this.formSent) {
+    if (this.form.valid) {
+      this.formObject = {
+        name: formData.value.name,
+        email: formData.value.email,
+        subject: formData.value.subject,
+        message: formData.value.message
+      };
+      this._contactFormService.submitForm(this.formObject).subscribe();
+      console.log(this.formObject, 'email object');
       this.formSent = true;
       console.log('form is valid');
       return this.formSent;
