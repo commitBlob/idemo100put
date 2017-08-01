@@ -2,34 +2,37 @@
 
 <form [formGroup]="form" (ngSubmit)="submitForm(form)">
   <div class="form-group">
-    <md-input-container class="flexer" id="nameContainer">
+    <md-input-container class="flexer">
       <input mdInput placeholder="Your Name" align="start" type="text" formControlName="name" minlength="2" maxlength="30" required>
+      <md-hint class=" errors" *ngIf="nameHasErrors">
+        {{nameError}}
+      </md-hint>
     </md-input-container>
-    <md-input-container class="flexer" id="emailContainer">
+    <md-input-container class="flexer">
       <input mdInput placeholder="Your Email" align="start" [type]="'email'" formControlName="email" [pattern]="emailRegex" required>
+      <md-hint class="errors" *ngIf="emailHasErrors">
+        {{emailError}}
+      </md-hint>
     </md-input-container>
-    <div class="flexer errors" id="nameError" *ngIf="nameHasErrors">
-      {{nameError}}
     </div>
-    <div class="flexer errors" id="emailError" *ngIf="emailHasErrors">
-      {{emailError}}
-    </div>
-  </div>
   <div class="form-group">
     <md-input-container class="app-input-subject">
-      <input mdInput placeholder="Subject" align="start" type="text" formControlName="subject">
+      <input mdInput placeholder="Subject" align="start" [type]="text" formControlName="subject">
     </md-input-container>
   </div>
   <div class="form-group">
     <md-input-container class="app-textarea" >
-      <textarea mdInput placeholder="Your Message" align="start" type="text" rows="6" formControlName="message" minlength="2" maxlength="500" required></textarea>
+      <textarea mdInput placeholder="Your Message" align="start" [type]="text" rows="6" formControlName="message" minlength="2" maxlength="500" required></textarea>
+      <md-hint class="errors" *ngIf="messageHasErrors">
+        {{messageError}}
+      </md-hint>
     </md-input-container>
-    <div class="errors message-textarea" *ngIf="messageHasErrors">
-      {{messageError}}
-    </div>
   </div>
-  <button class="app-button--" [disabled]="!form.valid">
-    Submit
-    <i class="material-icons icon">send</i>
-  </button>
+  <div class="button-container">
+    <button class="app-button--" [disabled]="!form.valid">
+      Submit
+      <i class="material-icons icon">send</i>
+    </button>
+    <button class="app-button--"> Submit</button>
+  </div>
 </form>
