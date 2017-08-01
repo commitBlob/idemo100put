@@ -6,15 +6,19 @@ import { RouterModule } from '@angular/router';
 
 // App specific
 import { ContactFormModule } from './contact-form/contact-form.module';
+import { ContactFormService } from './contact-form/contact-form-service/contact-form.service';
+import { ContentService } from './content-service/content.service';
+import { DialogsService } from './dialogs/dialogs.service';
 import { FooterModule } from './footer/footer.module';
 import { GoogleMapsModule } from './google-maps/google-maps.module';
 import { LanguagesModule } from './languages/languages.module';
-import { LogoModule } from './logo/logo.module';
-import { TabsNavigationModule } from './tabs_navigation/tabs_navigation.module';
 import { LanguagesService } from './languages/languages.service';
-import { ContentService } from './content-service/content.service';
+import { LogoModule } from './logo/logo.module';
 import { MaterialModule } from '../sharedMaterialModule';
-import { ContactFormService } from '../shared/contact-form/contact-form-service/contact-form.service';
+import { TabsNavigationModule } from './tabs_navigation/tabs_navigation.module';
+import {DialogsModule} from './dialogs/dialogs.module';
+
+
 
 @NgModule({
   imports: [
@@ -25,6 +29,7 @@ import { ContactFormService } from '../shared/contact-form/contact-form-service/
   exports: [
     CommonModule,
     ContactFormModule,
+    DialogsModule,
     LanguagesModule,
     LogoModule,
     FooterModule,
@@ -44,6 +49,7 @@ export class SharedModule {
       providers: [
         ContentService,
         ContactFormService,
+        DialogsService,
         LanguagesService
     ]};
   }

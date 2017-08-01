@@ -1,9 +1,10 @@
 // Core
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, ViewContainerRef} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 // App specific
 import { ContactFormService } from './contact-form-service/contact-form.service';
+import { DialogsService } from '../dialogs/dialogs.service';
 
 @Component({
   selector: 'app-contact-form',
@@ -27,7 +28,12 @@ export class ContactFormComponent implements OnInit {
 
   public formObject: any;
 
-  constructor(public formBuilder: FormBuilder, private _contactFormService: ContactFormService) {
+  constructor(
+    public formBuilder: FormBuilder,
+    private _contactFormService: ContactFormService,
+    private _dialogService: DialogsService,
+    private _viewContainerRef: ViewContainerRef
+  ) {
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
       email: ['', Validators.required],
@@ -74,8 +80,6 @@ export class ContactFormComponent implements OnInit {
   }
 
   public submitForm(formData: FormGroup) {
-    console.log(formData, 'FORM DATA');
-    console.log(formData.value.email, 'form email');
     // if (this.form.valid && !this.formSent) {
     if (this.form.valid) {
       this.formObject = {
@@ -84,7 +88,15 @@ export class ContactFormComponent implements OnInit {
         subject: formData.value.subject,
         message: formData.value.message
       };
-      this._contactFormService.submitForm(this.formObject).subscribe();
+      this._contactFormService.submitForm(this.formObject).subscribe(
+        (response) => {
+          this.messageDialog(response.header, response.message);
+          console.log(response);
+        },
+        (error) => {
+          console.log(error, 'error');
+        }
+      );
       console.log(this.formObject, 'email object');
       this.formSent = true;
       console.log('form is valid');
@@ -94,6 +106,10 @@ export class ContactFormComponent implements OnInit {
 
   public validateEmail(email) {
     return this.emailRegex.test(email);
+  }
+
+  public messageDialog(title: string, message: string) {
+    this._dialogService.confirm(title, message, this._viewContainerRef)
   }
 
 }
