@@ -8,15 +8,16 @@ import { RouterModule } from '@angular/router';
 import { ContactFormModule } from './contact-form/contact-form.module';
 import { ContactFormService } from './contact-form/contact-form-service/contact-form.service';
 import { ContentService } from './content-service/content.service';
+import { DialogsModule } from './dialogs/dialogs.module';
 import { DialogsService } from './dialogs/dialogs.service';
 import { FooterModule } from './footer/footer.module';
 import { GoogleMapsModule } from './google-maps/google-maps.module';
 import { LanguagesModule } from './languages/languages.module';
 import { LanguagesService } from './languages/languages.service';
 import { LogoModule } from './logo/logo.module';
+import { MarkersService } from './google-maps/markers/markers.service';
 import { MaterialModule } from '../sharedMaterialModule';
 import { TabsNavigationModule } from './tabs_navigation/tabs_navigation.module';
-import {DialogsModule} from './dialogs/dialogs.module';
 
 
 
@@ -50,7 +51,8 @@ export class SharedModule {
         ContentService,
         ContactFormService,
         DialogsService,
-        LanguagesService
+        LanguagesService,
+        MarkersService
     ]};
   }
 }
