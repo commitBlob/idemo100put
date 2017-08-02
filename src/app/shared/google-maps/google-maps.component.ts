@@ -13,18 +13,22 @@ import { Markers } from './markers/markers.interface';
 })
 export class GoogleMapsComponent implements OnInit {
 
+  // TODO: load markes before component is initialized
+
   public markers: Markers[];
 
   lat = 42.6507;
   lng = 18.0944;
   zoom = 12;
-  constructor( private _markersService: MarkersService) { }
 
-  public ngOnInit() {
+  constructor( private _markersService: MarkersService) {
     this._markersService.getMarkers().subscribe(
       (res) => {
         this.markers = <Markers[]>res;
       }
     );
+  }
+
+  public ngOnInit() {
   }
 }
