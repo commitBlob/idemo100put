@@ -1,5 +1,5 @@
 // Core
-import { Component, OnInit, ViewContainerRef} from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewContainerRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 // App specific
@@ -13,9 +13,7 @@ import { DialogsService } from '../dialogs/dialogs.service';
 export class ContactFormComponent implements OnInit {
   form: FormGroup;
 
-  // used to submit form only once
-  public formSent = false;
-
+  private rerender = false;
   public emailValid = false;
   public formValid = false;
   public nameError = '';
@@ -32,7 +30,8 @@ export class ContactFormComponent implements OnInit {
     public formBuilder: FormBuilder,
     private _contactFormService: ContactFormService,
     private _dialogService: DialogsService,
-    private _viewContainerRef: ViewContainerRef
+    private _viewContainerRef: ViewContainerRef,
+    private _cdRef: ChangeDetectorRef
   ) {
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
@@ -42,7 +41,7 @@ export class ContactFormComponent implements OnInit {
     });
 
     /* custom name validation */
-    this.form.controls['name'].valueChanges.debounceTime(400).subscribe(data => {
+    this.form.controls['name'].valueChanges.debounceTime(400).flatMap(data => {
       if (data.length < 2) {
         this.nameError =  'Name has to be between 2 and 30 characters long';
         return this.nameError;
@@ -53,7 +52,7 @@ export class ContactFormComponent implements OnInit {
     });
 
     /* custom email validation */
-    this.form.controls['email'].valueChanges.debounceTime(400).subscribe(data => {
+    this.form.controls['email'].valueChanges.debounceTime(400).flatMap(data => {
       this.emailValid = this.validateEmail(data);
       if (data.length > 0 && !this.emailValid) {
         this.emailError =  'Please enter valid email address';
@@ -65,7 +64,7 @@ export class ContactFormComponent implements OnInit {
     });
 
     /* custom subject validation */
-    this.form.controls['message'].valueChanges.debounceTime(400).subscribe(data => {
+    this.form.controls['message'].valueChanges.debounceTime(400).flatMap(data => {
       if (data.length < 2) {
         this.messageError =  'Message has to be longer than 2 characters';
         return this.messageError;
@@ -93,12 +92,9 @@ export class ContactFormComponent implements OnInit {
         },
         (error) => {
           this.messageDialog(error.header, error.message);
-          console.log(error, 'error');
         }
       );
-      this.formSent = true;
-      console.log('form is valid');
-      return this.formSent;
+      this.resetForm();
     }
   }
 
@@ -108,6 +104,16 @@ export class ContactFormComponent implements OnInit {
 
   public messageDialog(title: string, message: string) {
     this._dialogService.confirm(title, message, this._viewContainerRef)
+  }
+
+  /**
+   * Resets form values and re-renders the component in order to bring form back to initial state
+   */
+  public resetForm() {
+    this.form.reset();
+    this.rerender = true;
+    this._cdRef.detectChanges();
+    this.rerender = false;
   }
 
 }
