@@ -13,7 +13,7 @@ import { DialogsService } from '../dialogs/dialogs.service';
 export class ContactFormComponent implements OnInit {
   form: FormGroup;
 
-  private rerender = false;
+  private reRender = false;
   public emailValid = false;
   public formValid = false;
   public nameError = '';
@@ -111,9 +111,9 @@ export class ContactFormComponent implements OnInit {
    */
   public resetForm() {
     this.form.reset();
-    this.rerender = true;
+    this.reRender = true;
     this._cdRef.detectChanges();
-    this.rerender = false;
+    this.reRender = false;
   }
 
 }
