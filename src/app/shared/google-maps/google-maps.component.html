@@ -1,14 +1,7 @@
 <!--TODO: add content-->
 
 <div class="content">
-  <agm-map [zoom]="zoom" [latitude]="lat" [longitude]="lng">
-    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-    <agm-marker *ngFor="let marker of markers"
-                [latitude]="marker.latitude"
-                [longitude]="marker.longitude"
-                [label]="marker.label">
-    </agm-marker>
-  </agm-map>
+  <div id="map"></div>
 </div>
 <div *ngFor="let marker of markers">
   <p>Long:{{marker.longitude}}  Lat:  {{marker.latitude}}</p>

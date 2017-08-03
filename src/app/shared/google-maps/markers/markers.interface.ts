@@ -4,4 +4,5 @@ export interface Markers {
   longitude: number;
   label?: string;
   title: string;
+  description: string;
 }
