@@ -41,7 +41,7 @@ export class ContactFormComponent implements OnInit {
     });
 
     /* custom name validation */
-    this.form.controls['name'].valueChanges.debounceTime(400).flatMap(data => {
+    this.form.controls['name'].valueChanges.debounceTime(400).subscribe(data => {
       if (data.length < 2) {
         this.nameError =  'Name has to be between 2 and 30 characters long';
         return this.nameError;
@@ -52,7 +52,7 @@ export class ContactFormComponent implements OnInit {
     });
 
     /* custom email validation */
-    this.form.controls['email'].valueChanges.debounceTime(400).flatMap(data => {
+    this.form.controls['email'].valueChanges.debounceTime(400).subscribe(data => {
       this.emailValid = this.validateEmail(data);
       if (data.length > 0 && !this.emailValid) {
         this.emailError =  'Please enter valid email address';
@@ -64,7 +64,7 @@ export class ContactFormComponent implements OnInit {
     });
 
     /* custom subject validation */
-    this.form.controls['message'].valueChanges.debounceTime(400).flatMap(data => {
+    this.form.controls['message'].valueChanges.debounceTime(400).subscribe(data => {
       if (data.length < 2) {
         this.messageError =  'Message has to be longer than 2 characters';
         return this.messageError;
@@ -110,7 +110,8 @@ export class ContactFormComponent implements OnInit {
    * Resets form values and re-renders the component in order to bring form back to initial state
    */
   public resetForm() {
-    this.form.reset();
+    // this.form.reset();
+    console.log(this.form, 'ova forma');
     this.reRender = true;
     this._cdRef.detectChanges();
     this.reRender = false;
