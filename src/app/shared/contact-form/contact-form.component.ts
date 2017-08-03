@@ -111,10 +111,53 @@ export class ContactFormComponent implements OnInit {
    */
   public resetForm() {
     // this.form.reset();
-    console.log(this.form, 'ova forma');
+    console.log(this.form.controls, 'ova forma');
     this.reRender = true;
+    this.rebuildForm();
     this._cdRef.detectChanges();
     this.reRender = false;
+  }
+
+  public rebuildForm() {
+    this.form = this.formBuilder.group({
+      name: ['', Validators.required],
+      email: ['', Validators.required],
+      subject: '',
+      message: ['', Validators.required],
+    });
+    /* custom name validation */
+    this.form.controls['name'].valueChanges.debounceTime(400).subscribe(data => {
+      if (data.length < 2) {
+        this.nameError =  'Name has to be between 2 and 30 characters long';
+        return this.nameError;
+      }else {
+        this.nameError = '';
+        return this.nameError;
+      }
+    });
+
+    /* custom email validation */
+    this.form.controls['email'].valueChanges.debounceTime(400).subscribe(data => {
+      this.emailValid = this.validateEmail(data);
+      if (data.length > 0 && !this.emailValid) {
+        this.emailError =  'Please enter valid email address';
+        return this.emailError;
+      }else {
+        this.emailError = '';
+        return this.emailError;
+      }
+    });
+
+    /* custom subject validation */
+    this.form.controls['message'].valueChanges.debounceTime(400).subscribe(data => {
+      if (data.length < 2) {
+        this.messageError =  'Message has to be longer than 2 characters';
+        return this.messageError;
+      }else {
+        this.messageError = '';
+        return this.messageError;
+      }
+    });
   }
 
 }
