@@ -1,0 +1,34 @@
+.our_cards {
+  display: flex;
+  flex-wrap: wrap;
+
+  @include respond((max: 599px)) {
+    flex-flow: column;
+  }
+
+
+  .card {
+    flex-grow: 1;
+    width: 33%;
+    height: 100px;
+
+    @include respond((max: 599px)) {
+      width: 100%;
+
+      .card_container {
+        max-width: 400px;
+        margin: 0 auto;
+      }
+    }
+
+    @include respond((max: 899px, min: 600px)) {
+      width: 50%;
+    }
+
+    .card_container {
+      border: solid 2px lime;
+      height: inherit;
+      width: 100%;
+    }
+  }
+}

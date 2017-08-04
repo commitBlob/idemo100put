@@ -30,13 +30,6 @@ export class GoogleMapsComponent implements OnInit {
   }
 
   public ngOnInit() {
-    // this._markersService.getMarkers().subscribe(
-    //   (res) => {
-    //     res.forEach((value) => {
-    //       this.markers.push(value);
-    //     });
-    //   }
-    // );
     this.initMap();
   }
 
