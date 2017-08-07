@@ -15,8 +15,6 @@ declare var google: any;
 })
 export class GoogleMapsComponent implements OnInit {
 
-  // TODO: remove AGM from dependencies
-
   private map: any;
   public markers: Markers[] = [
   ];

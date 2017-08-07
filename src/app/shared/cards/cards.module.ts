@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 
 // App specific
 import { CardsComponent } from './cards.component';
-import { SharedModule } from '../shared.module';
 
 @NgModule({
   imports: [
