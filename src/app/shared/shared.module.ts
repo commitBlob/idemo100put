@@ -5,6 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 // App specific
+import { CardsModule } from './cards/cards.module';
+import { CardsService } from './cards/cards.service';
 import { ContactFormModule } from './contact-form/contact-form.module';
 import { ContactFormService } from './contact-form/contact-form-service/contact-form.service';
 import { ContentService } from './content-service/content.service';
@@ -28,6 +30,7 @@ import { TabsNavigationModule } from './tabs_navigation/tabs_navigation.module';
     RouterModule,
   ],
   exports: [
+    CardsModule,
     CommonModule,
     ContactFormModule,
     DialogsModule,
@@ -48,6 +51,7 @@ export class SharedModule {
     return {
       ngModule: SharedModule,
       providers: [
+        CardsService,
         ContentService,
         ContactFormService,
         DialogsService,
