@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 // App specific
+import { ApartmentDetailsService } from '../pages/apartments/apartment-details/apartment-details.service';
 import { CardsModule } from './cards/cards.module';
 import { CardsService } from './cards/cards.service';
 import { ContactFormModule } from './contact-form/contact-form.module';
@@ -51,6 +52,7 @@ export class SharedModule {
     return {
       ngModule: SharedModule,
       providers: [
+        ApartmentDetailsService,
         CardsService,
         ContentService,
         ContactFormService,

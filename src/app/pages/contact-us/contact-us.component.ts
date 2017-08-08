@@ -1,11 +1,11 @@
 // Core
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
 
 // App specific
 import { ApartmentService } from '../../shared/apartments-service/apartments.service';
 import { ContentService } from '../../shared/content-service/content.service';
 import { LanguagesService } from '../../shared/languages/languages.service';
-import { Subscription } from 'rxjs/Subscription';
 
 // Models
 import { Content } from '../../shared/content-service/content.interface';
