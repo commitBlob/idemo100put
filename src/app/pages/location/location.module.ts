@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 
 // App specific
 import { LocationComponent } from './location.component';
+import { LocationDataService } from './location-data/location-data.service';
 import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
@@ -16,7 +17,10 @@ import { SharedModule } from '../../shared/shared.module';
   ],
   exports: [
     LocationComponent
-  ]
+  ],
+  providers: [
+    LocationDataService
+  ],
 })
 export class LocationModule {
 }

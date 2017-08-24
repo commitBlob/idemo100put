@@ -3,7 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 // App specific
-import { LanguagesService } from '../../shared/languages/languages.service'
+import { LanguagesService } from '../../shared/languages/languages.service';
+import { LocationDataService } from './location-data/location-data.service';
 
 // Model
 import { LocationData } from './location-data/location-data.interface';
@@ -21,7 +22,8 @@ export class LocationComponent implements OnInit {
   // no data from backend service
 
   constructor(
-    private _languageService: LanguagesService
+    private _languageService: LanguagesService,
+    private _locationDataService: LocationDataService
   ) {
     this.langSubscription = _languageService.subjectSourceAnnounced$.subscribe(
       (value) => {
@@ -34,5 +36,11 @@ export class LocationComponent implements OnInit {
 
   public ngOnInit() {
     this._languageService.getLanguage();
+    this.getLocationData();
+    console.log(this.locationContent, 'locCont');
+  }
+
+  public getLocationData() {
+    this.locationContent = this._locationDataService.getLocationData();
   }
 }
