@@ -14,12 +14,11 @@ import { LocationData } from './location-data/location-data.interface';
 })
 export class LocationComponent implements OnInit {
 
-  public locationContent: LocationData[];
+  public locationContent: LocationData[] = [];
+  public tempContent: any;
   public langSubscription: Subscription;
   public language: String;
 
-  // TODO: language switcher (array(s) of elements no backend service)
-  // no data from backend service
 
   constructor(
     private _languageService: LanguagesService,
@@ -29,6 +28,7 @@ export class LocationComponent implements OnInit {
       (value) => {
         if ( this.language !== value) {
           this.language = value;
+          this.findObject();
         }
       }
     );
@@ -37,10 +37,18 @@ export class LocationComponent implements OnInit {
   public ngOnInit() {
     this._languageService.getLanguage();
     this.getLocationData();
-    console.log(this.locationContent, 'locCont');
+    this.findObject();
   }
 
   public getLocationData() {
     this.locationContent = this._locationDataService.getLocationData();
+  }
+
+  public findObject() {
+    this.locationContent.forEach((value: any, key: any) => {
+      if (this.language === value['language']) {
+        this.tempContent = this.locationContent[key];
+      }
+    });
   }
 }
