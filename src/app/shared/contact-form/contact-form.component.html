@@ -3,7 +3,7 @@
   <form [formGroup]="form" (ngSubmit)="submitForm(form)">
     <div class="form-group">
       <md-input-container class="flexer">
-        <input mdInput placeholder="Your Name" align="start" type="text" formControlName="name" minlength="2" maxlength="30" required>
+        <input mdInput placeholder="Your Name" align="start" [type]="text" formControlName="name" minlength="2" maxlength="30" required>
         <md-hint class=" errors" *ngIf="nameHasErrors">
           {{nameError}}
         </md-hint>

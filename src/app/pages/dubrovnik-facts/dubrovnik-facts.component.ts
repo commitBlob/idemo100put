@@ -1,9 +1,9 @@
 // Core
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
 
 // App specific
 import { LanguagesService } from '../../shared/languages/languages.service';
-import { Subscription } from 'rxjs/Subscription';
 import { ContentService } from '../../shared/content-service/content.service';
 
 // Models
