@@ -19,7 +19,6 @@ export class LocationComponent implements OnInit {
   public langSubscription: Subscription;
   public language: String;
 
-
   constructor(
     private _languageService: LanguagesService,
     private _locationDataService: LocationDataService

@@ -1,6 +1,14 @@
 <!--TODO: add content-->
+
 <div class="content">
   <h2>Parametrized route activated</h2>
-
+  <div *ngIf="apartmentData">
+    <h2>{{apartmentData[0].apartmentName}}</h2>
+    <p>{{apartmentData[0].apartmentDescription}}</p>
+    <button class="app-button--">
+      Check Availability
+      <i class="material-icons left">event_note</i>
+    </button>
+  </div>
   <p>{{apartmentName}}</p>
 </div>

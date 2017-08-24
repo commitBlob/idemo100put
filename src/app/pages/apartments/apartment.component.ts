@@ -35,7 +35,6 @@ export class ApartmentComponent implements OnInit, OnDestroy {
       (value) => {
         if ( this.language !== value) {
           this.language = value;
-          // this.getContent(this.language);
           this.getApartmentData(this.apartmentName, this.language);
         }
       }
