@@ -18,7 +18,6 @@ import { ApartmentDetails } from './apartment-details/apartment-details.interfac
 export class ApartmentComponent implements OnInit, OnDestroy {
   public apartmentName: string;
   private _sub: any;
-  public errorMessage: string;
   public langSubscription: Subscription;
   public language: String;
   public apartmentData: ApartmentDetails[];

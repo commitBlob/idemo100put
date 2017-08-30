@@ -13,6 +13,9 @@
   transition: all .5s ease;
   border:none;
 
+  // this is for <a> tag with this class
+  text-decoration: none;
+
   .icon {
     vertical-align: middle;
     transition: transform .6s ease;
