@@ -62,7 +62,7 @@ export class ApartmentComponent implements OnInit, OnDestroy {
         this.handleError(error);
       },
       () => {
-        console.log('Fetch Nearby Places')
+        console.log('Fetch Nearby Places');
         this.getNearbyPlaces(apName);
       }
     );
