@@ -7,6 +7,7 @@ import 'rxjs/add/operator/catch';
 
 // App specific
 import { ApartmentDetails } from './apartment-details.interface';
+import { NearbyPlaces } from './nearby-places.interface';
 
 @Injectable()
 export class ApartmentDetailsService {
@@ -15,6 +16,12 @@ export class ApartmentDetailsService {
 
   public getApartmentData(apartmentShortName, language): Observable<ApartmentDetails[]> {
     return this._http.get('./api/apartments/' + apartmentShortName + '/' + language).map(
+      (res: Response) => res.json()
+    ).catch(this.handleError);
+  }
+
+  public getNearbys(apartmentShortName): Observable<NearbyPlaces[]> {
+    return this._http.get('./api/nearbys/' + apartmentShortName).map(
       (res: Response) => res.json()
     ).catch(this.handleError);
   }

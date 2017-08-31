@@ -8,8 +8,15 @@ export interface ApartmentDetails {
   address: string;
   language: string;
   facilities: {
-    freeWifi: boolean;
-    parking: boolean;
+    ac?: string;
+    childFriendly?: string;
+    freeWifi?: string;
+    heating?: string;
+    kitchen?: string;
+    laundry?: string;
+    parking?: string;
+    saTV?: string;
+    smoking?: string;
   };
   note: string;
   bookingLink: string;

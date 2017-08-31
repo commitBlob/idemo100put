@@ -1,6 +1,7 @@
 // Core
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
 // App specific
@@ -9,6 +10,7 @@ import { LanguagesService } from '../../shared/languages/languages.service';
 
 // Models
 import { ApartmentDetails } from './apartment-details/apartment-details.interface';
+import { NearbyPlaces } from './apartment-details/nearby-places.interface';
 
 // TODO: add all apartments data
 
@@ -21,6 +23,7 @@ export class ApartmentComponent implements OnInit, OnDestroy {
   public langSubscription: Subscription;
   public language: String;
   public apartmentData: ApartmentDetails[];
+  public nearbyPlacesData: NearbyPlaces[];
 
   constructor(private _route: ActivatedRoute,
               private _apartmentDetailsService: ApartmentDetailsService,
@@ -53,8 +56,34 @@ export class ApartmentComponent implements OnInit, OnDestroy {
     this._apartmentDetailsService.getApartmentData(apName, lang).subscribe(
       (apData) => {
         this.apartmentData = <ApartmentDetails[]>apData;
-        console.log(this.apartmentData, 'apdata');
+        console.log(this.apartmentData, 'Apartment Data');
+      },
+      (error) => {
+        this.handleError(error);
+      },
+      () => {
+        console.log('Fetch Nearby Places')
+        this.getNearbyPlaces(apName);
       }
     );
+  }
+
+  public getNearbyPlaces(apartment) {
+    this._apartmentDetailsService.getNearbys(apartment).subscribe(
+      (data) => {
+        this.nearbyPlacesData = <NearbyPlaces[]>data;
+        console.log(this.nearbyPlacesData, 'Nearby Places');
+      }
+    );
+  }
+
+  /**
+   * Handle HTTP error
+   */
+  private handleError(error: any) {
+    const errMsg = (error.message) ? error.message :
+      error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+    console.error(errMsg);
+    return Observable.throw(errMsg);
   }
 }
