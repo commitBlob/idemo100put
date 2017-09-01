@@ -7,6 +7,7 @@
     <p class="location_details"><i class="material-icons location_icon">place</i>{{apartmentData[0].address}}</p>
     <p>{{apartmentData[0].apartmentDescription}}</p>
     <hr />
+    <!--TODO: add all nearby places-->
     <div *ngIf="nearbyPlacesData" class="nearby_places_container">
       <h3> Nearby Places</h3>
       <div *ngFor="let place of nearbyPlacesData" class="nearby_place_card">

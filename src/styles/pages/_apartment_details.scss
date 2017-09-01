@@ -11,18 +11,13 @@
   margin-bottom: 0;
 }
 
-.nearby_icon {
-  color: $gray-dark !important;
-  font-size: $font-size-base * 2.6;
-}
-
 .nearby_places_container{
   margin: 1em 0;
 
   .nearby_place_card {
     display: inline-block;
     padding: .5em;
-    margin: .5em;
+    margin: .8em .5em;
     min-height: 40px;
     background-color: $white;
     border-radius: .3em;
