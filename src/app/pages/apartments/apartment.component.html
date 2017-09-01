@@ -1,0 +1,39 @@
+<!--TODO: add content-->
+
+<!--DISTANCE PIPE-->
+<!--if (input >= 1000) {-->
+<!--return (input/1000).toFixed(2) + 'km';-->
+<!--} else {-->
+<!--return input + 'm';-->
+<!--}-->
+
+<div class="content">
+  <h2>Parametrized route activated</h2>
+  <div *ngIf="apartmentData">
+    <h2 class="apartment_name">Apartment {{apartmentData[0].apartmentName}}</h2>
+    <p class="location_details"><i class="material-icons location_icon">place</i>{{apartmentData[0].address}}</p>
+    <p>{{apartmentData[0].apartmentDescription}}</p>
+    <div *ngIf="nearbyPlacesData">
+      <div *ngFor="let place of nearbyPlacesData">
+        <div *ngIf="language === 'eng'; then english else croatian"></div>
+          <ng-template #english>
+            <p>
+              <i class="material-icons nearby_icon">{{place.icon}}</i>
+              {{place.placeName}} ~{{place.distance | distancePipe}}
+            </p>
+          </ng-template>
+        <ng-template #croatian>
+            <p>
+              <i class="material-icons nearby_icon">{{place.icon}}</i>
+              {{place.imeLokacije}} ~{{place.distance | distancePipe}}
+            </p>
+        </ng-template>
+      </div>
+    </div>
+    <a class="app-button--" [href]="apartmentData[0].bookingLink" [target]="_blank">
+      Check Availability
+      <i class="material-icons left">event_note</i>
+    </a>
+  </div>
+  <p>{{apartmentName}}</p>
+</div>

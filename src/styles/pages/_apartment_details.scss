@@ -1,0 +1,17 @@
+.location_details {
+  padding: 0;
+  margin: 0;
+
+  .location_icon {
+    font-size: $font-size-base;
+  }
+}
+
+.apartment_name {
+  margin-bottom: 0;
+}
+
+.nearby_icon {
+  color: $gray-dark !important;
+  font-size: $font-size-base * 2.6;
+}

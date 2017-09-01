@@ -1,0 +1,30 @@
+.languages_container {
+  margin-left: auto;
+  display: inline;
+  min-width: 100px;
+
+  @include respond((max: 399px)) {
+    display: none;
+  }
+
+  img {
+    float:right;
+    margin: 0 .2em;
+    cursor: pointer;
+  }
+}
+
+.languages_sidebar {
+
+  div {
+    display: inline-block;
+    padding: .5em;
+    cursor: pointer;
+  }
+  position: relative;
+  margin: 1em;
+
+  @include respond((min: 400px)) {
+    display: none;
+  }
+}

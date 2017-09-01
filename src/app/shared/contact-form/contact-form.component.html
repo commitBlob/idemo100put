@@ -1,0 +1,42 @@
+
+<ng-container *ngIf="!reRender">
+  <form [formGroup]="form" (ngSubmit)="submitForm(form)">
+    <div class="form-group">
+      <md-input-container class="flexer">
+        <input mdInput placeholder="Your Name" align="start" [type]="text" formControlName="name" minlength="2" maxlength="30" required>
+        <md-hint class=" errors" *ngIf="nameHasErrors">
+          {{nameError}}
+        </md-hint>
+      </md-input-container>
+      <md-input-container class="flexer">
+        <input mdInput placeholder="Your Email" align="start" [type]="'email'" formControlName="email" [pattern]="emailRegex" required>
+        <md-hint class="errors" *ngIf="emailHasErrors">
+          {{emailError}}
+        </md-hint>
+      </md-input-container>
+      </div>
+    <div class="form-group">
+      <md-input-container class="app-input-subject">
+        <input mdInput placeholder="Subject" align="start" [type]="text" formControlName="subject">
+      </md-input-container>
+    </div>
+    <div class="form-group">
+      <md-input-container class="app-textarea" >
+        <textarea mdInput placeholder="Your Message" align="start" [type]="text" rows="6" formControlName="message" minlength="2" maxlength="500" required></textarea>
+        <md-hint class="errors" *ngIf="messageHasErrors">
+          {{messageError}}
+        </md-hint>
+      </md-input-container>
+    </div>
+    <div class="button-container">
+      <button class="app-button--" [disabled]="!form.valid">
+        Submit
+        <svg data-name="plane_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 316.46 158.23"><defs></defs><title>plane</title>
+          <path class="cls-1" d="M316.45 0l-134 143.7-88.81-37.95L316.45 0zM66.2 92.83C64.59 92.83 0 62.96 0 62.96l316.46-63z"/>
+          <path class="cls-2" d="M66.2 92.84l19.37 65.39 11.3-53.28L316.45 0 66.2 92.84z"/>
+          <path class="cls-2" d="M85.57 158.23l10.5-54.9 43.7 21.6-54.2 33.3z"/>
+        </svg>
+      </button>
+    </div>
+  </form>
+</ng-container>

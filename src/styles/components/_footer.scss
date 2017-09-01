@@ -1,0 +1,16 @@
+app-footer{
+  background-color: $brand-primary;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  .terms {
+    text-align: center;
+    padding: .3em;
+    display: block;
+    color: $white;
+    font-size: .8em;
+    margin: .2em;
+  }
+}

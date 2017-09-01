@@ -1,0 +1,80 @@
+
+.app-button-- {
+  background-color: $brand-primary;
+  color: $gray-light;
+  padding: 10px 15px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 0 1em;
+  font-size: $font-size-base * 1.2;
+  font-weight: $font-weight-base;
+  height: 40px;
+  min-width: 110px;
+  transition: all .5s ease;
+  border:none;
+
+  // this is for <a> tag with this class
+  text-decoration: none;
+
+  .icon {
+    vertical-align: middle;
+    transition: transform .6s ease;
+    -ms-transform: scale(.9); /* IE 9 */
+    -webkit-transform: scale(.9); /* Safari */
+    transform: scale(.9);
+  }
+
+  &:hover {
+    background-color: $brand-primary-darker;
+    color: $dirty-white;
+    box-shadow: 0 14px 5px -10px rgba($black, 0.4);
+
+    .icon {
+      -ms-transform: scale(1); /* IE 9 */
+      -webkit-transform: scale(1); /* Safari */
+      transform: scale(1);
+    }
+    svg {
+      -ms-transform: scale(1.1); /* IE 9 */
+      -webkit-transform: scale(1.1); /* Safari */
+      transform: scale(1.1);
+    }
+  }
+
+  &.no-text {
+    background-color: inherit;
+    padding: 10px;
+    font-size: 1em;
+
+  }
+
+  &.white {
+    color: $white;
+  }
+
+  i {
+    vertical-align: middle;
+  }
+
+  svg {
+    transition: transform .6s ease;
+    -ms-transform: scale(1); /* IE 9 */
+    -webkit-transform: scale(1); /* Safari */
+    transform: scale(1);
+    height: $font-size-base * 1.2;
+
+    .cls-1 {
+      fill: $gray-light;
+    }
+
+    .cls-2 {
+      fill: $gray-dark;
+    }
+  }
+}
+
+button[class*="disabled"], button[disabled] {
+  background-color: $gray-darker;
+  color: $gray;
+  pointer-events: none;
+}

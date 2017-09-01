@@ -1,0 +1,13 @@
+@mixin max-width($width: $mainWidth) {
+
+  @if $width != 0 {
+    width: 100%;
+    max-width: $width;
+    margin: 0 auto;
+  }
+  @else {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+}

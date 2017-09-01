@@ -1,0 +1,12 @@
+<div class="our_cards">
+  <div class="card" *ngFor="let card of cards">
+    <div class="card_container">
+      <img [src]="card.image">
+      <div class="card_content">
+        <div class="corner_element"></div>
+        <h3>{{card.name}}</h3>
+        <p>{{card.role}}</p>
+      </div>
+    </div>
+  </div>
+</div>
