@@ -77,6 +77,10 @@ export class ApartmentComponent implements OnInit, OnDestroy {
     );
   }
 
+  public generateArray(obj) {
+    return Object.keys(obj).map((key) => { return {key: key, value: obj[key]}});
+  }
+
   /**
    * Handle HTTP error
    */
