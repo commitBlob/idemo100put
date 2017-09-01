@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 // App specific
 import { ApartmentComponent } from './apartment.component';
+import { DistancePipe } from '../../shared/distance.pipe';
 import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
@@ -15,6 +16,7 @@ import { SharedModule } from '../../shared/shared.module';
   ],
   declarations: [
     ApartmentComponent,
+    DistancePipe
   ],
   exports: [
     ApartmentComponent,

@@ -19,13 +19,13 @@
           <ng-template #english>
             <p>
               <i class="material-icons nearby_icon">{{place.icon}}</i>
-              {{place.placeName}} ~ {{place.distance}}
+              {{place.placeName}} ~{{place.distance | distancePipe}}
             </p>
           </ng-template>
         <ng-template #croatian>
             <p>
               <i class="material-icons nearby_icon">{{place.icon}}</i>
-              {{place.imeLokacije}} ~ {{place.distance}}
+              {{place.imeLokacije}} ~{{place.distance | distancePipe}}
             </p>
         </ng-template>
       </div>

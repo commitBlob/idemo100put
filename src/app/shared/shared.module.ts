@@ -59,6 +59,7 @@ export class SharedModule {
         DialogsService,
         LanguagesService,
         MarkersService
-    ]};
+    ],
+    };
   }
 }
