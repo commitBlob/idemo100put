@@ -15,3 +15,56 @@
   color: $gray-dark !important;
   font-size: $font-size-base * 2.6;
 }
+
+.nearby_places_container{
+  margin: 1em 0;
+
+  .nearby_place_card {
+    display: inline-block;
+    padding: .5em;
+    margin: .5em;
+    min-height: 40px;
+    background-color: $white;
+    border-radius: .3em;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.14);
+
+    .nearby_icon_container {
+      margin-top: -1.2em;
+      line-height: 56px;
+      width: 56px;
+      height: 56px;
+      float: left;
+      text-align: center;
+      background-color: $brand-primary-lighter;
+      box-shadow: 1px 2px 4px rgba($black, .5);
+      border-radius: .3em;
+
+      .nearby_icon {
+        color: $dirty-white !important;
+        font-size: $font-size-base * 2.6;
+        line-height: inherit;
+      }
+    }
+
+    .nearby_icon_name {
+      display: inline-block;
+      float: left;
+      padding: .5em;
+      font-style: italic;
+    }
+
+    .nearby_distance {
+      border-top: 1px solid $gray-lighter;
+      display: inline-block;
+      position: relative;
+      width: 100%;
+      text-align: right;
+      margin-top: .5em;
+      line-height: $font-size-base * 1.8;
+      font-size: $font-size-base;
+      vertical-align: bottom;
+      color: $gray-dark;
+    }
+  }
+}
+
