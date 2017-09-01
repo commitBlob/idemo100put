@@ -13,6 +13,7 @@ import { ContactFormService } from './contact-form/contact-form-service/contact-
 import { ContentService } from './content-service/content.service';
 import { DialogsModule } from './dialogs/dialogs.module';
 import { DialogsService } from './dialogs/dialogs.service';
+import { DistancePipe } from './distance.pipe';
 import { FooterModule } from './footer/footer.module';
 import { GoogleMapsModule } from './google-maps/google-maps.module';
 import { LanguagesModule } from './languages/languages.module';
@@ -35,6 +36,7 @@ import { TabsNavigationModule } from './tabs_navigation/tabs_navigation.module';
     CommonModule,
     ContactFormModule,
     DialogsModule,
+    DistancePipe,
     LanguagesModule,
     LogoModule,
     FooterModule,
@@ -45,6 +47,7 @@ import { TabsNavigationModule } from './tabs_navigation/tabs_navigation.module';
     TabsNavigationModule,
   ],
   declarations: [
+    DistancePipe
   ]
 })
 export class SharedModule {
