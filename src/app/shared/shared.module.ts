@@ -22,7 +22,7 @@ import { LogoModule } from './logo/logo.module';
 import { MarkersService } from './google-maps/markers/markers.service';
 import { MaterialModule } from '../sharedMaterialModule';
 import { TabsNavigationModule } from './tabs_navigation/tabs_navigation.module';
-
+import { WordBreakPipe } from './word_break.pipe';
 
 
 @NgModule({
@@ -45,9 +45,11 @@ import { TabsNavigationModule } from './tabs_navigation/tabs_navigation.module';
     ReactiveFormsModule,
     RouterModule,
     TabsNavigationModule,
+    WordBreakPipe,
   ],
   declarations: [
-    DistancePipe
+    DistancePipe,
+    WordBreakPipe
   ]
 })
 export class SharedModule {
