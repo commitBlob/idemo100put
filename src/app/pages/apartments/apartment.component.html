@@ -10,21 +10,25 @@
       Check Availability
       <i class="material-icons left">event_note</i>
     </a>
-    <hr class="apartment_details_hr"/>
-    <div class="facilities_container">
-      <h3>Facilities</h3>
-      <div *ngFor="let facility of generateArray(apartmentData[0].facilities)" class="facilities_card">
-        <div class="facilities_icon_container">
-          <i class="material-icons facilities_icon">{{facility.value}}</i>
-        </div>
-        <div class="facilities_icon_name">
-          <span>{{facility.key | wordBreakPipe}}</span>
-        </div>
-      </div>
+    <div class="warning_block">
+      <p class="warning_message">Note: {{apartmentData[0].note}}</p>
+      <i class="material-icons dismiss_icon">close</i>
     </div>
     <hr class="apartment_details_hr"/>
-    <!--TODO: add all nearby places-->
-    <div *ngIf="nearbyPlacesData" class="nearby_places_container">
+    <!--<div class="facilities_container">-->
+      <!--<h3>Facilities</h3>-->
+      <!--<div *ngFor="let facility of generateArray(apartmentData[0].facilities)" class="facilities_card">-->
+        <!--<div class="facilities_icon_container">-->
+          <!--<i class="material-icons facilities_icon">{{facility.value}}</i>-->
+        <!--</div>-->
+        <!--<div class="facilities_icon_name">-->
+          <!--<span>{{facility.key | wordBreakPipe}}</span>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+    <hr class="apartment_details_hr"/>
+    <!--<div *ngIf="nearbyPlacesData" class="nearby_places_container">-->
+    <div *ngIf="!nearbyPlacesData" class="nearby_places_container">
       <h3>Nearby Places</h3>
       <div *ngFor="let place of nearbyPlacesData" class="nearby_place_card">
         <div *ngIf="language === 'eng'; then english else croatian"></div>

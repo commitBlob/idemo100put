@@ -1,0 +1,24 @@
+.warning_block {
+  margin: 1em 0;
+  padding: 1.2em;
+  background-color: $brand-info;
+  color: $dirty-white;
+  border-radius: .2em;
+  position: relative;
+
+  .warning_message {
+    margin: 0;
+  }
+
+  .dismiss_icon {
+    position: absolute;
+    top: .2em;
+    right: .2em;
+    font-size: $font-size-base * 1.4;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+}

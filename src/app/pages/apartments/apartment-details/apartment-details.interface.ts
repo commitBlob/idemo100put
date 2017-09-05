@@ -1,4 +1,3 @@
-// TODO: add more facilities
 
 export interface ApartmentDetails {
   _id: string;
@@ -9,10 +8,8 @@ export interface ApartmentDetails {
   language: string;
   facilities: {
     ac?: string;
-    childFriendly?: string;
     freeWifi?: string;
     heating?: string;
-    kitchen?: string;
     laundry?: string;
     parking?: string;
     saTV?: string;
