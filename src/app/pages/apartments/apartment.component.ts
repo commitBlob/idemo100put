@@ -24,6 +24,7 @@ export class ApartmentComponent implements OnInit, OnDestroy {
   public language: String;
   public apartmentData: ApartmentDetails[];
   public nearbyPlacesData: NearbyPlaces[];
+  public displayWarning = true;
 
   constructor(private _route: ActivatedRoute,
               private _apartmentDetailsService: ApartmentDetailsService,
@@ -79,6 +80,11 @@ export class ApartmentComponent implements OnInit, OnDestroy {
 
   public generateArray(obj) {
     return Object.keys(obj).map((key) => { return {key: key, value: obj[key]}});
+  }
+
+  private closeBlock(event) {
+    event.target.parentElement.classList.add('hide');
+    setTimeout(() => { this.displayWarning = false; }, 750)
   }
 
   /**
