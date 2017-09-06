@@ -1,5 +1,5 @@
 // Core
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 
 // App specific
 import { LanguagesService } from '../../shared/languages/languages.service';
@@ -12,7 +12,7 @@ import { Content } from '../../shared/content-service/content.interface';
 @Component({
   templateUrl: './croatia-facts.component.html',
 })
-export class CroatiaFactsComponent implements OnInit {
+export class CroatiaFactsComponent implements OnInit, OnDestroy {
 
   public croatiaFactsContent: Content[];
   public langSubscription: Subscription;
@@ -42,5 +42,9 @@ export class CroatiaFactsComponent implements OnInit {
         this.croatiaFactsContent = <Content[]>content;
       }
     );
+  }
+
+  public ngOnDestroy() {
+    this.langSubscription.unsubscribe();
   }
 }

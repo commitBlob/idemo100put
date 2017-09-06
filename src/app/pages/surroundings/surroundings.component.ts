@@ -1,5 +1,5 @@
 // Core
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 
 // App specific
 import { ContentService } from '../../shared/content-service/content.service';
@@ -12,7 +12,7 @@ import { Content } from '../../shared/content-service/content.interface';
 @Component({
   templateUrl: './surroundings.component.html',
 })
-export class SurroundingsComponent implements OnInit {
+export class SurroundingsComponent implements OnInit, OnDestroy {
 
   public surroundingsContent: Content[];
   public langSubscription: Subscription;
@@ -42,5 +42,9 @@ export class SurroundingsComponent implements OnInit {
         this.surroundingsContent = <Content[]>content;
       }
     );
+  }
+
+  public ngOnDestroy() {
+    this.langSubscription.unsubscribe();
   }
 }

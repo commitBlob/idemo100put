@@ -1,5 +1,5 @@
 // Core
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 // App specific
@@ -12,7 +12,7 @@ import { Content } from '../../shared/content-service/content.interface';
 @Component({
   templateUrl: './dubrovnik-facts.component.html',
 })
-export class DubrovnikFactsComponent implements OnInit {
+export class DubrovnikFactsComponent implements OnInit, OnDestroy {
 
   public dubrovnikFactsContent: Content[];
   public langSubscription: Subscription;
@@ -42,5 +42,9 @@ export class DubrovnikFactsComponent implements OnInit {
         this.dubrovnikFactsContent = <Content[]>content;
       }
     );
+  }
+
+  public ngOnDestroy() {
+    this.langSubscription.unsubscribe();
   }
 }

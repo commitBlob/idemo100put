@@ -1,5 +1,5 @@
 // Core
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 // App specific
@@ -12,7 +12,7 @@ import { Content } from '../../shared/content-service/content.interface';
 @Component({
   templateUrl: './about-us.component.html',
 })
-export class AboutUsComponent implements OnInit {
+export class AboutUsComponent implements OnInit, OnDestroy {
   public aboutUsContent: Content[];
   public language: String;
   public langSubscription: Subscription;
@@ -39,6 +39,10 @@ export class AboutUsComponent implements OnInit {
         this.aboutUsContent = <Content[]>content;
       }
     );
+  }
+
+  public ngOnDestroy() {
+    this.langSubscription.unsubscribe();
   }
 
 }

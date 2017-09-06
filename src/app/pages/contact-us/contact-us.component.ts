@@ -1,5 +1,5 @@
 // Core
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 // App specific
@@ -13,7 +13,7 @@ import { Content } from '../../shared/content-service/content.interface';
 @Component({
   templateUrl: './contact-us.component.html',
 })
-export class ContactUsComponent implements OnInit {
+export class ContactUsComponent implements OnInit, OnDestroy {
 
   public apartmentsData: String[];
   public apartmentSelected: any;
@@ -68,4 +68,7 @@ export class ContactUsComponent implements OnInit {
     );
   }
 
+  public ngOnDestroy() {
+    this.langSubscription.unsubscribe();
+  }
 }

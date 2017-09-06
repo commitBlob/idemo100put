@@ -51,6 +51,7 @@ export class ApartmentComponent implements OnInit, OnDestroy {
 
   public ngOnDestroy() {
     this._sub.unsubscribe();
+    this.langSubscription.unsubscribe();
   }
 
   public getApartmentData(apName, lang) {

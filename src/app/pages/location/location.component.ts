@@ -1,5 +1,5 @@
 // Core
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 // App specific
@@ -12,7 +12,7 @@ import { LocationData } from './location-data/location-data.interface';
 @Component({
   templateUrl: './location.component.html',
 })
-export class LocationComponent implements OnInit {
+export class LocationComponent implements OnInit, OnDestroy {
 
   public locationContent: LocationData[] = [];
   public tempContent: any;
@@ -49,5 +49,9 @@ export class LocationComponent implements OnInit {
         this.tempContent = this.locationContent[key];
       }
     });
+  }
+
+  public ngOnDestroy() {
+    this.langSubscription.unsubscribe();
   }
 }
