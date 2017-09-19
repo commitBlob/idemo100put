@@ -45,7 +45,6 @@ export class ApartmentComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit() {
-    console.log('DATA IN DB MISSING FOR APARTMENT', this.apartmentName);
     this._languageService.getLanguage();
   }
 
@@ -58,13 +57,11 @@ export class ApartmentComponent implements OnInit, OnDestroy {
     this._apartmentDetailsService.getApartmentData(apName, lang).subscribe(
       (apData) => {
         this.apartmentData = <ApartmentDetails[]>apData;
-        console.log(this.apartmentData, 'Apartment Data');
       },
       (error) => {
         this.handleError(error);
       },
       () => {
-        console.log('Fetch Nearby Places');
         this.getNearbyPlaces(apName);
       }
     );
@@ -74,7 +71,6 @@ export class ApartmentComponent implements OnInit, OnDestroy {
     this._apartmentDetailsService.getNearbys(apartment).subscribe(
       (data) => {
         this.nearbyPlacesData = <NearbyPlaces[]>data;
-        console.log(this.nearbyPlacesData, 'Nearby Places');
       }
     );
   }

@@ -111,7 +111,6 @@ export class ContactFormComponent implements OnInit {
    */
   public resetForm() {
     // this.form.reset();
-    console.log(this.form.controls, 'ova forma');
     this.reRender = true;
     this.rebuildForm();
     this._cdRef.detectChanges();

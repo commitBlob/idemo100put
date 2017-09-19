@@ -17,4 +17,5 @@ export interface ApartmentDetails {
   };
   note: string;
   bookingLink: string;
+  minStay?: number;
 }
