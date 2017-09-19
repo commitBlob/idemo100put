@@ -22,7 +22,6 @@ export class PricelistComponent implements OnInit {
   public apartment;
   private _sub: any;
 
-  // TODO: send apartmentShortName from
   constructor(private _pricelistService: PricelistService,
               private _route: ActivatedRoute) {
 

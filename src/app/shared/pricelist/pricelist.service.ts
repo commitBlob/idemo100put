@@ -14,7 +14,6 @@ export class PricelistService {
   constructor( private  _http: Http) {}
 
   getPricelist(apartment) {
-    // TODO: create backend!
     return this._http.get('./api/pricelist/' + apartment).map(
       (res: Response) => res.json()
     ).catch(this.handleError);
