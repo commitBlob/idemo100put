@@ -21,6 +21,8 @@ import { LanguagesService } from './languages/languages.service';
 import { LogoModule } from './logo/logo.module';
 import { MarkersService } from './google-maps/markers/markers.service';
 import { MaterialModule } from '../sharedMaterialModule';
+import { PricelisModule } from './pricelist/pricelis.module';
+import { PricelistService } from './pricelist/pricelist.service';
 import { TabsNavigationModule } from './tabs_navigation/tabs_navigation.module';
 import { WordBreakPipe } from './word_break.pipe';
 
@@ -42,6 +44,7 @@ import { WordBreakPipe } from './word_break.pipe';
     FooterModule,
     FormsModule,
     GoogleMapsModule,
+    PricelisModule,
     ReactiveFormsModule,
     RouterModule,
     TabsNavigationModule,
@@ -63,7 +66,8 @@ export class SharedModule {
         ContactFormService,
         DialogsService,
         LanguagesService,
-        MarkersService
+        MarkersService,
+        PricelistService
     ],
     };
   }
