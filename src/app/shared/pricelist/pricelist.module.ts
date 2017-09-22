@@ -1,13 +1,17 @@
 // Core
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 // App specific
+import { MaterialModule } from '../../sharedMaterialModule';
 import { PricelistComponent } from './pricelist.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    MaterialModule
   ],
   declarations: [
     PricelistComponent
@@ -16,5 +20,5 @@ import { PricelistComponent } from './pricelist.component';
     PricelistComponent
   ]
 })
-export class PricelisModule {
+export class PricelistModule {
 }

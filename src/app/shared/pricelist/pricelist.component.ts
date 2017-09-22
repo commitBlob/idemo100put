@@ -22,6 +22,10 @@ export class PricelistComponent implements OnInit {
   private _sub: any;
   public courseList = {};
   public parsedCourseList = {};
+  public selectedValue: string = this.defaultCurrency;
+  public courseListLoaded = false;
+  public tempPricelist: PricelistModel[];
+  public course;
 
 
   constructor(private _pricelistService: PricelistService,
@@ -37,6 +41,7 @@ export class PricelistComponent implements OnInit {
     this._pricelistService.getPricelist(this.apartment).subscribe(
       (data) => {
         this.priceList = <PricelistModel[]>data;
+        this.tempPricelist = <PricelistModel[]>data;
       },
       (error) => {
         this.handleError(error);
@@ -44,14 +49,27 @@ export class PricelistComponent implements OnInit {
   }
 
   public currencyChange(changeValue) {
+    if (this.courseListLoaded) {
+    }else {
+      this.loadCourseList();
+    }
     // if select value is not equal to default value, update default value
     if (changeValue !== this.defaultCurrency) {
+      console.log('iffy', changeValue);
       this.defaultCurrency = changeValue;
-      this.doCalculation();
+      console.log(this.courseList[changeValue]);
+      this.doCalculation(this.courseList[changeValue]);
+      // this.doCalculation();
     }
   }
 
-  public doCalculation() {
+
+  // TODO: finish calculation
+  public doCalculation(course) {
+    console.log(this.tempPricelist[0].monthlyPrice);
+  }
+
+  public loadCourseList() {
     const tempCurrencyName = [];
     const tempCurrencyCourse = [];
     this._pricelistService.getCourseList().subscribe(
@@ -76,6 +94,7 @@ export class PricelistComponent implements OnInit {
           }
         });
         console.log(this.courseList);
+        this.courseListLoaded = true;
       });
   }
 
