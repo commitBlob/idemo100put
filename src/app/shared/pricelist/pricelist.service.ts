@@ -4,13 +4,9 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 
-// Models
-import { PricelistModel } from './pricelist.interface';
 
 @Injectable()
 export class PricelistService {
-  public pricelist: PricelistModel;
-
   constructor( private  _http: Http) {}
 
   getPricelist(apartment) {
@@ -19,8 +15,10 @@ export class PricelistService {
     ).catch(this.handleError);
   }
 
-  calculatePrice(pricelistObject, currency) {
-    this.pricelist = pricelistObject;
+  getCourseList() {
+    return this._http.get('./api/courselist').map(
+      (res: Response) => res.json()
+    ).catch(this.handleError);
   }
 
   private handleError(error: any) {

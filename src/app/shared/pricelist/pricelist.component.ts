@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs/Subscription';
 
 // App specific
 import { PricelistService } from './pricelist.service';
+import * as xml2js from 'xml2js'
 
 // Models
 import { PricelistModel } from './pricelist.interface';
@@ -21,6 +22,9 @@ export class PricelistComponent implements OnInit {
   public calculationDone = false;
   public apartment;
   private _sub: any;
+  public courseList = {};
+  public parsedCourseList = {};
+
 
   constructor(private _pricelistService: PricelistService,
               private _route: ActivatedRoute) {
@@ -49,8 +53,40 @@ export class PricelistComponent implements OnInit {
     }
   }
 
+  // TODO: remove xml2js
+
   public doCalculation() {
-    this._pricelistService.calculatePrice(this.priceList, this.defaultCurrency);
+    const tempCurrencyName = [];
+    const tempCurrencyCourse = [];
+    this._pricelistService.getCourseList().subscribe(
+      (data) => {
+        console.log(data.body['gesmes:Envelope'].Cube[0].Cube[0].Cube);
+        // xml2js.parseString(data, (err, result) => {
+        //   // strip json
+          data.body['gesmes:Envelope'].Cube[0].Cube[0].Cube.forEach((value: any) => {
+            tempCurrencyName.push(value['$'].currency);
+            tempCurrencyCourse.push(value['$'].rate);
+          });
+          console.log(tempCurrencyName);
+        console.log(tempCurrencyCourse);
+        // });
+      },
+      (error) => {
+        this.handleError(error);
+      },
+      () => {
+        // tempCurrencyName.forEach((value: any, key: any) => {
+        //   this.parsedCourseList[value] = tempCurrencyCourse[key];
+        // });
+        // this.parsedCourseList['EUR'] = '1';
+        // this.currencyList.forEach((value: any) => {
+        //   const tempValue = value;
+        //   if (this.parsedCourseList[tempValue]) {
+        //     this.courseList[tempValue] = this.parsedCourseList[tempValue]
+        //   }
+        // });
+        // console.log(this.courseList);
+      });
   }
 
   /**
