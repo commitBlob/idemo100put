@@ -4,9 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 // App specific
+import { CapitalizePipe } from '../capitalize.pipe';
+import { CurrencyPipe } from '../currency.pipe';
 import { MaterialModule } from '../../sharedMaterialModule';
 import { PricelistComponent } from './pricelist.component';
-import { CurrencyPipe} from '../currency.pipe';
 
 @NgModule({
   imports: [
@@ -15,8 +16,9 @@ import { CurrencyPipe} from '../currency.pipe';
     MaterialModule,
   ],
   declarations: [
-    PricelistComponent,
-    CurrencyPipe
+    CapitalizePipe,
+    CurrencyPipe,
+    PricelistComponent
   ],
   exports: [
     PricelistComponent

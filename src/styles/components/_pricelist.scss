@@ -32,6 +32,7 @@
       box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
 
       .pricelist-circle {
+        font-size: .9em;
         border-radius: 50%;
         display: inline-block;
         background-color: $sun-flower;
@@ -50,7 +51,10 @@
         text-align: center;
       }
     }
+  }
 
-
+  .pricelist-note {
+    font-size: .7em;
+    font-style: italic;
   }
 }
