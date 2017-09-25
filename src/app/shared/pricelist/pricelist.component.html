@@ -5,9 +5,14 @@
   </md-select>
 </div>
 <div class="pricelist-wrapper" *ngIf="priceList">
-  <ul>
-    <li *ngFor="let monthPr of generateArray(priceList[0].monthlyPrice, course)">{{monthPr.key}} - {{monthPr.value | myCurrencyPipe:defaultCurrency}}</li>
-  </ul>
+  <div class="pricelist">
+    <div class="pricelist-element" *ngFor="let monthPr of generateArray(priceList[0].monthlyPrice, course)">
+      <div class="pricelist-elements-container">
+        <div class="pricelist-circle">{{monthPr.key}}</div>
+        <div class="pricelist-text">{{monthPr.value | myCurrencyPipe:defaultCurrency}}</div>
+      </div>
+    </div>
+  </div>
 </div>
 
 
