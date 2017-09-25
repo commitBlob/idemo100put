@@ -6,15 +6,17 @@ import { NgModule } from '@angular/core';
 // App specific
 import { MaterialModule } from '../../sharedMaterialModule';
 import { PricelistComponent } from './pricelist.component';
+import { CurrencyPipe} from '../currency.pipe';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    MaterialModule
+    MaterialModule,
   ],
   declarations: [
-    PricelistComponent
+    PricelistComponent,
+    CurrencyPipe
   ],
   exports: [
     PricelistComponent

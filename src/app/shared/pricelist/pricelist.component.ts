@@ -25,7 +25,7 @@ export class PricelistComponent implements OnInit {
   public selectedValue: string = this.defaultCurrency;
   public courseListLoaded = false;
   public tempPricelist: PricelistModel[];
-  public course;
+  public course = 1;
 
 
   constructor(private _pricelistService: PricelistService,
@@ -46,56 +46,81 @@ export class PricelistComponent implements OnInit {
       (error) => {
         this.handleError(error);
       });
+    this.loadCourseList();
   }
 
+  /**
+   *  @param changeValue
+   *  If courseListLoaded is true check changeValue
+   *  If changeValue is not equal to defaultCurrency update default and trigger doCalculation function
+   *  If changeValue is equal to default trigger doCalculation function
+   *  If courseListLoaded is not true, trigger loadCourseList function
+   */
   public currencyChange(changeValue) {
     if (this.courseListLoaded) {
+      if (changeValue !== this.defaultCurrency) {
+        this.defaultCurrency = changeValue;
+        this.course = this.courseList[changeValue];
+        this.doCalculation(this.course);
+      }else {
+        this.course = this.courseList[this.defaultCurrency];
+        this.doCalculation(this.course);
+      }
     }else {
       this.loadCourseList();
-    }
-    // if select value is not equal to default value, update default value
-    if (changeValue !== this.defaultCurrency) {
-      console.log('iffy', changeValue);
-      this.defaultCurrency = changeValue;
-      console.log(this.courseList[changeValue]);
-      this.doCalculation(this.courseList[changeValue]);
-      // this.doCalculation();
     }
   }
 
 
   // TODO: finish calculation
   public doCalculation(course) {
-    console.log(this.tempPricelist[0].monthlyPrice);
+    console.log(this.tempPricelist[0].monthlyPrice, 'tempPricelist');
+    console.log(course, 'what is course?');
   }
 
+  /**
+   * Check if courseListLoaded has been set already
+   * Get course list from backend
+   * Strip course list and save values in temp arrays
+   * Append `currency: course` into parsedCourseList object
+   * Set ourseListLoaded boolean to true
+   */
   public loadCourseList() {
     const tempCurrencyName = [];
     const tempCurrencyCourse = [];
-    this._pricelistService.getCourseList().subscribe(
-      (data) => {
+    if (!this.courseListLoaded) {
+      this._pricelistService.getCourseList().subscribe(
+        (data) => {
           data.body['gesmes:Envelope'].Cube[0].Cube[0].Cube.forEach((value: any) => {
             tempCurrencyName.push(value['$'].currency);
             tempCurrencyCourse.push(value['$'].rate);
           });
-      },
-      (error) => {
-        this.handleError(error);
-      },
-      () => {
-        tempCurrencyName.forEach((value: any, key: any) => {
-          this.parsedCourseList[value] = tempCurrencyCourse[key];
+        },
+        (error) => {
+          this.handleError(error);
+        },
+        () => {
+          tempCurrencyName.forEach((value: any, key: any) => {
+            this.parsedCourseList[value] = tempCurrencyCourse[key];
+          });
+          this.parsedCourseList['EUR'] = '1';
+          this.currencyList.forEach((value: any) => {
+            const tempValue = value;
+            if (this.parsedCourseList[tempValue]) {
+              this.courseList[tempValue] = this.parsedCourseList[tempValue]
+            }
+          });
+          this.courseListLoaded = true;
         });
-        this.parsedCourseList['EUR'] = '1';
-        this.currencyList.forEach((value: any) => {
-          const tempValue = value;
-          if (this.parsedCourseList[tempValue]) {
-            this.courseList[tempValue] = this.parsedCourseList[tempValue]
-          }
-        });
-        console.log(this.courseList);
-        this.courseListLoaded = true;
-      });
+    }
+  }
+
+  public generateArray(obj, course) {
+    let calc = 0;
+    return Object.keys(obj).map((key) => {
+      calc = obj[key] * course
+      return {key: key, value: calc}
+    });
   }
 
   /**

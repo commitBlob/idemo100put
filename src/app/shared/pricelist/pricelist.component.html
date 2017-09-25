@@ -1,7 +1,13 @@
 <p> Pricelist component</p>
-<button (click)="loadCourseList()"> Button</button>
 <div class="select-wrapper">
   <md-select [(ngModel)]="selectedValue" (ngModelChange)="currencyChange($event)">
     <md-option *ngFor="let currency of currencyList" value="{{currency}}">{{currency}}</md-option>
   </md-select>
 </div>
+<div class="pricelist-wrapper" *ngIf="priceList">
+  <ul>
+    <li *ngFor="let monthPr of generateArray(priceList[0].monthlyPrice, course)">{{monthPr.key}} - {{monthPr.value | myCurrencyPipe:defaultCurrency}}</li>
+  </ul>
+</div>
+
+
