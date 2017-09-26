@@ -37,7 +37,6 @@ export class PricelistComponent implements OnInit {
   }
 
   public ngOnInit() {
-    console.log(this.apartment, 'apartment');
     this._pricelistService.getPricelist(this.apartment).subscribe(
       (data) => {
         this.priceList = <PricelistModel[]>data;
@@ -61,21 +60,12 @@ export class PricelistComponent implements OnInit {
       if (changeValue !== this.defaultCurrency) {
         this.defaultCurrency = changeValue;
         this.course = this.courseList[changeValue];
-        this.doCalculation(this.course);
       }else {
         this.course = this.courseList[this.defaultCurrency];
-        this.doCalculation(this.course);
       }
     }else {
       this.loadCourseList();
     }
-  }
-
-
-  // TODO: finish calculation
-  public doCalculation(course) {
-    console.log(this.tempPricelist[0].monthlyPrice, 'tempPricelist');
-    console.log(course, 'what is course?');
   }
 
   /**

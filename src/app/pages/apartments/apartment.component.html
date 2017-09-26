@@ -8,10 +8,10 @@
     <p>{{apartmentData[0].apartmentDescription}}</p>
     <div *ngIf="language === 'eng'; then minEng else minCro"></div>
     <ng-template #minEng>
-      <p>{{apartmentData[0].minStay}} Nights</p>
+      <p>Minimum stay: {{apartmentData[0].minStay}} Nights</p>
     </ng-template>
     <ng-template #minCro>
-      <p>{{apartmentData[0].minStay}} Nocenja</p>
+      <p>Minimalan broj nocenja: {{apartmentData[0].minStay}}</p>
     </ng-template>
     <a class="app-button-- apartment_availability" [href]="apartmentData[0].bookingLink" [target]="_blank">
       Check Availability

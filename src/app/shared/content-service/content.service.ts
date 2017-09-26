@@ -49,6 +49,12 @@ export class ContentService {
     ).catch(this.handleError);
   }
 
+  public getCroMoneyContent(language): Observable<Content[]> {
+    return this._http.get('./api/cromoney' + language).map(
+      (res: Response) => res.json()
+    ).catch(this.handleError);
+  }
+
   /**
    * Handle HTTP error
    */

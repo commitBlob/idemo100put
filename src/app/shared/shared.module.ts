@@ -11,6 +11,7 @@ import { CardsService } from './cards/cards.service';
 import { ContactFormModule } from './contact-form/contact-form.module';
 import { ContactFormService } from './contact-form/contact-form-service/contact-form.service';
 import { ContentService } from './content-service/content.service';
+import { CroatiaFactsMoneyModule } from '../pages/croatia-facts/croatia-facts-money/croatia-facts-money.module';
 import { DialogsModule } from './dialogs/dialogs.module';
 import { DialogsService } from './dialogs/dialogs.service';
 import { DistancePipe } from './distance.pipe';
@@ -26,7 +27,6 @@ import { PricelistService } from './pricelist/pricelist.service';
 import { TabsNavigationModule } from './tabs_navigation/tabs_navigation.module';
 import { WordBreakPipe } from './word_break.pipe';
 
-
 @NgModule({
   imports: [
     CommonModule,
@@ -37,6 +37,7 @@ import { WordBreakPipe } from './word_break.pipe';
     CardsModule,
     CommonModule,
     ContactFormModule,
+    CroatiaFactsMoneyModule,
     DialogsModule,
     DistancePipe,
     LanguagesModule,
