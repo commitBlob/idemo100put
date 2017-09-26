@@ -50,7 +50,7 @@ export class ContentService {
   }
 
   public getCroMoneyContent(language): Observable<Content[]> {
-    return this._http.get('./api/cromoney' + language).map(
+    return this._http.get('./api/cromoney/' + language).map(
       (res: Response) => res.json()
     ).catch(this.handleError);
   }

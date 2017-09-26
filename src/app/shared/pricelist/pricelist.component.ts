@@ -17,7 +17,6 @@ export class PricelistComponent implements OnInit {
   public priceList: PricelistModel[];
   public currencyList = ['EUR', 'GBP', 'USD', 'HRK'];
   public defaultCurrency = 'EUR';
-  public calculationDone = false;
   public apartment;
   private _sub: any;
   public courseList = {};

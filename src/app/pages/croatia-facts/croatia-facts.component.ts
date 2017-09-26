@@ -3,8 +3,8 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 // App specific
-import { LanguagesService } from '../../shared/languages/languages.service';
 import { ContentService } from '../../shared/content-service/content.service';
+import { LanguagesService } from '../../shared/languages/languages.service';
 
 // Models
 import { Content } from '../../shared/content-service/content.interface';

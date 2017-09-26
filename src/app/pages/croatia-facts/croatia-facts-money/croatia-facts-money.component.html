@@ -1,1 +1,14 @@
 <p>Cro Facts Money Component works!</p>
+
+<div *ngIf="moneyContent">
+  <h3>{{moneyContent[0].header}}</h3>
+  <p>{{moneyContent[0].content}}</p>
+
+  <div *ngIf="defaultCurrencyValue">
+    <p>Course List</p>
+    <p>1 Euro is worth approximately {{kunaBaseList['EUR'] | number:'1.2-2'}} Kunas</p>
+    <p>1 Pound is worth approximately {{kunaBaseList['GBP'] | number:'1.2-2'}} Kunas</p>
+    <p>1 Dollar is worth approximately {{kunaBaseList['USD'] | number:'1.2-2'}} Kunas</p>
+    <p>Please note that course is calculated using today's course rate obtained from European Central Bank</p>
+  </div>
+</div>
