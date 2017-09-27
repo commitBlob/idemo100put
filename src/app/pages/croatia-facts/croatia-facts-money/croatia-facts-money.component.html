@@ -4,11 +4,36 @@
   <h3>{{moneyContent[0].header}}</h3>
   <p>{{moneyContent[0].content}}</p>
 
-  <div *ngIf="defaultCurrencyValue">
-    <p>Course List</p>
-    <p>1 Euro is worth approximately {{kunaBaseList['EUR'] | number:'1.2-2'}} Kunas</p>
-    <p>1 Pound is worth approximately {{kunaBaseList['GBP'] | number:'1.2-2'}} Kunas</p>
-    <p>1 Dollar is worth approximately {{kunaBaseList['USD'] | number:'1.2-2'}} Kunas</p>
-    <p>Please note that course is calculated using today's course rate obtained from European Central Bank</p>
+  <div *ngIf="defaultCurrencyValue" class="currency_container">
+    <h4>Currency List</h4>
+    <div class="currency_card">
+      <div class="currency_symbol_container">
+        <span class="currency_symbol">€</span>
+      </div>
+      <div class="currency_text">
+        <p> ~ {{kunaBaseList['EUR'] | number:'1.2-2'}} Kuna</p>
+      </div>
+    </div>
+    <div class="currency_card">
+      <div class="currency_symbol_container">
+        <span class="currency_symbol">£</span>
+      </div>
+      <div class="currency_text">
+        <p> ~ {{kunaBaseList['GBP'] | number:'1.2-2'}} Kuna</p>
+      </div>
+    </div>
+    <div class="currency_card">
+      <div class="currency_symbol_container">
+        <span class="currency_symbol">$</span>
+      </div>
+      <div class="currency_text">
+        <p> ~ {{kunaBaseList['USD'] | number:'1.2-2'}} Kuna</p>
+      </div>
+    </div>
+    <p class="small_italic">Please note that course is calculated using today's course rate obtained from
+      <a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html" target="_blank">
+        European Central Bank
+      </a>
+    </p>
   </div>
 </div>

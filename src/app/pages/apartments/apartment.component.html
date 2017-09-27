@@ -27,7 +27,6 @@
     </div>
     <hr class="apartment_details_hr"/>
     <div class="facilities_container">
-    <!--<div class="facilities_container" *ngIf="!displayWarning">-->
       <h3>Facilities</h3>
       <div *ngFor="let facility of generateArray(apartmentData[0].facilities)" class="facilities_card">
         <div class="facilities_icon_container">
@@ -40,7 +39,6 @@
     </div>
     <hr class="apartment_details_hr"/>
     <div *ngIf="nearbyPlacesData" class="nearby_places_container">
-    <!--<div *ngIf="!nearbyPlacesData" class="nearby_places_container">-->
       <h3>Nearby Places</h3>
       <div *ngFor="let place of nearbyPlacesData" class="nearby_place_card">
         <div *ngIf="language === 'eng'; then english else croatian"></div>
