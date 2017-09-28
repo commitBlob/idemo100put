@@ -5,5 +5,7 @@
   <h2>{{croatiaFactsContent[0].header}}</h2>
   <p>{{croatiaFactsContent[0].content}}</p>
   <app-cro-money></app-cro-money>
-  <p>In Croatia the power sockets are of type C and F. The standard voltage is 230 V and the standard frequency is 50 Hz.</p>
+  <div *ngIf="language === 'eng'">
+    <app-cro-data-power></app-cro-data-power>
+  </div>
 </div>

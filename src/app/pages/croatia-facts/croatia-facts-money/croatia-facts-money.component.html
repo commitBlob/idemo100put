@@ -30,10 +30,21 @@
         <p> ~ {{kunaBaseList['USD'] | number:'1.2-2'}} Kuna</p>
       </div>
     </div>
-    <p class="small_italic">Please note that course is calculated using today's course rate obtained from
+    <p class="small_italic">{{moneyContent[0].note}}
       <a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html" target="_blank">
-        European Central Bank
+        {{moneyContent[0].ECB}}
       </a>
     </p>
+    <div *ngIf="language === 'eng'">
+      <h4>Cards Usage</h4>
+      <div class="currency_card">
+        <div class="cards_usage_symbol_container">
+          <span class="currency_symbol material-icons">payment</span>
+        </div>
+        <div class="currency_text">
+          <p>MasterCard and Visa are widely accepted, Diner’s Club, American Express, Android and Apple Pay can be utilized, as well.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

@@ -3,4 +3,6 @@ export interface Content {
   language: string;
   header: string;
   content: string;
+  note?: string;
+  ECB?: string;
 }

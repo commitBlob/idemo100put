@@ -28,6 +28,24 @@
       }
     }
 
+    .cards_usage_symbol_container {
+      margin-top: -1.2em;
+      line-height: 56px;
+      width: 56px;
+      height: 56px;
+      float: left;
+      text-align: center;
+      background-color: $brand-primary;
+      box-shadow: 1px 2px 4px rgba($black, .5);
+      border-radius: .3em;
+
+      .currency_symbol {
+        color: $dirty-white !important;
+        font-size: $font-size-base * 2.6;
+        line-height: inherit;
+      }
+    }
+
     .currency_text {
       display: inline-block;
       padding: 0 .5em;
@@ -48,5 +66,48 @@
   .currency_symbols {
     font-weight: $font-weight-base * 2;
     font-size: 24px;
+  }
+}
+
+.data-power_container {
+  margin: 1em 0;
+
+  .data-power_card {
+    display: inline-block;
+    padding: .5em;
+    margin: .6em .5em;
+    min-height: 40px;
+    background-color: $white;
+    border-radius: .3em;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.14);
+
+    .data-power_container {
+      margin-top: -1.2em;
+      line-height: 56px;
+      width: 56px;
+      height: 56px;
+      float: left;
+      text-align: center;
+      background-color: $brand-warning;
+      box-shadow: 1px 2px 4px rgba($black, .5);
+      border-radius: .3em;
+
+      .data-power_symbol {
+        color: $dirty-white !important;
+        font-size: $font-size-base * 2.6;
+        line-height: inherit;
+      }
+    }
+
+    .data-power_text {
+      display: inline-block;
+      padding: 0 .5em;
+      font-style: italic;
+
+      p {
+        padding: 0 !important;
+        margin: .5em 0;
+      }
+    }
   }
 }
