@@ -1,11 +1,9 @@
-<p>Cro Facts Money Component works!</p>
-
 <div *ngIf="moneyContent">
   <h3>{{moneyContent[0].header}}</h3>
   <p>{{moneyContent[0].content}}</p>
 
   <div *ngIf="defaultCurrencyValue" class="currency_container">
-    <h4>Currency List</h4>
+    <h4 *ngIf="language === 'eng'">Currency List</h4>
     <div class="currency_card">
       <div class="currency_symbol_container">
         <span class="currency_symbol">€</span>
