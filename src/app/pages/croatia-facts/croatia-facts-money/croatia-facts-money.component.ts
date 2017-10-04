@@ -56,7 +56,7 @@ export class CroatiaFactsMoneyComponent implements OnInit, OnDestroy {
     const tempCourseList = {};
     this._courselistService.getCourseList().subscribe(
       (data) => {
-        data.body['gesmes:Envelope'].Cube[0].Cube[0].Cube.forEach((value: any) => {
+        data['gesmes:Envelope'].Cube[0].Cube[0].Cube.forEach((value: any) => {
           tempCurrencyName.push(value['$'].currency);
           tempCurrencyCourse.push(value['$'].rate);
         });

@@ -80,7 +80,7 @@ export class PricelistComponent implements OnInit {
     if (!this.courseListLoaded) {
       this._pricelistService.getCourseList().subscribe(
         (data) => {
-          data.body['gesmes:Envelope'].Cube[0].Cube[0].Cube.forEach((value: any) => {
+          data['gesmes:Envelope'].Cube[0].Cube[0].Cube.forEach((value: any) => {
             tempCurrencyName.push(value['$'].currency);
             tempCurrencyCourse.push(value['$'].rate);
           });
