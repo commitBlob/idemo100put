@@ -5,6 +5,7 @@ import { Routes } from '@angular/router';
 import { AboutUsComponent } from '../../pages/about-us/about-us.component';
 import { ApartmentComponent } from '../../pages/apartments/apartment.component';
 import { ApartmentsPolicyComponent } from '../../pages/apartments-policy/apartments-policy.component';
+import { BookingComponent } from '../booking/booking.component';
 import { ContactUsComponent } from '../../pages/contact-us/contact-us.component';
 import { CroatiaFactsComponent } from '../../pages/croatia-facts/croatia-facts.component';
 import { DubrovnikFactsComponent } from '../../pages/dubrovnik-facts/dubrovnik-facts.component';
@@ -25,5 +26,6 @@ export const appRoutes: Routes = [
   { path: 'du-facts', component: DubrovnikFactsComponent },
   { path: 'location', component: LocationComponent },
   { path: 'surroundings', component: SurroundingsComponent },
+  { path: 'booking', component: BookingComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
