@@ -1,5 +1,4 @@
 
-<p>page works</p>
 <p>{{numberOfDays}}</p>
 <div class="calendar" >
   <!--<div class="column" *ngFor="let sausage of monthsArray">-->
@@ -9,4 +8,13 @@
       <!--<div *ngIf='moment(year + "-" + sausage.month + "-" + (index + 1), "YYYY-MM-DD").format("d")'></div>-->
       <!--&lt;!&ndash;{{year + "-" + sausage.month + "-" + (index + 1)}}&ndash;&gt;-->
   <!--</div>-->
+  <div *ngFor="let day of fullGrid; let i=index">
+    <div *ngIf="i % 7 === 0">
+      <span>{{i}} ++++++ {{day}}</span>
+    </div>
+    <div *ngIf="i % 7 !== 0">
+      <span>{{i}} --- {{day}}</span>
+    </div>
+
+  </div>
 </div>
