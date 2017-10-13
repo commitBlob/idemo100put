@@ -11,8 +11,12 @@
 <!--</div>-->
 <div class="container">
   <div class="flex-group">
+    <div class="flex-group-item header-element" *ngFor="let weekDay of days">
+      <p>{{weekDay}}</p>
+    </div>
     <div class="flex-group-item" *ngFor="let day of fullGrid; let i=index">
-        <p>{{i}} ++++++ {{day}}</p>
+        <p>{{i}} ++++++ </p>
+      <span class="month-day">{{day}}</span>
       </div>
   </div>
 </div>

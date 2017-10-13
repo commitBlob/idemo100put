@@ -70,7 +70,7 @@ export class BookingComponent implements OnInit {
     var end = new Date(fillerEnd);
 
     while (start < end) {
-      this.fullGrid.push(moment(start).format('ddd DD-MM'));
+      this.fullGrid.push(moment(start).format('DD'));
       let newDate = start.setDate(start.getDate() + 1);
       start = new Date(newDate);
     }
