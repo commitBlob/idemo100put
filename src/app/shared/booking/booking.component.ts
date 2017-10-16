@@ -11,13 +11,15 @@ import * as moment from 'moment/moment';
   templateUrl: './booking.component.html',
 })
 export class BookingComponent implements OnInit {
-  public numberOfDays;
-  public rows = 6;
+
   public year = 2017;
   public monthsArray: any = [];
   public days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'];
   public moment = moment;
   public fullGrid: any = [];
+  public currentMonth = moment().format('YYYY-MM-DD');
+  public previousMonth = moment().subtract(1, 'month').date(1).format('YYYY-MM-DD');
+  public nextMonth = moment().add(1, 'month').date(1).format('YYYY-MM-DD');
 
   constructor() {
   }
@@ -43,28 +45,27 @@ export class BookingComponent implements OnInit {
 
     let startofMonth = moment().startOf('month').format('YYYY-MM-DD');
 
-    console.log('What is months array? ', this.monthsArray);
-
-    console.log('-------------------------------');
-    console.log('days in current month', daysNow);
-    console.log('first day', firstDay);
-    console.log('previous month days', previousMonthDays);
-    console.log('previous days minus first day', previousDays);
-    console.log('this many days I need to print from the previous month', difference);
-    console.log('this is the remainder needed to fill 42 cells', fill42);
-    console.log('do I need to fill completly first week? fill42 > 7', difference);
-    console.log('Sum should be 42 = ', daysNow , '+', difference, '+', fill42);
-    console.log('-------------------------------');
-    console.log('Start Month ', startofMonth);
-    console.log('7 days ago,', moment(startofMonth).subtract(7, 'd').format('YYYY-MM-DD'));
+    // console.log('What is months array? ', this.monthsArray);
+    //
+    // console.log('-------------------------------');
+    // console.log('days in current month', daysNow);
+    // console.log('previous month days', previousMonthDays);
+    // console.log('previous days minus first day', previousDays);
+    // console.log('this many days I need to print from the previous month', difference);
+    // console.log('this is the remainder needed to fill 42 cells', fill42);
+    // console.log('do I need to fill completly first week? fill42 > 7', difference);
+    // console.log('Sum should be 42 = ', daysNow , '+', difference, '+', fill42);
+    // console.log('-------------------------------');
+    // console.log('Start Month ', startofMonth);
+    // console.log('7 days ago,', moment(startofMonth).subtract(7, 'd').format('YYYY-MM-DD'));
 
     var tempHolder = difference;
 
     let fillerStart = moment(startofMonth).subtract(tempHolder, 'd').format('YYYY-MM-DD');
     let fillerEnd = moment(startofMonth).add((fill42 + daysNow), 'd').format('YYYY-MM-DD');
 
-    console.log('starting point ', fillerStart);
-    console.log('end point', fillerEnd);
+    // console.log('starting point ', fillerStart);
+    // console.log('end point', fillerEnd);
 
     var start = new Date(fillerStart);
     var end = new Date(fillerEnd);
@@ -75,28 +76,31 @@ export class BookingComponent implements OnInit {
       start = new Date(newDate);
     }
 
-    console.log(this.fullGrid, 'full array?');
+    // console.log(this.fullGrid, 'full array?');
 
-    // for (let i = 0; i < 42; i++) {
-    //   let daysToFill;
-    //   if (tempHolder > 1) {
-    //     daysToFill = moment(startofMonth).subtract(tempHolder, 'd').format('YYYY-MM-DD');
-    //     tempHolder--;
-    //   }
-    //   console.log('Show me days', daysToFill);
-    //   this.fullGrid.push(daysToFill);
-    // }
+    let previousMonth = moment().subtract(1, 'month').date(1).format('YYYY-MM-DD');
+    let nextMonth = moment().add(1, 'month').date(1).format('YYYY-MM-DD');
 
-    //
-    // if (firstDay !== 0 ) {
-    //
-    // }
-
-    // for (let p = previousMonthDays; p <= previousDays; p--) {
-    //
-    // }
-
-
-
+    // console.log('Previous month: ', previousMonth);
+    // console.log('Next month: ', nextMonth);
   }
+
+  public getPreviousMonth() {
+    this.currentMonth = moment(this.currentMonth).subtract(1, 'month').date(1).format('YYYY-MM-DD');
+    this.previousMonth = moment(this.previousMonth).subtract(1, 'month').date(1).format('YYYY-MM-DD');
+    this.nextMonth = moment(this.currentMonth).add(1, 'month').format('YYYY-MM-DD');
+  }
+
+  public getNextMonth() {
+    this.currentMonth = moment(this.currentMonth).add(1, 'month').date(1).format('YYYY-MM-DD');
+    this.previousMonth = moment(this.previousMonth).add(1, 'month').date(1).format('YYYY-MM-DD');
+    this.nextMonth = moment(this.currentMonth).add(1, 'month').format('YYYY-MM-DD');
+  }
+
+  public getToday() {
+    this.currentMonth = moment().format('YYYY-MM-DD');
+    this.previousMonth = moment().subtract(1, 'month').date(1).format('YYYY-MM-DD');
+    this.nextMonth = moment().add(1, 'month').format('YYYY-MM-DD');
+  }
+
 }

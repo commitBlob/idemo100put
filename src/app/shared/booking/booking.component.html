@@ -1,22 +1,22 @@
 
-<!--<div class="calendar" >  -->
-  <!--<div *ngFor="let day of fullGrid; let i=index">-->
-    <!--<div *ngIf="i % 7 === 0">-->
-      <!--<span>{{i}} ++++++ {{day}}</span>-->
-    <!--</div>-->
-    <!--<div *ngIf="i % 7 !== 0">-->
-      <!--<span>{{i}} -&#45;&#45; {{day}}</span>-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</div>-->
 <div class="container">
+  <div class="head-wrapper">
+    <div class="buttons-wrapper">
+      <button class="calendar-button-left" (click)="getPreviousMonth()">Prev</button>
+      <button class="calendar-button-right" (click)="getNextMonth()">Next</button>
+      <button class="calendar-button" (click)="getToday()">Today</button>
+    </div>
+    <div class="current-month">
+      <p>{{moment(currentMonth).format('MMMM YYYY')}}</p>
+    </div>
+  </div>
   <div class="flex-group">
     <div class="flex-group-item header-element" *ngFor="let weekDay of days">
       <p>{{weekDay}}</p>
     </div>
     <div class="flex-group-item" *ngFor="let day of fullGrid; let i=index">
-        <p>{{i}} ++++++ </p>
+      <!--<div class="date-booked">{{i}}</div>-->
       <span class="month-day">{{day}}</span>
-      </div>
+    </div>
   </div>
 </div>
