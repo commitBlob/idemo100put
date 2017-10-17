@@ -75,15 +75,28 @@
     border: 1px solid #ccc;
     display: flex;
     flex: 1 1 0%;
-    padding: 10px 0;
+    min-height: 5em;
     // 7px is border width * 7 boxes
     min-width: calc((100% - 7px) /7);
 
     .month-day {
       position: absolute;
       top: 0;
-      right: 0;
+      right: 1px;
       min-height: 20px;
+    }
+    
+    .active-month {
+      background-color: $grayish;
+      height: 100%;
+      width: 100%;
+    }
+
+    .inactive-month {
+      background-color: lighten( $gray-base, 35% );
+      height: 100%;
+      width: 100%;
+      cursor: not-allowed;
     }
 
     .date-booked {
@@ -100,6 +113,7 @@
     padding: 5px 20px !important;
     align-items: center;
     justify-content: center;
+    min-height: 30px;
 
     p {
       margin: 0;

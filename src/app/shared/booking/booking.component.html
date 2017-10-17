@@ -14,9 +14,9 @@
     <div class="flex-group-item header-element" *ngFor="let weekDay of days">
       <p>{{weekDay}}</p>
     </div>
-    <div class="flex-group-item" *ngFor="let day of fullGrid; let i=index">
-      <!--<div class="date-booked">{{i}}</div>-->
-      <span class="month-day">{{day}}</span>
+    <div class="flex-group-item" *ngFor="let day of fullGrid; let i=index;">
+      <span [class]="classGrid[i]" (click)="calendarElementTrigger($event)"></span>
+      <span class="month-day" >{{day}}</span>
     </div>
   </div>
 </div>
