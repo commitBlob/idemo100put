@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 
 // App specific
 import { ApartmentDetailsService } from '../pages/apartments/apartment-details/apartment-details.service';
+import { BookingService } from './booking/booking.service';
 import { CardsModule } from './cards/cards.module';
 import { CardsService } from './cards/cards.service';
 import { ContactFormModule } from './contact-form/contact-form.module';
@@ -68,6 +69,7 @@ export class SharedModule {
       ngModule: SharedModule,
       providers: [
         ApartmentDetailsService,
+        BookingService,
         CardsService,
         ContentService,
         ContactFormService,

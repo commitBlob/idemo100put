@@ -3,6 +3,9 @@ import {Component, OnInit} from '@angular/core';
 
 // App specific
 
+// Model
+import { CalendarCellModel } from './calendar/calendar-cells.interface';
+
 // Moment
 import * as moment from 'moment/moment';
 
@@ -11,7 +14,9 @@ import * as moment from 'moment/moment';
   templateUrl: './booking.component.html',
 })
 export class BookingComponent implements OnInit {
+  // {"apartmentId": 2, "startDate": {$gte: "01/10/2017", $lte: "31/10/2017"}, "endDate": {$gte: "01/10/2017",$lte: "31/10/2017"}}
 
+  public calendarCells: CalendarCellModel[];
   public monthsArray: any = [];
   public days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'];
   public moment = moment;
@@ -22,11 +27,29 @@ export class BookingComponent implements OnInit {
   public nextMonth = moment().add(1, 'month').date(1).format('YYYY-MM-DD');
   public elementDisabled = true;
 
+  // public dummy = [
+  //   {
+  //     cellNumber: 0,
+  //     cellClasses: ['testclass', 'anotherclass'],
+  //     disabled: true,
+  //     booked: false,
+  //     celldate: 'stringy'
+  //   }, {
+  //     cellNumber: 1,
+  //     cellClasses: ['testclass1', 'anotherclass1'],
+  //     disabled: true,
+  //     booked: false,
+  //     celldate: 'stringy2'
+  //   }
+  // ];
+
   constructor() {
+    // this.calendarCells = this.dummy;
   }
 
   public ngOnInit() {
     this.buildGrid();
+    // console.log(this.calendarCells);
   }
 
   public buildGrid() {
