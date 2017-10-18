@@ -56,6 +56,7 @@ export class BookingComponent implements OnInit {
 
     while (momentStart <= momentEnd) {
       this.fullGrid.push(moment(momentStart).format('DD'));
+      // ovdje se puni array
       if (momentStart >= monthStartDate && momentStart <= monthEndDate) {
         this.classGrid.push('active-month');
       } else {

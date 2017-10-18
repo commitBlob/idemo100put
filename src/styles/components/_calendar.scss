@@ -85,11 +85,15 @@
       right: 1px;
       min-height: 20px;
     }
-    
+
     .active-month {
       background-color: $grayish;
       height: 100%;
       width: 100%;
+
+      &:hover {
+        background-color: lighten( $gray-base, 50% );
+      }
     }
 
     .inactive-month {
