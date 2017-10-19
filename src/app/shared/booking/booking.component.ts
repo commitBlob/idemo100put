@@ -29,6 +29,7 @@ export class BookingComponent implements OnInit {
   public elementDisabled = true;
   public montStartUNIX = moment().startOf('month').format('x');
   public montEndUNIX = moment().endOf('month').format('x');
+  public componentLoading = true;
 
   // public dummy = [
   //   {
@@ -55,6 +56,7 @@ export class BookingComponent implements OnInit {
     // console.log(this.calendarCells);
     console.log('month start', moment(this.currentMonth).startOf('month').format('x'));
     console.log('month end', moment(this.currentMonth).endOf('month').format('x'));
+    setTimeout(() => { this.componentLoading = false; }, 3000);
   }
 
   public buildGrid() {
