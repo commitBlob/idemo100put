@@ -14,7 +14,8 @@ import * as moment from 'moment/moment';
   templateUrl: './booking.component.html',
 })
 export class BookingComponent implements OnInit {
-  // {"apartmentId": 2, "startDate": {$gte: "01/10/2017", $lte: "31/10/2017"}, "endDate": {$gte: "01/10/2017",$lte: "31/10/2017"}}
+  // {"apartmentId": 2, "startDate": {$gte: 1506812400000, $lte: 1509494399999}}
+  // {"apartmentId": 2, "endDate": {$gte: 1506812400000,$lte: 1509494399999}}
 
   public calendarCells: CalendarCellModel[];
   public monthsArray: any = [];
@@ -26,6 +27,8 @@ export class BookingComponent implements OnInit {
   public previousMonth = moment().subtract(1, 'month').date(1).format('YYYY-MM-DD');
   public nextMonth = moment().add(1, 'month').date(1).format('YYYY-MM-DD');
   public elementDisabled = true;
+  public montStartUNIX = moment().startOf('month').format('x');
+  public montEndUNIX = moment().endOf('month').format('x');
 
   // public dummy = [
   //   {
@@ -50,6 +53,8 @@ export class BookingComponent implements OnInit {
   public ngOnInit() {
     this.buildGrid();
     // console.log(this.calendarCells);
+    console.log('month start', moment(this.currentMonth).startOf('month').format('x'));
+    console.log('month end', moment(this.currentMonth).endOf('month').format('x'));
   }
 
   public buildGrid() {
@@ -94,6 +99,8 @@ export class BookingComponent implements OnInit {
     this.currentMonth = moment(this.currentMonth).subtract(1, 'month').date(1).format('YYYY-MM-DD');
     this.previousMonth = moment(this.previousMonth).subtract(1, 'month').date(1).format('YYYY-MM-DD');
     this.nextMonth = moment(this.currentMonth).add(1, 'month').format('YYYY-MM-DD');
+    this.montStartUNIX =  moment(this.currentMonth).startOf('month').format('x');
+    this.montEndUNIX =  moment(this.currentMonth).endOf('month').format('x');
     this.buildGrid();
   }
 
@@ -101,6 +108,8 @@ export class BookingComponent implements OnInit {
     this.currentMonth = moment(this.currentMonth).add(1, 'month').date(1).format('YYYY-MM-DD');
     this.previousMonth = moment(this.previousMonth).add(1, 'month').date(1).format('YYYY-MM-DD');
     this.nextMonth = moment(this.currentMonth).add(1, 'month').format('YYYY-MM-DD');
+    this.montStartUNIX =  moment(this.currentMonth).startOf('month').format('x');
+    this.montEndUNIX =  moment(this.currentMonth).endOf('month').format('x');
     this.buildGrid();
   }
 
@@ -108,6 +117,8 @@ export class BookingComponent implements OnInit {
     this.currentMonth = moment().format('YYYY-MM-DD');
     this.previousMonth = moment().subtract(1, 'month').date(1).format('YYYY-MM-DD');
     this.nextMonth = moment().add(1, 'month').format('YYYY-MM-DD');
+    this.montStartUNIX =  moment(this.currentMonth).startOf('month').format('x');
+    this.montEndUNIX =  moment(this.currentMonth).endOf('month').format('x');
     this.buildGrid();
   }
 
