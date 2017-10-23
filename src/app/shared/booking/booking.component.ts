@@ -1,7 +1,9 @@
 // Core
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {Observable} from 'rxjs/Observable';
 
 // App specific
+import { BookingService } from './booking.service';
 
 // Model
 import { CalendarCellModel } from './calendar/calendar-cells.interface';
@@ -27,9 +29,12 @@ export class BookingComponent implements OnInit {
   public previousMonth = moment().subtract(1, 'month').date(1).format('YYYY-MM-DD');
   public nextMonth = moment().add(1, 'month').date(1).format('YYYY-MM-DD');
   public elementDisabled = true;
-  public montStartUNIX = moment().startOf('month').format('x');
-  public montEndUNIX = moment().endOf('month').format('x');
+  public monthStartUNIX = moment().startOf('month').format('x');
+  public monthEndUNIX = moment().endOf('month').format('x');
   public componentLoading = true;
+  public apartmentId = 2;
+  public bookedEvents = [];
+  public tempEvents = [];
 
   // public dummy = [
   //   {
@@ -47,16 +52,33 @@ export class BookingComponent implements OnInit {
   //   }
   // ];
 
-  constructor() {
+  constructor(private _bookingService: BookingService) {
     // this.calendarCells = this.dummy;
   }
 
   public ngOnInit() {
+    Observable.forkJoin(
+      this._bookingService.getStartDates(this.apartmentId, this.monthStartUNIX, this.monthEndUNIX),
+      this._bookingService.getEndDates(this.apartmentId, this.monthStartUNIX, this.monthEndUNIX)
+    ).subscribe( (res) => {
+      console.log(res[0], 'res[0]');
+      console.log(res[1], 'res[1]');
+      console.log(res[0].length, 'len');
+      res[0].forEach((value: any) => {
+        this.bookedEvents.push(value);
+      });
+      res[1].forEach((value: any, key: any) => {
+
+      });
+      console.log(this.bookedEvents, 'booked events');
+    }, (error) => {
+      console.log(error);
+    }, () => {
+      this.componentLoading = false;
+    });
     this.buildGrid();
     // console.log(this.calendarCells);
-    console.log('month start', moment(this.currentMonth).startOf('month').format('x'));
-    console.log('month end', moment(this.currentMonth).endOf('month').format('x'));
-    setTimeout(() => { this.componentLoading = false; }, 3000);
+    // setTimeout(() => { this.componentLoading = false; }, 3000);
   }
 
   public buildGrid() {
@@ -101,8 +123,8 @@ export class BookingComponent implements OnInit {
     this.currentMonth = moment(this.currentMonth).subtract(1, 'month').date(1).format('YYYY-MM-DD');
     this.previousMonth = moment(this.previousMonth).subtract(1, 'month').date(1).format('YYYY-MM-DD');
     this.nextMonth = moment(this.currentMonth).add(1, 'month').format('YYYY-MM-DD');
-    this.montStartUNIX =  moment(this.currentMonth).startOf('month').format('x');
-    this.montEndUNIX =  moment(this.currentMonth).endOf('month').format('x');
+    this.monthStartUNIX =  moment(this.currentMonth).startOf('month').format('x');
+    this.monthEndUNIX =  moment(this.currentMonth).endOf('month').format('x');
     this.buildGrid();
   }
 
@@ -110,8 +132,8 @@ export class BookingComponent implements OnInit {
     this.currentMonth = moment(this.currentMonth).add(1, 'month').date(1).format('YYYY-MM-DD');
     this.previousMonth = moment(this.previousMonth).add(1, 'month').date(1).format('YYYY-MM-DD');
     this.nextMonth = moment(this.currentMonth).add(1, 'month').format('YYYY-MM-DD');
-    this.montStartUNIX =  moment(this.currentMonth).startOf('month').format('x');
-    this.montEndUNIX =  moment(this.currentMonth).endOf('month').format('x');
+    this.monthStartUNIX =  moment(this.currentMonth).startOf('month').format('x');
+    this.monthEndUNIX =  moment(this.currentMonth).endOf('month').format('x');
     this.buildGrid();
   }
 
@@ -119,8 +141,8 @@ export class BookingComponent implements OnInit {
     this.currentMonth = moment().format('YYYY-MM-DD');
     this.previousMonth = moment().subtract(1, 'month').date(1).format('YYYY-MM-DD');
     this.nextMonth = moment().add(1, 'month').format('YYYY-MM-DD');
-    this.montStartUNIX =  moment(this.currentMonth).startOf('month').format('x');
-    this.montEndUNIX =  moment(this.currentMonth).endOf('month').format('x');
+    this.monthStartUNIX =  moment(this.currentMonth).startOf('month').format('x');
+    this.monthEndUNIX =  moment(this.currentMonth).endOf('month').format('x');
     this.buildGrid();
   }
 
