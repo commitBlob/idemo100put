@@ -96,6 +96,8 @@
 
       &:hover {
         background-color: lighten( $gray-base, 50% );
+        box-shadow: 3px 3px 6px rgba($black, .5);
+        z-index: 4;
       }
     }
 
@@ -115,6 +117,7 @@
       cursor: not-allowed;
       z-index: z('above-default');
       position: absolute;
+      box-shadow: 1px 2px 4px rgba($black, .5);
 
       &:hover {
         background-color: $brand-danger;
