@@ -86,6 +86,7 @@
       top: 0;
       right: 1px;
       min-height: 20px;
+      z-index: z('overlay');
     }
 
     .active-month {
@@ -103,6 +104,21 @@
       height: 100%;
       width: 100%;
       cursor: not-allowed;
+      z-index: z('default');
+      position: absolute;
+    }
+
+    .booking-closed {
+      background-color: lighten( gold, 20% );
+      height: 1.5em;
+      width: 100%;
+      cursor: not-allowed;
+      z-index: z('above-default');
+      position: absolute;
+
+      &:hover {
+        background-color: $brand-danger;
+      }
     }
 
     .date-booked {

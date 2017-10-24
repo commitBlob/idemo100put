@@ -105,6 +105,7 @@ export class BookingComponent implements OnInit {
     this.monthStartUNIX =  moment(this.currentMonth).startOf('month').format('x');
     this.monthEndUNIX =  moment(this.currentMonth).endOf('month').format('x');
     this.buildGrid();
+    this.getBookedEvents();
   }
 
   /*
@@ -117,6 +118,7 @@ export class BookingComponent implements OnInit {
     this.monthStartUNIX =  moment(this.currentMonth).startOf('month').format('x');
     this.monthEndUNIX =  moment(this.currentMonth).endOf('month').format('x');
     this.buildGrid();
+    this.getBookedEvents();
   }
 
   /*
@@ -129,6 +131,7 @@ export class BookingComponent implements OnInit {
     this.monthStartUNIX =  moment(this.currentMonth).startOf('month').format('x');
     this.monthEndUNIX =  moment(this.currentMonth).endOf('month').format('x');
     this.buildGrid();
+    this.getBookedEvents();
   }
 
   /*

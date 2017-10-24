@@ -25,7 +25,8 @@
       <p>{{weekDay}}</p>
     </div>
     <div class="flex-group-item" *ngFor="let el of calendarCells; let i=index;">
-      <span [id]="i" class="{{el.cellClasses[0]}} {{el.cellClasses[1]}}" (click)="calendarElementTrigger($event, calendarCells[i])"></span>
+      <span [id]="i" class="{{el.cellClasses[0]}}" (click)="calendarElementTrigger($event, calendarCells[i])"></span>
+      <span class="{{el.cellClasses[1]}}"></span>
       <span class="month-day" >{{el.monthDay}}</span>
     </div>
   </div>
