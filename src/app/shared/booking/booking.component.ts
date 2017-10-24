@@ -16,14 +16,13 @@ import * as moment from 'moment/moment';
   templateUrl: './booking.component.html',
 })
 export class BookingComponent implements OnInit {
-  // {"apartmentId": 2, "startDate": {$gte: 1506812400000, $lte: 1509494399999}}
-  // {"apartmentId": 2, "endDate": {$gte: 1506812400000,$lte: 1509494399999}}
 
-  public calendarCells: CalendarCellModel[];
+  public calendarCells: CalendarCellModel[] = [];
   public monthsArray: any = [];
   public days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'];
   public moment = moment;
   public fullGrid: any = [];
+  public gridDates: any = [];
   public classGrid: any = [];
   public currentMonth = moment().format('YYYY-MM-DD');
   public previousMonth = moment().subtract(1, 'month').date(1).format('YYYY-MM-DD');
@@ -35,52 +34,24 @@ export class BookingComponent implements OnInit {
   public apartmentId = 2;
   public bookedEvents = [];
   public tempEvents = [];
+  public cellNumbers = [];
 
-  // public dummy = [
-  //   {
-  //     cellNumber: 0,
-  //     cellClasses: ['testclass', 'anotherclass'],
-  //     disabled: true,
-  //     booked: false,
-  //     celldate: 'stringy'
-  //   }, {
-  //     cellNumber: 1,
-  //     cellClasses: ['testclass1', 'anotherclass1'],
-  //     disabled: true,
-  //     booked: false,
-  //     celldate: 'stringy2'
-  //   }
-  // ];
+  public doneBuilding = false;
+
 
   constructor(private _bookingService: BookingService) {
-    // this.calendarCells = this.dummy;
   }
 
   public ngOnInit() {
-    Observable.forkJoin(
-      this._bookingService.getStartDates(this.apartmentId, this.monthStartUNIX, this.monthEndUNIX),
-      this._bookingService.getEndDates(this.apartmentId, this.monthStartUNIX, this.monthEndUNIX)
-    ).subscribe( (res) => {
-      console.log(res[0], 'res[0]');
-      console.log(res[1], 'res[1]');
-      console.log(res[0].length, 'len');
-      res[0].forEach((value: any) => {
-        this.bookedEvents.push(value);
-      });
-      res[1].forEach((value: any, key: any) => {
-
-      });
-      console.log(this.bookedEvents, 'booked events');
-    }, (error) => {
-      console.log(error);
-    }, () => {
-      this.componentLoading = false;
-    });
     this.buildGrid();
-    // console.log(this.calendarCells);
-    // setTimeout(() => { this.componentLoading = false; }, 3000);
+    this.getBookedEvents();
   }
 
+  /*
+   * Creates calendar grid
+   * Populates classGrid array
+   * Populates gridDates array
+   */
   public buildGrid() {
     let currentYear = moment(this.currentMonth).format('YYYY');
     let daysInCurrentMonth = moment(this.currentMonth).daysInMonth();
@@ -93,6 +64,7 @@ export class BookingComponent implements OnInit {
     // resets
     this.fullGrid = [];
     this.classGrid = [];
+    this.gridDates = [];
 
     if ( firstDay === 0) {
       daysToPickFromPrevMonth = 7;
@@ -107,6 +79,7 @@ export class BookingComponent implements OnInit {
     let momentEnd = moment(fillerEnd).format('YYYY-MM-DD');
 
     while (momentStart <= momentEnd) {
+      this.gridDates.push(moment(momentStart).format('YYYY-MM-DD'));
       this.fullGrid.push(moment(momentStart).format('DD'));
       // ovdje se puni array
       if (momentStart >= monthStartDate && momentStart <= monthEndDate) {
@@ -119,6 +92,9 @@ export class BookingComponent implements OnInit {
     }
   }
 
+  /*
+   * Calendar CORE
+   */
   public getPreviousMonth() {
     this.currentMonth = moment(this.currentMonth).subtract(1, 'month').date(1).format('YYYY-MM-DD');
     this.previousMonth = moment(this.previousMonth).subtract(1, 'month').date(1).format('YYYY-MM-DD');
@@ -128,6 +104,9 @@ export class BookingComponent implements OnInit {
     this.buildGrid();
   }
 
+  /*
+   * Calendar CORE
+   */
   public getNextMonth() {
     this.currentMonth = moment(this.currentMonth).add(1, 'month').date(1).format('YYYY-MM-DD');
     this.previousMonth = moment(this.previousMonth).add(1, 'month').date(1).format('YYYY-MM-DD');
@@ -137,6 +116,9 @@ export class BookingComponent implements OnInit {
     this.buildGrid();
   }
 
+  /*
+   * Calendar CORE
+   */
   public getToday() {
     this.currentMonth = moment().format('YYYY-MM-DD');
     this.previousMonth = moment().subtract(1, 'month').date(1).format('YYYY-MM-DD');
@@ -146,6 +128,41 @@ export class BookingComponent implements OnInit {
     this.buildGrid();
   }
 
+  /*
+   * Backend call, first to be triggered on calls as it takes longest to complete
+   * fills bookedEvents array
+   * fills tempEvents array
+   * on complete sets componentLoading to false
+   */
+  public getBookedEvents() {
+    // resets
+    this.componentLoading = true;
+    this.tempEvents = [];
+    this.bookedEvents = [];
+
+    // backend call to get all booked events from the database
+    Observable.forkJoin(
+      this._bookingService.getStartDates(this.apartmentId, this.monthStartUNIX, this.monthEndUNIX),
+      this._bookingService.getEndDates(this.apartmentId, this.monthStartUNIX, this.monthEndUNIX)
+    ).subscribe( (res) => {
+      res[0].forEach((value: any) => {
+        this.tempEvents.push(value);
+      });
+      res[1].forEach((value: any) => {
+        this.tempEvents.push(value);
+      });
+    }, (error) => {
+      console.log(error);
+    }, () => {
+      this.bookedEvents = this.tempEvents.filter((set => f => !set.has(f._id) && set.add(f._id))(new Set));
+      this.componentLoading = false;
+    });
+  }
+
+  /*
+   * Field Click triggers
+   * TODO: create logic
+   */
   public calendarElementTrigger(event) {
     this.elementDisabled = true;
     if (event.srcElement.className === 'inactive-month') {

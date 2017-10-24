@@ -3,5 +3,5 @@ export interface CalendarCellModel {
   cellClasses: any; // all classes cell contains ['active-month', 'inactive-month', 'booking-open', 'booking-closed']
   disabled: boolean; // will use this boolean to disable cells outside of the current month
   booked: boolean; // will use this one to disable already booked cells
-  celldate: string; // going to store dates in this one so I can make bookings
+  cellDate: string; // going to store dates in this one so I can make bookings
 }
