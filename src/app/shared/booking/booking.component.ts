@@ -1,9 +1,10 @@
 // Core
-import { Component, OnInit } from '@angular/core';
-import {Observable} from 'rxjs/Observable';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 // App specific
 import { BookingService } from './booking.service';
+import { DialogsService } from '../dialogs/dialogs.service';
 
 // Model
 import { CalendarCellModel } from './calendar/calendar-cells.interface';
@@ -30,13 +31,14 @@ export class BookingComponent implements OnInit {
   public apartmentId = 2;
   public bookedEvents = [];
   public tempEvents = [];
-  public cellNumbers = [];
 
   public gridDone = false;
   public bookedCheck = false;
 
 
-  constructor(private _bookingService: BookingService) {
+  constructor(private _bookingService: BookingService,
+              private _dialogService: DialogsService,
+              private _viewContainerRef: ViewContainerRef) {
   }
 
   public ngOnInit() {
@@ -46,8 +48,6 @@ export class BookingComponent implements OnInit {
 
   /*
    * Creates calendar grid
-   * Populates classGrid array
-   * Populates gridDates array
    */
   public buildGrid() {
     let currentYear = moment(this.currentMonth).format('YYYY');
@@ -176,7 +176,7 @@ export class BookingComponent implements OnInit {
       // format start and end date
       this.bookedEvents[i].startDate = moment(this.bookedEvents[i].startDate).format('YYYY-MM-DD');
       this.bookedEvents[i].endDate = moment(this.bookedEvents[i].endDate).format('YYYY-MM-DD');
-      // loop thorugh all 42 cells and check if bookedEvent values are in the range
+      // loop through all 42 cells and check if bookedEvent values are in the range
       this.calendarCells.forEach((v: any, k: any) => {
         // if value is in the range add class 'booking-closed and update booked value to true
         if ( moment(this.calendarCells[k].cellDate).isBetween(this.bookedEvents[i].startDate,  this.bookedEvents[i].endDate, null, '[]')) {
@@ -184,7 +184,7 @@ export class BookingComponent implements OnInit {
           this.calendarCells[k].booked = true;
         }
 
-        // if there is still one class add another as it means this date is still avaialable for booking
+        // if there is still one class add another as it means this date is still available for booking
         if (this.calendarCells[k].cellClasses.length === 1) {
           this.calendarCells[k].cellClasses[1] = 'booking-open';
         }
@@ -202,15 +202,22 @@ export class BookingComponent implements OnInit {
    * if it's neighbour has booking-closed class let users know that price is still 50% more as it is 2 nights booking
    */
   public calendarElementTrigger(event, element) {
-    console.log(element, 'should be calendare cell');
-    this.elementDisabled = true;
-    if (event.srcElement.className === 'inactive-month') {
-      this.elementDisabled = true;
-      console.log('Element is disabled');
-    } else {
-      console.log('Element is enabled');
+    console.log(element, 'should be calendar cell');
+    if (!element.disabled && !element.booked) {
+      let dayBefore, dayAfter, daySelected, neighbour;
+      daySelected = parseInt(element.monthDay);
+      dayBefore = daySelected - 1;
+      dayAfter = daySelected + 1;
+      
+      // element is in the current month and is not booked, check neighbours
+
     }
     console.log(event);
+
+  }
+
+  public messageDialog(title: string, message: string) {
+    this._dialogService.confirm(title, message, this._viewContainerRef)
   }
 
 }
