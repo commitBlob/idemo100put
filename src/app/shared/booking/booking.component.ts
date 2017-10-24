@@ -166,17 +166,25 @@ export class BookingComponent implements OnInit {
     });
   }
 
+  /*
+   * Looping through booked events and adding appropriate classes and booleans depending on bookings
+   * When looping is done set bookedCheck to true
+   */
   public showBooked() {
     let i = 0;
     for (let j = 0; j < this.bookedEvents.length; j++) {
+      // format start and end date
       this.bookedEvents[i].startDate = moment(this.bookedEvents[i].startDate).format('YYYY-MM-DD');
       this.bookedEvents[i].endDate = moment(this.bookedEvents[i].endDate).format('YYYY-MM-DD');
+      // loop thorugh all 42 cells and check if bookedEvent values are in the range
       this.calendarCells.forEach((v: any, k: any) => {
+        // if value is in the range add class 'booking-closed and update booked value to true
         if ( moment(this.calendarCells[k].cellDate).isBetween(this.bookedEvents[i].startDate,  this.bookedEvents[i].endDate, null, '[]')) {
           this.calendarCells[k].cellClasses[1] = 'booking-closed';
           this.calendarCells[k].booked = true;
         }
 
+        // if there is still one class add another as it means this date is still avaialable for booking
         if (this.calendarCells[k].cellClasses.length === 1) {
           this.calendarCells[k].cellClasses[1] = 'booking-open';
         }
@@ -189,6 +197,9 @@ export class BookingComponent implements OnInit {
   /*
    * Field Click triggers
    * TODO: create logic
+   * TODO: on click check neighbour cells and if both have booking-closed class trigger alert saying that booking price is 50% more
+   * TODO: if only one side has booking-closed, take neighbour of the class that doesn't have
+   * if it's neighbour has booking-closed class let users know that price is still 50% more as it is 2 nights booking
    */
   public calendarElementTrigger(event, element) {
     console.log(element, 'should be calendare cell');
