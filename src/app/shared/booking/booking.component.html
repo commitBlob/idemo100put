@@ -1,7 +1,7 @@
 
 <div class="container">
   <!--<div *ngIf="componentLoading" class="loading">-->
-  <div *ngIf="gridDone && componentLoading" class="loading">
+  <div *ngIf="gridDone && componentLoading && bookedCheck" class="loading">
     <div>
       <div class="c1"></div>
       <div class="c2"></div>
@@ -25,7 +25,7 @@
       <p>{{weekDay}}</p>
     </div>
     <div class="flex-group-item" *ngFor="let el of calendarCells; let i=index;">
-      <span [id]="i" [class]="el.cellClasses" (click)="calendarElementTrigger($event, calendarCells[i])"></span>
+      <span [id]="i" class="{{el.cellClasses[0]}} {{el.cellClasses[1]}}" (click)="calendarElementTrigger($event, calendarCells[i])"></span>
       <span class="month-day" >{{el.monthDay}}</span>
     </div>
   </div>

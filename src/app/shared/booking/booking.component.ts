@@ -33,6 +33,7 @@ export class BookingComponent implements OnInit {
   public cellNumbers = [];
 
   public gridDone = false;
+  public bookedCheck = false;
 
 
   constructor(private _bookingService: BookingService) {
@@ -158,7 +159,28 @@ export class BookingComponent implements OnInit {
     }, () => {
       this.bookedEvents = this.tempEvents.filter((set => f => !set.has(f._id) && set.add(f._id))(new Set));
       this.componentLoading = false;
+      this.showBooked();
     });
+  }
+
+  public showBooked() {
+    let i = 0;
+    for (let j = 0; j < this.bookedEvents.length; j++) {
+      this.bookedEvents[i].startDate = moment(this.bookedEvents[i].startDate).format('YYYY-MM-DD');
+      this.bookedEvents[i].endDate = moment(this.bookedEvents[i].endDate).format('YYYY-MM-DD');
+      this.calendarCells.forEach((v: any, k: any) => {
+        if ( moment(this.calendarCells[k].cellDate).isBetween(this.bookedEvents[i].startDate,  this.bookedEvents[i].endDate, null, '[]')) {
+          this.calendarCells[k].cellClasses[1] = 'booking-closed';
+          this.calendarCells[k].booked = true;
+        }
+
+        if (this.calendarCells[k].cellClasses.length === 1) {
+          this.calendarCells[k].cellClasses[1] = 'booking-open';
+        }
+      });
+      i++;
+    }
+    this.bookedCheck = true;
   }
 
   /*
