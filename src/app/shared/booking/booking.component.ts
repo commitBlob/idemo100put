@@ -18,12 +18,8 @@ import * as moment from 'moment/moment';
 export class BookingComponent implements OnInit {
 
   public calendarCells: CalendarCellModel[] = [];
-  public monthsArray: any = [];
   public days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'];
   public moment = moment;
-  public fullGrid: any = [];
-  public gridDates: any = [];
-  public classGrid: any = [];
   public currentMonth = moment().format('YYYY-MM-DD');
   public previousMonth = moment().subtract(1, 'month').date(1).format('YYYY-MM-DD');
   public nextMonth = moment().add(1, 'month').date(1).format('YYYY-MM-DD');
@@ -36,7 +32,7 @@ export class BookingComponent implements OnInit {
   public tempEvents = [];
   public cellNumbers = [];
 
-  public doneBuilding = false;
+  public gridDone = false;
 
 
   constructor(private _bookingService: BookingService) {
@@ -62,9 +58,7 @@ export class BookingComponent implements OnInit {
     let monthEndDate = moment(this.currentMonth).endOf('month').format('YYYY-MM-DD');
 
     // resets
-    this.fullGrid = [];
-    this.classGrid = [];
-    this.gridDates = [];
+    this.calendarCells = [];
 
     if ( firstDay === 0) {
       daysToPickFromPrevMonth = 7;
@@ -79,17 +73,25 @@ export class BookingComponent implements OnInit {
     let momentEnd = moment(fillerEnd).format('YYYY-MM-DD');
 
     while (momentStart <= momentEnd) {
-      this.gridDates.push(moment(momentStart).format('YYYY-MM-DD'));
-      this.fullGrid.push(moment(momentStart).format('DD'));
-      // ovdje se puni array
       if (momentStart >= monthStartDate && momentStart <= monthEndDate) {
-        this.classGrid.push('active-month');
+        this.calendarCells.push({
+          cellClasses: ['active-month'],
+          disabled: false,
+          booked: false,
+          cellDate: momentStart,
+          monthDay: moment(momentStart).format('DD')});
       } else {
-        this.classGrid.push('inactive-month');
+        this.calendarCells.push({
+          cellClasses: ['inactive-month'],
+          disabled: true,
+          booked: false,
+          cellDate: momentStart,
+          monthDay: moment(momentStart).format('DD')});
       }
       let newMoment = moment(momentStart).add(1, 'd').format('YYYY-MM-DD');
       momentStart = moment(newMoment).format('YYYY-MM-DD');
     }
+    this.gridDone = true;
   }
 
   /*
@@ -163,7 +165,8 @@ export class BookingComponent implements OnInit {
    * Field Click triggers
    * TODO: create logic
    */
-  public calendarElementTrigger(event) {
+  public calendarElementTrigger(event, element) {
+    console.log(element, 'should be calendare cell');
     this.elementDisabled = true;
     if (event.srcElement.className === 'inactive-month') {
       this.elementDisabled = true;

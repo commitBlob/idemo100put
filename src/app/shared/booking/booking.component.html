@@ -1,6 +1,7 @@
 
 <div class="container">
-  <div *ngIf="componentLoading" class="loading">
+  <!--<div *ngIf="componentLoading" class="loading">-->
+  <div *ngIf="gridDone && componentLoading" class="loading">
     <div>
       <div class="c1"></div>
       <div class="c2"></div>
@@ -23,9 +24,9 @@
     <div class="flex-group-item header-element" *ngFor="let weekDay of days">
       <p>{{weekDay}}</p>
     </div>
-    <div class="flex-group-item" *ngFor="let day of fullGrid; let i=index;">
-      <span [id]="i" [class]="classGrid[i]" (click)="calendarElementTrigger($event)"></span>
-      <span class="month-day" >{{day}}</span>
+    <div class="flex-group-item" *ngFor="let el of calendarCells; let i=index;">
+      <span [id]="i" [class]="el.cellClasses" (click)="calendarElementTrigger($event, calendarCells[i])"></span>
+      <span class="month-day" >{{el.monthDay}}</span>
     </div>
   </div>
 </div>
