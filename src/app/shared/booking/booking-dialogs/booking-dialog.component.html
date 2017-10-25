@@ -1,0 +1,15 @@
+<div class="dialog-wrapper">
+  <div class="heading">{{ title }}</div>
+  <div class="message">{{ message }}</div>
+  <div class="button-wrapper">
+    <button type="button" color="primary" md-raised-button
+            (click)="dialogRef.close(1)"> 1 Night</button>
+    <button type="button" color="primary" md-raised-button
+            (click)="dialogRef.close(2)"> 2 Nights</button>
+    <button type="button" color="primary" md-raised-button
+            (click)="dialogRef.close('more')"> More</button>
+    <button type="button" color="primary" class="cancel" md-raised-button
+            (click)="dialogRef.close('closed')">Close</button>
+  </div>
+</div>
+

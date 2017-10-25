@@ -223,6 +223,7 @@ export class BookingComponent implements OnInit {
 
       if (beforeObject.booked && !afterObject.booked) {
         console.log('after is booked!');
+        this.bookingDialog('Testy', 'Testy for dates when booking for next day is unavailable');
       }
 
       if (!beforeObject.booked && afterObject.booked) {
@@ -243,6 +244,12 @@ export class BookingComponent implements OnInit {
       }
     });
     return cellObject;
+  }
+
+  public bookingDialog(title, message, start?, end?) {
+    this._dialogService.bookings(title, message, this._viewContainerRef).subscribe( result => {
+      console.log('returned', result);
+    });
   }
 
   public messageDialog(title: string, message: string, start?, end?) {

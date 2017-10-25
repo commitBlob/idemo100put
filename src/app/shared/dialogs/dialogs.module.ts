@@ -3,8 +3,10 @@ import { MaterialModule } from '@angular/material';
 import { NgModule } from '@angular/core';
 
 // App specific
+import { BookingDialogComponent } from '../booking/booking-dialogs/booking-dialog.component';
 import { ConfirmDialogComponent } from './confirm-dialog.component';
 import { DialogsService } from './dialogs.service';
+
 
 
 @NgModule({
@@ -12,15 +14,18 @@ import { DialogsService } from './dialogs.service';
     MaterialModule,
   ],
   exports: [
+    BookingDialogComponent,
     ConfirmDialogComponent,
   ],
   declarations: [
+    BookingDialogComponent,
     ConfirmDialogComponent,
   ],
   providers: [
     DialogsService,
   ],
   entryComponents: [
+    BookingDialogComponent,
     ConfirmDialogComponent,
   ],
 })
