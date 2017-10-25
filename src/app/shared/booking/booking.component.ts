@@ -223,7 +223,7 @@ export class BookingComponent implements OnInit {
 
       if (beforeObject.booked && !afterObject.booked) {
         console.log('after is booked!');
-        this.bookingDialog('Testy', 'Testy for dates when booking for next day is unavailable');
+        this.bookingDialog('One day booking!', 'You selected only one night. Price for one night stay is £120!', daySelected);
       }
 
       if (!beforeObject.booked && afterObject.booked) {
@@ -247,9 +247,15 @@ export class BookingComponent implements OnInit {
   }
 
   public bookingDialog(title, message, start?, end?) {
-    this._dialogService.bookings(title, message, this._viewContainerRef).subscribe( result => {
-      console.log('returned', result);
-    });
+    if (!end) {
+      this._dialogService.bookings(title, message, this._viewContainerRef, true).subscribe( result => {
+        console.log('returned', result);
+      });
+    } else {
+      this._dialogService.bookings(title, message, this._viewContainerRef).subscribe( result => {
+        console.log('returned', result);
+      });
+    }
   }
 
   public messageDialog(title: string, message: string, start?, end?) {

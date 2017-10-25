@@ -1,4 +1,5 @@
 // Core
+import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@angular/material';
 import { NgModule } from '@angular/core';
 
@@ -11,6 +12,7 @@ import { DialogsService } from './dialogs.service';
 
 @NgModule({
   imports: [
+    CommonModule,
     MaterialModule,
   ],
   exports: [

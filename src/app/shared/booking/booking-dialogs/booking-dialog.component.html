@@ -1,15 +1,24 @@
 <div class="dialog-wrapper">
   <div class="heading">{{ title }}</div>
   <div class="message">{{ message }}</div>
+  <div *ngIf="oneNight; then first else second"></div>
   <div class="button-wrapper">
-    <button type="button" color="primary" md-raised-button
-            (click)="dialogRef.close(1)"> 1 Night</button>
-    <button type="button" color="primary" md-raised-button
-            (click)="dialogRef.close(2)"> 2 Nights</button>
-    <button type="button" color="primary" md-raised-button
-            (click)="dialogRef.close('more')"> More</button>
-    <button type="button" color="primary" class="cancel" md-raised-button
-            (click)="dialogRef.close('closed')">Close</button>
+    <ng-template #first>
+      <button type="button" color="primary" md-raised-button
+      (click)="dialogRef.close('ok')"> OK</button>
+      <button type="button" color="primary" class="cancel" md-raised-button
+      (click)="dialogRef.close('closed')">Cancel</button>
+    </ng-template>
+    <ng-template #second>
+      <button type="button" color="primary" md-raised-button
+              (click)="dialogRef.close(1)"> 1 Night</button>
+      <button type="button" color="primary" md-raised-button
+              (click)="dialogRef.close(2)"> 2 Nights</button>
+      <button type="button" color="primary" md-raised-button
+              (click)="dialogRef.close('more')"> More</button>
+      <button type="button" color="primary" class="cancel" md-raised-button
+              (click)="dialogRef.close('closed')">Close</button>
+    </ng-template>
   </div>
 </div>
 

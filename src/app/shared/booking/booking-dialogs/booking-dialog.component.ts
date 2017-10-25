@@ -10,6 +10,7 @@ export class BookingDialogComponent {
 
   public title: string;
   public message: string;
+  public oneNight: boolean;
 
   constructor(public dialogRef: MdDialogRef<BookingDialogComponent>) {
 

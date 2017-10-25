@@ -27,7 +27,7 @@ export class DialogsService {
     return dialogRef.afterClosed();
   }
 
-  public bookings(title: string, message: string, viewContainerRef: ViewContainerRef): Observable<any> {
+  public bookings(title: string, message: string, viewContainerRef: ViewContainerRef, oneNight?: boolean): Observable<any> {
     let dialogRef: MdDialogRef<BookingDialogComponent>;
     const config = new MdDialogConfig();
     config.viewContainerRef = viewContainerRef;
@@ -37,6 +37,7 @@ export class DialogsService {
 
     dialogRef.componentInstance.title = title;
     dialogRef.componentInstance.message = message;
+    dialogRef.componentInstance.oneNight = oneNight;
 
     return dialogRef.afterClosed();
   }
