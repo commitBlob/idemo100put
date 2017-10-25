@@ -35,6 +35,9 @@ export class BookingComponent implements OnInit {
   public gridDone = false;
   public bookedCheck = false;
 
+  public bookingStart;
+  public bookingEnd;
+
 
   constructor(private _bookingService: BookingService,
               private _dialogService: DialogsService,
@@ -202,22 +205,57 @@ export class BookingComponent implements OnInit {
    * if it's neighbour has booking-closed class let users know that price is still 50% more as it is 2 nights booking
    */
   public calendarElementTrigger(event, element) {
-    console.log(element, 'should be calendar cell');
     if (!element.disabled && !element.booked) {
-      let dayBefore, dayAfter, daySelected, neighbour;
-      daySelected = parseInt(element.monthDay);
-      dayBefore = daySelected - 1;
-      dayAfter = daySelected + 1;
-      
+      // resets
+      this.bookingStart = null;
+      this.bookingEnd = null;
+
+      let daySelected, neighbour, beforeObject, afterObject;
+      daySelected = element.cellDate;
+      console.log(daySelected, 'day selected');
+      beforeObject = this.triggerBookedCheck(moment(daySelected).add(1, 'day').format('YYYY-MM-DD'));
+      afterObject = this.triggerBookedCheck(moment(daySelected).subtract(1, 'day').format('YYYY-MM-DD'));
+
+      // if dayBefore and dayAfter are already booked, alert user
+      if (beforeObject.booked && afterObject.booked) {
+       this.messageDialog('One day booking!', 'Booking price for one night is £120.', daySelected);
+      }
+
+      if (beforeObject.booked && !afterObject.booked) {
+        console.log('after is booked!');
+      }
+
+      if (!beforeObject.booked && afterObject.booked) {
+        console.log('before is booked!');
+      }
+
       // element is in the current month and is not booked, check neighbours
-
     }
-    console.log(event);
 
+    console.log(event);
   }
 
-  public messageDialog(title: string, message: string) {
-    this._dialogService.confirm(title, message, this._viewContainerRef)
+  public triggerBookedCheck(dateToCheck) {
+    let cellObject = '';
+    this.calendarCells.forEach((value: any) => {
+      if (dateToCheck === value.cellDate) {
+        cellObject = value;
+      }
+    });
+    return cellObject;
+  }
+
+  public messageDialog(title: string, message: string, start?, end?) {
+    this._dialogService.confirm(title, message, this._viewContainerRef).subscribe(result => {
+      if (result) {
+        this.bookingStart = start;
+        if (!end) {
+          this.bookingEnd = start;
+        } else {
+          this.bookingEnd = end;
+        }
+      }
+    });
   }
 
 }

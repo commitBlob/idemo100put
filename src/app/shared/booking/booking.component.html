@@ -1,6 +1,5 @@
 
 <div class="container">
-  <!--<div *ngIf="componentLoading" class="loading">-->
   <div *ngIf="gridDone && componentLoading && bookedCheck" class="loading">
     <div>
       <div class="c1"></div>
@@ -29,5 +28,10 @@
       <span class="{{el.cellClasses[1]}}"></span>
       <span class="month-day" >{{el.monthDay}}</span>
     </div>
+  </div>
+  <div *ngIf="bookingStart">
+    <h3>Your Selection</h3>
+    <p>Start Date: {{bookingStart}}</p>
+    <p>End Date: {{bookingEnd}}</p>
   </div>
 </div>

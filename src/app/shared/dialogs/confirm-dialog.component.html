@@ -3,7 +3,9 @@
   <div class="message">{{ message }}</div>
   <div class="button-wrapper">
     <button type="button" color="primary" md-raised-button
-            (click)="dialogRef.close(true)">Close</button>
+            (click)="dialogRef.close(true)"> OK</button>
+    <button type="button" color="primary" class="cancel" md-raised-button
+            (click)="dialogRef.close(false)">Close</button>
   </div>
 </div>
 

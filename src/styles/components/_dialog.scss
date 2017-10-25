@@ -2,6 +2,16 @@
   padding: 10px;
 }
 
+button {
+  &:hover {
+    background-color: $brand-secondary !important;
+  }
+}
+
+.cancel {
+  background-color: $brand-google !important;
+}
+
 .heading {
   color: $brand-primary-darker;
   font-size: 1.3em;
