@@ -37,6 +37,7 @@ export class BookingComponent implements OnInit {
 
   public bookingStart;
   public bookingEnd;
+  public datesSelected = [];
 
 
   constructor(private _bookingService: BookingService,
@@ -200,16 +201,18 @@ export class BookingComponent implements OnInit {
 
   /*
    * Field Click triggers
-   * TODO: create logic
-   * TODO: on click check neighbour cells and if both have booking-closed class trigger alert saying that booking price is 50% more
-   * TODO: if only one side has booking-closed, take neighbour of the class that doesn't have
-   * if it's neighbour has booking-closed class let users know that price is still 50% more as it is 2 nights booking
+   * TODO: 2 clicks logic
    */
   public calendarElementTrigger(event, element) {
     if (!element.disabled && !element.booked) {
-      // resets
-      this.bookingStart = null;
-      this.bookingEnd = null;
+      console.log(this.datesSelected.length, 'len');
+      if (this.datesSelected.length === 0 || this.datesSelected.length === 2) {
+        // resets
+        this.bookingStart = null;
+        this.bookingEnd = null;
+        this.datesSelected = [];
+      }
+
 
       let daySelected, neighbour, beforeObject, afterObject;
       daySelected = element.cellDate;
@@ -231,7 +234,7 @@ export class BookingComponent implements OnInit {
           this.bookingDialog('Booking',
             `Please select one of the options bellow. <br /> Note: Price for one night stay is £120, for two nights is £110!`,
             daySelected,
-            afterObject.cellDate)
+            afterObject.cellDate);
         }
       }
 
@@ -239,6 +242,17 @@ export class BookingComponent implements OnInit {
       if (!beforeObject.booked && afterObject.booked) {
         this.bookingDialog('One day booking!', 'You selected only one night. Price for one night stay is £120!', daySelected);
       }
+
+      if (this.datesSelected.length === 1) {
+        this.bookingStart = this.datesSelected[0];
+
+        if (moment(daySelected).isAfter(this.datesSelected[0], 'day') || moment(daySelected).isSame(this.datesSelected[0], 'day')) {
+          // check if there are any booked days in between selections
+          this.bookingEnd = daySelected;
+        }
+      }
+      this.datesSelected.push(daySelected);
+      this.bookingStart = this.datesSelected[0];
 
     }
 
