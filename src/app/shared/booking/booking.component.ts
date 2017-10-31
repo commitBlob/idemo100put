@@ -1,5 +1,5 @@
 // Core
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit, ViewContainerRef} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 // App specific
@@ -41,7 +41,8 @@ export class BookingComponent implements OnInit {
 
   constructor(private _bookingService: BookingService,
               private _dialogService: DialogsService,
-              private _viewContainerRef: ViewContainerRef) {
+              private _viewContainerRef: ViewContainerRef,
+              private _cdref: ChangeDetectorRef) {
   }
 
   public ngOnInit() {
@@ -213,24 +214,32 @@ export class BookingComponent implements OnInit {
       let daySelected, neighbour, beforeObject, afterObject;
       daySelected = element.cellDate;
       console.log(daySelected, 'day selected');
-      beforeObject = this.triggerBookedCheck(moment(daySelected).add(1, 'day').format('YYYY-MM-DD'));
-      afterObject = this.triggerBookedCheck(moment(daySelected).subtract(1, 'day').format('YYYY-MM-DD'));
+      afterObject = this.triggerBookedCheck(moment(daySelected).add(1, 'day').format('YYYY-MM-DD'));
+      beforeObject = this.triggerBookedCheck(moment(daySelected).subtract(1, 'day').format('YYYY-MM-DD'));
 
       // if dayBefore and dayAfter are already booked, alert user
       if (beforeObject.booked && afterObject.booked) {
        this.messageDialog('One day booking!', 'Booking price for one night is £120.', daySelected);
       }
 
+      // if before is booked, check right neighbour
       if (beforeObject.booked && !afterObject.booked) {
-        console.log('after is booked!');
+        // check right neighbour
+        neighbour = this.triggerBookedCheck(moment(daySelected).add(2, 'day').format('YYYY-MM-DD'));
+        // if neighbour is booked allow only 1 or 2 days booking
+        if (neighbour.booked) {
+          this.bookingDialog('Booking',
+            `Please select one of the options bellow. <br /> Note: Price for one night stay is £120, for two nights is £110!`,
+            daySelected,
+            afterObject.cellDate)
+        }
+      }
+
+      // if dayAfter is already booked, alert user that it is one night booking
+      if (!beforeObject.booked && afterObject.booked) {
         this.bookingDialog('One day booking!', 'You selected only one night. Price for one night stay is £120!', daySelected);
       }
 
-      if (!beforeObject.booked && afterObject.booked) {
-        console.log('before is booked!');
-      }
-
-      // element is in the current month and is not booked, check neighbours
     }
 
     console.log(event);
@@ -249,11 +258,23 @@ export class BookingComponent implements OnInit {
   public bookingDialog(title, message, start?, end?) {
     if (!end) {
       this._dialogService.bookings(title, message, this._viewContainerRef, true).subscribe( result => {
-        console.log('returned', result);
+        if (result === 'ok') {
+          this.bookingStart = start;
+          this.bookingEnd = start;
+        }
       });
     } else {
       this._dialogService.bookings(title, message, this._viewContainerRef).subscribe( result => {
-        console.log('returned', result);
+        if (result === 1) {
+          this.bookingStart = start;
+          this.bookingEnd = start;
+        }
+
+        if (result === 2) {
+          this.bookingStart = start;
+          this.bookingEnd = end;
+
+        }
       });
     }
   }

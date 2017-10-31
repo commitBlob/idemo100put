@@ -1,6 +1,6 @@
 <div class="dialog-wrapper">
   <div class="heading">{{ title }}</div>
-  <div class="message">{{ message }}</div>
+  <div [innerHtml]="message" class="message"></div>
   <div *ngIf="oneNight; then first else second"></div>
   <div class="button-wrapper">
     <ng-template #first>
@@ -14,8 +14,6 @@
               (click)="dialogRef.close(1)"> 1 Night</button>
       <button type="button" color="primary" md-raised-button
               (click)="dialogRef.close(2)"> 2 Nights</button>
-      <button type="button" color="primary" md-raised-button
-              (click)="dialogRef.close('more')"> More</button>
       <button type="button" color="primary" class="cancel" md-raised-button
               (click)="dialogRef.close('closed')">Close</button>
     </ng-template>
