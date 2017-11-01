@@ -38,6 +38,7 @@ export class BookingComponent implements OnInit {
   public bookingStart;
   public bookingEnd;
   public datesSelected = [];
+  public allowBooking = false;
 
 
   constructor(private _bookingService: BookingService,
@@ -51,7 +52,7 @@ export class BookingComponent implements OnInit {
     this.getBookedEvents();
   }
 
-  /*
+  /**
    * Creates calendar grid
    */
   public buildGrid() {
@@ -100,7 +101,7 @@ export class BookingComponent implements OnInit {
     this.gridDone = true;
   }
 
-  /*
+  /**
    * Calendar CORE
    */
   public getPreviousMonth() {
@@ -113,7 +114,7 @@ export class BookingComponent implements OnInit {
     this.getBookedEvents();
   }
 
-  /*
+  /**
    * Calendar CORE
    */
   public getNextMonth() {
@@ -126,7 +127,7 @@ export class BookingComponent implements OnInit {
     this.getBookedEvents();
   }
 
-  /*
+  /**
    * Calendar CORE
    */
   public getToday() {
@@ -139,7 +140,7 @@ export class BookingComponent implements OnInit {
     this.getBookedEvents();
   }
 
-  /*
+  /**
    * Backend call, first to be triggered on calls as it takes longest to complete
    * fills bookedEvents array
    * fills tempEvents array
@@ -171,7 +172,7 @@ export class BookingComponent implements OnInit {
     });
   }
 
-  /*
+  /**
    * Looping through booked events and adding appropriate classes and booleans depending on bookings
    * When looping is done set bookedCheck to true
    */
@@ -199,24 +200,24 @@ export class BookingComponent implements OnInit {
     this.bookedCheck = true;
   }
 
-  /*
+  /**
    * Field Click triggers
-   * TODO: 2 clicks logic
+   * TODO: Disable bookings in the past
+   * TODO: fix selections in 2 months
    */
   public calendarElementTrigger(event, element) {
     if (!element.disabled && !element.booked) {
-      console.log(this.datesSelected.length, 'len');
       if (this.datesSelected.length === 0 || this.datesSelected.length === 2) {
         // resets
         this.bookingStart = null;
         this.bookingEnd = null;
         this.datesSelected = [];
+        this.allowBooking = false;
       }
 
 
       let daySelected, neighbour, beforeObject, afterObject;
       daySelected = element.cellDate;
-      console.log(daySelected, 'day selected');
       afterObject = this.triggerBookedCheck(moment(daySelected).add(1, 'day').format('YYYY-MM-DD'));
       beforeObject = this.triggerBookedCheck(moment(daySelected).subtract(1, 'day').format('YYYY-MM-DD'));
 
@@ -239,7 +240,7 @@ export class BookingComponent implements OnInit {
       }
 
       // if dayAfter is already booked, alert user that it is one night booking
-      if (!beforeObject.booked && afterObject.booked) {
+      if (!beforeObject.booked && afterObject.booked && this.datesSelected.length !== 1) {
         this.bookingDialog('One day booking!', 'You selected only one night. Price for one night stay is £120!', daySelected);
       }
 
@@ -248,17 +249,41 @@ export class BookingComponent implements OnInit {
 
         if (moment(daySelected).isAfter(this.datesSelected[0], 'day') || moment(daySelected).isSame(this.datesSelected[0], 'day')) {
           // check if there are any booked days in between selections
-          this.bookingEnd = daySelected;
+          this._bookingService.checkDatesBetween(this.datesSelected[0], daySelected, this.calendarCells).subscribe((response) => {
+              this.componentLoading = true;
+              this.allowBooking = response;
+            },
+            (error) => {
+              this.errorDialog('Unexpected error', error);
+            },
+            () => {
+              this.componentLoading = false;
+              if (this.allowBooking) {
+                this.bookingEnd = daySelected;
+              }else {
+                this.errorDialog('Invalid selection!', 'Date(s) in the range of '
+                  + this.datesSelected[0] + ' to '
+                  + moment(daySelected).format('YYYY-MM-DD') + ' are already booked!');
+                this.datesSelected.pop();
+              }
+            });
+        } else {
+          this.errorDialog('Invalid selection!', 'End date ' + moment(daySelected).format('YYYY-MM-DD')
+            + ' cannot be before start date ' + this.datesSelected[0]);
         }
       }
       this.datesSelected.push(daySelected);
       this.bookingStart = this.datesSelected[0];
 
     }
-
-    console.log(event);
   }
 
+  /**
+   * Triggered on each cell click
+   * Loops through calendarCells array and checks if dateToCheck param equals one of object
+   * @param {String} dateToCheck
+   * @return {Object} cellObject
+   */
   public triggerBookedCheck(dateToCheck) {
     let cellObject = '';
     this.calendarCells.forEach((value: any) => {
@@ -269,7 +294,14 @@ export class BookingComponent implements OnInit {
     return cellObject;
   }
 
-  public bookingDialog(title, message, start?, end?) {
+  /**
+   * Calls dialogService.bookings method which returns observable result depending on button clicked
+   * @param {String} title
+   * @param {String] message
+   * @param {String} [start] - booking start date
+   * @param {String} [end] - booking end date
+   */
+  public bookingDialog(title: string, message: string, start?, end?) {
     if (!end) {
       this._dialogService.bookings(title, message, this._viewContainerRef, true).subscribe( result => {
         if (result === 'ok') {
@@ -293,6 +325,13 @@ export class BookingComponent implements OnInit {
     }
   }
 
+  /**
+   * Calls dialogService.confirm method which returns observable result depending on button clicked
+   * @param {String} title
+   * @param {String] message
+   * @param {String} [start] - booking start date
+   * @param {String} [end] - booking end date
+   */
   public messageDialog(title: string, message: string, start?, end?) {
     this._dialogService.confirm(title, message, this._viewContainerRef).subscribe(result => {
       if (result) {
@@ -304,6 +343,16 @@ export class BookingComponent implements OnInit {
         }
       }
     });
+  }
+
+  /**
+   * Pops up error dialog to alert user.
+   * @param {String} title
+   * @param {String} message
+   */
+  public errorDialog(title: string, message: string) {
+    this._dialogService
+      .confirm(title, message, this._viewContainerRef);
   }
 
 }
