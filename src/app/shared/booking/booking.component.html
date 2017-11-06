@@ -11,7 +11,7 @@
   </div>
   <div class="head-wrapper">
     <div class="buttons-wrapper">
-      <button class="calendar-button-left" (click)="getPreviousMonth()">Prev</button>
+      <button class="calendar-button-left" (click)="getPreviousMonth()" [disabled]="disablePreviousMonth">Prev</button>
       <button class="calendar-button-right" (click)="getNextMonth()">Next</button>
       <button class="calendar-button" (click)="getToday()">Today</button>
     </div>

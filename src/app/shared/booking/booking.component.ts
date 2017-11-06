@@ -17,9 +17,6 @@ import * as moment from 'moment/moment';
   templateUrl: './booking.component.html',
 })
 export class BookingComponent implements OnInit {
-  /**
-   * TODO: disable viewing previous months
-   */
 
   public calendarCells: CalendarCellModel[] = [];
   public days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'];
@@ -42,6 +39,9 @@ export class BookingComponent implements OnInit {
   public bookingEnd;
   public datesSelected = [];
   public allowBooking = false;
+
+  public disablePreviousMonth = true;
+  public today = moment().format('YYYY-MM-DD');
 
 
   constructor(private _bookingService: BookingService,
@@ -114,6 +114,12 @@ export class BookingComponent implements OnInit {
     this.monthEndUNIX =  moment(this.currentMonth).endOf('month').format('x');
     this.buildGrid();
     this.getBookedEvents();
+
+    if (!moment(this.previousMonth).isBefore(this.today, 'month')) {
+      this.disablePreviousMonth = false;
+    }else {
+      this.disablePreviousMonth = true;
+    }
   }
 
   /**
@@ -127,6 +133,12 @@ export class BookingComponent implements OnInit {
     this.monthEndUNIX =  moment(this.currentMonth).endOf('month').format('x');
     this.buildGrid();
     this.getBookedEvents();
+
+    if (!moment(this.previousMonth).isBefore(this.today, 'month')) {
+      this.disablePreviousMonth = false;
+    }else {
+      this.disablePreviousMonth = true;
+    }
   }
 
   /**
@@ -140,6 +152,12 @@ export class BookingComponent implements OnInit {
     this.monthEndUNIX =  moment(this.currentMonth).endOf('month').format('x');
     this.buildGrid();
     this.getBookedEvents();
+
+    if (!moment(this.previousMonth).isBefore(this.today, 'month')) {
+      this.disablePreviousMonth = false;
+    }else {
+      this.disablePreviousMonth = true;
+    }
   }
 
   /**
