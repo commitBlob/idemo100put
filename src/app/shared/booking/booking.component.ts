@@ -115,11 +115,7 @@ export class BookingComponent implements OnInit {
     this.buildGrid();
     this.getBookedEvents();
 
-    if (!moment(this.previousMonth).isBefore(this.today, 'month')) {
-      this.disablePreviousMonth = false;
-    }else {
-      this.disablePreviousMonth = true;
-    }
+    this.disablePreviousMonth =  (moment(this.previousMonth).isBefore(this.today, 'month'));
   }
 
   /**
@@ -134,11 +130,7 @@ export class BookingComponent implements OnInit {
     this.buildGrid();
     this.getBookedEvents();
 
-    if (!moment(this.previousMonth).isBefore(this.today, 'month')) {
-      this.disablePreviousMonth = false;
-    }else {
-      this.disablePreviousMonth = true;
-    }
+    this.disablePreviousMonth =  (moment(this.previousMonth).isBefore(this.today, 'month'));
   }
 
   /**
@@ -153,11 +145,7 @@ export class BookingComponent implements OnInit {
     this.buildGrid();
     this.getBookedEvents();
 
-    if (!moment(this.previousMonth).isBefore(this.today, 'month')) {
-      this.disablePreviousMonth = false;
-    }else {
-      this.disablePreviousMonth = true;
-    }
+    this.disablePreviousMonth =  (moment(this.previousMonth).isBefore(this.today, 'month'));
   }
 
   /**
