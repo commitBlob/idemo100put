@@ -13,7 +13,7 @@
     <div class="buttons-wrapper">
       <button class="calendar-button-left" (click)="getPreviousMonth()" [disabled]="disablePreviousMonth">Prev</button>
       <button class="calendar-button-right" (click)="getNextMonth()">Next</button>
-      <button class="calendar-button" (click)="getToday()">Today</button>
+      <button class="calendar-button" (click)="getToday()" [disabled]="disablePreviousMonth">Today</button>
     </div>
     <div class="current-month">
       <p>{{moment(currentMonth).format('MMMM YYYY')}}</p>
