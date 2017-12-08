@@ -46,9 +46,9 @@ export class BookingComponent implements OnInit {
   nextTriggered: boolean = false;
 
 
-  constructor(private _bookingService: BookingService,
-              private _dialogService: DialogsService,
-              private _viewContainerRef: ViewContainerRef) {
+  constructor(private bookingService: BookingService,
+              private dialogService: DialogsService,
+              private viewContainerRef: ViewContainerRef) {
   }
 
   public ngOnInit() {
@@ -167,8 +167,8 @@ export class BookingComponent implements OnInit {
 
     // backend call to get all booked events from the database
     Observable.forkJoin(
-      this._bookingService.getStartDates(this.apartmentId, this.monthStartUNIX, this.monthEndUNIX),
-      this._bookingService.getEndDates(this.apartmentId, this.monthStartUNIX, this.monthEndUNIX)
+      this.bookingService.getStartDates(this.apartmentId, this.monthStartUNIX, this.monthEndUNIX),
+      this.bookingService.getEndDates(this.apartmentId, this.monthStartUNIX, this.monthEndUNIX)
     ).subscribe( (res) => {
       res[0].forEach((value: any) => {
         this.tempEvents.push(value);
@@ -266,7 +266,7 @@ export class BookingComponent implements OnInit {
           if (moment(daySelected).isAfter(this.datesSelected[0], 'day') || moment(daySelected).isSame(this.datesSelected[0], 'day')) {
             if (!this.nextTriggered) {
               // check if there are any booked days in between selections
-              this._bookingService.checkDatesBetween(this.datesSelected[0], daySelected, this.calendarCells).subscribe((response) => {
+              this.bookingService.checkDatesBetween(this.datesSelected[0], daySelected, this.calendarCells).subscribe((response) => {
                   this.componentLoading = true;
                   this.allowBooking = response;
                 },
@@ -287,7 +287,7 @@ export class BookingComponent implements OnInit {
             }else {
               const unixStart = moment(this.datesSelected[0]).format('x');
               const unixEnd = moment(daySelected).format('x');
-              this._bookingService.checkIfAvailable(this.apartmentId, unixStart, unixEnd).subscribe((response) => {
+              this.bookingService.checkIfAvailable(this.apartmentId, unixStart, unixEnd).subscribe((response) => {
                 this.componentLoading = true;
                 if (response.length === 0) {
                   this.componentLoading = false;
@@ -344,7 +344,7 @@ export class BookingComponent implements OnInit {
    */
   public bookingDialog(title: string, message: string, start?, end?) {
     if (!end) {
-      this._dialogService.bookings(title, message, this._viewContainerRef, true).subscribe( result => {
+      this.dialogService.bookings(title, message, this.viewContainerRef, true).subscribe( result => {
         if (result === 'ok') {
           // if user accepts one night booking set start, end, and push to the array
           this.bookingStart = start;
@@ -356,7 +356,7 @@ export class BookingComponent implements OnInit {
         }
       });
     } else {
-      this._dialogService.bookings(title, message, this._viewContainerRef).subscribe( result => {
+      this.dialogService.bookings(title, message, this.viewContainerRef).subscribe( result => {
         if (result === 1) {
           this.bookingStart = start;
           this.bookingEnd = start;
@@ -386,7 +386,7 @@ export class BookingComponent implements OnInit {
    * @param {String} [end] - booking end date
    */
   public messageDialog(title: string, message: string, start?, end?) {
-    this._dialogService.confirm(title, message, this._viewContainerRef).subscribe(result => {
+    this.dialogService.confirm(title, message, this.viewContainerRef).subscribe(result => {
       if (result) {
         this.bookingStart = start;
         if (!end) {
@@ -411,8 +411,8 @@ export class BookingComponent implements OnInit {
    * @param {String} message
    */
   public errorDialog(title: string, message: string) {
-    this._dialogService
-      .confirm(title, message, this._viewContainerRef);
+    this.dialogService
+      .confirm(title, message, this.viewContainerRef);
   }
 
 }
