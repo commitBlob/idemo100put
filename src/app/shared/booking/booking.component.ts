@@ -18,30 +18,32 @@ import * as moment from 'moment/moment';
 })
 export class BookingComponent implements OnInit {
 
-  public calendarCells: CalendarCellModel[] = [];
-  public days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'];
-  public moment = moment;
-  public currentMonth = moment().format('YYYY-MM-DD');
-  public previousMonth = moment().subtract(1, 'month').date(1).format('YYYY-MM-DD');
-  public nextMonth = moment().add(1, 'month').date(1).format('YYYY-MM-DD');
-  public elementDisabled = true;
-  public monthStartUNIX = moment().startOf('month').format('x');
-  public monthEndUNIX = moment().endOf('month').format('x');
-  public componentLoading = true;
-  public apartmentId = 2;
-  public bookedEvents = [];
-  public tempEvents = [];
+  calendarCells: CalendarCellModel[] = [];
+  days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'];
+  moment = moment;
+  currentMonth = moment().format('YYYY-MM-DD');
+  previousMonth = moment().subtract(1, 'month').date(1).format('YYYY-MM-DD');
+  nextMonth = moment().add(1, 'month').date(1).format('YYYY-MM-DD');
+  elementDisabled = true;
+  monthStartUNIX = moment().startOf('month').format('x');
+  monthEndUNIX = moment().endOf('month').format('x');
+  componentLoading = true;
+  apartmentId = 2;
+  bookedEvents = [];
+  tempEvents = [];
 
-  public gridDone = false;
-  public bookedCheck = false;
+  gridDone = false;
+  bookedCheck = false;
 
-  public bookingStart;
-  public bookingEnd;
-  public datesSelected = [];
-  public allowBooking = false;
+  bookingStart;
+  bookingEnd;
+  datesSelected = [];
+  allowBooking = false;
 
-  public disablePreviousMonth = true;
-  public today = moment().format('YYYY-MM-DD');
+  disablePreviousMonth = true;
+  today = moment().format('YYYY-MM-DD');
+
+  nextTriggered: boolean = false;
 
 
   constructor(private _bookingService: BookingService,
@@ -69,11 +71,8 @@ export class BookingComponent implements OnInit {
     // resets
     this.calendarCells = [];
 
-    if ( firstDay === 0) {
-      daysToPickFromPrevMonth = 7;
-    }else {
-      daysToPickFromPrevMonth = firstDay;
-    }
+    firstDay === 0 ? daysToPickFromPrevMonth = 7 : daysToPickFromPrevMonth = firstDay;
+
     let daysToPickFromNextMonth = 42 - daysInCurrentMonth - daysToPickFromPrevMonth;
     let fillerStart = moment(monthStartDate).subtract(daysToPickFromPrevMonth, 'd').format('YYYY-MM-DD');
     let fillerEnd = moment(monthEndDate).add(daysToPickFromNextMonth, 'd').format('YYYY-MM-DD');
@@ -115,6 +114,8 @@ export class BookingComponent implements OnInit {
     this.buildGrid();
     this.getBookedEvents();
 
+    this.nextTriggered = false;
+
     this.disablePreviousMonth =  (moment(this.previousMonth).isBefore(this.today, 'month'));
   }
 
@@ -130,6 +131,8 @@ export class BookingComponent implements OnInit {
     this.buildGrid();
     this.getBookedEvents();
 
+    this.nextTriggered = this.datesSelected.length === 1;
+
     this.disablePreviousMonth =  (moment(this.previousMonth).isBefore(this.today, 'month'));
   }
 
@@ -144,6 +147,8 @@ export class BookingComponent implements OnInit {
     this.monthEndUNIX =  moment(this.currentMonth).endOf('month').format('x');
     this.buildGrid();
     this.getBookedEvents();
+
+    this.nextTriggered = false;
 
     this.disablePreviousMonth =  (moment(this.previousMonth).isBefore(this.today, 'month'));
   }
@@ -259,28 +264,50 @@ export class BookingComponent implements OnInit {
           this.bookingStart = this.datesSelected[0];
 
           if (moment(daySelected).isAfter(this.datesSelected[0], 'day') || moment(daySelected).isSame(this.datesSelected[0], 'day')) {
-            // check if there are any booked days in between selections
-            this._bookingService.checkDatesBetween(this.datesSelected[0], daySelected, this.calendarCells).subscribe((response) => {
+            if (!this.nextTriggered) {
+              // check if there are any booked days in between selections
+              this._bookingService.checkDatesBetween(this.datesSelected[0], daySelected, this.calendarCells).subscribe((response) => {
+                  this.componentLoading = true;
+                  this.allowBooking = response;
+                },
+                (error) => {
+                  this.errorDialog('Unexpected error', error);
+                },
+                () => {
+                  this.componentLoading = false;
+                  if (this.allowBooking) {
+                    this.bookingEnd = daySelected;
+                  } else {
+                    this.errorDialog('Invalid selection!', 'Date(s) in the range of '
+                      + this.datesSelected[0] + ' to '
+                      + moment(daySelected).format('YYYY-MM-DD') + ' are already booked!');
+                    this.datesSelected.pop();
+                  }
+                });
+            }else {
+              const unixStart = moment(this.datesSelected[0]).format('x');
+              const unixEnd = moment(daySelected).format('x');
+              this._bookingService.checkIfAvailable(this.apartmentId, unixStart, unixEnd).subscribe((response) => {
                 this.componentLoading = true;
-                this.allowBooking = response;
-              },
-              (error) => {
-                this.errorDialog('Unexpected error', error);
-              },
-              () => {
-                this.componentLoading = false;
-                if (this.allowBooking) {
+                if (response.length === 0) {
+                  this.componentLoading = false;
                   this.bookingEnd = daySelected;
-                } else {
+                }else {
+                  this.componentLoading = false;
                   this.errorDialog('Invalid selection!', 'Date(s) in the range of '
                     + this.datesSelected[0] + ' to '
                     + moment(daySelected).format('YYYY-MM-DD') + ' are already booked!');
-                  this.datesSelected.pop();
+                  this.datesSelected = [];
                 }
-              });
+              },
+                (error) => {
+                  this.errorDialog('Unexpected error', error);
+                });
+            }
           } else {
             this.errorDialog('Invalid selection!', 'End date ' + moment(daySelected).format('YYYY-MM-DD')
               + ' cannot be before start date ' + this.datesSelected[0]);
+            this.datesSelected = [];
           }
         }
         this.datesSelected.push(daySelected);

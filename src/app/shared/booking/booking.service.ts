@@ -26,6 +26,12 @@ export class BookingService {
       .catch(this.handleError);
   }
 
+  public checkIfAvailable(apartmentId, startDate, endDate): Observable<BookedPeriodsModel[]> {
+    return this._http.get('./api/checkBooking/' + apartmentId + '/' + startDate + '/' + endDate)
+      .map((res: Response) => <BookedPeriodsModel> res.json())
+      .catch(this.handleError);
+  }
+
   public checkDatesBetween(startDate: string, endDate: string, calendarArray): Observable<boolean> {
     let selectionRange = [];
     let selectionStart = startDate;
