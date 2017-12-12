@@ -12,18 +12,6 @@ import { BookedPeriodsModel } from './booked-periods.interface';
 export class BookingService {
   constructor( private http: Http) {}
 
-  public getStartDates(apartmentId, startDate, endDate): Observable<BookedPeriodsModel[]> {
-    return this.http.get('./api/startDates/' + apartmentId + '/' + startDate + '/' + endDate)
-      .map((res: Response) => <BookedPeriodsModel>res.json())
-      .catch(this.handleError);
-  }
-
-  public getEndDates(apartmentId, startDate, endDate): Observable<BookedPeriodsModel[]> {
-    return this.http.get('./api/endDates/' + apartmentId + '/' + startDate + '/' + endDate)
-      .map((res: Response) => <BookedPeriodsModel> res.json())
-      .catch(this.handleError);
-  }
-
   public checkIfAvailable(apartmentId, startDate, endDate): Observable<BookedPeriodsModel[]> {
     return this.http.get('./api/checkBooking/' + apartmentId + '/' + startDate + '/' + endDate)
       .map((res: Response) => <BookedPeriodsModel> res.json())
@@ -33,6 +21,12 @@ export class BookingService {
   public getApartmentDetails(apartmentShortName): Observable<any> {
     return this.http.get('./api/apartment/' + apartmentShortName)
       .map((res: Response) => res.json())
+      .catch(this.handleError);
+  }
+
+  public getBookedPeriods(apartmentId, startDate, endDate): Observable<BookedPeriodsModel[]> {
+    return this.http.get('./api/getMonth/' + apartmentId + '/' + startDate + '/' + endDate)
+      .map((res: Response) => <BookedPeriodsModel>res.json())
       .catch(this.handleError);
   }
 

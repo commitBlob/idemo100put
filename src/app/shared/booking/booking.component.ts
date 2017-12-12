@@ -1,7 +1,6 @@
 // Core
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, ViewContainerRef} from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 
 // App specific
 import { BookingService } from './booking.service';
@@ -28,7 +27,7 @@ export class BookingComponent implements OnInit {
   monthStartUNIX = moment().startOf('month').format('x');
   monthEndUNIX = moment().endOf('month').format('x');
   componentLoading = true;
-  bookedEvents = [];
+  bookedEvents: any;
   tempEvents = [];
 
   gridDone = false;
@@ -178,29 +177,18 @@ export class BookingComponent implements OnInit {
   public getBookedEvents() {
     // resets
     this.componentLoading = true;
-    this.tempEvents = [];
     this.bookedEvents = [];
 
-    // backend call to get all booked events from the database
-    Observable.forkJoin(
-      // this should probbably be refactored
-      this.bookingService.getStartDates(this.apartmentId, this.monthStartUNIX, this.monthEndUNIX),
-      this.bookingService.getEndDates(this.apartmentId, this.monthStartUNIX, this.monthEndUNIX)
-    ).subscribe( (res) => {
-      res[0].forEach((value: any) => {
-        this.tempEvents.push(value);
+    this.bookingService.getBookedPeriods(this.apartmentId, this.monthStartUNIX, this.monthEndUNIX)
+      .subscribe((res) => {
+        this.bookedEvents = res;
+      }, (error) => {
+        console.log('Error: ', error);
+        this.errorDialog('ERROR', error);
+      }, () => {
+        this.componentLoading = false;
+        this.showBooked();
       });
-      res[1].forEach((value: any) => {
-        this.tempEvents.push(value);
-      });
-    }, (error) => {
-      console.log(error);
-    }, () => {
-      // filter duplicates
-      this.bookedEvents = this.tempEvents.filter((set => f => !set.has(f._id) && set.add(f._id))(new Set));
-      this.componentLoading = false;
-      this.showBooked();
-    });
   }
 
   /**
