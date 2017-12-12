@@ -45,6 +45,9 @@ export class BookingComponent implements OnInit {
   selectionValid: boolean = false;
 
   private sub: any;
+
+  // TODO: create interface and place all this apartment shit into object
+  apartmentLink: string = '';
   apartmentId;
   apartmentShortName: string = '';
   apartmentName: string = '';
@@ -59,6 +62,7 @@ export class BookingComponent implements OnInit {
   public ngOnInit() {
     this.bookingService.getApartmentDetails(this.apartmentShortName).subscribe(
       (apartmentDetails) => {
+        this.apartmentLink = apartmentDetails[0].bookingLink;
         this.apartmentId = apartmentDetails[0].apartmentId;
         this.apartmentName = apartmentDetails[0].apartmentName;
         this.apartmentShortName = apartmentDetails[0].apartmentShortName;
@@ -268,6 +272,7 @@ export class BookingComponent implements OnInit {
           this.bookingDialog('One day booking!', 'You selected only one night. Price for one night stay is £120!', daySelected);
         }
 
+        // if start point is selected and end point is not the same day or the day after
         if (this.datesSelected.length === 1 && moment(daySelected).isSameOrAfter(this.datesSelected[0], 'day')) {
           this.datesSelected.push(daySelected);
           this.bookingEnd = daySelected;
@@ -277,12 +282,14 @@ export class BookingComponent implements OnInit {
             this.bookingDialog('One day booking!', 'You selected only one night. Price for one night stay is £120!', daySelected);
           }
 
+          // check for 2 nights booking
           if (this.bookingEnd === moment(this.bookingStart).add(1, 'day').format('YYYY-MM-DD')) {
             this.messageDialog('Two days booking!', 'You selected two nights stay. Price for two nights is £120!', this.datesSelected[0], daySelected);
           }
 
           const timestampStart = moment(this.bookingStart).format('x');
           const timestampEnd = moment(this.bookingEnd).format('x');
+          // check with backend if there are any bookings in between selections
           this.bookingService.checkIfAvailable(this.apartmentId, timestampStart, timestampEnd).subscribe((response) => {
             if (response.length === 0) {
               console.log('Booking is OK!');
@@ -416,4 +423,23 @@ export class BookingComponent implements OnInit {
       .confirm(title, message, this.viewContainerRef);
   }
 
+  /**
+   * Triggered on continue click and subscribes to the output.
+   * If output is booking, redirects to booking.com
+   * if output is paypal proceeds with payment
+   */
+  public selectionDialog() {
+    const start = moment(this.bookingStart);
+    const end = moment(this.bookingEnd);
+    const bodyObject = {
+      startDate: this.bookingStart,
+      endDate: this.bookingEnd,
+      pricePerNight: 100,
+      nights: end.diff(start, 'days') + 1,
+    };
+
+    this.dialogService.selection(this.apartmentName + ' Apartment', bodyObject, this.viewContainerRef).subscribe(output => {
+      console.log('gimme output: ', output);
+    });
+  }
 }

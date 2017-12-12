@@ -6,7 +6,9 @@ import { NgModule } from '@angular/core';
 // App specific
 import { BookingDialogComponent } from '../booking/booking-dialogs/booking-dialog.component';
 import { ConfirmDialogComponent } from './confirm-dialog.component';
+import { SelectionDialogComponent } from '../booking/selection-dialog/selection-dialog.component';
 import { DialogsService } from './dialogs.service';
+import { SelectionTemplate } from './booking-selection-template/selection-template';
 
 
 
@@ -18,10 +20,13 @@ import { DialogsService } from './dialogs.service';
   exports: [
     BookingDialogComponent,
     ConfirmDialogComponent,
+    SelectionDialogComponent
   ],
   declarations: [
     BookingDialogComponent,
     ConfirmDialogComponent,
+    SelectionDialogComponent,
+    SelectionTemplate
   ],
   providers: [
     DialogsService,
@@ -29,6 +34,7 @@ import { DialogsService } from './dialogs.service';
   entryComponents: [
     BookingDialogComponent,
     ConfirmDialogComponent,
+    SelectionDialogComponent
   ],
 })
 export class DialogsModule {
