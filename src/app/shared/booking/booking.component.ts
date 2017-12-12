@@ -24,7 +24,6 @@ export class BookingComponent implements OnInit {
   currentMonth = moment().format('YYYY-MM-DD');
   previousMonth = moment().subtract(1, 'month').date(1).format('YYYY-MM-DD');
   nextMonth = moment().add(1, 'month').date(1).format('YYYY-MM-DD');
-  elementDisabled = true;
   monthStartUNIX = moment().startOf('month').format('x');
   monthEndUNIX = moment().endOf('month').format('x');
   componentLoading = true;
@@ -44,7 +43,7 @@ export class BookingComponent implements OnInit {
   today = moment().format('YYYY-MM-DD');
 
   nextTriggered: boolean = false;
-
+  selectionValid: boolean = false;
 
   constructor(private bookingService: BookingService,
               private dialogService: DialogsService,
@@ -60,22 +59,22 @@ export class BookingComponent implements OnInit {
    * Creates calendar grid
    */
   public buildGrid() {
-    let currentYear = moment(this.currentMonth).format('YYYY');
-    let daysInCurrentMonth = moment(this.currentMonth).daysInMonth();
-    let momentMonth = moment(this.currentMonth).format('MM');
-    let firstDay = Number(moment(currentYear + '-' + momentMonth + '-' + 1, 'YYYY-MM-DD').format('d'));
+    const currentYear = moment(this.currentMonth).format('YYYY');
+    const daysInCurrentMonth = moment(this.currentMonth).daysInMonth();
+    const momentMonth = moment(this.currentMonth).format('MM');
+    const firstDay = Number(moment(currentYear + '-' + momentMonth + '-' + 1, 'YYYY-MM-DD').format('d'));
     let daysToPickFromPrevMonth;
-    let monthStartDate = moment(this.currentMonth).startOf('month').format('YYYY-MM-DD');
-    let monthEndDate = moment(this.currentMonth).endOf('month').format('YYYY-MM-DD');
+    const monthStartDate = moment(this.currentMonth).startOf('month').format('YYYY-MM-DD');
+    const monthEndDate = moment(this.currentMonth).endOf('month').format('YYYY-MM-DD');
 
     // resets
     this.calendarCells = [];
 
     firstDay === 0 ? daysToPickFromPrevMonth = 7 : daysToPickFromPrevMonth = firstDay;
 
-    let daysToPickFromNextMonth = 42 - daysInCurrentMonth - daysToPickFromPrevMonth;
-    let fillerStart = moment(monthStartDate).subtract(daysToPickFromPrevMonth, 'd').format('YYYY-MM-DD');
-    let fillerEnd = moment(monthEndDate).add(daysToPickFromNextMonth, 'd').format('YYYY-MM-DD');
+    const daysToPickFromNextMonth = 42 - daysInCurrentMonth - daysToPickFromPrevMonth;
+    const fillerStart = moment(monthStartDate).subtract(daysToPickFromPrevMonth, 'd').format('YYYY-MM-DD');
+    const fillerEnd = moment(monthEndDate).add(daysToPickFromNextMonth, 'd').format('YYYY-MM-DD');
 
     let momentStart = moment(fillerStart).format('YYYY-MM-DD');
     let momentEnd = moment(fillerEnd).format('YYYY-MM-DD');
@@ -96,7 +95,7 @@ export class BookingComponent implements OnInit {
           cellDate: momentStart,
           monthDay: moment(momentStart).format('DD')});
       }
-      let newMoment = moment(momentStart).add(1, 'd').format('YYYY-MM-DD');
+      const newMoment = moment(momentStart).add(1, 'd').format('YYYY-MM-DD');
       momentStart = moment(newMoment).format('YYYY-MM-DD');
     }
     this.gridDone = true;
@@ -228,6 +227,7 @@ export class BookingComponent implements OnInit {
           this.bookingEnd = null;
           this.datesSelected = [];
           this.allowBooking = false;
+          this.selectionValid = false;
         }
 
         let daySelected, neighbour, beforeObject, afterObject;
@@ -240,6 +240,7 @@ export class BookingComponent implements OnInit {
         // if dayBefore and dayAfter are already booked, alert user
         if (beforeObject.booked && afterObject.booked) {
           this.messageDialog('One day booking!', 'Booking price for one night is £120.', daySelected);
+          this.selectionValid = true;
         }
 
         // if before is booked, check right neighbour
@@ -277,7 +278,8 @@ export class BookingComponent implements OnInit {
           const timestampEnd = moment(this.bookingEnd).format('x');
           this.bookingService.checkIfAvailable(this.apartmentId, timestampStart, timestampEnd).subscribe((response) => {
             if (response.length === 0) {
-              console.log('Booking is OK!')
+              console.log('Booking is OK!');
+              this.selectionValid = true;
               // continue after all is good
             }else {
               this.errorDialog('Invalid Selection',
@@ -285,6 +287,7 @@ export class BookingComponent implements OnInit {
                 + ' - ' + moment(this.bookingEnd).format('DD-MM-YYYY') + ' are already booked.');
               this.bookingStart = '';
               this.bookingEnd = '';
+              this.selectionValid = false;
             }
           });
         }
@@ -346,18 +349,21 @@ export class BookingComponent implements OnInit {
           this.bookingStart = start;
           this.bookingEnd = start;
           this.datesSelected.push(start);
+          this.selectionValid = true;
         }
 
         if (result === 2) {
           this.bookingStart = start;
           this.bookingEnd = end;
           this.datesSelected.push(end);
+          this.selectionValid = true;
         }
 
         if (result === 'closed') {
           this.bookingStart = '';
           this.bookingEnd = '';
           this.datesSelected = [];
+          this.selectionValid = false;
         }
       });
     }
@@ -378,14 +384,17 @@ export class BookingComponent implements OnInit {
           // if there is no end parameter and result is true make one night booking and add it to the datesSelected array
           this.bookingEnd = start;
           this.datesSelected.push(start);
+          this.selectionValid = true;
         } else {
           this.bookingEnd = end;
           this.datesSelected.push(end);
+          this.selectionValid = true;
         }
       }else {
         // if user selects close button, remove start date and empty datesSelected array
         this.bookingStart = '';
         this.datesSelected = [];
+        this.selectionValid = false;
       }
     });
   }

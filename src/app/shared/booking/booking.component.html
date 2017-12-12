@@ -30,8 +30,11 @@
     </div>
   </div>
   <div *ngIf="bookingStart">
-    <h3>Your Selection</h3>
-    <p>Start Date: {{moment(bookingStart).format('DD-MM-YYYY')}}</p>
-    <p *ngIf="bookingEnd">End Date: {{moment(bookingEnd).format('DD-MM-YYYY')}}</p>
+    <div class="date-selection">
+      <h3>Your Selection</h3>
+      <p>Start Date: {{moment(bookingStart).format('DD-MM-YYYY')}}</p>
+      <p *ngIf="bookingEnd">End Date: {{moment(bookingEnd).format('DD-MM-YYYY')}}</p>
+    </div>
+    <button class="app-button--" [disabled]="!selectionValid">Continue</button>
   </div>
 </div>
