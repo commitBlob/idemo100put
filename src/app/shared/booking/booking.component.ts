@@ -263,7 +263,6 @@ export class BookingComponent implements OnInit {
         if (this.datesSelected.length === 1 && moment(daySelected).isSameOrAfter(this.datesSelected[0], 'day')) {
           this.datesSelected.push(daySelected);
           this.bookingEnd = daySelected;
-          console.log('this.datesSelected.length === 1', this.datesSelected);
           // second click
           // check if startDate === endDate
           if (this.bookingStart === this.bookingEnd) {
@@ -295,8 +294,6 @@ export class BookingComponent implements OnInit {
           this.datesSelected.push(daySelected);
           // check right neighbour
           this.triggerBookedCheck(afterObject);
-
-          console.log('this.datesSelected.length === 0', this.datesSelected);
         }
 
 
