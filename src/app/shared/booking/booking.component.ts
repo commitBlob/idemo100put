@@ -132,7 +132,7 @@ export class BookingComponent implements OnInit {
 
     this.nextTriggered = false;
 
-    this.disablePreviousMonth =  (moment(this.previousMonth).isBefore(this.today, 'month'));
+    this.disablePreviousMonth = (moment(this.previousMonth).isBefore(this.today, 'month'));
   }
 
   /**
@@ -149,7 +149,7 @@ export class BookingComponent implements OnInit {
 
     this.nextTriggered = this.datesSelected.length === 1;
 
-    this.disablePreviousMonth =  (moment(this.previousMonth).isBefore(this.today, 'month'));
+    this.disablePreviousMonth = (moment(this.previousMonth).isBefore(this.today, 'month'));
   }
 
   /**
@@ -166,7 +166,7 @@ export class BookingComponent implements OnInit {
 
     this.nextTriggered = false;
 
-    this.disablePreviousMonth =  (moment(this.previousMonth).isBefore(this.today, 'month'));
+    this.disablePreviousMonth = (moment(this.previousMonth).isBefore(this.today, 'month'));
   }
 
   /**
@@ -183,6 +183,7 @@ export class BookingComponent implements OnInit {
 
     // backend call to get all booked events from the database
     Observable.forkJoin(
+      // this should probbably be refactored
       this.bookingService.getStartDates(this.apartmentId, this.monthStartUNIX, this.monthEndUNIX),
       this.bookingService.getEndDates(this.apartmentId, this.monthStartUNIX, this.monthEndUNIX)
     ).subscribe( (res) => {
@@ -195,6 +196,7 @@ export class BookingComponent implements OnInit {
     }, (error) => {
       console.log(error);
     }, () => {
+      // filter duplicates
       this.bookedEvents = this.tempEvents.filter((set => f => !set.has(f._id) && set.add(f._id))(new Set));
       this.componentLoading = false;
       this.showBooked();
@@ -231,7 +233,7 @@ export class BookingComponent implements OnInit {
 
   /**
    * Check if selection is valid for booking
-   * @param element
+   * @param calendarCell
    */
   public calendarElementTrigger(calendarCell) {
     // check if selcted date is in the past
