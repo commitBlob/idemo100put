@@ -1,4 +1,5 @@
 // Core
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, ViewContainerRef} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
@@ -27,7 +28,6 @@ export class BookingComponent implements OnInit {
   monthStartUNIX = moment().startOf('month').format('x');
   monthEndUNIX = moment().endOf('month').format('x');
   componentLoading = true;
-  apartmentId = 2;
   bookedEvents = [];
   tempEvents = [];
 
@@ -45,14 +45,31 @@ export class BookingComponent implements OnInit {
   nextTriggered: boolean = false;
   selectionValid: boolean = false;
 
+  private sub: any;
+  apartmentId;
+  apartmentShortName: string = '';
+  apartmentName: string = '';
+
   constructor(private bookingService: BookingService,
               private dialogService: DialogsService,
-              private viewContainerRef: ViewContainerRef) {
+              private viewContainerRef: ViewContainerRef,
+              private route: ActivatedRoute) {
+    this.sub = this.route.params.subscribe( params => this.apartmentShortName = params['apartmentName']);
   }
 
   public ngOnInit() {
-    this.buildGrid();
-    this.getBookedEvents();
+    this.bookingService.getApartmentDetails(this.apartmentShortName).subscribe(
+      (apartmentDetails) => {
+        this.apartmentId = apartmentDetails[0].apartmentId;
+        this.apartmentName = apartmentDetails[0].apartmentName;
+        this.apartmentShortName = apartmentDetails[0].apartmentShortName;
+      }, (error) => {
+        console.log('Error: ' + error);
+        this.errorDialog('Error', error);
+      }, () => {
+        this.buildGrid();
+        this.getBookedEvents();
+      });
   }
 
   /**

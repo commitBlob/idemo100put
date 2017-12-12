@@ -10,23 +10,29 @@ import { BookedPeriodsModel } from './booked-periods.interface';
 
 @Injectable()
 export class BookingService {
-  constructor( private  _http: Http) {}
+  constructor( private http: Http) {}
 
   public getStartDates(apartmentId, startDate, endDate): Observable<BookedPeriodsModel[]> {
-    return this._http.get('./api/startDates/' + apartmentId + '/' + startDate + '/' + endDate)
+    return this.http.get('./api/startDates/' + apartmentId + '/' + startDate + '/' + endDate)
       .map((res: Response) => <BookedPeriodsModel>res.json())
       .catch(this.handleError);
   }
 
   public getEndDates(apartmentId, startDate, endDate): Observable<BookedPeriodsModel[]> {
-    return this._http.get('./api/endDates/' + apartmentId + '/' + startDate + '/' + endDate)
+    return this.http.get('./api/endDates/' + apartmentId + '/' + startDate + '/' + endDate)
       .map((res: Response) => <BookedPeriodsModel> res.json())
       .catch(this.handleError);
   }
 
   public checkIfAvailable(apartmentId, startDate, endDate): Observable<BookedPeriodsModel[]> {
-    return this._http.get('./api/checkBooking/' + apartmentId + '/' + startDate + '/' + endDate)
+    return this.http.get('./api/checkBooking/' + apartmentId + '/' + startDate + '/' + endDate)
       .map((res: Response) => <BookedPeriodsModel> res.json())
+      .catch(this.handleError);
+  }
+
+  public getApartmentDetails(apartmentShortName): Observable<any> {
+    return this.http.get('./api/apartment/' + apartmentShortName)
+      .map((res: Response) => res.json())
       .catch(this.handleError);
   }
 

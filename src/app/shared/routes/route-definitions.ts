@@ -26,6 +26,6 @@ export const appRoutes: Routes = [
   { path: 'du-facts', component: DubrovnikFactsComponent },
   { path: 'location', component: LocationComponent },
   { path: 'surroundings', component: SurroundingsComponent },
-  { path: 'booking', component: BookingComponent },
+  { path: 'booking/:apartmentName', component: BookingComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
