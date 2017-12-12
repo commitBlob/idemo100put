@@ -1,6 +1,6 @@
 // Core
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -28,7 +28,8 @@ export class ApartmentComponent implements OnInit, OnDestroy {
 
   constructor(private _route: ActivatedRoute,
               private _apartmentDetailsService: ApartmentDetailsService,
-              private _languageService: LanguagesService) {
+              private _languageService: LanguagesService,
+              private router: Router) {
 
     this._sub = this._route.params.subscribe(params => {
       this.apartmentName = params['apartmentName'];
@@ -82,6 +83,10 @@ export class ApartmentComponent implements OnInit, OnDestroy {
   private closeBlock(event) {
     event.target.parentElement.classList.add('hide');
     setTimeout(() => { this.displayWarning = false; }, 750)
+  }
+
+  public goToBookings() {
+    this.router.navigate(['booking/' + this.apartmentName]);
   }
 
   /**

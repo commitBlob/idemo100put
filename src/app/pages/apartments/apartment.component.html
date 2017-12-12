@@ -12,7 +12,7 @@
     <ng-template #minCro>
       <p>Minimalan broj nocenja: {{apartmentData[0].minStay}}</p>
     </ng-template>
-    <a class="app-button-- apartment_availability" [href]="apartmentData[0].bookingLink" [target]="_blank">
+    <a class="app-button-- apartment_availability" (click)="goToBookings()">
       Check Availability
       <i class="material-icons left">event_note</i>
     </a>
