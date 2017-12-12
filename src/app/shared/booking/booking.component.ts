@@ -214,16 +214,15 @@ export class BookingComponent implements OnInit {
   }
 
   /**
-   * Field Click triggers
-   * TODO: fix selections in 2 months
+   * Check if selection is valid for booking
+   * @param element
    */
-  public calendarElementTrigger(element) {
-    // get today in order to check if booking is in the past
-    let today = moment().format('YYYY-MM-DD');
-
-    if (moment(element.cellDate).isSameOrAfter(today, 'day')) {
-      if (!element.disabled && !element.booked) {
-        if (this.datesSelected.length === 0 || this.datesSelected.length === 2) {
+  public calendarElementTrigger(calendarCell) {
+    // check if selcted date is in the past
+    if (moment(calendarCell.cellDate).isSameOrAfter(this.today, 'day')) {
+      if (!calendarCell.disabled && !calendarCell.booked) {
+        // check if user already made selection in order to reset it
+        if (this.datesSelected.length === 0 || this.datesSelected.length >= 2) {
           // resets
           this.bookingStart = null;
           this.bookingEnd = null;
@@ -231,9 +230,10 @@ export class BookingComponent implements OnInit {
           this.allowBooking = false;
         }
 
-
         let daySelected, neighbour, beforeObject, afterObject;
-        daySelected = element.cellDate;
+        daySelected = calendarCell.cellDate;
+
+        // check if neighbours are booked already
         afterObject = this.triggerBookedCheck(moment(daySelected).add(1, 'day').format('YYYY-MM-DD'));
         beforeObject = this.triggerBookedCheck(moment(daySelected).subtract(1, 'day').format('YYYY-MM-DD'));
 
@@ -260,61 +260,49 @@ export class BookingComponent implements OnInit {
           this.bookingDialog('One day booking!', 'You selected only one night. Price for one night stay is £120!', daySelected);
         }
 
-        if (this.datesSelected.length === 1) {
-          this.bookingStart = this.datesSelected[0];
-
-          if (moment(daySelected).isAfter(this.datesSelected[0], 'day') || moment(daySelected).isSame(this.datesSelected[0], 'day')) {
-            if (!this.nextTriggered) {
-              // check if there are any booked days in between selections
-              this.bookingService.checkDatesBetween(this.datesSelected[0], daySelected, this.calendarCells).subscribe((response) => {
-                  this.componentLoading = true;
-                  this.allowBooking = response;
-                },
-                (error) => {
-                  this.errorDialog('Unexpected error', error);
-                },
-                () => {
-                  this.componentLoading = false;
-                  if (this.allowBooking) {
-                    this.bookingEnd = daySelected;
-                  } else {
-                    this.errorDialog('Invalid selection!', 'Date(s) in the range of '
-                      + this.datesSelected[0] + ' to '
-                      + moment(daySelected).format('YYYY-MM-DD') + ' are already booked!');
-                    this.datesSelected.pop();
-                  }
-                });
-            }else {
-              const unixStart = moment(this.datesSelected[0]).format('x');
-              const unixEnd = moment(daySelected).format('x');
-              this.bookingService.checkIfAvailable(this.apartmentId, unixStart, unixEnd).subscribe((response) => {
-                this.componentLoading = true;
-                if (response.length === 0) {
-                  this.componentLoading = false;
-                  this.bookingEnd = daySelected;
-                }else {
-                  this.componentLoading = false;
-                  this.errorDialog('Invalid selection!', 'Date(s) in the range of '
-                    + this.datesSelected[0] + ' to '
-                    + moment(daySelected).format('YYYY-MM-DD') + ' are already booked!');
-                  this.datesSelected = [];
-                }
-              },
-                (error) => {
-                  this.errorDialog('Unexpected error', error);
-                });
-            }
-          } else {
-            this.errorDialog('Invalid selection!', 'End date ' + moment(daySelected).format('YYYY-MM-DD')
-              + ' cannot be before start date ' + this.datesSelected[0]);
-            this.datesSelected = [];
+        if (this.datesSelected.length === 1 && moment(daySelected).isSameOrAfter(this.datesSelected[0], 'day')) {
+          this.datesSelected.push(daySelected);
+          this.bookingEnd = daySelected;
+          console.log('this.datesSelected.length === 1', this.datesSelected);
+          // second click
+          // check if startDate === endDate
+          if (this.bookingStart === this.bookingEnd) {
+            this.bookingDialog('One day booking!', 'You selected only one night. Price for one night stay is £120!', daySelected);
           }
+
+          if (this.bookingEnd === moment(this.bookingStart).add(1, 'day').format('YYYY-MM-DD')) {
+            this.messageDialog('Two days booking!', 'You selected two nights stay. Price for two nights is £120!', this.datesSelected[0], daySelected);
+          }
+
+          const timestampStart = moment(this.bookingStart).format('x');
+          const timestampEnd = moment(this.bookingEnd).format('x');
+          this.bookingService.checkIfAvailable(this.apartmentId, timestampStart, timestampEnd).subscribe((response) => {
+            if (response.length === 0) {
+              console.log('Booking is OK!')
+              // continue after all is good
+            }else {
+              this.errorDialog('Invalid Selection',
+                'Date(s) in the range ' + moment(this.bookingStart).format('DD-MM-YYYY')
+                + ' - ' + moment(this.bookingEnd).format('DD-MM-YYYY') + ' are already booked.');
+              this.bookingStart = '';
+              this.bookingEnd = '';
+            }
+          });
         }
-        this.datesSelected.push(daySelected);
-        this.bookingStart = this.datesSelected[0];
+
+        if (this.datesSelected.length === 0) {
+          this.bookingStart = daySelected;
+          this.datesSelected.push(daySelected);
+          // check right neighbour
+          this.triggerBookedCheck(afterObject);
+
+          console.log('this.datesSelected.length === 0', this.datesSelected);
+        }
+
 
       }
-    }else {
+      // don't do anything if calendarCell.disabled || calendarCell.booked
+    } else {
       this.errorDialog('Invalid date selected!', 'Date is in the past! Please select another date.');
     }
   }

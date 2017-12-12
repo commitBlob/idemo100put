@@ -31,7 +31,7 @@
   </div>
   <div *ngIf="bookingStart">
     <h3>Your Selection</h3>
-    <p>Start Date: {{bookingStart}}</p>
-    <p>End Date: {{bookingEnd}}</p>
+    <p>Start Date: {{moment(bookingStart).format('DD-MM-YYYY')}}</p>
+    <p *ngIf="bookingEnd">End Date: {{moment(bookingEnd).format('DD-MM-YYYY')}}</p>
   </div>
 </div>
