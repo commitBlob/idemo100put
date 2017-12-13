@@ -28,7 +28,6 @@ export class BookingComponent implements OnInit {
   monthEndUNIX = moment().endOf('month').format('x');
   componentLoading = true;
   bookedEvents: any;
-  tempEvents = [];
 
   gridDone = false;
   bookedCheck = false;
@@ -46,11 +45,8 @@ export class BookingComponent implements OnInit {
 
   private sub: any;
 
-  // TODO: create interface and place all this apartment shit into object
-  apartmentLink: string = '';
-  apartmentId;
-  apartmentShortName: string = '';
-  apartmentName: string = '';
+  apartmentData;
+  apartmentShortName: string;
 
   constructor(private bookingService: BookingService,
               private dialogService: DialogsService,
@@ -62,10 +58,7 @@ export class BookingComponent implements OnInit {
   public ngOnInit() {
     this.bookingService.getApartmentDetails(this.apartmentShortName).subscribe(
       (apartmentDetails) => {
-        this.apartmentLink = apartmentDetails[0].bookingLink;
-        this.apartmentId = apartmentDetails[0].apartmentId;
-        this.apartmentName = apartmentDetails[0].apartmentName;
-        this.apartmentShortName = apartmentDetails[0].apartmentShortName;
+        this.apartmentData = apartmentDetails[0];
       }, (error) => {
         console.log('Error: ' + error);
         this.errorDialog('Error', error);
@@ -183,7 +176,7 @@ export class BookingComponent implements OnInit {
     this.componentLoading = true;
     this.bookedEvents = [];
 
-    this.bookingService.getBookedPeriods(this.apartmentId, this.monthStartUNIX, this.monthEndUNIX)
+    this.bookingService.getBookedPeriods(this.apartmentData.apartmentId, this.monthStartUNIX, this.monthEndUNIX)
       .subscribe((res) => {
         this.bookedEvents = res;
       }, (error) => {
@@ -290,7 +283,7 @@ export class BookingComponent implements OnInit {
           const timestampStart = moment(this.bookingStart).format('x');
           const timestampEnd = moment(this.bookingEnd).format('x');
           // check with backend if there are any bookings in between selections
-          this.bookingService.checkIfAvailable(this.apartmentId, timestampStart, timestampEnd).subscribe((response) => {
+          this.bookingService.checkIfAvailable(this.apartmentData.apartmentId, timestampStart, timestampEnd).subscribe((response) => {
             if (response.length === 0) {
               console.log('Booking is OK!');
               this.selectionValid = true;
@@ -438,7 +431,7 @@ export class BookingComponent implements OnInit {
       nights: end.diff(start, 'days') + 1,
     };
 
-    this.dialogService.selection(this.apartmentName + ' Apartment', bodyObject, this.viewContainerRef).subscribe(output => {
+    this.dialogService.selection(this.apartmentData.apartmentName + ' Apartment', bodyObject, this.viewContainerRef).subscribe(output => {
       console.log('gimme output: ', output);
     });
   }

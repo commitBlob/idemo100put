@@ -9,7 +9,7 @@
     </div>
     <span>loading ...</span>
   </div>
-  <h2>Bookings for {{apartmentName}}</h2>
+  <h2 *ngIf="apartmentData">Bookings for {{apartmentData.apartmentName}}</h2>
   <div class="head-wrapper">
     <div class="buttons-wrapper">
       <button class="calendar-button-left" (click)="getPreviousMonth()" [disabled]="disablePreviousMonth">Prev</button>
