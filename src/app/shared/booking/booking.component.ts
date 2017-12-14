@@ -102,7 +102,8 @@ export class BookingComponent implements OnInit {
           booked: false,
           cellDate: momentStart,
           monthDay: moment(momentStart).format('DD'),
-          selected: this.keepSelection(momentStart)
+          selected: this.keepSelection(momentStart),
+          today: this.markToday(momentStart)
         });
       } else {
         this.calendarCells.push({
@@ -110,7 +111,9 @@ export class BookingComponent implements OnInit {
           disabled: true,
           booked: false,
           cellDate: momentStart,
-          monthDay: moment(momentStart).format('DD')});
+          monthDay: moment(momentStart).format('DD'),
+          today: this.markToday(momentStart)
+        });
       }
       const newMoment = moment(momentStart).add(1, 'd').format('YYYY-MM-DD');
       momentStart = moment(newMoment).format('YYYY-MM-DD');
@@ -382,6 +385,7 @@ export class BookingComponent implements OnInit {
           this.datesSelected.push(start);
           this.selectionValid = true;
           this.cellHighlight();
+          this.selectionDialog();
         }
 
         if (result === 2) {
@@ -390,6 +394,7 @@ export class BookingComponent implements OnInit {
           this.datesSelected.push(end);
           this.selectionValid = true;
           this.cellHighlight();
+          this.selectionDialog();
         }
 
         if (result === 'closed') {
@@ -421,11 +426,13 @@ export class BookingComponent implements OnInit {
           this.datesSelected.push(start);
           this.selectionValid = true;
           this.cellHighlight();
+          this.selectionDialog()
         } else {
           this.bookingEnd = end;
           this.datesSelected.push(end);
           this.selectionValid = true;
           this.cellHighlight();
+          this.selectionDialog()
         }
       }else {
 
@@ -465,6 +472,11 @@ export class BookingComponent implements OnInit {
 
     this.dialogService.selection(this.apartmentData.apartmentName + ' Apartment', bodyObject, this.viewContainerRef).subscribe(output => {
       console.log('gimme output: ', output);
+      if (output === 'closed') {
+        this.resetSelection();
+        this.bookingStart = '';
+        this.bookingEnd = '';
+      }
     });
   }
 
@@ -526,6 +538,11 @@ export class BookingComponent implements OnInit {
       }
     });
     return selected;
+  }
+
+  public markToday(checkDate) {
+    const today = moment().format('YYYY-MM-DD');
+    return today === checkDate;
   }
 
 }

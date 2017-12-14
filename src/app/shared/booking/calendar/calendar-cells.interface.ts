@@ -5,4 +5,5 @@ export interface CalendarCellModel {
   cellDate: string;
   monthDay: string;
   selected?: boolean;
+  today: boolean;
 }

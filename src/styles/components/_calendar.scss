@@ -72,6 +72,7 @@
   > * {
     // margin: 10px;
   }
+
   &-item {
     position: relative;
     box-sizing: border-box;
@@ -88,6 +89,10 @@
       right: 1px;
       min-height: 20px;
       z-index: z('overlay');
+    }
+
+    .today {
+      background-color: rgba($brand-success, .50) !important;
     }
 
     .active-month {
