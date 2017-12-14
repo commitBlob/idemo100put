@@ -7,11 +7,11 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class ApartmentService {
-  constructor(private _http: Http) {
+  constructor(private http: Http) {
   }
 
   public getApartments(): Observable<string[]> {
-    return this._http.get('./api/apartments').map((res: Response) => res.json()).catch(this.handleError);
+    return this.http.get('./api/apartments').map((res: Response) => res.json()).catch(this.handleError);
   }
 
   /**

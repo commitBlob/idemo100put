@@ -1,5 +1,6 @@
 // Core
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
 // App specific
@@ -15,23 +16,22 @@ import { Content } from '../../shared/content-service/content.interface';
 })
 export class ContactUsComponent implements OnInit, OnDestroy {
 
-  public apartmentsData: String[];
-  public apartmentSelected: any;
-  public apartmentURL: String = '';
-  public contactUsContent: Content[];
-  /* NOTE: ako bude problema sa language switcherom vrati null na kraj */
-  // public contactUsContent: Content[] = null;
-  public errorMessage: string;
-  public langSubscription: Subscription;
-  public language: String;
-  public optionSelected = false;
+  apartmentsData: String[];
+  apartmentSelected: any;
+  apartmentURL: String = '';
+  contactUsContent: Content[];
+  errorMessage: string;
+  langSubscription: Subscription;
+  language: String;
+  optionSelected = false;
 
   constructor(
-    private  _apartmentService: ApartmentService,
-    private _languageService: LanguagesService,
-    private _contentService: ContentService
+    private  apartmentService: ApartmentService,
+    private languageService: LanguagesService,
+    private contentService: ContentService,
+    private router: Router
   ) {
-    this.langSubscription = _languageService.subjectSourceAnnounced$.subscribe(
+    this.langSubscription = languageService.subjectSourceAnnounced$.subscribe(
       (value) => {
         if ( this.language !== value) {
           this.language = value;
@@ -42,26 +42,23 @@ export class ContactUsComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit() {
-    this._languageService.getLanguage();
-    this._apartmentService.getApartments().subscribe(
+    this.languageService.getLanguage();
+    this.apartmentService.getApartments().subscribe(
       (response) => this.apartmentsData = response,
       (error) => this.errorMessage = <any>error
     );
   }
 
   /**
-   * Update apartmnetULR variable
-   * @param apartmentURL
+   * On select navigate to bookings
+   * @param apartmentName
    */
-  public apartmentSelect(apartmentURL) {
-    if (apartmentURL) {
-      this.optionSelected = true;
-      this.apartmentURL = apartmentURL;
-    }
+  public apartmentSelect(apartmentName) {
+    this.router.navigate(['booking/' + apartmentName]);
   }
 
   public getContent(language) {
-    this._contentService.getContactUsContent(language).subscribe(
+    this.contentService.getContactUsContent(language).subscribe(
       (content) => {
         this.contactUsContent = <Content[]>content;
       }
