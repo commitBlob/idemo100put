@@ -9,12 +9,13 @@ import { ApartmentService } from '../../shared/apartments-service/apartments.ser
   templateUrl: './landing-page.component.html',
 })
 export class LandingPageComponent implements OnInit {
-  public apartmentsData: String[];
-  public errorMessage: string;
-  constructor(private  _aptSer: ApartmentService) { }
+  apartmentsData: String[];
+  errorMessage: string;
+
+  constructor(private  aptSer: ApartmentService) { }
 
   ngOnInit() {
-    this._aptSer.getApartments().subscribe(
+    this.aptSer.getApartments().subscribe(
       (response) => this.apartmentsData = response,
       (error) => this.errorMessage = <any>error
     );

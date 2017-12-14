@@ -306,6 +306,7 @@ export class BookingComponent implements OnInit {
               console.log('Booking is OK!');
               this.selectionValid = true;
               this.cellHighlight();
+              this.selectionDialog();
 
               // continue after all is good
             }else {
@@ -372,37 +373,50 @@ export class BookingComponent implements OnInit {
           this.datesSelected.push(start);
           this.cellHighlight();
         }else {
+          this.resetSelection();
           this.bookingStart = '';
           this.datesSelected = [];
-          this.cellHighlight();
         }
       });
     } else {
       this.dialogService.bookings(title, message, this.viewContainerRef).subscribe( result => {
-        if (result === 1) {
-          this.bookingStart = start;
-          this.bookingEnd = start;
-          this.datesSelected.push(start);
-          this.selectionValid = true;
-          this.cellHighlight();
-          this.selectionDialog();
-        }
+        switch (result) {
+          case 1:
+            this.bookingStart = start;
+            this.bookingEnd = start;
+            this.datesSelected.push(start);
+            this.selectionValid = true;
+            this.cellHighlight();
+            this.selectionDialog();
+            break;
 
-        if (result === 2) {
-          this.bookingStart = start;
-          this.bookingEnd = end;
-          this.datesSelected.push(end);
-          this.selectionValid = true;
-          this.cellHighlight();
-          this.selectionDialog();
-        }
+          case 2:
+            this.bookingStart = start;
+            this.bookingEnd = end;
+            this.datesSelected.push(end);
+            this.selectionValid = true;
+            this.cellHighlight();
+            this.selectionDialog();
+            break;
 
-        if (result === 'closed') {
-          this.bookingStart = '';
-          this.bookingEnd = '';
-          this.datesSelected = [];
-          this.selectionValid = false;
-          this.cellHighlight();
+          case 'closed':
+            console.log('closed');
+            this.resetField();
+            this.resetSelection();
+            this.bookingStart = '';
+            this.bookingEnd = '';
+            this.datesSelected = [];
+            this.selectionValid = false;
+            break;
+
+          default:
+            console.log('default');
+            this.resetField();
+            this.bookingStart = '';
+            this.bookingEnd = '';
+            this.datesSelected = [];
+            this.selectionValid = false;
+            break;
         }
       });
     }
@@ -426,21 +440,22 @@ export class BookingComponent implements OnInit {
           this.datesSelected.push(start);
           this.selectionValid = true;
           this.cellHighlight();
-          this.selectionDialog()
+          this.selectionDialog();
         } else {
           this.bookingEnd = end;
           this.datesSelected.push(end);
           this.selectionValid = true;
           this.cellHighlight();
-          this.selectionDialog()
+          this.selectionDialog();
         }
       }else {
 
         // if user selects close button, remove start date and empty datesSelected array
+        this.resetSelection();
+        this.resetField();
         this.bookingStart = '';
         this.datesSelected = [];
         this.selectionValid = false;
-        this.cellHighlight();
       }
     });
   }
@@ -471,11 +486,26 @@ export class BookingComponent implements OnInit {
     };
 
     this.dialogService.selection(this.apartmentData.apartmentName + ' Apartment', bodyObject, this.viewContainerRef).subscribe(output => {
-      console.log('gimme output: ', output);
-      if (output === 'closed') {
-        this.resetSelection();
-        this.bookingStart = '';
-        this.bookingEnd = '';
+      switch (output) {
+        case 'closed':
+          this.resetSelection();
+          this.bookingStart = '';
+          this.bookingEnd = '';
+          break;
+
+        case 'paypal':
+          console.log('paypal selected');
+          break;
+
+        case 'external':
+          window.location.href = this.apartmentData.bookingLink;
+          break;
+
+        default:
+          this.resetSelection();
+          this.bookingStart = '';
+          this.bookingEnd = '';
+          break;
       }
     });
   }
@@ -515,12 +545,20 @@ export class BookingComponent implements OnInit {
    */
   public resetSelection() {
     if (this.bookingStart && this.bookingEnd) {
-      this.calendarCells.forEach((value) => {
+      this.calendarCells.forEach((value, key) => {
         if (value.selected) {
-          delete value.selected;
+          this.calendarCells[key].selected = false;
         }
       });
     }
+  }
+
+  public resetField() {
+    this.calendarCells.forEach((value, key) => {
+      if (value.selected) {
+        this.calendarCells[key].selected = false;
+      }
+    });
   }
 
   /**
