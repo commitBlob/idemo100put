@@ -48,6 +48,8 @@ export class BookingComponent implements OnInit {
   apartmentData;
   apartmentShortName: string;
 
+  selectedCells = [];
+
   constructor(private bookingService: BookingService,
               private dialogService: DialogsService,
               private viewContainerRef: ViewContainerRef,
@@ -99,7 +101,9 @@ export class BookingComponent implements OnInit {
           disabled: false,
           booked: false,
           cellDate: momentStart,
-          monthDay: moment(momentStart).format('DD')});
+          monthDay: moment(momentStart).format('DD'),
+          selected: this.keepSelection(momentStart)
+        });
       } else {
         this.calendarCells.push({
           cellClasses: ['inactive-month'],
@@ -180,7 +184,6 @@ export class BookingComponent implements OnInit {
       .subscribe((res) => {
         this.bookedEvents = res;
       }, (error) => {
-        console.log('Error: ', error);
         this.errorDialog('ERROR', error);
       }, () => {
         this.componentLoading = false;
@@ -195,11 +198,14 @@ export class BookingComponent implements OnInit {
   public showBooked() {
     let i = 0;
     for (let j = 0; j < this.bookedEvents.length; j++) {
+
       // format start and end date
       this.bookedEvents[i].startDate = moment(this.bookedEvents[i].startDate).format('YYYY-MM-DD');
       this.bookedEvents[i].endDate = moment(this.bookedEvents[i].endDate).format('YYYY-MM-DD');
+
       // loop through all 42 cells and check if bookedEvent values are in the range
       this.calendarCells.forEach((v: any, k: any) => {
+
         // if value is in the range add class 'booking-closed and update booked value to true
         if ( moment(this.calendarCells[k].cellDate).isBetween(this.bookedEvents[i].startDate,  this.bookedEvents[i].endDate, null, '[]')) {
           this.calendarCells[k].cellClasses[1] = 'booking-closed';
@@ -221,17 +227,22 @@ export class BookingComponent implements OnInit {
    * @param calendarCell
    */
   public calendarElementTrigger(calendarCell) {
+    this.resetSelection();
+
     // check if selcted date is in the past
     if (moment(calendarCell.cellDate).isSameOrAfter(this.today, 'day')) {
       if (!calendarCell.disabled && !calendarCell.booked) {
+
         // check if user already made selection in order to reset it
         if (this.datesSelected.length === 0 || this.datesSelected.length >= 2) {
+
           // resets
           this.bookingStart = null;
           this.bookingEnd = null;
           this.datesSelected = [];
           this.allowBooking = false;
           this.selectionValid = false;
+          this.selectedCells = [];
         }
 
         let daySelected, neighbour, beforeObject, afterObject;
@@ -249,8 +260,10 @@ export class BookingComponent implements OnInit {
 
         // if before is booked, check right neighbour
         if (beforeObject.booked && !afterObject.booked) {
+
           // check right neighbour
           neighbour = this.triggerBookedCheck(moment(daySelected).add(2, 'day').format('YYYY-MM-DD'));
+
           // if neighbour is booked allow only 1 or 2 days booking
           if (neighbour.booked) {
             this.bookingDialog('Booking',
@@ -269,6 +282,7 @@ export class BookingComponent implements OnInit {
         if (this.datesSelected.length === 1 && moment(daySelected).isSameOrAfter(this.datesSelected[0], 'day')) {
           this.datesSelected.push(daySelected);
           this.bookingEnd = daySelected;
+
           // second click
           // check if startDate === endDate
           if (this.bookingStart === this.bookingEnd) {
@@ -282,11 +296,14 @@ export class BookingComponent implements OnInit {
 
           const timestampStart = moment(this.bookingStart).format('x');
           const timestampEnd = moment(this.bookingEnd).format('x');
+
           // check with backend if there are any bookings in between selections
           this.bookingService.checkIfAvailable(this.apartmentData.apartmentId, timestampStart, timestampEnd).subscribe((response) => {
             if (response.length === 0) {
               console.log('Booking is OK!');
               this.selectionValid = true;
+              this.cellHighlight();
+
               // continue after all is good
             }else {
               this.errorDialog('Invalid Selection',
@@ -302,12 +319,16 @@ export class BookingComponent implements OnInit {
         if (this.datesSelected.length === 0) {
           this.bookingStart = daySelected;
           this.datesSelected.push(daySelected);
+
           // check right neighbour
           this.triggerBookedCheck(afterObject);
+
+          // highlight cell as it is first click
+          this.highlightOnce(calendarCell);
         }
 
-
       }
+
       // don't do anything if calendarCell.disabled || calendarCell.booked
     } else {
       this.errorDialog('Invalid date selected!', 'Date is in the past! Please select another date.');
@@ -341,13 +362,16 @@ export class BookingComponent implements OnInit {
     if (!end) {
       this.dialogService.bookings(title, message, this.viewContainerRef, true).subscribe( result => {
         if (result === 'ok') {
+
           // if user accepts one night booking set start, end, and push to the array
           this.bookingStart = start;
           this.bookingEnd = start;
           this.datesSelected.push(start);
+          this.cellHighlight();
         }else {
           this.bookingStart = '';
           this.datesSelected = [];
+          this.cellHighlight();
         }
       });
     } else {
@@ -357,6 +381,7 @@ export class BookingComponent implements OnInit {
           this.bookingEnd = start;
           this.datesSelected.push(start);
           this.selectionValid = true;
+          this.cellHighlight();
         }
 
         if (result === 2) {
@@ -364,6 +389,7 @@ export class BookingComponent implements OnInit {
           this.bookingEnd = end;
           this.datesSelected.push(end);
           this.selectionValid = true;
+          this.cellHighlight();
         }
 
         if (result === 'closed') {
@@ -371,6 +397,7 @@ export class BookingComponent implements OnInit {
           this.bookingEnd = '';
           this.datesSelected = [];
           this.selectionValid = false;
+          this.cellHighlight();
         }
       });
     }
@@ -388,20 +415,25 @@ export class BookingComponent implements OnInit {
       if (result) {
         this.bookingStart = start;
         if (!end) {
+
           // if there is no end parameter and result is true make one night booking and add it to the datesSelected array
           this.bookingEnd = start;
           this.datesSelected.push(start);
           this.selectionValid = true;
+          this.cellHighlight();
         } else {
           this.bookingEnd = end;
           this.datesSelected.push(end);
           this.selectionValid = true;
+          this.cellHighlight();
         }
       }else {
+
         // if user selects close button, remove start date and empty datesSelected array
         this.bookingStart = '';
         this.datesSelected = [];
         this.selectionValid = false;
+        this.cellHighlight();
       }
     });
   }
@@ -435,4 +467,65 @@ export class BookingComponent implements OnInit {
       console.log('gimme output: ', output);
     });
   }
+
+  /**
+   * Loop over calendar cells and set selected value for selection range
+   * Not ideal but works
+   */
+  public cellHighlight() {
+    let beginning = moment(this.bookingStart).format('YYYY-MM-DD');
+    const end = moment(this.bookingEnd).format('YYYY-MM-DD');
+    if (beginning && end) {
+      this.calendarCells.forEach((value) => {
+
+        // loop while date is in the rang of selection
+        while (value.cellDate >= beginning && value.cellDate <= end) {
+          value.selected = true;
+          this.datesSelected.push(value);
+
+          // add 1 day
+          beginning = moment(beginning).add(1, 'd').format('YYYY-MM-DD');
+        }
+      });
+    }
+  }
+
+  /**
+   * Triggers only on start date click
+   * @param cell
+   */
+  public highlightOnce(cell) {
+    cell.selected = true;
+  }
+
+  /**
+   * Bin all selected values
+   */
+  public resetSelection() {
+    if (this.bookingStart && this.bookingEnd) {
+      this.calendarCells.forEach((value) => {
+        if (value.selected) {
+          delete value.selected;
+        }
+      });
+    }
+  }
+
+  /**
+   * Keep selected cells when moving from month to month
+   * Selected is being set only if the cell matches value in the array, this is because
+   * it would be overwritten on the next check
+   * @param checkDate
+   * @returns {boolean}
+   */
+  public keepSelection(checkDate) {
+    let selected: boolean;
+    this.datesSelected.forEach((value) => {
+      if (checkDate === value.cellDate) {
+       selected = true;
+      }
+    });
+    return selected;
+  }
+
 }
