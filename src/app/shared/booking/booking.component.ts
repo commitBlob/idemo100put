@@ -1,5 +1,5 @@
 // Core
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { Component, OnInit, ViewContainerRef} from '@angular/core';
 
 // App specific
@@ -53,7 +53,8 @@ export class BookingComponent implements OnInit {
   constructor(private bookingService: BookingService,
               private dialogService: DialogsService,
               private viewContainerRef: ViewContainerRef,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private router: Router) {
     this.sub = this.route.params.subscribe( params => this.apartmentShortName = params['apartmentName']);
   }
 
@@ -494,6 +495,7 @@ export class BookingComponent implements OnInit {
           break;
 
         case 'paypal':
+          this.router.navigate(['details/' + moment(this.bookingStart).format('x') + '/' + moment(this.bookingEnd).format('x') ]);
           console.log('paypal selected');
           break;
 
