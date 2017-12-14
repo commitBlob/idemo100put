@@ -13,6 +13,7 @@ import { LandingPageComponent } from '../../pages/landing-page/landing-page.comp
 import { LocationComponent } from '../../pages/location/location.component';
 import { SurroundingsComponent } from '../../pages/surroundings/surroundings.component';
 import { PageNotFoundComponent } from '../../pages/page-not-found/page-not-found.component';
+import { UserDetailsFormComponent } from '../user-details-form/user-details-form/user-details-form.component';
 
 export const appRoutes: Routes = [
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
@@ -27,5 +28,6 @@ export const appRoutes: Routes = [
   { path: 'location', component: LocationComponent },
   { path: 'surroundings', component: SurroundingsComponent },
   { path: 'booking/:apartmentName', component: BookingComponent },
+  { path: 'details/:from/:to', component: UserDetailsFormComponent },
   { path: '**', component: PageNotFoundComponent },
 ];

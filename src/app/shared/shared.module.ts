@@ -30,6 +30,7 @@ import { PricelistModule } from './pricelist/pricelist.module';
 import { PricelistService } from './pricelist/pricelist.service';
 import { TabsNavigationModule } from './tabs_navigation/tabs_navigation.module';
 import { WordBreakPipe } from './word_break.pipe';
+import { UserDetailsFormComponent } from './user-details-form/user-details-form/user-details-form.component';
 
 @NgModule({
   imports: [
@@ -60,7 +61,8 @@ import { WordBreakPipe } from './word_break.pipe';
   ],
   declarations: [
     DistancePipe,
-    WordBreakPipe
+    WordBreakPipe,
+    UserDetailsFormComponent
   ]
 })
 export class SharedModule {
