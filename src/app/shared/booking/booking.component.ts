@@ -494,9 +494,9 @@ export class BookingComponent implements OnInit {
           this.bookingEnd = '';
           break;
 
-        case 'paypal':
+        case 'process-booking':
           this.router.navigate(['details/' + moment(this.bookingStart).format('x') + '/' + moment(this.bookingEnd).format('x') ]);
-          console.log('paypal selected');
+          console.log('process-booking selected');
           break;
 
         case 'external':
