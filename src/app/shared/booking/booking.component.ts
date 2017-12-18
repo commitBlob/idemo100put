@@ -495,8 +495,10 @@ export class BookingComponent implements OnInit {
           break;
 
         case 'process-booking':
-          this.router.navigate(['details/' + moment(this.bookingStart).format('x') + '/' + moment(this.bookingEnd).format('x') ]);
-          console.log('process-booking selected');
+          this.router.navigate(['details/' +
+          this.apartmentData.apartmentShortName + '/' +
+          moment(this.bookingStart).format('x') + '/' +
+          moment(this.bookingEnd).format('x') ]);
           break;
 
         case 'external':

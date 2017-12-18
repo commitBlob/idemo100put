@@ -1,8 +1,13 @@
 .details-form {
-  display: flex;
 
-  .items {
-    flex: 1 1 auto;
-    margin:1em;
+  .row {
+    display: flex;
+    flex-flow: row wrap;
+
+    .items {
+      flex: 1 1 auto;
+      margin:0.5em 1em;
+    }
   }
+
 }

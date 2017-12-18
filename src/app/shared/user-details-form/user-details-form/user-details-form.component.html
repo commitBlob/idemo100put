@@ -1,13 +1,67 @@
+<div *ngIf="isLoading" class="loading">
+  <div>
+    <div class="c1"></div>
+    <div class="c2"></div>
+    <div class="c3"></div>
+    <div class="c4"></div>
+  </div>
+  <span>loading ...</span>
+</div>
 <div class="content">
   <h2>
     user-details-form works!
   </h2>
-  <div class="deatils-form">
-    <md-input-container class="items">
-      <input mdInput placeholder="First Name" align="start" [type]="text" formControlName="fName" minlength="2">
-    </md-input-container>
-    <md-input-container class="items">
-      <input mdInput placeholder="Last Name" align="start" [type]="text" formControlName="lName" minlength="2">
-    </md-input-container>
-  </div>
+  <form class="details-form" *ngIf="!isLoading">
+    <div class="row">
+      <md-input-container class="items">
+        <input mdInput placeholder="First Name" align="start" [type]="text" formControlName="fName" minlength="2">
+      </md-input-container>
+      <md-input-container class="items">
+        <input mdInput placeholder="Last Name" align="start" [type]="text" formControlName="lName" minlength="2">
+      </md-input-container>
+    </div>
+    <div class="row">
+      <md-input-container class="items">
+        <input mdInput placeholder="Email Address" align="start" [type]="'email'" formControlName="email"
+               [pattern]="emailRegex" required>
+        <md-hint class="errors" *ngIf="emailHasErrors">
+          {{emailError}}
+        </md-hint>
+      </md-input-container>
+    </div>
+    <div class="row">
+      <md-select class="items" placeholder="Number of Guests" (change)="numberOfGuests($event)">
+        <md-option [value]="guest" *ngFor="let guest of guestsArray">{{guest}}</md-option>
+      </md-select>
+      <md-select class="items" placeholder="Time of Arrival">
+        <md-option [value]="timeSlot" *ngFor="let timeSlot of arrivalArray">{{timeSlot}}</md-option>
+      </md-select>
+    </div>
+    <div class="row">
+      <md-input-container class="items">
+        <textarea mdInput placeholder="Additional Note" align="start" [type]="text" rows="6" formControlName="message"
+                  minlength="2" maxlength="500" required></textarea>
+        <md-hint class="errors" *ngIf="messageHasErrors">
+          {{messageError}}
+        </md-hint>
+      </md-input-container>
+    </div>
+    <div class="paypal-wrapper">
+      <button type="button" color="primary" class="app-button--" md-raised-button
+              (click)="dialogRef.close('paypal')">
+        Pay Now
+        <svg data-name="paypal_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792 1792">
+          <defs></defs>
+          <title>plane</title>
+          <path class="cls-1" d="M1647 646q18 84-4 204-87 444-565 444h-44q-25 0-44 16.5t-24 42.5l-4
+    19-55 346-2 15q-5 26-24.5 42.5t-44.5 16.5h-251q-21 0-33-15t-9-36q9-56
+    26.5-168t26.5-168 27-167.5 27-167.5q5-37 43-37h131q133 2 236-21 175-39
+    287-144 102-95 155-246 24-70 35-133 1-6 2.5-7.5t3.5-1 6 3.5q79 59 98
+    162zm-172-282q0 107-46 236-80 233-302 315-113 40-252 42 0 1-90 1l-90-1q-100
+    0-118 96-2 8-85 530-1 10-12 10h-295q-22 0-36.5-16.5t-11.5-38.5l232-1471q5-29
+    27.5-48t51.5-19h598q34 0 97.5 13t111.5 32q107 41 163.5 123t56.5 196z"/>
+        </svg>
+      </button>
+    </div>
+  </form>
 </div>

@@ -28,6 +28,6 @@ export const appRoutes: Routes = [
   { path: 'location', component: LocationComponent },
   { path: 'surroundings', component: SurroundingsComponent },
   { path: 'booking/:apartmentName', component: BookingComponent },
-  { path: 'details/:from/:to', component: UserDetailsFormComponent },
+  { path: 'details/:apartment/:from/:to', component: UserDetailsFormComponent },
   { path: '**', component: PageNotFoundComponent },
 ];

@@ -78,3 +78,7 @@ button[class*="disabled"], button[disabled] {
   color: $gray;
   pointer-events: none;
 }
+
+.paypal-wrapper {
+  margin: .1em .5em;
+}
