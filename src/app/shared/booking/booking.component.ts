@@ -472,6 +472,7 @@ export class BookingComponent implements OnInit {
   }
 
   /**
+   * TODO: create method which will calculate pricePerNight as it might differ per month
    * Triggered on continue click and subscribes to the output.
    * If output is booking, redirects to booking.com
    * if output is paypal proceeds with payment

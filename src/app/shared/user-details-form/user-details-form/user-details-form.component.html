@@ -11,23 +11,29 @@
   <h2>
     user-details-form works!
   </h2>
-  <form class="details-form" *ngIf="!isLoading">
+  <form [formGroup]="detailsForm" (ngSubmit)="formSubmit()" class="details-form" *ngIf="!isLoading">
     <div class="row">
       <div class="item half one">
         <md-input-container>
-          <input mdInput placeholder="First Name" align="start" [type]="text" formControlName="fName" minlength="2">
+          <input mdInput placeholder="First Name" align="start" [type]="text" name="firstName" id="firstName"
+                 [formControl]="firstName" required>
+          <md-hint class="errors" *ngIf="firstName.hasError('minlength') && firstName.touched">
+            First Name is required with minimum length of 2.
+          </md-hint>
         </md-input-container>
       </div>
       <div class="item half two">
         <md-input-container>
-          <input mdInput placeholder="Last Name" align="start" [type]="text" formControlName="lName" minlength="2">
+          <input mdInput placeholder="Last Name" align="start" [type]="text" name="lastName" id="lastName"
+                 [formControl]="lastName" required>
         </md-input-container>
       </div>
     </div>
     <div class="row">
       <div class="item">
         <md-input-container>
-          <input mdInput placeholder="Email Address" align="start" [type]="'email'" formControlName="email"
+          <input mdInput placeholder="Email Address" align="start" [type]="'email'" name="email" id="email"
+                 [formControl]="email"
                  [pattern]="emailRegex" required>
           <md-hint class="errors" *ngIf="emailHasErrors">
             {{emailError}}
@@ -37,12 +43,14 @@
     </div>
     <div class="row">
       <div class="item half one">
-        <md-select placeholder="Number of Guests" (change)="numberOfGuests($event)">
+        <md-select placeholder="Number of Guests" (change)="numberOfGuests($event)" id="guestCount"
+                   [formControl]="guestCount" required>
           <md-option *ngFor="let guest of guestsArray" [value]="guest">{{guest}}</md-option>
         </md-select>
       </div>
       <div class="item half two">
-        <md-select placeholder="Time of Arrival" (change)="timeSlot($event)">
+        <md-select placeholder="Time of Arrival" (change)="timeSlot($event)" id="slotSelected"
+                   [formControl]="arrivalTime" required>
           <md-option [value]="timeSlot" *ngFor="let timeSlot of arrivalArray">{{timeSlot}}</md-option>
         </md-select>
       </div>
@@ -50,18 +58,30 @@
     <div class="row">
       <div class="item">
         <md-input-container>
-        <textarea mdInput placeholder="Additional Note" align="start" [type]="text" rows="6" formControlName="message"
-                  minlength="2" maxlength="500" required></textarea>
+        <textarea mdInput placeholder="Additional Note" align="start" [type]="text" rows="6" id="additionalMessage"
+                  [formControl]="additionalMessage"
+                  maxlength="500"></textarea>
           <md-hint class="errors" *ngIf="messageHasErrors">
             {{messageError}}
           </md-hint>
         </md-input-container>
       </div>
-
+    </div>
+    <div class="row">
+      <div class="item half one">
+        <md-input-container>
+          <input mdInput placeholder="Nights" align="start" [type]="text" [value]="nights" disabled>
+        </md-input-container>
+      </div>
+      <div class="item half two">
+        <md-input-container>
+          <input mdInput placeholder="Total" align="start" [type]="text" [value]="'300 (1 x 150 + 2 x 75)'" disabled>
+        </md-input-container>
+      </div>
     </div>
     <div class="paypal-wrapper">
-      <button type="button" color="primary" class="app-button--" md-raised-button
-              (click)="dialogRef.close('paypal')">
+      <button type="submit" [ngClass]="{'disabled': !detailsForm.valid}" [disabled]="!detailsForm.valid" color="primary"
+              class="app-button--" md-raised-button>
         Pay Now
         <svg data-name="paypal_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792 1792">
           <defs></defs>

@@ -37,6 +37,7 @@ import { UserDetailsFormComponent } from './user-details-form/user-details-form/
     CommonModule,
     MaterialModule,
     RouterModule,
+    ReactiveFormsModule,
   ],
   exports: [
     CardsModule,

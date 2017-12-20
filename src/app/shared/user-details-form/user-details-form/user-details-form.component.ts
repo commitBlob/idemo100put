@@ -1,6 +1,7 @@
 // Core
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import {Validators, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 
 // App specific
 import { BookingService } from '../../booking/booking.service';
@@ -17,8 +18,8 @@ import * as moment from 'moment/moment';
 })
 export class UserDetailsFormComponent implements OnInit {
 
-  from: string;
-  to: string;
+  from: any;
+  to: any;
   apartmentShortName: number;
   guestsArray = [];
   guests: number;
@@ -33,13 +34,55 @@ export class UserDetailsFormComponent implements OnInit {
   timeSelected = '';
   pricelist: PricelistModel[];
 
+  // tslint:disable-next-line
+  public emailRegex = /^(([^<>()\[\]\\.,;:\s@']+(\.[^<>()\[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+
+  // form
+  firstName = new FormControl('', [
+    Validators.required,
+    Validators.minLength(2)
+  ]);
+
+  lastName = new FormControl('', [
+    Validators.required,
+    Validators.minLength(2)
+  ]);
+
+  email = new FormControl('', [
+    Validators.required,
+    Validators.pattern(this.emailRegex)
+  ]);
+
+  guestCount = new FormControl('', [
+    Validators.required
+  ]);
+
+  arrivalTime = new FormControl('', [
+    Validators.required
+  ]);
+
+  additionalMessage = new FormControl('');
+
+  detailsForm: FormGroup = this.builder.group({
+    firstName : this.firstName,
+    lastName: this.lastName,
+    email: this.email,
+    guestCount: this.guestCount,
+    arrival: this.arrivalTime,
+    message: this.additionalMessage
+  });
+
+  nights: number;
+
   constructor(private route: ActivatedRoute,
               private bookingService: BookingService,
-              private pricelistService: PricelistService
+              private pricelistService: PricelistService,
+              private builder: FormBuilder
               ) {
     this.route.params.subscribe(params => {
-      this.from = moment(parseInt(params.from)).format('DD-MM-YYYY');
-      this.to = moment(parseInt(params.to)).format('DD-MM-YYYY');
+      this.from = moment(parseInt(params.from));
+      this.to = moment(parseInt(params.to));
       this.apartmentShortName = params.apartment;
     });
   }
@@ -55,6 +98,7 @@ export class UserDetailsFormComponent implements OnInit {
     this.pricelistService.getPricelist(this.apartmentShortName).subscribe((res) => {
       this.pricelist = res[0];
     });
+    this.nights = this.calculateDays();
   }
 
   generateGuestsArray(maxGuests) {
@@ -69,5 +113,17 @@ export class UserDetailsFormComponent implements OnInit {
 
   timeSlot(event) {
     this.timeSelected = event.value;
+  }
+
+  formSubmit() {
+    console.log(this.detailsForm.value, 'details form');
+  }
+
+  calculateDays() {
+    return this.to.diff(this.from, 'days') + 1;
+  }
+
+  getPrice() {
+
   }
 }
