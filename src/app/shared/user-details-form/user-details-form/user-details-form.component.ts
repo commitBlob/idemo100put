@@ -4,6 +4,13 @@ import { ActivatedRoute } from '@angular/router';
 
 // App specific
 import { BookingService } from '../../booking/booking.service';
+import {PricelistService} from '../../pricelist/pricelist.service';
+
+// Models
+import { PricelistModel } from '../../pricelist/pricelist.interface';
+
+// Moment
+import * as moment from 'moment/moment';
 
 @Component({
   templateUrl: './user-details-form.component.html',
@@ -24,12 +31,15 @@ export class UserDetailsFormComponent implements OnInit {
     '18:01 - 19:00', '19:01 - 20:00', '20:01 - 21:00', '21:01 - 22:00',
     '22:01 - 23:00', '23:01 - 00:00'];
   timeSelected = '';
+  pricelist: PricelistModel[];
 
-  constructor(private route: ActivatedRoute, private bookingService: BookingService
+  constructor(private route: ActivatedRoute,
+              private bookingService: BookingService,
+              private pricelistService: PricelistService
               ) {
     this.route.params.subscribe(params => {
-      this.from = params.from;
-      this.to = params.to;
+      this.from = moment(parseInt(params.from)).format('DD-MM-YYYY');
+      this.to = moment(parseInt(params.to)).format('DD-MM-YYYY');
       this.apartmentShortName = params.apartment;
     });
   }
@@ -41,7 +51,10 @@ export class UserDetailsFormComponent implements OnInit {
       console.log('Error', error);
     }, () => {
       this.isLoading = false;
-    })
+    });
+    this.pricelistService.getPricelist(this.apartmentShortName).subscribe((res) => {
+      this.pricelist = res[0];
+    });
   }
 
   generateGuestsArray(maxGuests) {

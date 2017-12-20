@@ -13,38 +13,51 @@
   </h2>
   <form class="details-form" *ngIf="!isLoading">
     <div class="row">
-      <md-input-container class="items">
-        <input mdInput placeholder="First Name" align="start" [type]="text" formControlName="fName" minlength="2">
-      </md-input-container>
-      <md-input-container class="items">
-        <input mdInput placeholder="Last Name" align="start" [type]="text" formControlName="lName" minlength="2">
-      </md-input-container>
+      <div class="item half one">
+        <md-input-container>
+          <input mdInput placeholder="First Name" align="start" [type]="text" formControlName="fName" minlength="2">
+        </md-input-container>
+      </div>
+      <div class="item half two">
+        <md-input-container>
+          <input mdInput placeholder="Last Name" align="start" [type]="text" formControlName="lName" minlength="2">
+        </md-input-container>
+      </div>
     </div>
     <div class="row">
-      <md-input-container class="items">
-        <input mdInput placeholder="Email Address" align="start" [type]="'email'" formControlName="email"
-               [pattern]="emailRegex" required>
-        <md-hint class="errors" *ngIf="emailHasErrors">
-          {{emailError}}
-        </md-hint>
-      </md-input-container>
+      <div class="item">
+        <md-input-container>
+          <input mdInput placeholder="Email Address" align="start" [type]="'email'" formControlName="email"
+                 [pattern]="emailRegex" required>
+          <md-hint class="errors" *ngIf="emailHasErrors">
+            {{emailError}}
+          </md-hint>
+        </md-input-container>
+      </div>
     </div>
     <div class="row">
-      <md-select class="items" placeholder="Number of Guests" (change)="numberOfGuests($event)">
-        <md-option [value]="guest" *ngFor="let guest of guestsArray">{{guest}}</md-option>
-      </md-select>
-      <md-select class="items" placeholder="Time of Arrival">
-        <md-option [value]="timeSlot" *ngFor="let timeSlot of arrivalArray">{{timeSlot}}</md-option>
-      </md-select>
+      <div class="item half one">
+        <md-select placeholder="Number of Guests" (change)="numberOfGuests($event)">
+          <md-option *ngFor="let guest of guestsArray" [value]="guest">{{guest}}</md-option>
+        </md-select>
+      </div>
+      <div class="item half two">
+        <md-select placeholder="Time of Arrival" (change)="timeSlot($event)">
+          <md-option [value]="timeSlot" *ngFor="let timeSlot of arrivalArray">{{timeSlot}}</md-option>
+        </md-select>
+      </div>
     </div>
     <div class="row">
-      <md-input-container class="items">
+      <div class="item">
+        <md-input-container>
         <textarea mdInput placeholder="Additional Note" align="start" [type]="text" rows="6" formControlName="message"
                   minlength="2" maxlength="500" required></textarea>
-        <md-hint class="errors" *ngIf="messageHasErrors">
-          {{messageError}}
-        </md-hint>
-      </md-input-container>
+          <md-hint class="errors" *ngIf="messageHasErrors">
+            {{messageError}}
+          </md-hint>
+        </md-input-container>
+      </div>
+
     </div>
     <div class="paypal-wrapper">
       <button type="button" color="primary" class="app-button--" md-raised-button
