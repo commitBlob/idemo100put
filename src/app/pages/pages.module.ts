@@ -14,7 +14,6 @@ import { DubrovnikFactsModule } from './dubrovnik-facts/dubrovnik-facts.module';
 import { LocationModule } from './location/location.module';
 import { SharedModule } from '../shared/shared.module';
 import { SurroundingsModule } from './surroundings/surroundings.module';
-import { BookingModule } from '../shared/booking/booking.module';
 
 @NgModule({
   imports: [
@@ -24,7 +23,6 @@ import { BookingModule } from '../shared/booking/booking.module';
     AboutUsModule,
     ApartmentModule,
     ApartmentsPolicyModule,
-    BookingModule,
     ContactUsModule,
     CroatiaFactsModule,
     DubrovnikFactsModule,

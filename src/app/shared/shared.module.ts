@@ -6,7 +6,6 @@ import { RouterModule } from '@angular/router';
 
 // App specific
 import { ApartmentDetailsService } from '../pages/apartments/apartment-details/apartment-details.service';
-import { BookingService } from './booking/booking.service';
 import { CardsModule } from './cards/cards.module';
 import { CardsService } from './cards/cards.service';
 import { ContactFormModule } from './contact-form/contact-form.module';
@@ -30,7 +29,6 @@ import { PricelistModule } from './pricelist/pricelist.module';
 import { PricelistService } from './pricelist/pricelist.service';
 import { TabsNavigationModule } from './tabs_navigation/tabs_navigation.module';
 import { WordBreakPipe } from './word_break.pipe';
-import { UserDetailsFormComponent } from './user-details-form/user-details-form/user-details-form.component';
 
 @NgModule({
   imports: [
@@ -63,7 +61,6 @@ import { UserDetailsFormComponent } from './user-details-form/user-details-form/
   declarations: [
     DistancePipe,
     WordBreakPipe,
-    UserDetailsFormComponent
   ]
 })
 export class SharedModule {
@@ -72,7 +69,6 @@ export class SharedModule {
       ngModule: SharedModule,
       providers: [
         ApartmentDetailsService,
-        BookingService,
         CardsService,
         ContentService,
         ContactFormService,

@@ -6,14 +6,4 @@
   <p>{{contactUsContent[0].content}}</p>
   <hr />
   <app-contact-form></app-contact-form>
-  <hr />
-  <h3>Check availability</h3>
-  <div class="select-wrapper">
-    <md-select [(ngModel)]="apartmentSelected"
-               (ngModelChange)="apartmentSelect($event)"
-               placeholder="Select Apartment">
-      <md-option *ngFor="let apartment of apartmentsData" value="{{apartment.apartmentShortName}}">{{apartment.apartmentName}}
-      </md-option>
-    </md-select>
-  </div>
 </div>

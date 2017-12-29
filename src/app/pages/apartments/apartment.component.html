@@ -12,10 +12,6 @@
     <ng-template #minCro>
       <p>Minimalan broj nocenja: {{apartmentData[0].minStay}}</p>
     </ng-template>
-    <a class="app-button-- apartment_availability" (click)="goToBookings()">
-      Check Availability
-      <i class="material-icons left">event_note</i>
-    </a>
     <div class="warning_block" *ngIf="displayWarning">
       <p class="warning_message">Note: {{apartmentData[0].note}}</p>
       <i class="material-icons dismiss_icon" (click)="closeBlock($event)">close</i>
