@@ -1,6 +1,5 @@
 // Core
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
 // App specific
@@ -18,18 +17,15 @@ export class ContactUsComponent implements OnInit, OnDestroy {
 
   apartmentsData: String[];
   apartmentSelected: any;
-  apartmentURL: String = '';
   contactUsContent: Content[];
   errorMessage: string;
   langSubscription: Subscription;
   language: String;
-  optionSelected = false;
 
   constructor(
     private  apartmentService: ApartmentService,
     private languageService: LanguagesService,
     private contentService: ContentService,
-    private router: Router
   ) {
     this.langSubscription = languageService.subjectSourceAnnounced$.subscribe(
       (value) => {
@@ -47,14 +43,6 @@ export class ContactUsComponent implements OnInit, OnDestroy {
       (response) => this.apartmentsData = response,
       (error) => this.errorMessage = <any>error
     );
-  }
-
-  /**
-   * On select navigate to bookings
-   * @param apartmentName
-   */
-  public apartmentSelect(apartmentName) {
-    this.router.navigate(['booking/' + apartmentName]);
   }
 
   public getContent(language) {
