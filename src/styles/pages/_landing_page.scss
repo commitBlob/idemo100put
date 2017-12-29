@@ -27,6 +27,10 @@
         height: auto;
       }
 
+      .apartment_container {
+        min-height: 120px;
+      }
+
       .apartment_name {
         font-weight: $font-weight-base;
         font-size: 1.8 * $font-size-base;
