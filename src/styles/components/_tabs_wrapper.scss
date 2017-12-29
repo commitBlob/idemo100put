@@ -21,11 +21,13 @@
   }
 
   .tabs {
-    width: 100px;
+    width: auto;
+    min-width: 100px;
     height: 40px;
     line-height: 42px;
     padding: 0;
     border: none;
+    margin: .5em;
 
     span {
       position: relative;

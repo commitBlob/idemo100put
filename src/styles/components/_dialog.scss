@@ -5,6 +5,7 @@
 button {
   &:hover {
     background-color: $brand-secondary !important;
+    color: $brand-primary-darker !important;
   }
 }
 
