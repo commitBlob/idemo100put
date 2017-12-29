@@ -1,11 +1,11 @@
 // Core
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '@angular/material';
 import { NgModule } from '@angular/core';
 
 // App specific
 import { ConfirmDialogComponent } from './confirm-dialog.component';
 import { DialogsService } from './dialogs.service';
+import { MaterialModule } from '../../sharedMaterialModule';
 
 @NgModule({
   imports: [

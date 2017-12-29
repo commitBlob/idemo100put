@@ -1,6 +1,6 @@
 // Core
 import { Observable } from 'rxjs/Rx';
-import { MdDialogRef, MdDialog, MdDialogConfig } from '@angular/material';
+import { MatDialogRef, MatDialog, MatDialogConfig } from '@angular/material';
 import { Injectable, ViewContainerRef } from '@angular/core';
 
 // App specific
@@ -9,12 +9,12 @@ import { ConfirmDialogComponent } from './confirm-dialog.component';
 @Injectable()
 export class DialogsService {
 
-  constructor(private dialog: MdDialog) {
+  constructor(private dialog: MatDialog) {
   }
 
   public confirm(title: string, message: string, viewContainerRef: ViewContainerRef): Observable<boolean> {
-    let dialogRef: MdDialogRef<ConfirmDialogComponent>;
-    const config = new MdDialogConfig();
+    let dialogRef: MatDialogRef<ConfirmDialogComponent>;
+    const config = new MatDialogConfig();
     config.viewContainerRef = viewContainerRef;
     config.disableClose = false;
 

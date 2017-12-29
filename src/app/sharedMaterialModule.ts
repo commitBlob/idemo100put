@@ -1,12 +1,12 @@
 // Core
 import {
-  MdTabsModule, MdCheckboxModule, MdInputModule, MdSelectModule, MdButtonModule,
-  MdDialogModule, MdTooltipModule
+  MatTabsModule, MatCheckboxModule, MatInputModule, MatSelectModule,
+  MatButtonModule, MatDialogModule, MatTooltipModule
 } from '@angular/material';
 import { NgModule } from '@angular/core';
 
 @NgModule({
-  imports: [ MdTabsModule, MdCheckboxModule, MdInputModule, MdSelectModule, MdButtonModule, MdDialogModule, MdTooltipModule],
-  exports: [ MdTabsModule, MdCheckboxModule, MdInputModule, MdSelectModule, MdButtonModule, MdDialogModule, MdTooltipModule],
+  imports: [ MatTabsModule, MatCheckboxModule, MatInputModule, MatSelectModule, MatButtonModule, MatDialogModule, MatTooltipModule ],
+  exports: [ MatTabsModule, MatCheckboxModule, MatInputModule, MatSelectModule, MatButtonModule, MatDialogModule, MatTooltipModule ],
 })
 export class MaterialModule { }

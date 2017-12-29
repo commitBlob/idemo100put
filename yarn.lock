@@ -130,8 +130,10 @@
     tslib "^1.7.1"
 
 "@angular/flex-layout@^2.0.0-beta.12":
-  version "2.0.0-rc.1"
-  resolved "https://registry.yarnpkg.com/@angular/flex-layout/-/flex-layout-2.0.0-rc.1.tgz#96fa7f85b2c4bacf2784913a2d607e2ed23dc7f1"
+  version "2.0.0-beta.12"
+  resolved "https://registry.yarnpkg.com/@angular/flex-layout/-/flex-layout-2.0.0-beta.12.tgz#80970dc1d60f27fa41537659926f3238f759f343"
+  dependencies:
+    tslib "^1.7.1"
 
 "@angular/forms@^5.0.0":
   version "5.1.2"
@@ -194,19 +196,6 @@
     semver "^5.3.0"
     source-map "^0.5.6"
     tree-kill "^1.0.0"
-
-"@ngtools/webpack@^1.5.0":
-  version "1.9.3"
-  resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-1.9.3.tgz#353e27e6f21ab35467d17b67e3096dfc5d9bf80c"
-  dependencies:
-    chalk "~2.2.0"
-    enhanced-resolve "^3.1.0"
-    loader-utils "^1.0.2"
-    magic-string "^0.22.3"
-    semver "^5.3.0"
-    source-map "^0.5.6"
-    tree-kill "^1.0.0"
-    webpack-sources "^1.1.0"
 
 "@schematics/angular@~0.1.0":
   version "0.1.11"
@@ -6405,7 +6394,7 @@ webpack-merge@^4.1.0:
   dependencies:
     lodash "^4.17.4"
 
-webpack-sources@^1.0.0, webpack-sources@^1.0.1, webpack-sources@^1.1.0:
+webpack-sources@^1.0.0, webpack-sources@^1.0.1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/webpack-sources/-/webpack-sources-1.1.0.tgz#a101ebae59d6507354d71d8013950a3a8b7a5a54"
   dependencies:

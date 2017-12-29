@@ -1,34 +1,34 @@
 <ng-container *ngIf="!reRender">
   <form [formGroup]="form" (ngSubmit)="submitForm(form)">
     <div class="form-group">
-      <md-input-container class="flexer">
-        <input mdInput placeholder="Your Name" align="start" [type]="text" formControlName="name" minlength="2"
+      <mat-input-container class="flexer">
+        <input matInput placeholder="Your Name" align="start" [type]="text" formControlName="name" minlength="2"
                maxlength="30" required>
-        <md-hint class=" errors" *ngIf="nameHasErrors">
+        <mat-hint class=" errors" *ngIf="nameHasErrors">
           {{nameError}}
-        </md-hint>
-      </md-input-container>
-      <md-input-container class="flexer">
-        <input mdInput placeholder="Your Email" align="start" [type]="'email'" formControlName="email"
+        </mat-hint>
+      </mat-input-container>
+      <mat-input-container class="flexer">
+        <input matInput placeholder="Your Email" align="start" [type]="'email'" formControlName="email"
                [pattern]="emailRegex" required>
-        <md-hint class="errors" *ngIf="emailHasErrors">
+        <mat-hint class="errors" *ngIf="emailHasErrors">
           {{emailError}}
-        </md-hint>
-      </md-input-container>
+        </mat-hint>
+      </mat-input-container>
     </div>
     <div class="form-group">
-      <md-input-container class="app-input-subject">
-        <input mdInput placeholder="Subject" align="start" [type]="text" formControlName="subject">
-      </md-input-container>
+      <mat-input-container class="app-input-subject">
+        <input matInput placeholder="Subject" align="start" [type]="text" formControlName="subject">
+      </mat-input-container>
     </div>
     <div class="form-group">
-      <md-input-container class="app-textarea">
-        <textarea mdInput placeholder="Your Message" align="start" [type]="text" rows="6" formControlName="message"
+      <mat-input-container class="app-textarea">
+        <textarea matInput placeholder="Your Message" align="start" [type]="text" rows="6" formControlName="message"
                   minlength="2" maxlength="500" required></textarea>
-        <md-hint class="errors" *ngIf="messageHasErrors">
+        <mat-hint class="errors" *ngIf="messageHasErrors">
           {{messageError}}
-        </md-hint>
-      </md-input-container>
+        </mat-hint>
+      </mat-input-container>
     </div>
     <div class="button-container">
       <button class="app-button--" [disabled]="!form.valid">

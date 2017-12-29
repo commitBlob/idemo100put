@@ -1,8 +1,8 @@
 <h3>Pricelist</h3>
 <div class="select-wrapper">
-  <md-select [(ngModel)]="selectedValue" (ngModelChange)="currencyChange($event)">
-    <md-option *ngFor="let currency of currencyList" value="{{currency}}">{{currency}}</md-option>
-  </md-select>
+  <mat-select [(ngModel)]="selectedValue" (ngModelChange)="currencyChange($event)">
+    <mat-option *ngFor="let currency of currencyList" value="{{currency}}">{{currency}}</mat-option>
+  </mat-select>
 </div>
 <div class="pricelist-wrapper" *ngIf="priceList">
   <div class="pricelist">

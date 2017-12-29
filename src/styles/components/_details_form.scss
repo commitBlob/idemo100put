@@ -9,11 +9,11 @@
       font-size: 16px;
       width: 100%;
 
-      md-select {
+      mat-select {
         width: 100%;
       }
 
-      md-input-container {
+      mat-input-container {
         width: 100%;
       }
 
@@ -21,23 +21,23 @@
         width: 50%;
 
         &.one {
-          md-select {
+          mat-select {
             margin: .5em 0;
             padding-right: .5em;
           }
 
-          md-input-container {
+          mat-input-container {
             padding-right: .5em;
           }
 
         }
         &.two {
-          md-select {
+          mat-select {
             margin: .5em 0;
             padding-left: .5em;
           }
 
-          md-input-container {
+          mat-input-container {
             padding-left: .5em;
           }
         }
