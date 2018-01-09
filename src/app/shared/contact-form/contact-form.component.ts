@@ -13,25 +13,26 @@ import { DialogsService } from '../dialogs/dialogs.service';
 export class ContactFormComponent implements OnInit {
   form: FormGroup;
 
-  public reRender = false;
-  public emailValid = false;
-  public formValid = false;
-  public nameError = '';
-  public emailError = '';
-  public messageError = '';
-  public nameHasErrors = true;
-  public emailHasErrors = true;
-  public messageHasErrors = true;
-  public emailRegex = /^(([^<>()\[\]\\.,;:\s@']+(\.[^<>()\[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  reRender = false;
+  emailValid = false;
+  formValid = false;
+  nameError = '';
+  emailError = '';
+  messageError = '';
+  nameHasErrors = true;
+  emailHasErrors = true;
+  messageHasErrors = true;
+  // tslint:disable-next-line
+  emailRegex = /^(([^<>()\[\]\\.,;:\s@']+(\.[^<>()\[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-  public formObject: any;
+  formObject: any;
 
   constructor(
     public formBuilder: FormBuilder,
-    private _contactFormService: ContactFormService,
-    private _dialogService: DialogsService,
-    private _viewContainerRef: ViewContainerRef,
-    private _cdRef: ChangeDetectorRef
+    private contactFormService: ContactFormService,
+    private dialogService: DialogsService,
+    private viewContainerRef: ViewContainerRef,
+    private cdRef: ChangeDetectorRef
   ) {
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
@@ -86,7 +87,7 @@ export class ContactFormComponent implements OnInit {
         subject: formData.value.subject,
         message: formData.value.message
       };
-      this._contactFormService.submitForm(this.formObject).subscribe(
+      this.contactFormService.submitForm(this.formObject).subscribe(
         (response) => {
           this.messageDialog(response.toString(), response.toString());
         },
@@ -103,7 +104,7 @@ export class ContactFormComponent implements OnInit {
   }
 
   public messageDialog(title: string, message: string) {
-    this._dialogService.confirm(title, message, this._viewContainerRef)
+    this.dialogService.confirm(title, message, this.viewContainerRef)
   }
 
   /**
@@ -113,7 +114,7 @@ export class ContactFormComponent implements OnInit {
     // this.form.reset();
     this.reRender = true;
     this.rebuildForm();
-    this._cdRef.detectChanges();
+    this.cdRef.detectChanges();
     this.reRender = false;
   }
 
