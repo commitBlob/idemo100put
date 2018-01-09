@@ -6,7 +6,8 @@
     font-size: $font-size-base;
   }
 }
- /* Overwrite app-button-- margines */
+
+/* Overwrite app-button-- margines */
 .apartment_availability {
   margin: 0 !important;
 }
@@ -19,7 +20,7 @@
   margin-bottom: 0;
 }
 
-.nearby_places_container{
+.nearby_places_container {
   margin: 1em 0;
 
   .nearby_place_card {
@@ -29,7 +30,7 @@
     min-height: 40px;
     background-color: $white;
     border-radius: .3em;
-    box-shadow: 0 1px 4px 0 rgba(0,0,0,.14);
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, .14);
 
     .nearby_icon_container {
       margin-top: -1.2em;
@@ -81,7 +82,7 @@
     min-height: 40px;
     background-color: $white;
     border-radius: .3em;
-    box-shadow: 0 1px 4px 0 rgba(0,0,0,.14);
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, .14);
 
     .facilities_icon_container {
       margin-top: -1.2em;
@@ -109,4 +110,20 @@
     }
   }
 
+}
+
+.inquiries_container {
+  margin: 1em 0;
+
+  .contact_us {
+    text-decoration: underline;
+  }
+
+  a {
+    color: $brand-primary-darker;
+
+    &:hover {
+      color: $brand-secondary;
+    }
+  }
 }
