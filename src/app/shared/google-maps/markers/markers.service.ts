@@ -1,6 +1,6 @@
 // Core
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 
@@ -9,12 +9,10 @@ import { Markers } from './markers.interface';
 
 @Injectable()
 export class MarkersService {
-  constructor( private  _http: Http) {}
+  constructor( private  http: HttpClient) {}
 
   public getMarkers(): Observable<Markers[]> {
-    return this._http.get('./api/markers')
-      .map((res: Response) => <Markers>res.json())
-      .catch(this.handleError);
+    return this.http.get('./api/markers').catch(this.handleError);
   }
 
   /**

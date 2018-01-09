@@ -1,10 +1,10 @@
 // Core
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import {Subject} from 'rxjs/Subject';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class LanguagesService {
@@ -12,11 +12,11 @@ export class LanguagesService {
   public subjectSource = new Subject<string>();
   public subjectSourceAnnounced$ = this.subjectSource.asObservable();
 
-  constructor(private _http: Http) {
+  constructor(private http: HttpClient) {
   }
 
   public getFlags(): Observable<string[]> {
-    return this._http.get('./api/flags').map((res: Response) => res.json()).catch(this.handleError);
+    return this.http.get('./api/flags').catch(this.handleError);
   }
 
   public languageChange(value) {

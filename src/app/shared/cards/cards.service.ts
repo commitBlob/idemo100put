@@ -1,6 +1,6 @@
 // Core
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 
@@ -9,12 +9,10 @@ import { Cards } from './cards.interface';
 
 @Injectable()
 export class CardsService {
-  constructor( private  _http: Http) {}
+  constructor( private  http: HttpClient) {}
 
   getCards(language): Observable<Cards[]> {
-    return this._http.get('./api/cards/' + language).map(
-      (res: Response) => res.json()
-    ).catch(this.handleError);
+    return this.http.get('./api/cards/' + language).catch(this.handleError);
   }
 
   /**

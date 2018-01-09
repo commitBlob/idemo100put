@@ -88,10 +88,10 @@ export class ContactFormComponent implements OnInit {
       };
       this._contactFormService.submitForm(this.formObject).subscribe(
         (response) => {
-          this.messageDialog(response.header, response.message);
+          this.messageDialog(response.toString(), response.toString());
         },
         (error) => {
-          this.messageDialog(error.header, error.message);
+          this.messageDialog(error.toString(), error.toString());
         }
       );
       this.resetForm();

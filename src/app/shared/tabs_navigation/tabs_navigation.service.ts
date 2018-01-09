@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import {HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 
 @Injectable()
 export class TabsNavigationService {
-  constructor(private _http: Http) {
+  constructor(private http: HttpClient) {
   }
 
   public getApartments(): Observable<string[]> {
-    return this._http.get('./api/apartments')
-      .map((res: Response) => res.json())
-      .catch(this.handleError);
+    return this.http.get('./api/apartments').catch(this.handleError);
   }
 
   /**

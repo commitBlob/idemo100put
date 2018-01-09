@@ -1,24 +1,20 @@
 // Core
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 
 
 @Injectable()
 export class PricelistService {
-  constructor( private  _http: Http) {}
+  constructor( private  http: HttpClient) {}
 
   getPricelist(apartment) {
-    return this._http.get('./api/pricelist/' + apartment).map(
-      (res: Response) => res.json()
-    ).catch(this.handleError);
+    return this.http.get('./api/pricelist/' + apartment).catch(this.handleError);
   }
 
   getCourseList() {
-    return this._http.get('./api/courselist').map(
-      (res: Response) => res.json()
-    ).catch(this.handleError);
+    return this.http.get('./api/courselist').catch(this.handleError);
   }
 
   private handleError(error: any) {

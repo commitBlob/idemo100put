@@ -1,6 +1,6 @@
 // Core
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -11,19 +11,15 @@ import { NearbyPlaces } from './nearby-places.interface';
 
 @Injectable()
 export class ApartmentDetailsService {
-  constructor(private _http: Http) {
+  constructor(private http: HttpClient) {
   }
 
   public getApartmentData(apartmentShortName, language): Observable<ApartmentDetails[]> {
-    return this._http.get('./api/apartments/' + apartmentShortName + '/' + language).map(
-      (res: Response) => res.json()
-    ).catch(this.handleError);
+    return this.http.get('./api/apartments/' + apartmentShortName + '/' + language).catch(this.handleError);
   }
 
   public getNearbys(apartmentShortName): Observable<NearbyPlaces[]> {
-    return this._http.get('./api/nearbys/' + apartmentShortName).map(
-      (res: Response) => res.json()
-    ).catch(this.handleError);
+    return this.http.get('./api/nearbys/' + apartmentShortName).catch(this.handleError);
   }
 
   /**

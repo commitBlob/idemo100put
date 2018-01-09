@@ -1,19 +1,20 @@
 // Core
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class ContactFormService {
-  constructor(private _http: Http) {
+  constructor(private http: HttpClient) {
   }
 
   public submitForm(newSubmission) {
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    return this._http.post('./api/contactform', JSON.stringify(newSubmission), {headers: headers}).map(res => res.json());
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.post('./api/contactform', JSON.stringify(newSubmission), {headers: headers});
   }
 
   /**

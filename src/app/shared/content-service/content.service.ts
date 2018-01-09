@@ -1,7 +1,7 @@
 // Core
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
@@ -10,49 +10,35 @@ import { Content } from './content.interface';
 
 @Injectable()
 export class ContentService {
-  constructor(private _http: Http) {
+  constructor(private http: HttpClient) {
   }
 
   public getAboutUsContent(language): Observable<Content[]> {
-    return this._http.get('./api/aboutcontent/' + language).map(
-      (res: Response) => res.json()
-    ).catch(this.handleError);
+    return this.http.get('./api/aboutcontent/' + language).catch(this.handleError);
   }
 
   public getContactUsContent(language): Observable<Content[]> {
-    return this._http.get('./api/contactcontent/' + language).map(
-      (res: Response) => res.json()
-    ).catch(this.handleError);
+    return this.http.get('./api/contactcontent/' + language).catch(this.handleError);
   }
 
   public getCroatiaFactsContent(language): Observable<Content[]> {
-    return this._http.get('./api/crofacts/' + language).map(
-      (res: Response) => res.json()
-    ).catch(this.handleError);
+    return this.http.get('./api/crofacts/' + language).catch(this.handleError);
   }
 
   public getDubrovnikFactsContent(language): Observable<Content[]> {
-    return this._http.get('./api/dufacts/' + language).map(
-      (res: Response) => res.json()
-    ).catch(this.handleError);
+    return this.http.get('./api/dufacts/' + language).catch(this.handleError);
   }
 
   public getSurroundingsContent(language): Observable<Content[]> {
-    return this._http.get('./api/surroundings/' + language).map(
-      (res: Response) => res.json()
-    ).catch(this.handleError);
+    return this.http.get('./api/surroundings/' + language).catch(this.handleError);
   }
 
   public getPolicyContent(language): Observable<Content[]> {
-    return this._http.get('./api/policy/' + language).map(
-      (res: Response) => res.json()
-    ).catch(this.handleError);
+    return this.http.get('./api/policy/' + language).catch(this.handleError);
   }
 
   public getCroMoneyContent(language): Observable<Content[]> {
-    return this._http.get('./api/cromoney/' + language).map(
-      (res: Response) => res.json()
-    ).catch(this.handleError);
+    return this.http.get('./api/cromoney/' + language).catch(this.handleError);
   }
 
   /**
