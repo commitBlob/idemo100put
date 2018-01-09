@@ -16,7 +16,10 @@ export class LandingPageComponent implements OnInit {
 
   ngOnInit() {
     this.aptSer.getApartments().subscribe(
-      (response) => this.apartmentsData = response,
+      (response) => {
+        this.apartmentsData = response;
+        sessionStorage.setItem('apartmentsData', JSON.stringify(this.apartmentsData));
+      },
       (error) => this.errorMessage = <any>error
     );
   }

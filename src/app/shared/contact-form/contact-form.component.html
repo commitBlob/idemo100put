@@ -1,5 +1,6 @@
 <ng-container *ngIf="!reRender">
   <form [formGroup]="form" (ngSubmit)="submitForm(form)">
+    <!-- Name, Email group -->
     <div class="form-group">
       <mat-input-container class="flexer">
         <input matInput placeholder="Your Name" align="start" [type]="text" formControlName="name" minlength="2"
@@ -16,11 +17,13 @@
         </mat-hint>
       </mat-input-container>
     </div>
+    <!-- Subject Group -->
     <div class="form-group">
       <mat-input-container class="app-input-subject">
         <input matInput placeholder="Subject" align="start" [type]="text" formControlName="subject">
       </mat-input-container>
     </div>
+    <!-- Message group -->
     <div class="form-group">
       <mat-input-container class="app-textarea">
         <textarea matInput placeholder="Your Message" align="start" [type]="text" rows="6" formControlName="message"
@@ -30,11 +33,30 @@
         </mat-hint>
       </mat-input-container>
     </div>
+    <!-- Select list group -->
     <div class="form-group">
-      <mat-select placeholder="Select Apartment">
-
-      </mat-select>
+      <mat-form-field class="app-selectlist">
+        <mat-select placeholder="Select Apartment">
+          <mat-option value="{{apartment.apartmentId}}" *ngFor="let apartment of apartmentDetails">
+            {{apartment.apartmentName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
+    <!-- Date Selector group -->
+    <div class="form-group">
+      <mat-form-field class="flexer">
+        <input matInput [matDatepicker]="datepickerStart" placeholder="Booking Start" [min]="minDate">
+        <mat-datepicker-toggle matSuffix [for]="datepickerStart"></mat-datepicker-toggle>
+        <mat-datepicker #datepickerStart></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="flexer">
+        <input matInput [matDatepicker]="datepickerEnd" placeholder="Booking End" [min]="minDate">
+        <mat-datepicker-toggle matSuffix [for]="datepickerEnd"></mat-datepicker-toggle>
+        <mat-datepicker #datepickerEnd></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <!-- Button container -->
     <div class="button-container">
       <button class="app-button--" [disabled]="!form.valid">
         Submit

@@ -6,6 +6,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ContactFormService } from './contact-form-service/contact-form.service';
 import { DialogsService } from '../dialogs/dialogs.service';
 
+// Moment
+import * as moment from 'moment/moment';
+
 @Component({
   selector: 'app-contact-form',
   templateUrl: './contact-form.component.html',
@@ -28,6 +31,13 @@ export class ContactFormComponent implements OnInit {
   emailRegex = /^(([^<>()\[\]\\.,;:\s@']+(\.[^<>()\[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   formObject: any;
+
+  apartmentDetails = JSON.parse(sessionStorage.getItem('apartmentsData'));
+
+  minDate = moment();
+
+  startDate: any;
+  endDate: any;
 
   constructor(
     public formBuilder: FormBuilder,
