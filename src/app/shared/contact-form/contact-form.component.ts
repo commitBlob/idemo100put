@@ -11,6 +11,8 @@ import { DialogsService } from '../dialogs/dialogs.service';
   templateUrl: './contact-form.component.html',
 })
 export class ContactFormComponent implements OnInit {
+  // TODO: get apartments list
+
   form: FormGroup;
 
   reRender = false;
