@@ -13,6 +13,11 @@ button {
   background-color: $brand-google !important;
 }
 
+.close {
+  background-color: $dirty-white !important;
+  border: solid 1px $gray-darker;
+}
+
 .heading {
   color: $brand-primary-darker;
   font-size: 1.3em;

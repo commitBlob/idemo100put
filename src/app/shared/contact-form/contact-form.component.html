@@ -1,74 +1,70 @@
-<ng-container *ngIf="!reRender">
-  <form [formGroup]="form" (ngSubmit)="submitForm(form)">
-    <!-- Name, Email group -->
-    <div class="form-group">
-      <mat-input-container class="flexer">
-        <input matInput placeholder="Your Name" align="start" [type]="text" formControlName="name" minlength="2"
-               maxlength="30" required>
-        <mat-hint class=" errors" *ngIf="nameHasErrors">
-          {{nameError}}
-        </mat-hint>
-      </mat-input-container>
-      <mat-input-container class="flexer">
-        <input matInput placeholder="Your Email" align="start" [type]="'email'" formControlName="email"
-               [pattern]="emailRegex" required>
-        <mat-hint class="errors" *ngIf="emailHasErrors">
-          {{emailError}}
-        </mat-hint>
-      </mat-input-container>
-    </div>
-    <!-- Subject Group -->
-    <div class="form-group">
-      <mat-input-container class="app-input-subject">
-        <input matInput placeholder="Subject" align="start" [type]="text" formControlName="subject">
-      </mat-input-container>
-    </div>
-    <!-- Message group -->
-    <div class="form-group">
-      <mat-input-container class="app-textarea">
-        <textarea matInput placeholder="Your Message" align="start" [type]="text" rows="6" formControlName="message"
-                  minlength="2" maxlength="500" required></textarea>
-        <mat-hint class="errors" *ngIf="messageHasErrors">
-          {{messageError}}
-        </mat-hint>
-      </mat-input-container>
-    </div>
-    <!-- Select list group -->
-    <div class="form-group">
-      <mat-form-field class="app-selectlist">
-        <mat-select placeholder="Select Apartment">
-          <mat-option value="{{apartment.apartmentId}}" *ngFor="let apartment of apartmentDetails">
-            {{apartment.apartmentName}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <!-- Date Selector group -->
-    <div class="form-group">
-      <mat-form-field class="flexer">
-        <input matInput [matDatepicker]="datepickerStart" placeholder="Booking Start" [min]="minDate">
-        <mat-datepicker-toggle matSuffix [for]="datepickerStart"></mat-datepicker-toggle>
-        <mat-datepicker #datepickerStart></mat-datepicker>
-      </mat-form-field>
-      <mat-form-field class="flexer">
-        <input matInput [matDatepicker]="datepickerEnd" placeholder="Booking End" [min]="minDate">
-        <mat-datepicker-toggle matSuffix [for]="datepickerEnd"></mat-datepicker-toggle>
-        <mat-datepicker #datepickerEnd></mat-datepicker>
-      </mat-form-field>
-    </div>
-    <!-- Button container -->
-    <div class="button-container">
-      <button class="app-button--" [disabled]="!form.valid">
-        Submit
-        <svg data-name="plane_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 316.46 158.23">
-          <defs></defs>
-          <title>plane</title>
-          <path class="cls-1"
-                d="M316.45 0l-134 143.7-88.81-37.95L316.45 0zM66.2 92.83C64.59 92.83 0 62.96 0 62.96l316.46-63z"/>
-          <path class="cls-2" d="M66.2 92.84l19.37 65.39 11.3-53.28L316.45 0 66.2 92.84z"/>
-          <path class="cls-2" d="M85.57 158.23l10.5-54.9 43.7 21.6-54.2 33.3z"/>
-        </svg>
-      </button>
-    </div>
-  </form>
-</ng-container>
+<form (ngSubmit)="save(); myNgForm.resetForm()" [formGroup]="contactForm" #myNgForm="ngForm">
+  <!-- User name and email group -->
+  <div class="form-group">
+    <mat-input-container class="flexer">
+      <input matInput placeholder="Your Name" align="start" [type]="text" id="userNameId" formControlName="contactName">
+      <mat-hint class="errors" *ngIf="nameError">
+        {{nameError}}
+      </mat-hint>
+    </mat-input-container>
+    <mat-input-container class="flexer">
+      <input matInput placeholder="Your Email" align="start" [type]="'email'" id="emailId" formControlName="email">
+      <mat-hint class="errors" *ngIf="emailError">
+        {{emailError}}
+      </mat-hint>
+    </mat-input-container>
+  </div>
+  <!-- Subject Group -->
+  <div class="form-group">
+    <mat-input-container class="app-input-subject">
+      <input matInput placeholder="Subject" align="start" [type]="text" formControlName="subject">
+    </mat-input-container>
+  </div>
+  <!-- Message group -->
+  <div class="form-group">
+    <mat-input-container class="app-textarea">
+  <textarea matInput placeholder="Your Message" align="start" [type]="text" rows="6" formControlName="message"></textarea>
+      <mat-hint class="errors" *ngIf="bodyMessageError">
+        {{bodyMessageError}}
+      </mat-hint>
+    </mat-input-container>
+  </div>
+  <!-- Select list group -->
+  <div class="form-group">
+    <mat-form-field class="app-selectlist">
+      <mat-select placeholder="Select Apartment" formControlName="apartment">
+        <mat-option value="{{apartment.apartmentName}}" *ngFor="let apartment of apartmentDetails">
+          {{apartment.apartmentName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <!-- Date Selector group -->
+  <div class="form-group" *ngIf="contactForm.value.apartment !== 'General Inquiry'">
+    <mat-form-field class="flexer">
+      <input matInput [matDatepicker]="datepickerStart" placeholder="Booking Start" [min]="minDate" formControlName="bookingStart">
+      <mat-datepicker-toggle matSuffix [for]="datepickerStart"></mat-datepicker-toggle>
+      <mat-datepicker #datepickerStart></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="flexer">
+      <input matInput [matDatepicker]="datepickerEnd" placeholder="Booking End" [min]="minDate" formControlName="bookingEnd">
+      <mat-datepicker-toggle matSuffix [for]="datepickerEnd"></mat-datepicker-toggle>
+      <mat-datepicker #datepickerEnd></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <!-- Button container -->
+  <div class="button-container">
+    <button class="app-button--" [disabled]="!contactForm.valid">
+      Submit
+      <svg data-name="plane_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 316.46 158.23">
+        <defs></defs>
+        <title>plane</title>
+        <path class="cls-1"
+              d="M316.45 0l-134 143.7-88.81-37.95L316.45 0zM66.2 92.83C64.59 92.83 0 62.96 0 62.96l316.46-63z"/>
+        <path class="cls-2" d="M66.2 92.84l19.37 65.39 11.3-53.28L316.45 0 66.2 92.84z"/>
+        <path class="cls-2" d="M85.57 158.23l10.5-54.9 43.7 21.6-54.2 33.3z"/>
+      </svg>
+    </button>
+  </div>
+</form>
