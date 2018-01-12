@@ -1,5 +1,5 @@
 // Core
-import { ChangeDetectorRef, Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import 'rxjs/add/operator/debounceTime';
 
@@ -19,12 +19,8 @@ export class ContactFormComponent implements OnInit {
 
   contactForm: FormGroup;
 
-
   apartmentDetails = JSON.parse(sessionStorage.getItem('apartmentsData'));
   minDate = moment();
-  startDate: any;
-  endDate: any;
-
 
   // tslint:disable-next-line
   emailRegex = /^(([^<>()\[\]\\.,;:\s@']+(\.[^<>()\[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -82,8 +78,6 @@ export class ContactFormComponent implements OnInit {
 
   save() {
 
-    console.log('Save trigger!');
-    console.log(this.contactForm, ' contact form');
     if (this.contactForm.valid) {
       const formObject: Contact = {
         apartment: this.contactForm.value.apartment,
