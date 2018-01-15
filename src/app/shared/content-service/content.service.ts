@@ -13,6 +13,10 @@ export class ContentService {
   constructor(private http: HttpClient) {
   }
 
+  public getLandingContent(language): Observable<Content[]> {
+    return this.http.get('./api/landingcontent/'+ language).catch(this.handleError);
+  }
+
   public getAboutUsContent(language): Observable<Content[]> {
     return this.http.get('./api/aboutcontent/' + language).catch(this.handleError);
   }

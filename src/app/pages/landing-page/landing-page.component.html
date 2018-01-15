@@ -1,7 +1,10 @@
 <!--TODO: add content-->
 
 <div class="content">
-  <p>Landing page works!</p>
+  <div *ngIf="landingPageContent">
+    <h2>{{landingPageContent[0].header}}</h2>
+    <p>{{landingPageContent[0].content}}</p>
+  </div>
   <div class="apartments_container">
     <div class="apartments_item" *ngFor="let data of apartmentsData">
       <div class="apartment_content" [routerLink]="['/apartments', data.apartmentShortName]">
