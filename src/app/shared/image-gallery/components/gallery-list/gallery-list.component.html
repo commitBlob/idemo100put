@@ -1,1 +1,6 @@
-GALLERY LIST COMPONENT WORKS
+<div class="row_wrapper">
+  <div class="image_container" [class]="'image-'+ i" *ngFor="let image of imagesList; let i = index">
+    <img class="image_element" [src]="'./media/images/image-gallery/' + image" alt="Image">
+  </div>
+</div>
+<p class="gallery_note">Click on the images to open gallery</p>

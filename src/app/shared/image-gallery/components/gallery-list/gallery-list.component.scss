@@ -1,0 +1,21 @@
+.row_wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border: solid 2px red;
+
+  & > div {
+    padding: .3em;
+
+    .image_element {
+      width: 100%;
+      height: auto;
+      min-height: 100px;
+    }
+  }
+}
+
+.gallery_note {
+  font-size: .8em;
+  font-style: italic;
+}
