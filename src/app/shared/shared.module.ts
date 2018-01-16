@@ -30,6 +30,7 @@ import { PricelistService } from './pricelist/pricelist.service';
 import { TabsNavigationModule } from './tabs_navigation/tabs_navigation.module';
 import { WordBreakPipe } from './word_break.pipe';
 import { ImageGalleryModule } from './image-gallery/image-gallery.module';
+import { GalleryService } from './image-gallery/components/gallery-service/gallery.service';
 
 @NgModule({
   imports: [
@@ -75,6 +76,7 @@ export class SharedModule {
         ContentService,
         ContactFormService,
         DialogsService,
+        GalleryService,
         LanguagesService,
         MarkersService,
         PricelistService

@@ -1,5 +1,5 @@
 <div class="row_wrapper">
-  <div class="image_container" [class]="'image-'+ i" *ngFor="let image of imagesList; let i = index">
+  <div class="image_container" *ngFor="let image of imagesList; let i = index" [class]="'image-'+ i"  (click)="openGallery(image, imagesList)">
     <img class="image_element" [src]="'./media/images/image-gallery/' + image" alt="Image">
   </div>
 </div>
