@@ -1,0 +1,25 @@
+.row_wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  & > div {
+    padding: .3em;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    .image_element {
+      cursor: pointer;
+      width: 100%;
+      height: auto;
+      min-height: 100px;
+    }
+  }
+}
+
+.gallery_note {
+  font-size: .8em;
+  font-style: italic;
+}

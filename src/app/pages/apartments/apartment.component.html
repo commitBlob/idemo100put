@@ -5,6 +5,7 @@
   <div *ngIf="apartmentData">
     <h2 class="apartment_name">Apartment {{apartmentData[0].apartmentName}} details</h2>
     <p class="location_details"><i class="material-icons location_icon">place</i>{{apartmentData[0].address}}</p>
+    <app-gallery-list [apartmentShortName]="apartmentName"></app-gallery-list>
     <p class="apartment_description">{{apartmentData[0].apartmentDescription}}</p>
     <div *ngIf="language === 'eng'; then minEng else minCro"></div>
     <ng-template #minEng>

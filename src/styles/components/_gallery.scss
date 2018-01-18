@@ -1,0 +1,18 @@
+@include respond((max: 999px)) {
+  .image-4 {
+    display: none;
+  }
+}
+
+@include respond((max: 799px)) {
+  .image-3 {
+    display: none;
+  }
+}
+
+@include respond((max: 599px)) {
+  .image-2 {
+    display: none;
+  }
+}
+
