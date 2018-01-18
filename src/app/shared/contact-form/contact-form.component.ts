@@ -1,165 +1,126 @@
 // Core
-import { ChangeDetectorRef, Component, OnInit, ViewContainerRef } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import 'rxjs/add/operator/debounceTime';
 
 // App specific
 import { ContactFormService } from './contact-form-service/contact-form.service';
 import { DialogsService } from '../dialogs/dialogs.service';
+import { Contact } from './contact-form';
+
+// Moment
+import * as moment from 'moment/moment';
 
 @Component({
   selector: 'app-contact-form',
   templateUrl: './contact-form.component.html',
 })
 export class ContactFormComponent implements OnInit {
-  // TODO: get apartments list
 
-  form: FormGroup;
+  contactForm: FormGroup;
 
-  reRender = false;
-  emailValid = false;
-  formValid = false;
-  nameError = '';
-  emailError = '';
-  messageError = '';
-  nameHasErrors = true;
-  emailHasErrors = true;
-  messageHasErrors = true;
+  apartmentDetails = JSON.parse(sessionStorage.getItem('apartmentsData'));
+  minDate = moment();
+
   // tslint:disable-next-line
   emailRegex = /^(([^<>()\[\]\\.,;:\s@']+(\.[^<>()\[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-  formObject: any;
+  private emailValidationMessages = {
+    required: 'Please enter your email address.',
+    pattern: 'Please enter a valid email address.'
+  };
+  emailError: string;
 
-  constructor(
-    public formBuilder: FormBuilder,
-    private contactFormService: ContactFormService,
-    private dialogService: DialogsService,
-    private viewContainerRef: ViewContainerRef,
-    private cdRef: ChangeDetectorRef
-  ) {
-    this.form = this.formBuilder.group({
-      name: ['', Validators.required],
-      email: ['', Validators.required],
+  private nameValidationMessages = {
+    required: 'Please enter your name.',
+    minlength: 'Minimum name length is 2 characters.',
+    maxlength: 'Maximum name length is 30 characters.'
+  };
+  nameError: string;
+
+  private bodyValidationMessages = {
+    required: 'Please enter your message.',
+    minlength: 'Minimum message length is 2 characters.',
+    maxlength: 'Maximum message length is 500 characters.'
+  };
+  bodyMessageError: string;
+
+  contact: Contact = new Contact();
+
+  constructor(private formBuilder: FormBuilder,
+              private contactFormService: ContactFormService,
+              private dialogService: DialogsService,
+              private viewContainerRef: ViewContainerRef) {}
+
+  ngOnInit(): void {
+    this.contactForm = this.formBuilder.group({
+      contactName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
+      email: ['', [Validators.required, Validators.pattern(this.emailRegex)]],
       subject: '',
-      message: ['', Validators.required],
+      message: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(500)]],
+      apartment: '',
+      bookingStart: '',
+      bookingEnd: ''
+    });
+    this.contactForm.patchValue({
+      apartment: 'General Inquiry'
     });
 
-    /* custom name validation */
-    this.form.controls['name'].valueChanges.debounceTime(400).subscribe(data => {
-      if (data.length < 2) {
-        this.nameError =  'Name has to be between 2 and 30 characters long';
-        return this.nameError;
-      }else {
-        this.nameError = '';
-        return this.nameError;
-      }
-    });
+    const emailControl = this.contactForm.get('email');
+    emailControl.valueChanges.debounceTime(800).subscribe( val => this.setEmailMessage(emailControl));
 
-    /* custom email validation */
-    this.form.controls['email'].valueChanges.debounceTime(400).subscribe(data => {
-      this.emailValid = this.validateEmail(data);
-      if (data.length > 0 && !this.emailValid) {
-        this.emailError =  'Please enter valid email address';
-        return this.emailError;
-      }else {
-        this.emailError = '';
-        return this.emailError;
-      }
-    });
+    const nameControl = this.contactForm.get('contactName');
+    nameControl.valueChanges.debounceTime(800).subscribe(val => this.setNameMessage(nameControl));
 
-    /* custom subject validation */
-    this.form.controls['message'].valueChanges.debounceTime(400).subscribe(data => {
-      if (data.length < 2) {
-        this.messageError =  'Message has to be longer than 2 characters';
-        return this.messageError;
-      }else {
-        this.messageError = '';
-        return this.messageError;
-      }
-    });
+    const bodyMessageControl = this.contactForm.get('message');
+    bodyMessageControl.valueChanges.debounceTime(800).subscribe( val => this.setBodyMessages(bodyMessageControl))
   }
 
-  public ngOnInit() {
-  }
+  save() {
 
-  public submitForm(formData: FormGroup) {
-    if (this.form.valid) {
-      this.formObject = {
-        name: formData.value.name,
-        email: formData.value.email,
-        subject: formData.value.subject,
-        message: formData.value.message
+    if (this.contactForm.valid) {
+      const formObject: Contact = {
+        apartment: this.contactForm.value.apartment,
+        bookingEnd: this.contactForm.value.bookingEnd,
+        bookingStart: this.contactForm.value.bookingStart,
+        contactName: this.contactForm.value.contactName,
+        email: this.contactForm.value.email,
+        message: this.contactForm.value.message,
+        subject: this.contactForm.value.subject
       };
-      this.contactFormService.submitForm(this.formObject).subscribe(
-        (response) => {
-          this.messageDialog(response.toString(), response.toString());
+
+      this.contactFormService.submitForm(formObject).subscribe(
+        (res) => {
+          this.messageDialog(res['header'], res['message']);
         },
-        (error) => {
-          this.messageDialog(error.toString(), error.toString());
-        }
+        (error) => this.messageDialog(error['header'], error['message'])
       );
-      this.resetForm();
     }
   }
 
-  public validateEmail(email) {
-    return this.emailRegex.test(email);
+  setEmailMessage(c: AbstractControl): void {
+    this.emailError = '';
+    if ((c.touched || c.dirty) && c.errors) {
+      this.emailError = Object.keys(c.errors).map(key => this.emailValidationMessages[key]).join(' ');
+    }
   }
 
-  public messageDialog(title: string, message: string) {
-    this.dialogService.confirm(title, message, this.viewContainerRef)
+  setNameMessage(c: AbstractControl): void {
+    this.nameError = '';
+    if ((c.touched || c.dirty) && c.errors) {
+      this.nameError = Object.keys(c.errors).map(key => this.nameValidationMessages[key]).join(' ');
+    }
   }
 
-  /**
-   * Resets form values and re-renders the component in order to bring form back to initial state
-   */
-  public resetForm() {
-    // this.form.reset();
-    this.reRender = true;
-    this.rebuildForm();
-    this.cdRef.detectChanges();
-    this.reRender = false;
+  setBodyMessages(c: AbstractControl): void {
+    this.bodyMessageError = '';
+    if ((c.touched || c.dirty) && c.errors) {
+      this.bodyMessageError = Object.keys(c.errors).map(key => this.bodyValidationMessages[key]).join(' ');
+    }
   }
 
-  public rebuildForm() {
-    this.form = this.formBuilder.group({
-      name: ['', Validators.required],
-      email: ['', Validators.required],
-      subject: '',
-      message: ['', Validators.required],
-    });
-    /* custom name validation */
-    this.form.controls['name'].valueChanges.debounceTime(400).subscribe(data => {
-      if (data.length < 2) {
-        this.nameError =  'Name has to be between 2 and 30 characters long';
-        return this.nameError;
-      }else {
-        this.nameError = '';
-        return this.nameError;
-      }
-    });
-
-    /* custom email validation */
-    this.form.controls['email'].valueChanges.debounceTime(400).subscribe(data => {
-      this.emailValid = this.validateEmail(data);
-      if (data.length > 0 && !this.emailValid) {
-        this.emailError =  'Please enter valid email address';
-        return this.emailError;
-      }else {
-        this.emailError = '';
-        return this.emailError;
-      }
-    });
-
-    /* custom subject validation */
-    this.form.controls['message'].valueChanges.debounceTime(400).subscribe(data => {
-      if (data.length < 2) {
-        this.messageError =  'Message has to be longer than 2 characters';
-        return this.messageError;
-      }else {
-        this.messageError = '';
-        return this.messageError;
-      }
-    });
+  messageDialog(title: string, message: string) {
+      this.dialogService.confirm(title, message, this.viewContainerRef)
   }
 
 }

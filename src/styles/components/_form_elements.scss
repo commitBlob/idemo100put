@@ -20,6 +20,11 @@ form {
       margin: 0 1em;
     }
 
+    .app-selectlist {
+      flex: 1 1 auto;
+      margin: 0 1em;
+    }
+
     .errors {
       color: $brand-danger;
       margin-bottom: 1em;
