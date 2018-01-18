@@ -1,18 +1,30 @@
 .gallery_container {
 
   .gallery_active_image {
+    position: relative;
+    width: 100%;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
 
     .gallery_chevron_left {
-
+      position: absolute;
+      left: 0;
+      top: 50%;
+      cursor: pointer;
     }
 
     .gallery_chevron_right {
-
+      position: absolute;
+      right: 0;
+      top: 50%;
+      cursor: pointer;
     }
   }
 
   .gallery_images_list {
-    border: solid 1px red;
     vertical-align: center;
     text-align: center;
     height: 50px;
@@ -27,18 +39,34 @@
         cursor: pointer;
         transition: all .2s ease-in-out;
 
+        &.active {
+          transform: scale(1.5);
+        }
+
         &:hover {
           transform: scale(1.5);
         }
 
         &:before {
           content: ' \25CF';
-          //line-height: 1em;
           font-size: 2.2em;
           color: #A191C8;
           text-shadow: 1px 2px 2px #8770C1;
         }
       }
     }
+  }
+}
+
+.chevron_large {
+  font-size: 3em;
+  transition: all .2s ease-in-out;
+  color: #8770C1;
+
+  &:hover {
+    font-size: 3.5em;
+    transition: all .2s ease-in-out;
+    color: #A191C8;
+    text-shadow: 1px 2px 2px #8770C1;
   }
 }

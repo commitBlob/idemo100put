@@ -7,7 +7,6 @@ import { ConfirmDialogComponent } from './confirm-dialog.component';
 import { DialogsService } from './dialogs.service';
 import { MaterialModule } from '../../sharedMaterialModule';
 import { GalleryDialogComponent } from '../image-gallery/components/gallery-dialog/gallery-dialog.component';
-import { GalleryImageComponent } from '../image-gallery/components/gallery-image/gallery-image.component';
 import { ImageGalleryModule } from '../image-gallery/image-gallery.module';
 
 @NgModule({
