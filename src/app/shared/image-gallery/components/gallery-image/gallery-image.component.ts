@@ -6,8 +6,6 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./gallery-image.component.scss']
 })
 export class GalleryImageComponent implements OnInit {
-  // constant for swipe action: left or right
-  SWIPE_ACTION = {LEFT: 'swipeleft', RIGHT: 'swiperight'};
 
   @Input()
   imagesArray: Array<string>;
@@ -55,7 +53,6 @@ export class GalleryImageComponent implements OnInit {
   }
 
   swipe(event) {
-    console.log('Swipe function', event);
     switch (event) {
       case 'swiperight':
         this.next();
