@@ -1,8 +1,9 @@
 // Core
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewContainerRef } from '@angular/core';
 
 // App specific
 import { GalleryService } from '../gallery-service/gallery.service';
+import { DialogsService } from '../../../dialogs/dialogs.service';
 
 @Component({
   selector: 'app-gallery-list',
@@ -16,22 +17,26 @@ export class GalleryListComponent implements OnInit {
 
   galleryData = [];
 
-  imagesList = ['250x160xA.jpg', '250x160xB.jpg', '250x160xC.jpg', '250x160xD.jpg', '250x160xE.jpg'];
+  imagesArray = [];
 
-  imageToShow: string;
-
-  constructor( private galleryService: GalleryService) {}
+  constructor( private galleryService: GalleryService,
+               private viewContainerRef: ViewContainerRef,
+               private dialogService: DialogsService) {}
 
   ngOnInit() {
-    console.log('Apartment short name: ', this.apartmentShortName);
     this.galleryService.getImages(this.apartmentShortName).subscribe((result) => {
       this.galleryData = result;
     });
   }
 
-  openGallery(image, imagesArray) {
-    console.log('Image to open: ' + image);
-    console.log('Images array: ' +  imagesArray);
-    // this.imageToShow = `data:image/jpg;base64,${this.galleryData[0].image}`;
+  openGallery() {
+    // resets
+    this.imagesArray = [];
+
+    this.galleryData.forEach((value) => {
+      this.imagesArray.push(value.image);
+    });
+    const imagesArray = this.imagesArray;
+    this.dialogService.openGallery(imagesArray, this.viewContainerRef);
   }
 }

@@ -1,0 +1,44 @@
+.gallery_container {
+
+  .gallery_active_image {
+
+    .gallery_chevron_left {
+
+    }
+
+    .gallery_chevron_right {
+
+    }
+  }
+
+  .gallery_images_list {
+    border: solid 1px red;
+    vertical-align: center;
+    text-align: center;
+    height: 50px;
+
+    .dot_list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      .dot {
+        display: inline-block;
+        cursor: pointer;
+        transition: all .2s ease-in-out;
+
+        &:hover {
+          transform: scale(1.5);
+        }
+
+        &:before {
+          content: ' \25CF';
+          //line-height: 1em;
+          font-size: 2.2em;
+          color: #A191C8;
+          text-shadow: 1px 2px 2px #8770C1;
+        }
+      }
+    }
+  }
+}
