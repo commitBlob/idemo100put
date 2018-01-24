@@ -15,9 +15,12 @@ export class TabsNavigationComponent implements OnInit {
   constructor(private _tns: TabsNavigationService) { }
 
   ngOnInit() {
-   this._tns.getApartments().subscribe(
-     (res) => this.apartmentList = res,
-     error => this.errorMessage = <any>error,
-   );
+    this.apartmentList = JSON.parse(sessionStorage.getItem('apartmentsData'));
+    if (!this.apartmentList) {
+      this._tns.getApartments().subscribe(
+        (res) => this.apartmentList = res,
+        error => this.errorMessage = <any>error,
+      );
+    }
   }
 }
