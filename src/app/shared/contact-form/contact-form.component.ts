@@ -62,9 +62,6 @@ export class ContactFormComponent implements OnInit {
       bookingStart: '',
       bookingEnd: ''
     });
-    this.contactForm.patchValue({
-      apartment: 'General Inquiry'
-    });
 
     const emailControl = this.contactForm.get('email');
     emailControl.valueChanges.debounceTime(800).subscribe( val => this.setEmailMessage(emailControl));
