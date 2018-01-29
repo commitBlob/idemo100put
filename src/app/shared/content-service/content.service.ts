@@ -42,7 +42,7 @@ export class ContentService {
   }
 
   public getDuWeRecommendContent(language): Observable<Content[]> {
-    return this.http.get('./api/werecommend' + language).catch(this.handleError);
+    return this.http.get('./api/werecommend/' + language).catch(this.handleError);
   }
 
   /**
