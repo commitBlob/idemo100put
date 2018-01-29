@@ -29,6 +29,7 @@ import { PricelistModule } from './pricelist/pricelist.module';
 import { PricelistService } from './pricelist/pricelist.service';
 import { TabsNavigationModule } from './tabs_navigation/tabs_navigation.module';
 import { WordBreakPipe } from './word_break.pipe';
+import { DubrovnikFactsWeRecommendModule } from '../pages/dubrovnik-facts/dubrovnik-facts-we-recommend/dubrovnik-facts-we-recommend.module';
 
 @NgModule({
   imports: [
@@ -47,6 +48,7 @@ import { WordBreakPipe } from './word_break.pipe';
     CroatiaFactsWordsModule,
     DialogsModule,
     DistancePipe,
+    DubrovnikFactsWeRecommendModule,
     LanguagesModule,
     LogoModule,
     FooterModule,
