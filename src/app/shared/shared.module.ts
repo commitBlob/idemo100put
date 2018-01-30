@@ -29,6 +29,7 @@ import { PricelistModule } from './pricelist/pricelist.module';
 import { PricelistService } from './pricelist/pricelist.service';
 import { TabsNavigationModule } from './tabs_navigation/tabs_navigation.module';
 import { WordBreakPipe } from './word_break.pipe';
+import { GoogleColumnModule } from './google-charts/google-column-chart/google-column.module';
 
 @NgModule({
   imports: [
@@ -51,6 +52,7 @@ import { WordBreakPipe } from './word_break.pipe';
     LogoModule,
     FooterModule,
     FormsModule,
+    GoogleColumnModule,
     GoogleMapsModule,
     PricelistModule,
     ReactiveFormsModule,
