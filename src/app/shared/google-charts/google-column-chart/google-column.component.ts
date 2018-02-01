@@ -1,5 +1,5 @@
 // Core
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 // App specific
 declare const google: any;
@@ -13,6 +13,11 @@ export class GoogleColumnComponent implements OnInit {
   constructor() {
   }
 
+  @HostListener('window:resize', ['$event'])
+  onWindowResize(event: any) {
+    this.drawChart();
+  }
+
   ngOnInit() {
     google.charts.load('current', {'packages': ['corechart']});
     google.charts.setOnLoadCallback(this.drawChart);
@@ -22,18 +27,18 @@ export class GoogleColumnComponent implements OnInit {
 
     const data = new google.visualization.arrayToDataTable([
       ['Month of the Year', 'Visitors Level', { role: 'style' }],
-        [{v: 'Jan'}, 1, '#34aadc'],
-        [{v: 'Feb'}, 1, '#34aadc'],
-        [{v: 'Mar'}, 1, '#34aadc'],
-        [{v: 'Apr'}, 2, '#4cd964'],
-        [{v: 'May'}, 3, '#fc0'],
-        [{v: 'Jun'}, 4, '#ff3b30'],
-        [{v: 'Jul'}, 4, '#ff3b30'],
-        [{v: 'Aug'}, 4, '#ff3b30'],
-        [{v: 'Sep'}, 3, '#fc0'],
-        [{v: 'Oct'}, 2, '#4cd964'],
-        [{v: 'Nov'}, 1, '#34aadc'],
-        [{v: 'Dec'}, 2, '#4cd964'],
+        [{v: 'Jan'}, {v: 1, f: 'Low'}, '#34aadc'],
+        [{v: 'Feb'}, {v: 1, f: 'Low'}, '#34aadc'],
+        [{v: 'Mar'}, {v: 1, f: 'Low'}, '#34aadc'],
+        [{v: 'Apr'}, {v: 2, f: 'Average'}, '#4cd964'],
+        [{v: 'May'}, {v: 3, f: 'Above Average'}, '#fc0'],
+        [{v: 'Jun'}, {v: 4, f: 'High'}, '#ff3b30'],
+        [{v: 'Jul'}, {v: 4, f: 'High'}, '#ff3b30'],
+        [{v: 'Aug'}, {v: 4, f: 'High'}, '#ff3b30'],
+        [{v: 'Sep'}, {v: 3, f: 'Above Average'}, '#fc0'],
+        [{v: 'Oct'}, {v: 2, f: 'Average'}, '#4cd964'],
+        [{v: 'Nov'}, {v: 1, f: 'Low'}, '#34aadc'],
+        [{v: 'Dec'}, {v: 2, f: 'Average'}, '#4cd964'],
     ]);
 
     const options = {
