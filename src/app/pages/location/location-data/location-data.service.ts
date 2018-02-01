@@ -8,8 +8,6 @@ import { LocData } from './location-data-list';
 @Injectable()
 export class LocationDataService {
 
-  constructor() {}
-
   getLocationData() {
     return LocData;
   }

@@ -1,5 +1,5 @@
 // Core
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 // App specific
@@ -14,15 +14,15 @@ import { Content } from '../../shared/content-service/content.interface';
 })
 export class ApartmentsPolicyComponent implements OnInit, OnDestroy {
 
-  public apartmentsPolicyContent: Content[];
-  public langSubscription: Subscription;
-  public language: String;
+  apartmentsPolicyContent: Content[];
+  langSubscription: Subscription;
+  language: String;
 
   constructor(
-    private _languageService: LanguagesService,
-    private _contentService: ContentService
+    private languageService: LanguagesService,
+    private contentService: ContentService
   ) {
-    this.langSubscription = _languageService.subjectSourceAnnounced$.subscribe(
+    this.langSubscription = languageService.subjectSourceAnnounced$.subscribe(
       (value) => {
         if ( this.language !== value) {
           this.language = value;
@@ -33,11 +33,11 @@ export class ApartmentsPolicyComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit() {
-    this._languageService.getLanguage();
+    this.languageService.getLanguage();
   }
 
   public getContent(language) {
-    this._contentService.getPolicyContent(language).subscribe(
+    this.contentService.getPolicyContent(language).subscribe(
       (content) => {
         this.apartmentsPolicyContent = <Content[]>content;
       }

@@ -8,10 +8,9 @@ import { Component } from '@angular/core';
 })
 export class ConfirmDialogComponent {
 
-  public title: string;
-  public message: string;
+  title: string;
+  message: string;
 
   constructor(public dialogRef: MatDialogRef<ConfirmDialogComponent>) {
-
   }
 }

@@ -8,23 +8,23 @@ import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class LanguagesService {
-  public languageSelected = 'eng';
-  public subjectSource = new Subject<string>();
-  public subjectSourceAnnounced$ = this.subjectSource.asObservable();
+  languageSelected = 'eng';
+  subjectSource = new Subject<string>();
+  subjectSourceAnnounced$ = this.subjectSource.asObservable();
 
   constructor(private http: HttpClient) {
   }
 
-  public getFlags(): Observable<string[]> {
+  getFlags(): Observable<string[]> {
     return this.http.get('./api/flags').catch(this.handleError);
   }
 
-  public languageChange(value) {
+  languageChange(value) {
     this.languageSelected = value;
     this.subjectSource.next(this.languageSelected);
   }
 
-  public getLanguage() {
+  getLanguage() {
     this.subjectSource.next(this.languageSelected);
   }
 

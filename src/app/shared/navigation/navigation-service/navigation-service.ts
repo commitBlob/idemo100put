@@ -9,11 +9,8 @@ import { GlobalNavigation } from '../navigation-list';
 @Injectable()
 export class NavigationService {
 
-  constructor() {
-  }
-
   /* Navigation list is defined in GlobalNavigation, will not use service*/
-  public getAppNavigation() {
+  getAppNavigation() {
     return GlobalNavigation;
   }
 }

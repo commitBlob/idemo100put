@@ -1,12 +1,12 @@
 // Core
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
 // App specific
 import { ContentService } from '../../../shared/content-service/content.service';
 import { LanguagesService } from '../../../shared/languages/languages.service';
-import { PricelistService} from '../../../shared/pricelist/pricelist.service';
+import { PricelistService } from '../../../shared/pricelist/pricelist.service';
 
 // Models
 import { Content } from '../../../shared/content-service/content.interface';
@@ -17,22 +17,22 @@ import { Content } from '../../../shared/content-service/content.interface';
 })
 export class CroatiaFactsMoneyComponent implements OnInit, OnDestroy {
 
-  public currencyList = ['HRK', 'GBP', 'USD'];
-  public comparedToKuna = ['EUR', 'GBP', 'USD'];
-  public defaultCurrency = 'HRK';
-  public defaultCurrencyValue; // as Euro is base currency I need to divide all the values with Euro
-  public moneyContent: Content[];
-  public langSubscription: Subscription;
-  public language: String;
-  public euroBaseList = {};
-  public kunaBaseList = {};
+  currencyList = ['HRK', 'GBP', 'USD'];
+  comparedToKuna = ['EUR', 'GBP', 'USD'];
+  defaultCurrency = 'HRK';
+  defaultCurrencyValue; // as Euro is base currency I need to divide all the values with Euro
+  moneyContent: Content[];
+  langSubscription: Subscription;
+  language: String;
+  euroBaseList = {};
+  kunaBaseList = {};
 
   constructor(
-    private _languageService: LanguagesService,
-    private _contentService: ContentService,
-    private _courselistService: PricelistService
+    private languageService: LanguagesService,
+    private contentService: ContentService,
+    private courselistService: PricelistService
   ) {
-    this.langSubscription = _languageService.subjectSourceAnnounced$.subscribe(
+    this.langSubscription = languageService.subjectSourceAnnounced$.subscribe(
       (value) => {
         if ( this.language !== value) {
           this.language = value;
@@ -42,19 +42,19 @@ export class CroatiaFactsMoneyComponent implements OnInit, OnDestroy {
     );
   }
 
-  public getContent(language) {
-    this._contentService.getCroMoneyContent(language).subscribe(
+  getContent(language) {
+    this.contentService.getCroMoneyContent(language).subscribe(
       (content) => {
         this.moneyContent = <Content[]>content;
       }
     );
   }
 
-  public getcourseList() {
+  getcourseList() {
     const tempCurrencyName = [];
     const tempCurrencyCourse = [];
     const tempCourseList = {};
-    this._courselistService.getCourseList().subscribe(
+    this.courselistService.getCourseList().subscribe(
       (data) => {
         data['gesmes:Envelope'].Cube[0].Cube[0].Cube.forEach((value: any) => {
           tempCurrencyName.push(value['$'].currency);
@@ -82,7 +82,7 @@ export class CroatiaFactsMoneyComponent implements OnInit, OnDestroy {
     );
   }
 
-  public convertEuros() {
+  convertEuros() {
     let tempValueHolder;
     this.kunaBaseList['EUR'] = this.defaultCurrencyValue;
     this.currencyList.forEach((value: any, key: any) => {
@@ -93,12 +93,12 @@ export class CroatiaFactsMoneyComponent implements OnInit, OnDestroy {
     });
   }
 
-  public ngOnInit() {
-    this._languageService.getLanguage();
+  ngOnInit() {
+    this.languageService.getLanguage();
     this.getcourseList();
   }
 
-  public ngOnDestroy() {
+  ngOnDestroy() {
     this.langSubscription.unsubscribe();
   }
 

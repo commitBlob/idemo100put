@@ -12,9 +12,15 @@ import { TabsNavigationService } from './tabs_navigation.service';
     CommonModule,
     RouterModule
   ],
-  declarations: [TabsNavigationComponent],
-  exports: [TabsNavigationComponent],
-  providers: [TabsNavigationService]
+  declarations: [
+    TabsNavigationComponent
+  ],
+  exports: [
+    TabsNavigationComponent
+  ],
+  providers: [
+    TabsNavigationService
+  ]
 })
 
 export class TabsNavigationModule {

@@ -11,7 +11,7 @@ import { Markers } from './markers.interface';
 export class MarkersService {
   constructor( private  http: HttpClient) {}
 
-  public getMarkers(): Observable<Markers[]> {
+  getMarkers(): Observable<Markers[]> {
     return this.http.get('./api/markers').catch(this.handleError);
   }
 

@@ -14,14 +14,15 @@ import { Cards } from './cards.interface';
   templateUrl: './cards.component.html',
 })
 export class CardsComponent implements OnInit {
-  public cards: Cards[];
-  public language: String;
-  public langSubscription: Subscription;
+  cards: Cards[];
+  language: String;
+  langSubscription: Subscription;
 
-  constructor(private _languageService: LanguagesService, private _cardsService: CardsService) {
-    this.langSubscription = _languageService.subjectSourceAnnounced$.subscribe(
+  constructor(private languageService: LanguagesService,
+              private cardsService: CardsService) {
+    this.langSubscription = languageService.subjectSourceAnnounced$.subscribe(
       (value) => {
-        if ( this.language !== value) {
+        if (this.language !== value) {
           this.language = value;
           this.getCards(value);
         }
@@ -29,12 +30,12 @@ export class CardsComponent implements OnInit {
     );
   }
 
-  public ngOnInit() {
-    this._languageService.getLanguage();
+  ngOnInit() {
+    this.languageService.getLanguage();
   }
 
-  public getCards(language) {
-    this._cardsService.getCards(language).subscribe(
+  getCards(language) {
+    this.cardsService.getCards(language).subscribe(
       (data) => {
         this.cards = <Cards[]>data;
       }

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 // App specific
-import {CroatiaFactsDataPowerComponent} from './croatia-facts-data-power.component';
+import { CroatiaFactsDataPowerComponent } from './croatia-facts-data-power.component';
 
 
 @NgModule({

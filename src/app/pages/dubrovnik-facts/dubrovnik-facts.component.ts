@@ -14,15 +14,15 @@ import { Content } from '../../shared/content-service/content.interface';
 })
 export class DubrovnikFactsComponent implements OnInit, OnDestroy {
 
-  public dubrovnikFactsContent: Content[];
-  public langSubscription: Subscription;
-  public language: String;
+  dubrovnikFactsContent: Content[];
+  langSubscription: Subscription;
+  language: String;
 
   constructor(
-    private _languageService: LanguagesService,
-    private _contentService: ContentService
+    private languageService: LanguagesService,
+    private contentService: ContentService
   ) {
-    this.langSubscription = _languageService.subjectSourceAnnounced$.subscribe(
+    this.langSubscription = languageService.subjectSourceAnnounced$.subscribe(
       (value) => {
         if ( this.language !== value) {
           this.language = value;
@@ -32,19 +32,19 @@ export class DubrovnikFactsComponent implements OnInit, OnDestroy {
     );
   }
 
-  public ngOnInit() {
-    this._languageService.getLanguage();
+  ngOnInit() {
+    this.languageService.getLanguage();
   }
 
-  public getContent(language) {
-    this._contentService.getDubrovnikFactsContent(language).subscribe(
+  getContent(language) {
+    this.contentService.getDubrovnikFactsContent(language).subscribe(
       (content) => {
         this.dubrovnikFactsContent = <Content[]>content;
       }
     );
   }
 
-  public ngOnDestroy() {
+  ngOnDestroy() {
     this.langSubscription.unsubscribe();
   }
 }

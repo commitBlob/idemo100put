@@ -1,6 +1,6 @@
 // Core
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -18,24 +18,23 @@ import { NearbyPlaces } from './apartment-details/nearby-places.interface';
   templateUrl: './apartment.component.html',
 })
 export class ApartmentComponent implements OnInit, OnDestroy {
-  public apartmentName: string;
-  private _sub: any;
-  public langSubscription: Subscription;
-  public language: String;
-  public apartmentData: ApartmentDetails[];
-  public nearbyPlacesData: NearbyPlaces[];
-  public displayWarning = true;
+  apartmentName: string;
+  private sub: any;
+  langSubscription: Subscription;
+  language: String;
+  apartmentData: ApartmentDetails[];
+  nearbyPlacesData: NearbyPlaces[];
+  displayWarning = true;
 
-  constructor(private _route: ActivatedRoute,
-              private _apartmentDetailsService: ApartmentDetailsService,
-              private _languageService: LanguagesService,
-              private router: Router) {
+  constructor(private route: ActivatedRoute,
+              private apartmentDetailsService: ApartmentDetailsService,
+              private languageService: LanguagesService) {
 
-    this._sub = this._route.params.subscribe(params => {
+    this.sub = this.route.params.subscribe(params => {
       this.apartmentName = params['apartmentName'];
     });
 
-    this.langSubscription = _languageService.subjectSourceAnnounced$.subscribe(
+    this.langSubscription = languageService.subjectSourceAnnounced$.subscribe(
       (value) => {
         if ( this.language !== value) {
           this.language = value;
@@ -46,16 +45,16 @@ export class ApartmentComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit() {
-    this._languageService.getLanguage();
+    this.languageService.getLanguage();
   }
 
   public ngOnDestroy() {
-    this._sub.unsubscribe();
+    this.sub.unsubscribe();
     this.langSubscription.unsubscribe();
   }
 
   public getApartmentData(apName, lang) {
-    this._apartmentDetailsService.getApartmentData(apName, lang).subscribe(
+    this.apartmentDetailsService.getApartmentData(apName, lang).subscribe(
       (apData) => {
         this.apartmentData = <ApartmentDetails[]>apData;
       },
@@ -69,7 +68,7 @@ export class ApartmentComponent implements OnInit, OnDestroy {
   }
 
   public getNearbyPlaces(apartment) {
-    this._apartmentDetailsService.getNearbys(apartment).subscribe(
+    this.apartmentDetailsService.getNearbys(apartment).subscribe(
       (data) => {
         this.nearbyPlacesData = <NearbyPlaces[]>data;
       }
@@ -83,10 +82,6 @@ export class ApartmentComponent implements OnInit, OnDestroy {
   private closeBlock(event) {
     event.target.parentElement.classList.add('hide');
     setTimeout(() => { this.displayWarning = false; }, 750)
-  }
-
-  public goToBookings() {
-    this.router.navigate(['booking/' + this.apartmentName]);
   }
 
   /**
