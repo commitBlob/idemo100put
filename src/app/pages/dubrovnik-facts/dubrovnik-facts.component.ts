@@ -22,6 +22,8 @@ export class DubrovnikFactsComponent implements OnInit, OnDestroy, AfterContentC
   language: String;
   responsiveMode$: Observable<any>;
   mode: any;
+  displayColumnChart: boolean = false;
+  displayBarChart: boolean = false;
 
   constructor(private languageService: LanguagesService,
               private contentService: ContentService,
@@ -57,6 +59,16 @@ export class DubrovnikFactsComponent implements OnInit, OnDestroy, AfterContentC
   }
 
   ngAfterContentChecked() {
+    if (this.mode.windowWidth < 600) {
+      this.displayBarChart = true;
+      this.displayColumnChart = false;
+    }
+
+    if(this.mode.windowWidth >= 600) {
+      this.displayBarChart = false;
+      this.displayColumnChart = true;
+    }
+
     this.cdRef.detectChanges();
   }
 }
