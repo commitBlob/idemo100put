@@ -40,18 +40,18 @@ export class GoogleColumnComponent implements OnInit {
 
     const data = new google.visualization.arrayToDataTable([
       ['Month of the Year', 'Visitors Level', { role: 'style' }],
-        [{v: 'Jan'}, 2, 'green'],
-        [{v: 'Feb'}, 1, 'olive'],
-        [{v: 'Mar'}, 1, 'olive'],
-        [{v: 'Apr'}, 2, 'green'],
-        [{v: 'May'}, 3, 'yellow'],
-        [{v: 'Jun'}, 4, 'red'],
-        [{v: 'Jul'}, 4, 'red'],
-        [{v: 'Aug'}, 4, 'red'],
-        [{v: 'Sep'}, 3, 'yellow'],
-        [{v: 'Oct'}, 2, 'green'],
-        [{v: 'Nov'}, 1, 'olive'],
-        [{v: 'Dec'}, 1, 'olive'],
+        [{v: 'Jan'}, 1, '#34aadc'],
+        [{v: 'Feb'}, 1, '#34aadc'],
+        [{v: 'Mar'}, 1, '#34aadc'],
+        [{v: 'Apr'}, 2, '#4cd964'],
+        [{v: 'May'}, 3, '#fc0'],
+        [{v: 'Jun'}, 4, '#ff3b30'],
+        [{v: 'Jul'}, 4, '#ff3b30'],
+        [{v: 'Aug'}, 4, '#ff3b30'],
+        [{v: 'Sep'}, 3, '#fc0'],
+        [{v: 'Oct'}, 2, '#4cd964'],
+        [{v: 'Nov'}, 1, '#34aadc'],
+        [{v: 'Dec'}, 2, '#4cd964'],
     ]);
 
     const options = {
