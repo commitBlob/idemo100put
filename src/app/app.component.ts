@@ -34,6 +34,8 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.getNavigation();
+    // Get the responsive responsiveMode on load.
+    this.responsiveService.set();
   }
 
   getNavigation() {
