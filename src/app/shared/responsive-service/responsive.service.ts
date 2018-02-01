@@ -53,6 +53,7 @@ export class ResponsiveService {
 
   // Set reponsive mode based on window width;
   public setResponsiveMode(windowWidth: number = this.win.innerWidth) {
+    console.log('Triggered');
 
     if (windowWidth >= this.desktopLrg) {
       return {mode: 'desktopLrg', windowWidth};
