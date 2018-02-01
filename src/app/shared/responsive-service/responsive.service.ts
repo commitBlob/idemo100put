@@ -1,53 +1,69 @@
 // Core
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
 
 // App specific
 import { WindowRef } from './window.service';
 
+export interface ResponsiveMode {
+  responsiveMode: any;
+}
+
+const currentMode: ResponsiveMode = {
+  responsiveMode: {
+    mode: undefined,
+    windowWidth: undefined
+  }
+};
+
 @Injectable()
 export class ResponsiveService {
-  public win: Window;
-  public  desktopLrg: number = 1280;
-  public desktop: number = 1024;
-  public desktopSml: number = 769;
-  public mobile: number = 600;
-  public mobileSml: number = 400;
+  win: Window;
+  desktopLrg: number = 1280;
+  desktop: number = 1024;
+  desktopSml: number = 769;
+  mobile: number = 600;
+  mobileSml: number = 400;
+
+  private subject = new BehaviorSubject<ResponsiveMode>(currentMode);
+  private responsiveStore = this.subject.asObservable().distinctUntilChanged();
+
+  constructor(private winRef: WindowRef) {
+    this.win = winRef.nativeWindow;
+  }
+
+  get value() {
+    return this.subject.value;
+  }
+
+  select<T>(name: string): Observable<T> {
+    return this.responsiveStore.pluck(name);
+  }
+
+  set() {
+    this.subject.next({responsiveMode: this.setResponsiveMode()});
+  }
 
   // Observable string sources
   public responsiveModeSource = new Subject<string>();
   // Observable string streams
   public responsiveModeAnnounced$ = this.responsiveModeSource.asObservable();
 
-  constructor(private _win: WindowRef) {
-    this.win = _win.nativeWindow;
-  }
-  // Service message commands
-  public announceSizeChange(value: any) {
-    this.responsiveModeSource.next(this.setResponsiveMode(value));
-  }
-
-  public getResponsiveMode() {
-    this.responsiveModeSource.next(this.setResponsiveMode(this.win.innerWidth));
-  }
-
   // Set reponsive mode based on window width;
-  public setResponsiveMode(value: number) {
-    // If no value passed then get it manually.
-    if (typeof value === 'undefined') {
-      value = this.win.innerWidth;
-    }
+  public setResponsiveMode(windowWidth: number = this.win.innerWidth) {
 
-    if (value >= this.desktopLrg) {
-      return 'desktop-large';
-    } else if (value < this.desktopLrg && value >= this.desktop) {
-      return 'desktop';
-    } else if (value < this.desktop && value >= this.desktopSml) {
-      return 'desktop-small';
-    } else if (value < this.desktopSml && value >= this.mobile) {
-      return 'mobile';
+    if (windowWidth >= this.desktopLrg) {
+      return {mode: 'desktopLrg', windowWidth};
+    } else if (windowWidth < this.desktopLrg && windowWidth >= this.desktop) {
+      return {mode: 'desktop', windowWidth};
+    } else if (windowWidth < this.desktop && windowWidth >= this.desktopSml) {
+      return {mode: 'desktopSmall', windowWidth};
+    } else if (windowWidth < this.desktopSml && windowWidth >= this.mobile) {
+      return {mode: 'mobile', windowWidth};
     } else {
-      return 'mobile-small';
+      return {mode: 'mobileSmall', windowWidth};
     }
   }
 }
