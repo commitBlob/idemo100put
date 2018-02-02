@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
 
 @Component({
   selector: 'app-gallery-image',
@@ -19,6 +20,11 @@ export class GalleryImageComponent implements OnInit {
   ngOnInit() {
     // display first image
     this.imageSelected(0);
+
+    IntervalObservable.create(5000)
+      .subscribe(() => {
+        this.next();
+      });
   }
 
   imageSelected(image) {
