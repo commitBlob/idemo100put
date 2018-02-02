@@ -31,6 +31,7 @@ import { TabsNavigationModule } from './tabs_navigation/tabs_navigation.module';
 import { WordBreakPipe } from './word_break.pipe';
 import { GoogleColumnModule } from './google-charts/google-column-chart/google-column.module';
 import { GoogleBarChartModule } from './google-charts/google-bar-chart/google-bar-chart.module';
+import { GoogleLineChartModule } from './google-charts/google-candlestick-chart/google-line-chart.module';
 
 @NgModule({
   imports: [
@@ -54,6 +55,7 @@ import { GoogleBarChartModule } from './google-charts/google-bar-chart/google-ba
     FooterModule,
     FormsModule,
     GoogleBarChartModule,
+    GoogleLineChartModule,
     GoogleColumnModule,
     GoogleMapsModule,
     PricelistModule,

@@ -48,7 +48,8 @@ export class GoogleBarChartComponent implements OnInit {
           {v: 2, f: 'Average'},
           {v: 3, f: 'Above Average'},
           {v: 4, f: 'High'}]
-      }
+      },
+      legend: 'none'
     };
 
     const chart = new google.visualization.BarChart(document.getElementById('bar-chart'));
