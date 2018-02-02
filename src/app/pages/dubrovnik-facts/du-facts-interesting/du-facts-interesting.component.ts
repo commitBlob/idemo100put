@@ -32,11 +32,14 @@ export class DuFactsInterestingComponent implements OnInit, OnDestroy {
   }
 
   getContent(language) {
-    // this.contentService
+    this.contentService.getDuFactsInteresting(language).subscribe(
+      (content) => this.duFactsInteresingContent = <Content[]>content
+    );
   }
 
   ngOnInit() {
     this.languageService.getLanguage();
+    this.getContent(this.language);
   }
 
   ngOnDestroy() {
