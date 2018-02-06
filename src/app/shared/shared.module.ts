@@ -31,6 +31,7 @@ import { TabsNavigationModule } from './tabs_navigation/tabs_navigation.module';
 import { WordBreakPipe } from './word_break.pipe';
 import { ImageGalleryModule } from './image-gallery/image-gallery.module';
 import { GalleryService } from './image-gallery/components/gallery-service/gallery.service';
+import { DubrovnikFactsWeRecommendModule } from '../pages/dubrovnik-facts/dubrovnik-facts-we-recommend/dubrovnik-facts-we-recommend.module';
 
 @NgModule({
   imports: [
@@ -49,6 +50,7 @@ import { GalleryService } from './image-gallery/components/gallery-service/galle
     CroatiaFactsWordsModule,
     DialogsModule,
     DistancePipe,
+    DubrovnikFactsWeRecommendModule,
     LanguagesModule,
     LogoModule,
     FooterModule,

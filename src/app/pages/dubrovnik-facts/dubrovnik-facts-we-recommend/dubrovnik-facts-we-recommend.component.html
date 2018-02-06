@@ -1,0 +1,11 @@
+<div *ngIf="language === 'cro'; then weRecommendCro else weRecommendEng"></div>
+<ng-template #weRecommendCro>
+  <h3>Nasa Preporuka</h3>
+</ng-template>
+<ng-template #weRecommendEng>
+  <h3>We Recommend</h3>
+</ng-template>
+<div *ngIf="weRecommendContent">
+  <h3>{{weRecommendContent[0].header}}</h3>
+  <p>{{weRecommendContent[0].content}}</p>
+</div>
