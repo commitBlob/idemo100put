@@ -41,6 +41,10 @@ export class ContentService {
     return this.http.get('./api/cromoney/' + language).catch(this.handleError);
   }
 
+  getDuFactsUsefulContent(language): Observable<Content[]> {
+    return this.http.get('./api/dufactsuseful/' + language).catch(this.handleError);
+  }
+
   /**
    * Handle HTTP error
    */

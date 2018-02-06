@@ -1,0 +1,8 @@
+<div *ngIf="duFactsUsefulContent">
+  <p>content here</p>
+  <ul>
+    <li *ngFor="let link of duFactsUsefulContent">
+      <a [href]="link.content">{{link.header}}</a>
+    </li>
+  </ul>
+</div>
