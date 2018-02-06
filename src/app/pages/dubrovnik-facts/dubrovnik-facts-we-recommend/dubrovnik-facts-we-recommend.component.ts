@@ -40,7 +40,6 @@ export class DubrovnikFactsWeRecommendComponent implements OnInit, OnDestroy{
 
   ngOnInit() {
     this.languageService.getLanguage();
-    this.getContent(this.language);
   }
 
   ngOnDestroy() {
