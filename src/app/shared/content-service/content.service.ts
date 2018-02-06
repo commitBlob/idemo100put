@@ -45,6 +45,10 @@ export class ContentService {
     return this.http.get('./api/cromoney/' + language).catch(this.handleError);
   }
 
+  getDuFactsBusiestMonths(language): Observable<Content[]> {
+    return this.http.get('./api/busiestmonths/'+ language).catch(this.handleError);
+  }
+
   public getDuWeRecommendContent(language): Observable<Content[]> {
     return this.http.get('./api/werecommend/' + language).catch(this.handleError);
   }

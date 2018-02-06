@@ -32,6 +32,7 @@ import { WordBreakPipe } from './word_break.pipe';
 import { ImageGalleryModule } from './image-gallery/image-gallery.module';
 import { GalleryService } from './image-gallery/components/gallery-service/gallery.service';
 import { DubrovnikFactsWeRecommendModule } from '../pages/dubrovnik-facts/dubrovnik-facts-we-recommend/dubrovnik-facts-we-recommend.module';
+import { DuFactsBusiestMonthsModule } from '../pages/dubrovnik-facts/du-facts-busiest-months/du-facts-busiest-months.module';
 
 @NgModule({
   imports: [
@@ -50,6 +51,7 @@ import { DubrovnikFactsWeRecommendModule } from '../pages/dubrovnik-facts/dubrov
     CroatiaFactsWordsModule,
     DialogsModule,
     DistancePipe,
+    DuFactsBusiestMonthsModule,
     DubrovnikFactsWeRecommendModule,
     LanguagesModule,
     LogoModule,
