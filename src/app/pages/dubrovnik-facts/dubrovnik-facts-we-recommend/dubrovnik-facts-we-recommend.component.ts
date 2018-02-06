@@ -14,14 +14,14 @@ import { Content } from '../../../shared/content-service/content.interface';
   selector: 'app-du-recommend',
   templateUrl: './dubrovnik-facts-we-recommend.component.html',
 })
-export class DubrovnikFactsWeRecommendComponent implements OnInit, OnDestroy{
+export class DubrovnikFactsWeRecommendComponent implements OnInit, OnDestroy {
 
   weRecommendContent: Content[];
   langSubscription: Subscription;
   language: String;
 
   constructor(private languageService: LanguagesService,
-              private contentService: ContentService,) {
+              private contentService: ContentService) {
     this.langSubscription = languageService.subjectSourceAnnounced$.subscribe(
       (value) => {
         if (this.language !== value) {
