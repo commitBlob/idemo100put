@@ -29,6 +29,9 @@ import { PricelistModule } from './pricelist/pricelist.module';
 import { PricelistService } from './pricelist/pricelist.service';
 import { TabsNavigationModule } from './tabs_navigation/tabs_navigation.module';
 import { WordBreakPipe } from './word_break.pipe';
+import { GoogleColumnModule } from './google-charts/google-column-chart/google-column.module';
+import { GoogleBarChartModule } from './google-charts/google-bar-chart/google-bar-chart.module';
+import { GoogleLineChartModule } from './google-charts/google-candlestick-chart/google-line-chart.module';
 import { ImageGalleryModule } from './image-gallery/image-gallery.module';
 import { GalleryService } from './image-gallery/components/gallery-service/gallery.service';
 import { DubrovnikFactsWeRecommendModule } from '../pages/dubrovnik-facts/dubrovnik-facts-we-recommend/dubrovnik-facts-we-recommend.module';
@@ -57,6 +60,9 @@ import { DuFactsBusiestMonthsModule } from '../pages/dubrovnik-facts/du-facts-bu
     LogoModule,
     FooterModule,
     FormsModule,
+    GoogleBarChartModule,
+    GoogleLineChartModule,
+    GoogleColumnModule,
     GoogleMapsModule,
     ImageGalleryModule,
     PricelistModule,
