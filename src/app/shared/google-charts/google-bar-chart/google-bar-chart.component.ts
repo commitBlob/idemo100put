@@ -35,7 +35,6 @@ export class GoogleBarChartComponent implements OnInit {
     ]);
 
     const options = {
-      title: 'Visitors Amount Throughout the Year',
       hAxis: {
         title: 'Visitors Amount',
 
