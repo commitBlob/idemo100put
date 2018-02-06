@@ -14,16 +14,16 @@ import { LocationData } from './location-data/location-data.interface';
 })
 export class LocationComponent implements OnInit, OnDestroy {
 
-  public locationContent: LocationData[] = [];
-  public tempContent: any;
-  public langSubscription: Subscription;
-  public language: String;
+  locationContent: LocationData[] = [];
+  tempContent: any;
+  langSubscription: Subscription;
+  language: String;
 
   constructor(
-    private _languageService: LanguagesService,
-    private _locationDataService: LocationDataService
+    private languageService: LanguagesService,
+    private locationDataService: LocationDataService
   ) {
-    this.langSubscription = _languageService.subjectSourceAnnounced$.subscribe(
+    this.langSubscription = languageService.subjectSourceAnnounced$.subscribe(
       (value) => {
         if ( this.language !== value) {
           this.language = value;
@@ -33,17 +33,17 @@ export class LocationComponent implements OnInit, OnDestroy {
     );
   }
 
-  public ngOnInit() {
-    this._languageService.getLanguage();
+  ngOnInit() {
+    this.languageService.getLanguage();
     this.getLocationData();
     this.findObject();
   }
 
-  public getLocationData() {
-    this.locationContent = this._locationDataService.getLocationData();
+  getLocationData() {
+    this.locationContent = this.locationDataService.getLocationData();
   }
 
-  public findObject() {
+  findObject() {
     this.locationContent.forEach((value: any, key: any) => {
       if (this.language === value['language']) {
         this.tempContent = this.locationContent[key];
@@ -51,7 +51,7 @@ export class LocationComponent implements OnInit, OnDestroy {
     });
   }
 
-  public ngOnDestroy() {
+  ngOnDestroy() {
     this.langSubscription.unsubscribe();
   }
 }

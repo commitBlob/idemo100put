@@ -14,11 +14,11 @@ export class ApartmentDetailsService {
   constructor(private http: HttpClient) {
   }
 
-  public getApartmentData(apartmentShortName, language): Observable<ApartmentDetails[]> {
+  getApartmentData(apartmentShortName, language): Observable<ApartmentDetails[]> {
     return this.http.get('./api/apartments/' + apartmentShortName + '/' + language).catch(this.handleError);
   }
 
-  public getNearbys(apartmentShortName): Observable<NearbyPlaces[]> {
+  getNearbys(apartmentShortName): Observable<NearbyPlaces[]> {
     return this.http.get('./api/nearbys/' + apartmentShortName).catch(this.handleError);
   }
 

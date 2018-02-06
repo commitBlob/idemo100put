@@ -27,6 +27,11 @@ export class ResponsiveService {
   mobile: number = 600;
   mobileSml: number = 400;
 
+  // Observable string sources
+  public responsiveModeSource = new Subject<string>();
+  // Observable string streams
+  public responsiveModeAnnounced$ = this.responsiveModeSource.asObservable();
+
   private subject = new BehaviorSubject<ResponsiveMode>(currentMode);
   private responsiveStore = this.subject.asObservable().distinctUntilChanged();
 
@@ -46,14 +51,8 @@ export class ResponsiveService {
     this.subject.next({responsiveMode: this.setResponsiveMode()});
   }
 
-  // Observable string sources
-  public responsiveModeSource = new Subject<string>();
-  // Observable string streams
-  public responsiveModeAnnounced$ = this.responsiveModeSource.asObservable();
-
   // Set reponsive mode based on window width;
-  public setResponsiveMode(windowWidth: number = this.win.innerWidth) {
-    console.log('Triggered');
+  setResponsiveMode(windowWidth: number = this.win.innerWidth) {
 
     if (windowWidth >= this.desktopLrg) {
       return {mode: 'desktopLrg', windowWidth};

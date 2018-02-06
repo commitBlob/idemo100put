@@ -1,0 +1,19 @@
+.du_facts_useful_list {
+
+  .du_facts_useful_links {
+    list-style-type: square;
+    color: $brand-primary;
+
+    &:hover {
+      color: $brand-secondary;
+    }
+
+    > a {
+      color: $brand-primary;
+
+      &:hover {
+        color: $brand-secondary;
+      }
+    }
+  }
+}

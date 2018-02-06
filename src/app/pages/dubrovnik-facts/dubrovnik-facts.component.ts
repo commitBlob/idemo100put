@@ -11,7 +11,6 @@ import { ResponsiveService } from '../../shared/responsive-service/responsive.se
 // Models
 import { Content } from '../../shared/content-service/content.interface';
 
-
 @Component({
   templateUrl: './dubrovnik-facts.component.html',
 })
@@ -41,12 +40,12 @@ export class DubrovnikFactsComponent implements OnInit, OnDestroy, AfterContentC
     this.responsiveMode$.subscribe((value) => this.mode = value);
   }
 
-  public ngOnInit() {
+  ngOnInit() {
     this.languageService.getLanguage();
     this.responsiveMode$ = this.responsiveService.select<any>('responsiveMode');
   }
 
-  public getContent(language) {
+  getContent(language) {
     this.contentService.getDubrovnikFactsContent(language).subscribe(
       (content) => {
         this.dubrovnikFactsContent = <Content[]>content;
@@ -54,7 +53,7 @@ export class DubrovnikFactsComponent implements OnInit, OnDestroy, AfterContentC
     );
   }
 
-  public ngOnDestroy() {
+  ngOnDestroy() {
     this.langSubscription.unsubscribe();
   }
 

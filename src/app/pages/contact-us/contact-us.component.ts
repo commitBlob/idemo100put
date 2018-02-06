@@ -37,7 +37,7 @@ export class ContactUsComponent implements OnInit, OnDestroy {
     );
   }
 
-  public ngOnInit() {
+  ngOnInit() {
     this.languageService.getLanguage();
     this.apartmentService.getApartments().subscribe(
       (response) => this.apartmentsData = response,
@@ -45,7 +45,7 @@ export class ContactUsComponent implements OnInit, OnDestroy {
     );
   }
 
-  public getContent(language) {
+  getContent(language) {
     this.contentService.getContactUsContent(language).subscribe(
       (content) => {
         this.contactUsContent = <Content[]>content;
@@ -53,7 +53,7 @@ export class ContactUsComponent implements OnInit, OnDestroy {
     );
   }
 
-  public ngOnDestroy() {
+  ngOnDestroy() {
     this.langSubscription.unsubscribe();
   }
 }

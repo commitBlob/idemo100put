@@ -13,36 +13,40 @@ export class ContentService {
   constructor(private http: HttpClient) {
   }
 
-  public getLandingContent(language): Observable<Content[]> {
+  getLandingContent(language): Observable<Content[]> {
     return this.http.get('./api/landingcontent/'+ language).catch(this.handleError);
   }
 
-  public getAboutUsContent(language): Observable<Content[]> {
+  getAboutUsContent(language): Observable<Content[]> {
     return this.http.get('./api/aboutcontent/' + language).catch(this.handleError);
   }
 
-  public getContactUsContent(language): Observable<Content[]> {
+  getContactUsContent(language): Observable<Content[]> {
     return this.http.get('./api/contactcontent/' + language).catch(this.handleError);
   }
 
-  public getCroatiaFactsContent(language): Observable<Content[]> {
+  getCroatiaFactsContent(language): Observable<Content[]> {
     return this.http.get('./api/crofacts/' + language).catch(this.handleError);
   }
 
-  public getDubrovnikFactsContent(language): Observable<Content[]> {
+  getDubrovnikFactsContent(language): Observable<Content[]> {
     return this.http.get('./api/dufacts/' + language).catch(this.handleError);
   }
 
-  public getSurroundingsContent(language): Observable<Content[]> {
+  getSurroundingsContent(language): Observable<Content[]> {
     return this.http.get('./api/surroundings/' + language).catch(this.handleError);
   }
 
-  public getPolicyContent(language): Observable<Content[]> {
+  getPolicyContent(language): Observable<Content[]> {
     return this.http.get('./api/policy/' + language).catch(this.handleError);
   }
 
-  public getCroMoneyContent(language): Observable<Content[]> {
+  getCroMoneyContent(language): Observable<Content[]> {
     return this.http.get('./api/cromoney/' + language).catch(this.handleError);
+  }
+
+  getDuFactsUsefulContent(language): Observable<Content[]> {
+    return this.http.get('./api/dufactsuseful/' + language).catch(this.handleError);
   }
 
   getDuFactsInteresting(language): Observable<Content[]> {

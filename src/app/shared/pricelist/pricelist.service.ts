@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 
-
 @Injectable()
 export class PricelistService {
   constructor( private  http: HttpClient) {}

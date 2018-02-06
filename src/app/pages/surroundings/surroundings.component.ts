@@ -1,5 +1,5 @@
 // Core
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 // App specific
 import { ContentService } from '../../shared/content-service/content.service';
@@ -14,15 +14,15 @@ import { Content } from '../../shared/content-service/content.interface';
 })
 export class SurroundingsComponent implements OnInit, OnDestroy {
 
-  public surroundingsContent: Content[];
-  public langSubscription: Subscription;
-  public language: String;
+  surroundingsContent: Content[];
+  langSubscription: Subscription;
+  language: String;
 
   constructor(
-    private _languageService: LanguagesService,
-    private _contentService: ContentService
+    private languageService: LanguagesService,
+    private contentService: ContentService
   ) {
-    this.langSubscription = _languageService.subjectSourceAnnounced$.subscribe(
+    this.langSubscription = languageService.subjectSourceAnnounced$.subscribe(
       (value) => {
         if ( this.language !== value) {
           this.language = value;
@@ -33,11 +33,11 @@ export class SurroundingsComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit() {
-    this._languageService.getLanguage();
+    this.languageService.getLanguage();
   }
 
   public getContent(language) {
-    this._contentService.getSurroundingsContent(language).subscribe(
+    this.contentService.getSurroundingsContent(language).subscribe(
       (content) => {
         this.surroundingsContent = <Content[]>content;
       }

@@ -14,29 +14,29 @@ import { PricelistModel } from './pricelist.interface';
   templateUrl: './pricelist.component.html',
 })
 export class PricelistComponent implements OnInit {
-  public priceList: PricelistModel[];
-  public currencyList = ['EUR', 'GBP', 'USD', 'HRK'];
-  public defaultCurrency = 'EUR';
-  public apartment;
-  private _sub: any;
-  public courseList = {};
-  public parsedCourseList = {};
-  public selectedValue: string = this.defaultCurrency;
-  public courseListLoaded = false;
-  public tempPricelist: PricelistModel[];
-  public course = 1;
+  priceList: PricelistModel[];
+  currencyList = ['EUR', 'GBP', 'USD', 'HRK'];
+  defaultCurrency = 'EUR';
+  apartment;
+  private sub: any;
+  courseList = {};
+  parsedCourseList = {};
+  selectedValue: string = this.defaultCurrency;
+  courseListLoaded = false;
+  tempPricelist: PricelistModel[];
+  course = 1;
 
 
-  constructor(private _pricelistService: PricelistService,
-              private _route: ActivatedRoute) {
+  constructor(private pricelistService: PricelistService,
+              private route: ActivatedRoute) {
 
-    this._sub = this._route.params.subscribe(params => {
+    this.sub = this.route.params.subscribe(params => {
       this.apartment = params['apartmentName'];
     });
   }
 
-  public ngOnInit() {
-    this._pricelistService.getPricelist(this.apartment).subscribe(
+  ngOnInit() {
+    this.pricelistService.getPricelist(this.apartment).subscribe(
       (data) => {
         this.priceList = <PricelistModel[]>data;
         this.tempPricelist = <PricelistModel[]>data;
@@ -54,15 +54,15 @@ export class PricelistComponent implements OnInit {
    *  If changeValue is equal to default trigger doCalculation function
    *  If courseListLoaded is not true, trigger loadCourseList function
    */
-  public currencyChange(changeValue) {
+  currencyChange(changeValue) {
     if (this.courseListLoaded) {
       if (changeValue !== this.defaultCurrency) {
         this.defaultCurrency = changeValue;
         this.course = this.courseList[changeValue];
-      }else {
+      } else {
         this.course = this.courseList[this.defaultCurrency];
       }
-    }else {
+    } else {
       this.loadCourseList();
     }
   }
@@ -74,11 +74,11 @@ export class PricelistComponent implements OnInit {
    * Append `currency: course` into parsedCourseList object
    * Set ourseListLoaded boolean to true
    */
-  public loadCourseList() {
+  loadCourseList() {
     const tempCurrencyName = [];
     const tempCurrencyCourse = [];
     if (!this.courseListLoaded) {
-      this._pricelistService.getCourseList().subscribe(
+      this.pricelistService.getCourseList().subscribe(
         (data) => {
           data['gesmes:Envelope'].Cube[0].Cube[0].Cube.forEach((value: any) => {
             tempCurrencyName.push(value['$'].currency);
@@ -104,7 +104,7 @@ export class PricelistComponent implements OnInit {
     }
   }
 
-  public generateArray(obj, course) {
+  generateArray(obj, course) {
     let calc = 0;
     return Object.keys(obj).map((key) => {
       calc = obj[key] * course

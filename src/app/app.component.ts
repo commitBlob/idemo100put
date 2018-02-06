@@ -1,5 +1,5 @@
 // Core
-import {Component, HostBinding, OnInit} from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 
 // App specific
 import { GlobalVariables } from './globals';

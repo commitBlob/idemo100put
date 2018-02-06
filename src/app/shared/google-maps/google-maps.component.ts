@@ -16,39 +16,38 @@ declare var google: any;
 export class GoogleMapsComponent implements OnInit {
 
   private map: any;
-  public markers: Markers[] = [
-  ];
+  markers: Markers[] = [];
 
   lat = 42.642040;
   lng = 18.113012;
   zoom = 15;
 
-  constructor(private _markersService: MarkersService) {
-
+  constructor(private markersService: MarkersService) {
   }
 
-  public ngOnInit() {
+  ngOnInit() {
     this.initMap();
   }
 
-  public initMap(): void {
+  initMap(): void {
     const mapCanvas = document.getElementById('map');
     let marker = new google.maps.Marker();
     const mapCenter = new google.maps.LatLng(this.lat, this.lng);
+
     const mapOptions = {
       center: mapCenter,
       zoom: this.zoom,
       streetViewControl: false,
-    }
+    };
     const infoWindow = new google.maps.InfoWindow();
     function closeInfoWindow() {
       setTimeout(function(){
         infoWindow.close();
         }, '4000');
-    };
+    }
 
     this.map = new google.maps.Map(mapCanvas, mapOptions);
-    this._markersService.getMarkers().subscribe(
+    this.markersService.getMarkers().subscribe(
       (res) => {
         res.forEach(element => {
           if (element !== undefined) {
@@ -71,5 +70,4 @@ export class GoogleMapsComponent implements OnInit {
       }
     );
   }
-
 }

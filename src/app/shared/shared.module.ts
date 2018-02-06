@@ -37,6 +37,7 @@ import { GalleryService } from './image-gallery/components/gallery-service/galle
 import { DubrovnikFactsWeRecommendModule } from '../pages/dubrovnik-facts/dubrovnik-facts-we-recommend/dubrovnik-facts-we-recommend.module';
 import { DuFactsBusiestMonthsModule } from '../pages/dubrovnik-facts/du-facts-busiest-months/du-facts-busiest-months.module';
 import { DuFactsInterestingModule } from '../pages/dubrovnik-facts/du-facts-interesting/du-facts-interesting.module';
+import { DuFactsUsefulModule } from '../pages/dubrovnik-facts/du-facts-useful/du-facts-useful.module';
 
 @NgModule({
   imports: [
@@ -58,6 +59,7 @@ import { DuFactsInterestingModule } from '../pages/dubrovnik-facts/du-facts-inte
     DuFactsBusiestMonthsModule,
     DubrovnikFactsWeRecommendModule,
     DuFactsInterestingModule,
+    DuFactsUsefulModule,
     LanguagesModule,
     LogoModule,
     FooterModule,
