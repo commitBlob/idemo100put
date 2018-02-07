@@ -39,6 +39,10 @@ export class ThingsToDoComponent implements OnInit, OnDestroy {
     );
   }
 
+  generateImage(image) {
+    return 'data:image/png;base64,' + image;
+  }
+
   ngOnInit() {
     this.languageService.getLanguage();
   }
