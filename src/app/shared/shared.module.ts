@@ -29,6 +29,8 @@ import { PricelistModule } from './pricelist/pricelist.module';
 import { PricelistService } from './pricelist/pricelist.service';
 import { TabsNavigationModule } from './tabs_navigation/tabs_navigation.module';
 import { WordBreakPipe } from './word_break.pipe';
+import { ThingsToDoService } from '../pages/surroundings/things-to-do/things-to-do.service';
+import { ThingsToDoModule } from '../pages/surroundings/things-to-do/things-to-do.module';
 
 @NgModule({
   imports: [
@@ -56,6 +58,7 @@ import { WordBreakPipe } from './word_break.pipe';
     ReactiveFormsModule,
     RouterModule,
     TabsNavigationModule,
+    ThingsToDoModule,
     WordBreakPipe,
   ],
   declarations: [
@@ -75,7 +78,8 @@ export class SharedModule {
         DialogsService,
         LanguagesService,
         MarkersService,
-        PricelistService
+        PricelistService,
+        ThingsToDoService
     ],
     };
   }
