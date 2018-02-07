@@ -48,6 +48,7 @@ export class GoogleLineChartComponent implements OnInit {
       vAxis: {
         title: 'Temperature in °C',
       },
+      pointSize: 4,
     };
 
     const chart = new google.visualization.LineChart(document.getElementById('line-chart'));
