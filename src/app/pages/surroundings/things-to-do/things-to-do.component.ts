@@ -43,6 +43,10 @@ export class ThingsToDoComponent implements OnInit, OnDestroy {
     return 'data:image/png;base64,' + image;
   }
 
+  cardTrigger(cardName) {
+    console.log('Card Name: ', cardName);
+  }
+
   ngOnInit() {
     this.languageService.getLanguage();
   }
