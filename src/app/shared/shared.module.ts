@@ -31,6 +31,7 @@ import { TabsNavigationModule } from './tabs_navigation/tabs_navigation.module';
 import { WordBreakPipe } from './word_break.pipe';
 import { ThingsToDoService } from '../pages/surroundings/things-to-do/things-to-do.service';
 import { ThingsToDoModule } from '../pages/surroundings/things-to-do/things-to-do.module';
+import { ThingsToDoDetailsModule } from '../pages/surroundings/things-to-do-details/things-to-do-details.module';
 
 @NgModule({
   imports: [
@@ -58,6 +59,7 @@ import { ThingsToDoModule } from '../pages/surroundings/things-to-do/things-to-d
     ReactiveFormsModule,
     RouterModule,
     TabsNavigationModule,
+    ThingsToDoDetailsModule,
     ThingsToDoModule,
     WordBreakPipe,
   ],

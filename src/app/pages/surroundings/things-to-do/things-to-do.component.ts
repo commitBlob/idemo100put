@@ -8,6 +8,7 @@ import { ThingsToDoService } from './things-to-do.service';
 
 // Models
 import { ThingsToDo } from './things-to-do.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-things-to-do',
@@ -20,7 +21,8 @@ export class ThingsToDoComponent implements OnInit, OnDestroy {
   language: String;
 
   constructor( private languageService: LanguagesService,
-               private thingsToDoService: ThingsToDoService) {
+               private thingsToDoService: ThingsToDoService,
+               private router: Router) {
     this.langSubscription = languageService.subjectSourceAnnounced$.subscribe(
       (value) => {
         if (this.language !== value) {
@@ -44,7 +46,7 @@ export class ThingsToDoComponent implements OnInit, OnDestroy {
   }
 
   cardTrigger(cardName) {
-    console.log('Card Name: ', cardName);
+    this.router.navigate(['surroundings/' + cardName]);
   }
 
   ngOnInit() {

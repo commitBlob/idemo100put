@@ -12,6 +12,7 @@ import { LandingPageComponent } from '../../pages/landing-page/landing-page.comp
 import { LocationComponent } from '../../pages/location/location.component';
 import { SurroundingsComponent } from '../../pages/surroundings/surroundings.component';
 import { PageNotFoundComponent } from '../../pages/page-not-found/page-not-found.component';
+import { ThingsToDoDetailsComponent } from '../../pages/surroundings/things-to-do-details/things-to-do-details.component';
 
 export const appRoutes: Routes = [
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
@@ -25,5 +26,7 @@ export const appRoutes: Routes = [
   { path: 'du-facts', component: DubrovnikFactsComponent },
   { path: 'location', component: LocationComponent },
   { path: 'surroundings', component: SurroundingsComponent },
+  { path: 'surroundings/:activity', component: ThingsToDoDetailsComponent} ,
+  { path: 'four-oh-four', component: PageNotFoundComponent },
   { path: '**', component: PageNotFoundComponent },
 ];

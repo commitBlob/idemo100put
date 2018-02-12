@@ -1,5 +1,3 @@
-Things to do component works
-
 <div class="content" *ngIf="toDoContent">
   <div class="module_card_wrap">
     <div class="module_card" *ngFor="let data of toDoContent" (click)="cardTrigger(data.shortName)">
@@ -8,7 +6,7 @@ Things to do component works
 
         <div>
           <h3>{{data.header}}</h3>
-          <p>{{data.content}}</p>
+          <p>{{data.shortDescription}}</p>
         </div>
 
         <p class="find_out">Find out More</p>

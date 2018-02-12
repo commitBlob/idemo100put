@@ -17,6 +17,10 @@ export class ThingsToDoService {
     return this.http.get('/api/thingstodo/' + language).catch(this.handleError);
   }
 
+  getActivity(language, activityName): Observable<ThingsToDo[]> {
+    return this.http.get('/api/thingstodo/' + activityName + '/' + language).catch(this.handleError);
+  }
+
   /**
    * Handle HTTP error
    */
