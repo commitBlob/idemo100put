@@ -21,6 +21,10 @@ export class ThingsToDoService {
     return this.http.get('/api/thingstodo/' + activityName + '/' + language).catch(this.handleError);
   }
 
+  getBanner(activityShortName): Observable<any> {
+    return this.http.get('/api/activitybanner/' + activityShortName).catch(this.handleError);
+  }
+
   /**
    * Handle HTTP error
    */

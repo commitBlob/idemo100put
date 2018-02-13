@@ -20,6 +20,7 @@ export class ThingsToDoDetailsComponent implements OnInit, OnDestroy {
   langSubscription: Subscription;
   language: String;
   attraction: string;
+  bannerImage: string;
 
   private sub: Subscription;
 
@@ -45,12 +46,26 @@ export class ThingsToDoDetailsComponent implements OnInit, OnDestroy {
   getContent(language, attraction) {
     this.activityService.getActivity(language, attraction).subscribe(
       (content) => {
-        console.log('Content: ', content);
+        // check if there is any content returned. If not redirect to 404 page
         if (content.length === 0) {
           this.router.navigate(['/four-oh-four']);
+        } else {
+          this.attractionContent = <ThingsToDo[]>content;
+          this.getBannerImage(this.attractionContent[0].shortName);
         }
       }
     );
+  }
+
+  getBannerImage(shortName) {
+    this.activityService.getBanner(shortName).subscribe(
+      (bannerObject) => {
+        this.bannerImage = bannerObject[0].image;
+      });
+  }
+
+  generateBannerImage(image) {
+    return 'data:image/png;base64,' + image;
   }
 
   ngOnInit() {
