@@ -1,10 +1,28 @@
-<div class="banner_container">
-  <div class="another">
-    <img *ngIf="bannerImage" [src]="generateBannerImage(bannerImage)" [alt]="attractionContent[0].shortName + ' image'"/>
-    <div class="cover"></div>
-  </div>
-  <!--<img *ngIf="bannerImage" [src]="generateBannerImage(bannerImage)" [alt]="attractionContent[0].shortName + ' image'"/>-->
-  <!--<img *ngIf="bannerImage" [alt]="attractionContent[0].shortName + ' image'"/>-->
-</div>
+<div class="article_container" *ngIf="attractionContent">
+  <div class="wrapper">
+    <div class="row">
+      <div class="col-12">
+        <h3>{{attractionContent[0].header}}</h3>
+        <p class="small_header">{{attractionContent[0].subHeader}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-8">
+        <img *ngIf="bannerImage" [src]="generateBannerImage(bannerImage)"
+             [alt]="attractionContent[0].shortName + ' image'"/>
+      </div>
+      <div class="col-4">
+        <div class="row">
+          <div class="col-4">patata</div>
+          <div class="col-8">sausage</div>
+        </div>
+      </div>
+    </div>
 
-THINGS TO DO DETAILS COMPONENT WORKS
+    <div class="row">
+      <div class="col-12">
+        <p>{{attractionContent[0].content}}</p>
+      </div>
+    </div>
+  </div>
+</div>
