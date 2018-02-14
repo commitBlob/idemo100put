@@ -1,6 +1,6 @@
 // Core
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -27,6 +27,7 @@ export class ApartmentComponent implements OnInit, OnDestroy {
   displayWarning = true;
 
   constructor(private route: ActivatedRoute,
+              private router: Router,
               private apartmentDetailsService: ApartmentDetailsService,
               private languageService: LanguagesService) {
 
@@ -36,7 +37,7 @@ export class ApartmentComponent implements OnInit, OnDestroy {
 
     this.langSubscription = languageService.subjectSourceAnnounced$.subscribe(
       (value) => {
-        if ( this.language !== value) {
+        if (this.language !== value) {
           this.language = value;
           this.getApartmentData(this.apartmentName, this.language);
         }
@@ -56,7 +57,12 @@ export class ApartmentComponent implements OnInit, OnDestroy {
   public getApartmentData(apName, lang) {
     this.apartmentDetailsService.getApartmentData(apName, lang).subscribe(
       (apData) => {
-        this.apartmentData = <ApartmentDetails[]>apData;
+        // check if there is any content returned. If not redirect to 404 page
+        if (apData.length === 0) {
+          this.router.navigate(['/four-oh-four']);
+        } else {
+          this.apartmentData = <ApartmentDetails[]>apData;
+        }
       },
       (error) => {
         this.handleError(error);
@@ -76,12 +82,16 @@ export class ApartmentComponent implements OnInit, OnDestroy {
   }
 
   public generateArray(obj) {
-    return Object.keys(obj).map((key) => { return {key: key, value: obj[key]}});
+    return Object.keys(obj).map((key) => {
+      return {key: key, value: obj[key]}
+    });
   }
 
   private closeBlock(event) {
     event.target.parentElement.classList.add('hide');
-    setTimeout(() => { this.displayWarning = false; }, 750)
+    setTimeout(() => {
+      this.displayWarning = false;
+    }, 750)
   }
 
   /**
