@@ -2,7 +2,7 @@
   width: inherit;
 
   .wrapper {
-    margin: 1em auto;
+    margin: 1em auto 0;
   }
 
   [class*="col-"] {
@@ -66,4 +66,19 @@
     font-style: italic;
     font-size: .8em;
   }
+  button {
+    margin: 0 .6em .6em;
+
+    &:hover {
+      #return {
+        fill: $brand-primary;
+      }
+    }
+
+    #return {
+      fill: $white;
+    }
+  }
+
+
 }

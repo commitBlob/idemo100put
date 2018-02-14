@@ -1,5 +1,6 @@
 // Core
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
 // App specific
@@ -8,7 +9,7 @@ import { ThingsToDoService } from '../things-to-do/things-to-do.service';
 
 // Models
 import { ThingsToDo } from '../things-to-do/things-to-do.interface';
-import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-ttd-details',
@@ -66,6 +67,10 @@ export class ThingsToDoDetailsComponent implements OnInit, OnDestroy {
 
   generateBannerImage(image) {
     return 'data:image/png;base64,' + image;
+  }
+
+  navigateBack() {
+    this.router.navigate(['surroundings']);
   }
 
   ngOnInit() {
