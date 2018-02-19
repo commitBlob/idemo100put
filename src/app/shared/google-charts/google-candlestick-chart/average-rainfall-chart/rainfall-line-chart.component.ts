@@ -46,6 +46,7 @@ export class RainfallLineChartComponent implements OnInit {
       vAxis: {
         title: 'Rainfall in mm',
       },
+      pointSize: 4,
     };
 
     const chart = new google.visualization.LineChart(document.getElementById('rainfall-line-chart'));

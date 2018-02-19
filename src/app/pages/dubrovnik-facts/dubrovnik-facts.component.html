@@ -2,8 +2,27 @@
 <div class="content" *ngIf="dubrovnikFactsContent">
   <h2>{{dubrovnikFactsContent[0].header}}</h2>
   <p>{{dubrovnikFactsContent[0].content}}</p>
+  <div *ngIf="language === 'cro'; then croVisitors else engVisitors"></div>
+  <ng-template #croVisitors>
+    <h3>Broj Posjetitelja Kroz Godinu</h3>
+  </ng-template>
+  <ng-template #engVisitors>
+    <h3>Visitors Amount Throughout the Year</h3>
+  </ng-template>
+
+  <!-- Visitors Graphs -->
   <app-column-chart *ngIf="displayColumnChart"></app-column-chart>
   <app-bar-chart *ngIf="displayBarChart"></app-bar-chart>
+  <!-- Visitors Graphs -->
+
+  <div *ngIf="language === 'cro'; then croWeather else engWeather"></div>
+  <ng-template #croWeather>
+    <h3>Temperature i Padaline Kroz Godinu</h3>
+  </ng-template>
+  <ng-template #engWeather>
+    <h3>Weather Throughout the Year</h3>
+  </ng-template>
+  <!-- Weather Graphs -->
   <app-line-chart></app-line-chart>
   <app-rainfall-chart></app-rainfall-chart>
   <app-du-recommend></app-du-recommend>
