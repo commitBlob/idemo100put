@@ -38,6 +38,9 @@ import { DubrovnikFactsWeRecommendModule } from '../pages/dubrovnik-facts/dubrov
 import { DuFactsBusiestMonthsModule } from '../pages/dubrovnik-facts/du-facts-busiest-months/du-facts-busiest-months.module';
 import { DuFactsInterestingModule } from '../pages/dubrovnik-facts/du-facts-interesting/du-facts-interesting.module';
 import { DuFactsUsefulModule } from '../pages/dubrovnik-facts/du-facts-useful/du-facts-useful.module';
+import { ThingsToDoService } from '../pages/surroundings/things-to-do/things-to-do.service';
+import { ThingsToDoModule } from '../pages/surroundings/things-to-do/things-to-do.module';
+import { ThingsToDoDetailsModule } from '../pages/surroundings/things-to-do-details/things-to-do-details.module';
 
 @NgModule({
   imports: [
@@ -73,6 +76,8 @@ import { DuFactsUsefulModule } from '../pages/dubrovnik-facts/du-facts-useful/du
     ReactiveFormsModule,
     RouterModule,
     TabsNavigationModule,
+    ThingsToDoDetailsModule,
+    ThingsToDoModule,
     WordBreakPipe,
   ],
   declarations: [
@@ -93,7 +98,8 @@ export class SharedModule {
         GalleryService,
         LanguagesService,
         MarkersService,
-        PricelistService
+        PricelistService,
+        ThingsToDoService
     ],
     };
   }

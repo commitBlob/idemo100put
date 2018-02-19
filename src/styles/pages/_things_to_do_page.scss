@@ -1,0 +1,68 @@
+
+.module_card_wrap {
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.module_card {
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid #f1f1f1;
+  min-width: 100%;
+  margin-bottom: 5%;
+  display: flex;
+  flex-direction: column;
+  border-radius: .2em;
+  box-shadow: 2px 5px 8px rgba(0, 0, 0, 0.5);
+}
+
+.module_card_bottom {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  h3 {
+    text-align: center;
+  }
+
+  p {
+    padding: 0 .4em .4em;
+    margin: 0;
+  }
+
+  .find_out {
+    font-style: italic;
+    text-decoration: underline;
+    font-size: .9em;
+    text-align: right;
+    color: $brand-primary;
+
+    &:hover {
+      color: $brand-secondary;
+    }
+  }
+}
+
+.module_card_img {
+  align-self: center;
+  width: 100%;
+  height: auto;
+}
+
+@media screen and (min-width: 600px) {
+  .module_card {
+    width: 48%;
+    margin: 0 auto 2%;
+    min-width: 0;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .module_card {
+    width: 32%;
+    margin: 0 auto 2%;
+    min-width: 0;
+  }
+}
