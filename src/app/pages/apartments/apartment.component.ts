@@ -29,8 +29,7 @@ export class ApartmentComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private apartmentDetailsService: ApartmentDetailsService,
-              private languageService: LanguagesService,
-              private router: Router) {
+              private languageService: LanguagesService) {
 
     this.sub = this.route.params.subscribe(params => {
       this.apartmentName = params['apartmentName'];
