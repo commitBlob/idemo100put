@@ -7,10 +7,10 @@ import { ThingsToDoDetailsComponent } from './things-to-do-details.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
   ],
   declarations: [
-    ThingsToDoDetailsComponent
+    ThingsToDoDetailsComponent,
   ],
   exports: [
     ThingsToDoDetailsComponent
