@@ -9,15 +9,18 @@ import { ThingsToDoService } from '../things-to-do/things-to-do.service';
 
 // Models
 import { ThingsToDo } from '../things-to-do/things-to-do.interface';
+import { WordBreakPipe } from '../../../shared/word_break.pipe';
 
 
 @Component({
   selector: 'app-ttd-details',
-  templateUrl: './things-to-do-details.component.html'
+  templateUrl: './things-to-do-details.component.html',
+  providers: [ WordBreakPipe]
 })
 export class ThingsToDoDetailsComponent implements OnInit, OnDestroy {
 
   attractionContent: ThingsToDo[];
+  sideTableContent;
   langSubscription: Subscription;
   language: String;
   attraction: string;
@@ -29,7 +32,8 @@ export class ThingsToDoDetailsComponent implements OnInit, OnDestroy {
   constructor(private languageService: LanguagesService,
               private activityService: ThingsToDoService,
               private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private wordBreakPipe: WordBreakPipe) {
     this.sub = this.route.params.subscribe(params => {
       this.attraction = params['activity'];
     });
@@ -39,9 +43,14 @@ export class ThingsToDoDetailsComponent implements OnInit, OnDestroy {
         if (this.language !== value) {
           this.language = value;
           this.getContent(value, this.attraction);
+          this.getSideTable(value, this.attraction);
         }
       }
     );
+  }
+
+  breakWords(value) {
+    return this.wordBreakPipe.transform(value)
   }
 
   getContent(language, attraction) {
@@ -56,6 +65,20 @@ export class ThingsToDoDetailsComponent implements OnInit, OnDestroy {
         }
       }
     );
+  }
+
+  getSideTable(language, attraction) {
+    this.activityService.getSideTable(language, attraction).subscribe(
+      (content) => {
+        if (content.length !== 0) {
+          this.sideTableContent = content[0].tableData;
+        }
+      }
+    );
+  }
+
+  generateArray(obj) {
+    return Object.keys(obj).map((key) => { return {key: key, value: obj[key]}});
   }
 
   getBannerImage(shortName) {

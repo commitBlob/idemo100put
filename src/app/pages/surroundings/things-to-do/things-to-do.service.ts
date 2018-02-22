@@ -25,6 +25,10 @@ export class ThingsToDoService {
     return this.http.get('/api/activitybanner/' + activityShortName).catch(this.handleError);
   }
 
+  getSideTable(language, activityName): Observable<any> {
+    return this.http.get('/api/ttd-side/' + activityName + '/' + language).catch(this.handleError);
+  }
+
   /**
    * Handle HTTP error
    */
