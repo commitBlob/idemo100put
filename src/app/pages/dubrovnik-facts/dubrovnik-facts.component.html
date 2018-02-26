@@ -1,6 +1,7 @@
 <app-tabs-nav></app-tabs-nav>
 <div class="content" *ngIf="dubrovnikFactsContent">
   <h2>{{dubrovnikFactsContent[0].header}}</h2>
+  <div [innerHTML]="dubrovnikFactsContent[0].content"></div>
   <p>{{dubrovnikFactsContent[0].content}}</p>
   <div *ngIf="language === 'cro'; then croVisitors else engVisitors"></div>
   <ng-template #croVisitors>
