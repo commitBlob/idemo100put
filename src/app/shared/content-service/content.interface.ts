@@ -5,6 +5,6 @@ export interface Content {
   content: string;
   note?: string;
   ECB?: string;
-  icon?: string;
+  image?: string;
   disabled?: boolean;
 }
