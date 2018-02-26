@@ -1,6 +1,7 @@
 .we_recommend_cards {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 
   @include respond((max: 599px)) {
     flex-flow: column;
@@ -8,14 +9,15 @@
 
 
   .recommend_card {
-    flex-grow: 1;
-    width: 33%;
+    $box-width: 100%;
+    $max-width: 300px;
+    $elements-num: calc(var($box-width) / var($max-width));
+
+    width: calc(var($box-width) / var($elements-num));
     height: auto;
-    // TODO: shim to make cards width more responsive
-    // TODO: set max-widht to 300px;
+    max-width: $max-width;
 
     @include respond((max: 599px)) {
-      width: 100%;
 
       .recommend_card_container {
         max-width: 400px;
@@ -23,14 +25,10 @@
       }
     }
 
-    @include respond((max: 899px, min: 600px)) {
-      width: 50%;
-    }
-
     .recommend_card_container {
       //border: solid 2px lime;
       height: inherit;
-      width: 100%;
+      width: calc(100% / 1);
 
       img {
         // max width minus margin left
