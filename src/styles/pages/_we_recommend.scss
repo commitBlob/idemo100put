@@ -11,9 +11,9 @@
   .recommend_card {
     $box-width: 100%;
     $max-width: 300px;
-    $elements-num: calc(var($box-width) / var($max-width));
+    $elements-num: calc(#{$box-width} / #{$max-width});
 
-    width: calc(var($box-width) / var($elements-num));
+    width: calc(#{$box-width} / #{$elements-num});
     height: auto;
     max-width: $max-width;
 
