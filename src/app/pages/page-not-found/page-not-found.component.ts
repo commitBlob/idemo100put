@@ -1,5 +1,6 @@
 // Core
 import { Component, HostListener, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-404',
@@ -11,14 +12,15 @@ export class PageNotFoundComponent implements OnInit {
     const moveDiv = document.getElementById('cube');
     const xPos = event.pageX;
     const yPos = event.pageY;
-    const moveX = (xPos  * 0.01) + 1;
-    const moveY = (yPos  * 0.01) + 1;
     moveDiv.style.top =   (yPos  * 0.01) + '%';
     moveDiv.style.left = (xPos  * 0.002) + '%';
   }
 
+  constructor(private router: Router) {
+  }
 
-  constructor() {
+  navigateBack() {
+    this.router.navigate(['./']);
   }
 
   ngOnInit() {

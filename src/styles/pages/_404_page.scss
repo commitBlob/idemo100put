@@ -10,6 +10,48 @@
     left: 1px;
     width: 99%;
     height: 97%;
-    background: url("https://www.wiseaccounting.com.au/images/404.png") no-repeat center;
+
+    .text_container {
+      width: 60%;
+      position: relative;
+      min-width: 250px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(245, 245, 245, 0.5);
+      border-radius: 1em;
+
+      @include respond((max: 768px)) {
+        width: 80%;
+      }
+
+      h1 {
+        @include font-scaler(320, 4000, 70, 200);
+        text-align: center;
+        margin: 0;
+        color: $dirty-white;
+        text-shadow: 3px 1px 2px $black;
+      }
+
+      p {
+        color: $dirty-white;
+        text-shadow: 3px 1px 2px $black;
+        padding: 0 1em;
+        margin: 0;
+        text-align: center;
+        @include font-scaler(320, 4000, 28, 60);
+      }
+
+      .navigate_back {
+        padding: 1em 0;
+        text-decoration: underline;
+        @include font-scaler(1480, 4000, 30, 44);
+        cursor: pointer;
+
+        &:hover {
+          color: $brand-primary;
+        }
+      }
+    }
   }
 }
