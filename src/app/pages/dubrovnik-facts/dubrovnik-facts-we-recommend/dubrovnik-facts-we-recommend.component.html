@@ -6,6 +6,16 @@
   <h3>We Recommend</h3>
 </ng-template>
 <div *ngIf="weRecommendContent">
-  <h3>{{weRecommendContent[0].header}}</h3>
-  <p>{{weRecommendContent[0].content}}</p>
+  <div class="we_recommend_cards">
+    <div class="recommend_card" *ngFor="let item of weRecommendContent">
+      <div class="recommend_card_container">
+        <img [src]="generateImage(item.image)" [alt]="item.header + 'image'">
+        <div class="recommend_card_content">
+          <div class="corner_element"></div>
+          <h3>{{item.header}}</h3>
+          <p>{{item.content}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
