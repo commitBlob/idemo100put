@@ -1,7 +1,7 @@
 <div class="our_cards">
   <div class="card" *ngFor="let card of cards">
     <div class="card_container">
-      <img [src]="card.image">
+      <img [src]="generateImage(card.image)" [alt]="card.name + ' image'" />
       <div class="card_content">
         <div class="corner_element"></div>
         <h3>{{card.name}}</h3>
