@@ -30,6 +30,10 @@ export class CardsComponent implements OnInit {
     );
   }
 
+  generateImage(image) {
+    return 'data:image/png;base64,' + image;
+  }
+
   ngOnInit() {
     this.languageService.getLanguage();
   }
