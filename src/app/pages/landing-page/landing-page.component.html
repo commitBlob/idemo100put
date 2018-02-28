@@ -8,10 +8,9 @@
   <div class="apartments_container">
     <div class="apartments_item" *ngFor="let data of apartmentsData">
       <div class="apartment_content" [routerLink]="['/apartments', data.apartmentShortName]">
-        <img class="apartment_image" src="http://via.placeholder.com/200x100">
+        <img class="apartment_image" [src]="generateImage(data.apartmentImage)" [alt]="data.apartmentName + 'image'">
         <div class="apartment_container">
           <h2 class="apartment_name">{{data.apartmentName}}</h2>
-          <h3 class="apartment_subtitle">{{data.apartmentImage}}</h3>
         </div>
       </div>
     </div>

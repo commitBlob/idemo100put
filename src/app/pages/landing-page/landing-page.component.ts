@@ -34,6 +34,10 @@ export class LandingPageComponent implements OnInit, OnDestroy {
     );
   }
 
+  generateImage(image) {
+    return;
+  }
+
   ngOnInit() {
     this.languageService.getLanguage();
     this.aptSer.getApartments().subscribe(
