@@ -35,7 +35,7 @@ export class LandingPageComponent implements OnInit, OnDestroy {
   }
 
   generateImage(image) {
-    return;
+    return 'data:image/jpeg;base64,' + image;
   }
 
   ngOnInit() {
