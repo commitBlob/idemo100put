@@ -1,11 +1,8 @@
-<!--TODO: add content-->
-<!-- TODO: prevest engleski description na hrvatski -->
-
 <div class="content">
   <div *ngIf="apartmentData">
     <h2 class="apartment_name">Apartment {{apartmentData[0].apartmentName}} details</h2>
     <p class="location_details"><i class="material-icons location_icon">place</i>{{apartmentData[0].address}}</p>
-    <p class="apartment_description">{{apartmentData[0].apartmentDescription}}</p>
+    <div class="apartment_description" [innerHTML]="apartmentData[0].apartmentDescription"></div>
     <div *ngIf="language === 'eng'; then minEng else minCro"></div>
     <ng-template #minEng>
       <p>Minimum stay: {{apartmentData[0].minStay}} Nights</p>
