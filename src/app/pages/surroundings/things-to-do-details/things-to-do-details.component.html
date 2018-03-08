@@ -7,7 +7,7 @@
       </div>
     </div>
     <div class="row">
-      <div [ngClass]="{'col-8': sideTableContent,
+      <div class="image_container" [ngClass]="{'col-8': sideTableContent,
                                      'col-12': !sideTableContent}">
         <img *ngIf="bannerImage" [src]="generateBannerImage(bannerImage)"
              [alt]="attractionContent[0].shortName + ' image'"/>
