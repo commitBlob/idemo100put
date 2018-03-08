@@ -26,6 +26,11 @@
 
     .row {
       display: flex;
+
+      .image_container {
+        text-align: center;
+      }
+
     }
 
     [class*="col-"] {
@@ -79,6 +84,5 @@
       fill: $white;
     }
   }
-
 
 }
