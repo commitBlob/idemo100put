@@ -3,7 +3,7 @@
 <div class="content">
   <div *ngIf="landingPageContent">
     <h2>{{landingPageContent[0].header}}</h2>
-    <p>{{landingPageContent[0].content}}</p>
+    <div [innerHTML]="landingPageContent[0].content"></div>
   </div>
   <div class="apartments_container">
     <div class="apartments_item" *ngFor="let data of apartmentsData">
