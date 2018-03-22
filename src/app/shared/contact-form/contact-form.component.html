@@ -2,7 +2,7 @@
   <!-- User name and email group -->
   <div class="form-group">
     <mat-input-container class="flexer">
-      <input matInput placeholder="Your Name" align="start" [type]="text" id="userNameId" formControlName="contactName">
+      <input matInput placeholder="Your Name" align="start" [type]="'text'" id="userNameId" formControlName="contactName">
       <mat-hint class="errors" *ngIf="nameError">
         {{nameError}}
       </mat-hint>
@@ -17,13 +17,13 @@
   <!-- Subject Group -->
   <div class="form-group">
     <mat-input-container class="app-input-subject">
-      <input matInput placeholder="Subject" align="start" [type]="text" formControlName="subject">
+      <input matInput placeholder="Subject" align="start" [type]="'text'" formControlName="subject">
     </mat-input-container>
   </div>
   <!-- Message group -->
   <div class="form-group">
     <mat-input-container class="app-textarea">
-  <textarea matInput placeholder="Your Message" align="start" [type]="text" rows="6" formControlName="message"></textarea>
+      <textarea matInput placeholder="Your Message" align="start" [type]="'text'" rows="6" formControlName="message"></textarea>
       <mat-hint class="errors" *ngIf="bodyMessageError">
         {{bodyMessageError}}
       </mat-hint>
