@@ -15,6 +15,7 @@ import { CroatiaFactsDataPowerModule } from '../pages/croatia-facts/croatia-fact
 import { CroatiaFactsMoneyModule } from '../pages/croatia-facts/croatia-facts-money/croatia-facts-money.module';
 import { CroatiaFactsVisaModule } from '../pages/croatia-facts/croatia-facts-visa/croatia-facts-visa.module';
 import { CroatiaFactsWordsModule } from '../pages/croatia-facts/croatia-facts-words/croatia-facts-words.module';
+import { CroatiaFactsWordsService } from '../pages/croatia-facts/croatia-facts-words/croatia-facts-words.service';
 import { DialogsModule } from './dialogs/dialogs.module';
 import { DialogsService } from './dialogs/dialogs.service';
 import { DistancePipe } from './distance.pipe';
@@ -75,7 +76,8 @@ export class SharedModule {
         DialogsService,
         LanguagesService,
         MarkersService,
-        PricelistService
+        PricelistService,
+        CroatiaFactsWordsService
     ],
     };
   }
