@@ -12,7 +12,7 @@ export class CroatiaFactsWordsService {
   constructor( private  http: HttpClient) {}
 
   getWords(): Observable<Words[]> {
-    return this.http.get('./api/words/').catch(this.handleError);
+    return this.http.get('./api/words').catch(this.handleError);
   }
 
   /**

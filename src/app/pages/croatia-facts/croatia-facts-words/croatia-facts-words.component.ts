@@ -13,12 +13,12 @@ import { Words } from './croatia-facts-words.interface';
 })
 export class CroatiaFactsWordsComponent implements OnInit {
 
-  Words: Words[];
+  words: Words[];
 
   constructor(private wordsService: CroatiaFactsWordsService) {
   }
 
   ngOnInit() {
-
+    this.wordsService.getWords().subscribe((result) => this.words = result);
   }
 }
