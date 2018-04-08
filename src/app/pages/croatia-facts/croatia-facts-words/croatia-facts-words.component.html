@@ -1,18 +1,23 @@
 <div class="words_container">
   <h4>Croatian in 5 minutes</h4>
-  <p>Croatian language is one of the hardest languages to learn as it has fairly complex grammar and word pronunciation.</p>
-  <p>What makes Croatian even more difficult is the variety of slangs and dialects. For example Dubrovnik has it's own language (Dubrovaćki).
+  <p>Croatian language is one of the hardest languages to learn as it has fairly complex grammar and word
+    pronunciation.</p>
+  <p>What makes Croatian even more difficult is the variety of slangs and dialects. For example Dubrovnik has it's own
+    language (Dubrovaćki).
     Some Dubrovaćke words differ from Croatian and other Croatians might have hard time understanding everything.
-  If you speak Dubrovaćki to other Croatian they might have hard time understanding everything.</p>
-  <div class="words_card">
-    <div class="words_container">
-      <i class="material-icons words_symbol">translate</i>
-    </div>
-    <div class="words_text">
-      <p>Hvala - Thank you</p>
-    </div>
-    <div class="words_pronouncing">
-      <span>[HVAH-lah]</span>
+    If you speak Dubrovaćki to other Croatian they might have hard time understanding everything.</p>
+  <div *ngIf="words">
+    <div class="words_card" *ngFor="let word of words">
+      <div class="words_container">
+        <i class="material-icons words_symbol">translate</i>
+      </div>
+      <div class="words_text">
+        <p>{{word.wordCro}} - {{word.wordEng}}</p>
+      </div>
+      <div class="words_pronouncing">
+        <span>{{word.pronoun}}</span>
+      </div>
     </div>
   </div>
+
 </div>
