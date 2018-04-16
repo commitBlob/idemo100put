@@ -3,7 +3,7 @@
 <app-tabs-nav></app-tabs-nav>
 <div class="content" *ngIf="surroundingsContent">
   <h2>{{surroundingsContent[0].header}}</h2>
-  <p>{{surroundingsContent[0].content}}</p>
+  <div [innerHTML]="surroundingsContent[0].content"></div>
 </div>
 <app-things-to-do></app-things-to-do>
 
