@@ -4,7 +4,7 @@
 <div class="content">
   <div *ngIf="aboutUsContent">
     <h2>{{aboutUsContent[0].header}}</h2>
-    <p>{{aboutUsContent[0].content}}</p>
+    <div [innerHTML]="aboutUsContent[0].content"></div>
   </div>
   <app-cards></app-cards>
 </div>
