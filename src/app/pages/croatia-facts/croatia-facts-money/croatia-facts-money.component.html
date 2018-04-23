@@ -1,6 +1,6 @@
 <div *ngIf="moneyContent">
   <h3>{{moneyContent[0].header}}</h3>
-  <p>{{moneyContent[0].content}}</p>
+  <div [innerHTML]="moneyContent[0].content"></div>
 
   <div *ngIf="defaultCurrencyValue" class="currency_container">
     <h4 *ngIf="language === 'eng'">Currency List</h4>
