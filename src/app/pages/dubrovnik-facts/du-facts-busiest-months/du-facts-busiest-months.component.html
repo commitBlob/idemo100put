@@ -1,4 +1,4 @@
 <div *ngIf="duFactsBusiestMonthsContent">
   <h3>{{duFactsBusiestMonthsContent[0].header}}</h3>
-  <p>{{duFactsBusiestMonthsContent[0].content}}</p>
+  <div [innerHTML]="duFactsBusiestMonthsContent[0].content"></div>
 </div>
