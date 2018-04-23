@@ -4,9 +4,10 @@ export const LocData: LocationData[] = [
   {
     language: 'eng',
     header: 'Apartments Location',
-    contentData: 'Our apartments are located on very attractive locations. Every location has it\'s own charms.' +
-    ' Whether you want breathtaking view on Dubrovnik and the coast. Or you want experience the night in the Old Town. ' +
-    'Or beach access within your reach...'
+    contentData: 'You will find our apartments at very attractive locations, and every place has its own charm. ' +
+    'Whether you want to admire the breath-taking views of Dubrovnik and the coast, experience the nights in Old Town, ' +
+    'or perhaps it’s beach access within your reach what matters to you the most, we’ve got you covered. Have a look ' +
+    'at the map below, or tell us your preferences to find the best place for you. '
   },
   {
     language: 'cro',
