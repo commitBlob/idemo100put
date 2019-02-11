@@ -9,18 +9,19 @@
       max-height: 100%;
     }
 
-    .gallery_chevron_left {
+    .gallery_chevron_left, .gallery_chevron_right {
       position: absolute;
-      left: 0;
       top: 50%;
       cursor: pointer;
+      background-color: #7e69b4;
+    }
+
+    .gallery_chevron_left {
+      left: 0;
     }
 
     .gallery_chevron_right {
-      position: absolute;
       right: 0;
-      top: 50%;
-      cursor: pointer;
     }
   }
 
@@ -61,12 +62,11 @@
 .chevron_large {
   font-size: 3em;
   transition: all .2s ease-in-out;
-  color: #8770C1;
+  color: #f5f5f5;
 
   &:hover {
     font-size: 3.5em;
     transition: all .2s ease-in-out;
-    color: #A191C8;
     text-shadow: 1px 2px 2px #8770C1;
   }
 }
