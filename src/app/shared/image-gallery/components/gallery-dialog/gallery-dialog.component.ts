@@ -9,7 +9,7 @@ import { MatDialogRef } from '@angular/material';
 export class GalleryDialogComponent {
 
   imagesArray: Array<string>;
-
+  imageIndex: number;
 
   constructor (public dialogRef: MatDialogRef<GalleryDialogComponent>) {
 

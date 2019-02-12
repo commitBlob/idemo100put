@@ -27,7 +27,7 @@ export class DialogsService {
     return dialogRef.afterClosed();
   }
 
-  openGallery(images: Array<string>, viewContainerRef: ViewContainerRef): void {
+  openGallery(images: Array<string>, imageIndex, viewContainerRef: ViewContainerRef): void {
     let dialogRef: MatDialogRef<GalleryDialogComponent>;
     const config = new MatDialogConfig();
     config.viewContainerRef = viewContainerRef;
@@ -36,5 +36,6 @@ export class DialogsService {
     dialogRef = this.dialog.open(GalleryDialogComponent, config);
 
     dialogRef.componentInstance.imagesArray = images;
+    dialogRef.componentInstance.imageIndex = imageIndex;
   }
 }

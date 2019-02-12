@@ -1,8 +1,8 @@
 <div class="gallery_container">
   <div class="gallery_active_image">
     <img [src]="'data:image/jpg;base64,'+ activeImage" (swipeleft)="swipe($event.type)" (swiperight)="swipe($event.type)">
-    <span class="gallery_chevron_left" (click)="previous()"><i class="material-icons chevron_large">chevron_left</i></span>
-    <span class="gallery_chevron_right" (click)="next()"><i class="material-icons chevron_large">chevron_right</i></span>
+    <span class="gallery_chevron_left" (click)="previous('click')"><i class="material-icons chevron_large">chevron_left</i></span>
+    <span class="gallery_chevron_right" (click)="next('click')"><i class="material-icons chevron_large">chevron_right</i></span>
   </div>
   <div class="gallery_images_list">
     <ul class="dot_list">

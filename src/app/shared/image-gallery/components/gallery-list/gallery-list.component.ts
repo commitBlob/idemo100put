@@ -29,7 +29,7 @@ export class GalleryListComponent implements OnInit {
     });
   }
 
-  openGallery() {
+  openGallery(index) {
     // resets
     this.imagesArray = [];
 
@@ -37,6 +37,6 @@ export class GalleryListComponent implements OnInit {
       this.imagesArray.push(value.image);
     });
     const imagesArray = this.imagesArray;
-    this.dialogService.openGallery(imagesArray, this.viewContainerRef);
+    this.dialogService.openGallery(imagesArray, index, this.viewContainerRef);
   }
 }

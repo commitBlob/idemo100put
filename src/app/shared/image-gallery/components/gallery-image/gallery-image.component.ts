@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
+import { Observable, Subject, Subscription } from 'rxjs';
+import { startWith, switchMap } from 'rxjs/operators';
+import { timer } from 'rxjs/observable/timer';
 
 @Component({
   selector: 'app-gallery-image',
@@ -11,28 +14,35 @@ export class GalleryImageComponent implements OnInit {
   @Input()
   imagesArray: Array<string>;
 
+  @Input() imageIndex = 0;
+
   activeImage: string;
   activeImageIndex: number;
 
+  timer$: Observable<any>;
+  subscription: Subscription;
   constructor() {
   }
 
-  ngOnInit() {
-    // display first image
-    this.imageSelected(0);
+  ngOnInit(): void {
+    this.imageSelected(this.imageIndex);
 
-    IntervalObservable.create(5000)
-      .subscribe(() => {
-        this.next();
-      });
+    this.timer$ = timer(5000, 5000);
+
+    this.subscription = this.timer$.subscribe((res) => {
+      this.next('');
+    });
   }
 
-  imageSelected(image) {
+  imageSelected(image): void {
     this.activeImage = this.imagesArray[image];
     this.activeImageIndex = image;
   }
 
-  previous() {
+  previous(userClick): void {
+    if (userClick === 'click') {
+      this.resetTimer();
+    }
     let imageIndex = this.activeImageIndex;
     if (imageIndex > 0) {
       imageIndex--;
@@ -43,9 +53,13 @@ export class GalleryImageComponent implements OnInit {
       this.activeImage = this.imagesArray[arrayLength - 1];
       this.activeImageIndex = arrayLength - 1;
     }
+
   }
 
-  next() {
+  next(userClick): void {
+    if (userClick === 'click') {
+      this.resetTimer();
+    }
     let imageIndex = this.activeImageIndex;
     const arrayLength = this.imagesArray.length - 1;
     if (imageIndex === arrayLength) {
@@ -56,15 +70,23 @@ export class GalleryImageComponent implements OnInit {
       this.activeImage = this.imagesArray[imageIndex];
       this.activeImageIndex = imageIndex;
     }
+
   }
 
-  swipe(event) {
+  resetTimer(): void {
+    this.subscription.unsubscribe();
+    this.subscription = this.timer$.subscribe((res) => {
+      this.next('');
+    });
+  }
+
+  swipe(event): void {
     switch (event) {
       case 'swiperight':
-        this.next();
+        this.next('');
         break;
       case 'swipeleft':
-        this.previous();
+        this.previous('');
         break;
     }
   }
