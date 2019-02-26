@@ -5,5 +5,5 @@ import { Component } from '@angular/core';
   selector: 'app-logo',
   templateUrl: './logo.component.html',
 })
-export class LogoComponent{
+export class LogoComponent {
 }
