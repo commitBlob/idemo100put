@@ -1,10 +1,9 @@
 // Core
 import { Component, HostBinding, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 // App specific
-import { GlobalVariables } from './globals';
 import { NavigationService } from './shared/navigation/navigation-service/navigation-service';
-import { Observable } from 'rxjs/Observable';
 import { ResponsiveService } from './shared/responsive-service/responsive.service';
 
 // Fixes target warning on Eventtarget
@@ -19,12 +18,10 @@ interface WindowEvent extends EventTarget {
 export class AppComponent implements OnInit {
   @HostBinding('class.menu_open') public menuOpen = false;
   @HostBinding('class.is-active') public hamburgerOpen = false;
-  globalLogoPath = GlobalVariables.logoPath;
   navigationList: any;
 
   constructor(private navigationService: NavigationService,
               private responsiveService: ResponsiveService) {
-    // On window resize change event update service..
     Observable.fromEvent<WindowEvent>(window, 'resize')
       .debounceTime(500)
       .subscribe((event) => {
@@ -34,7 +31,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.getNavigation();
-    // Get the responsive responsiveMode on load.
     this.responsiveService.set();
   }
 
