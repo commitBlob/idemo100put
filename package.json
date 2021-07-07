@@ -41,8 +41,8 @@
     "rxjs-compat": "^6.0.0-rc.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.901.15",
-    "@angular/cli": "^9.1.15",
+    "@angular-devkit/build-angular": "~0.1102.14",
+    "@angular/cli": "^11.2.14",
     "@angular/compiler-cli": "^12.1.1",
     "@angular/language-service": "^12.1.1",
     "@types/jasmine": "~2.5.53",
@@ -51,16 +51,16 @@
     "codelyzer": "^5.0.1",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",
-    "karma": "~1.7.0",
+    "karma": "~6.3.4",
     "karma-chrome-launcher": "~2.1.1",
     "karma-cli": "~1.0.1",
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
     "karma-remap-istanbul": "^0.6.0",
-    "protractor": "~5.1.2",
+    "protractor": "~7.0.0",
     "ts-node": "~3.2.0",
-    "tslint": "~5.7.0",
+    "tslint": "~6.1.0",
     "typescript": "~4.3.5"
   }
 }
