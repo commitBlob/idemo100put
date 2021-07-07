@@ -13,51 +13,51 @@ export class ContentService {
   constructor(private http: HttpClient) {
   }
 
-  getLandingContent(language): Observable<Content[]> {
-    return this.http.get('./api/landingcontent/'+ language).catch(this.handleError);
+  getLandingContent(language): Observable<any> {
+    return this.http.get('./api/landingcontent/' + language).catch(this.handleError);
   }
 
-  getAboutUsContent(language): Observable<Content[]> {
+  getAboutUsContent(language): Observable<any> {
     return this.http.get('./api/aboutcontent/' + language).catch(this.handleError);
   }
 
-  getContactUsContent(language): Observable<Content[]> {
+  getContactUsContent(language): Observable<any> {
     return this.http.get('./api/contactcontent/' + language).catch(this.handleError);
   }
 
-  getCroatiaFactsContent(language): Observable<Content[]> {
+  getCroatiaFactsContent(language): Observable<any> {
     return this.http.get('./api/crofacts/' + language).catch(this.handleError);
   }
 
-  getDubrovnikFactsContent(language): Observable<Content[]> {
+  getDubrovnikFactsContent(language): Observable<any> {
     return this.http.get('./api/dufacts/' + language).catch(this.handleError);
   }
 
-  getSurroundingsContent(language): Observable<Content[]> {
+  getSurroundingsContent(language): Observable<any> {
     return this.http.get('./api/surroundings/' + language).catch(this.handleError);
   }
 
-  getPolicyContent(language): Observable<Content[]> {
+  getPolicyContent(language): Observable<any> {
     return this.http.get('./api/policy/' + language).catch(this.handleError);
   }
 
-  getCroMoneyContent(language): Observable<Content[]> {
+  getCroMoneyContent(language): Observable<any> {
     return this.http.get('./api/cromoney/' + language).catch(this.handleError);
   }
 
-  getDuFactsUsefulContent(language): Observable<Content[]> {
+  getDuFactsUsefulContent(language): Observable<any> {
     return this.http.get('./api/dufactsuseful/' + language).catch(this.handleError);
   }
 
-  getDuFactsInteresting(language): Observable<Content[]> {
+  getDuFactsInteresting(language): Observable<any> {
     return this.http.get('./api/interestingFacts/' + language).catch(this.handleError);
   }
 
-  getDuFactsBusiestMonths(language): Observable<Content[]> {
-    return this.http.get('./api/busiestmonths/'+ language).catch(this.handleError);
+  getDuFactsBusiestMonths(language): Observable<any> {
+    return this.http.get('./api/busiestmonths/' + language).catch(this.handleError);
   }
 
-  public getDuWeRecommendContent(language): Observable<Content[]> {
+  public getDuWeRecommendContent(language): Observable<any> {
     return this.http.get('./api/werecommend/' + language).catch(this.handleError);
   }
 
