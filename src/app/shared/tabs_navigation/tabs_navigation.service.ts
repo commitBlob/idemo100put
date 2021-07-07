@@ -8,7 +8,7 @@ export class TabsNavigationService {
   constructor(private http: HttpClient) {
   }
 
-  getApartments(): Observable<string[]> {
+  getApartments(): Observable<any> {
     return this.http.get('./api/apartments').catch(this.handleError);
   }
 
