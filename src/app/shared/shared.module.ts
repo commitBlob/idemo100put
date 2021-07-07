@@ -25,7 +25,6 @@ import { LanguagesModule } from './languages/languages.module';
 import { LanguagesService } from './languages/languages.service';
 import { LogoModule } from './logo/logo.module';
 import { MarkersService } from './google-maps/markers/markers.service';
-import { MaterialModule } from '../sharedMaterialModule';
 import { PricelistModule } from './pricelist/pricelist.module';
 import { PricelistService } from './pricelist/pricelist.service';
 import { TabsNavigationModule } from './tabs_navigation/tabs_navigation.module';
@@ -42,6 +41,7 @@ import { DuFactsUsefulModule } from '../pages/dubrovnik-facts/du-facts-useful/du
 import { ThingsToDoService } from '../pages/surroundings/things-to-do/things-to-do.service';
 import { ThingsToDoModule } from '../pages/surroundings/things-to-do/things-to-do.module';
 import { ThingsToDoDetailsModule } from '../pages/surroundings/things-to-do-details/things-to-do-details.module';
+import { MaterialModule } from '../materialModule';
 
 @NgModule({
   imports: [
@@ -87,7 +87,7 @@ import { ThingsToDoDetailsModule } from '../pages/surroundings/things-to-do-deta
   ]
 })
 export class SharedModule {
-  public static forRoot(): ModuleWithProviders {
+  public static forRoot(): ModuleWithProviders<SharedModule> {
     return {
       ngModule: SharedModule,
       providers: [

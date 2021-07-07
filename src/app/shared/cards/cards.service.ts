@@ -6,6 +6,8 @@ import 'rxjs/Rx';
 
 // Models
 import { Cards } from './cards.interface';
+import { of } from 'rxjs/internal/observable/of';
+import { _throw } from 'rxjs/observable/throw';
 
 @Injectable()
 export class CardsService {
@@ -22,6 +24,6 @@ export class CardsService {
     const errMsg = (error.message) ? error.message :
       error.status ? `${error.status} - ${error.statusText}` : 'Server error';
     console.error(errMsg);
-    return Observable.throw(errMsg);
+    return of(_throw(errMsg));
   }
 }

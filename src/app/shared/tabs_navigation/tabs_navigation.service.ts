@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
+import { of } from 'rxjs/internal/observable/of';
+import { _throw } from 'rxjs/observable/throw';
 
 @Injectable()
 export class TabsNavigationService {
@@ -19,6 +21,6 @@ export class TabsNavigationService {
     const errMsg = (error.message) ? error.message :
       error.status ? `${error.status} - ${error.statusText}` : 'Server error';
     console.error('Error occurred', errMsg);
-    return Observable.throw(errMsg);
+    return of(_throw(errMsg));
   }
 }

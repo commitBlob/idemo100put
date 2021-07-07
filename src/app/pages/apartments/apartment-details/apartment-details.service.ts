@@ -8,17 +8,19 @@ import 'rxjs/add/operator/catch';
 // App specific
 import { ApartmentDetails } from './apartment-details.interface';
 import { NearbyPlaces } from './nearby-places.interface';
+import { of } from 'rxjs/internal/observable/of';
+import { _throw } from 'rxjs/observable/throw';
 
 @Injectable()
 export class ApartmentDetailsService {
   constructor(private http: HttpClient) {
   }
 
-  getApartmentData(apartmentShortName, language): Observable<ApartmentDetails[]> {
+  getApartmentData(apartmentShortName, language): Observable<any> {
     return this.http.get('./api/apartments/' + apartmentShortName + '/' + language).catch(this.handleError);
   }
 
-  getNearbys(apartmentShortName): Observable<NearbyPlaces[]> {
+  getNearbys(apartmentShortName): Observable<any> {
     return this.http.get('./api/nearbys/' + apartmentShortName).catch(this.handleError);
   }
 
@@ -29,6 +31,6 @@ export class ApartmentDetailsService {
     const errMsg = (error.message) ? error.message :
       error.status ? `${error.status} - ${error.statusText}` : 'Server error';
     console.error(errMsg);
-    return Observable.throw(errMsg);
+    return of(_throw(errMsg));
   }
 }

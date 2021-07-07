@@ -6,7 +6,7 @@ import { NgModule } from '@angular/core';
 // App specific
 import { CapitalizePipe } from '../capitalize.pipe';
 import { CurrencyPipe } from '../currency.pipe';
-import { MaterialModule } from '../../sharedMaterialModule';
+import { MaterialModule } from '../../materialModule';
 import { PricelistComponent } from './pricelist.component';
 
 @NgModule({

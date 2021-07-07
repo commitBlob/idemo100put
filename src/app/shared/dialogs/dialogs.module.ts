@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 // App specific
 import { ConfirmDialogComponent } from './confirm-dialog.component';
 import { DialogsService } from './dialogs.service';
-import { MaterialModule } from '../../sharedMaterialModule';
+import { MaterialModule } from '../../materialModule';
 import { GalleryDialogComponent } from '../image-gallery/components/gallery-dialog/gallery-dialog.component';
 import { ImageGalleryModule } from '../image-gallery/image-gallery.module';
 

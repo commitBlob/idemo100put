@@ -1,7 +1,6 @@
 // Core
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -12,7 +11,7 @@ import { ApartmentService } from './shared/apartments-service/apartments.service
 import { AppComponent } from './app.component';
 import { appRoutes } from './shared/routes/route-definitions';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
-import { MaterialModule } from './sharedMaterialModule';
+import { MaterialModule } from './materialModule';
 import { NavigationService } from './shared/navigation/navigation-service/navigation-service';
 import { PageNotFoundModule } from './pages/page-not-found/page-not-found.module';
 import { PagesModule } from './pages/pages.module';
@@ -31,14 +30,13 @@ import 'hammerjs';
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
-    FlexLayoutModule,
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
     MaterialModule,
     PageNotFoundModule,
     SharedModule.forRoot(),
-    PagesModule.forRoot()
+    PagesModule
   ],
   exports: [
     MaterialModule

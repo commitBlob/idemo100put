@@ -1,33 +1,33 @@
 <form (ngSubmit)="save(); myNgForm.resetForm()" [formGroup]="contactForm" #myNgForm="ngForm">
   <!-- User name and email group -->
   <div class="form-group">
-    <mat-input-container class="flexer">
+    <mat-form-field class="flexer">
       <input matInput placeholder="Your Name" align="start" [type]="'text'" id="userNameId" formControlName="contactName">
       <mat-hint class="errors" *ngIf="nameError">
         {{nameError}}
       </mat-hint>
-    </mat-input-container>
-    <mat-input-container class="flexer">
-      <input matInput placeholder="Your Email" align="start" [type]="'email'" id="emailId" formControlName="email">
+    </mat-form-field>
+    <mat-form-field class="flexer">
+      <input matInput placeholder="Your Email" [type]="'email'" id="emailId" formControlName="email">
       <mat-hint class="errors" *ngIf="emailError">
         {{emailError}}
       </mat-hint>
-    </mat-input-container>
+    </mat-form-field>
   </div>
   <!-- Subject Group -->
   <div class="form-group">
-    <mat-input-container class="app-input-subject">
-      <input matInput placeholder="Subject" align="start" [type]="'text'" formControlName="subject">
-    </mat-input-container>
+    <mat-form-field class="app-input-subject">
+      <input matInput placeholder="Subject" [type]="'text'" formControlName="subject">
+    </mat-form-field>
   </div>
   <!-- Message group -->
   <div class="form-group">
-    <mat-input-container class="app-textarea">
-      <textarea matInput placeholder="Your Message" align="start" [type]="'text'" rows="6" formControlName="message"></textarea>
+    <mat-form-field class="app-textarea">
+      <textarea matInput placeholder="Your Message" [type]="'text'" rows="6" formControlName="message"></textarea>
       <mat-hint class="errors" *ngIf="bodyMessageError">
         {{bodyMessageError}}
       </mat-hint>
-    </mat-input-container>
+    </mat-form-field>
   </div>
   <!-- Select list group -->
   <div class="form-group">

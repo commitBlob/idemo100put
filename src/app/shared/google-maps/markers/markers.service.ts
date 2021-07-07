@@ -6,12 +6,14 @@ import 'rxjs/Rx';
 
 // Models
 import { Markers } from './markers.interface';
+import { of } from 'rxjs/internal/observable/of';
+import { _throw } from 'rxjs/observable/throw';
 
 @Injectable()
 export class MarkersService {
   constructor( private  http: HttpClient) {}
 
-  getMarkers(): Observable<Markers[]> {
+  getMarkers(): Observable<any> {
     return this.http.get('./api/markers').catch(this.handleError);
   }
 
@@ -22,6 +24,6 @@ export class MarkersService {
     const errMsg = (error.message) ? error.message :
       error.status ? `${error.status} - ${error.statusText}` : 'Server error';
     console.error(errMsg);
-    return Observable.throw(errMsg);
+    return of(_throw(errMsg));
   }
 }

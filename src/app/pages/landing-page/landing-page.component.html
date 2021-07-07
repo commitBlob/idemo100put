@@ -5,10 +5,10 @@
   </div>
   <div class="apartments_container">
     <div class="apartments_item" *ngFor="let data of apartmentsData">
-      <div class="apartment_content" [routerLink]="['/apartments', data.apartmentShortName]">
-        <img class="apartment_image" [src]="generateImage(data.apartmentImage)" [alt]="data.apartmentName + 'image'">
+      <div class="apartment_content" [routerLink]="['/apartments', data['apartmentShortName']]">
+        <img class="apartment_image" [src]="generateImage(data['apartmentImage'])" [alt]="data['apartmentName'] + 'image'">
         <div class="apartment_container">
-          <h2 class="apartment_name">{{data.apartmentName}}</h2>
+          <h2 class="apartment_name">{{data['apartmentName']}}</h2>
         </div>
       </div>
     </div>

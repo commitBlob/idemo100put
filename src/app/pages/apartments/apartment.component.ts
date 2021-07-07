@@ -11,6 +11,8 @@ import { LanguagesService } from '../../shared/languages/languages.service';
 // Models
 import { ApartmentDetails } from './apartment-details/apartment-details.interface';
 import { NearbyPlaces } from './apartment-details/nearby-places.interface';
+import { of } from 'rxjs/internal/observable/of';
+import { _throw } from 'rxjs/observable/throw';
 
 // TODO: add all apartments data
 
@@ -105,6 +107,6 @@ export class ApartmentComponent implements OnInit, OnDestroy {
     const errMsg = (error.message) ? error.message :
       error.status ? `${error.status} - ${error.statusText}` : 'Server error';
     console.error(errMsg);
-    return Observable.throw(errMsg);
+    return of(_throw(errMsg));
   }
 }

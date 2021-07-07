@@ -8,6 +8,8 @@ import { PricelistService } from './pricelist.service';
 
 // Models
 import { PricelistModel } from './pricelist.interface';
+import { of } from 'rxjs/internal/observable/of';
+import { _throw } from 'rxjs/observable/throw';
 
 @Component({
   selector: 'app-pricelist',
@@ -119,6 +121,6 @@ export class PricelistComponent implements OnInit {
     const errMsg = (error.message) ? error.message :
       error.status ? `${error.status} - ${error.statusText}` : 'Server error';
     console.error(errMsg);
-    return Observable.throw(errMsg);
+    return of(_throw(errMsg));
   }
 }

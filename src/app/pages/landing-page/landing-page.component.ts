@@ -18,7 +18,7 @@ export class LandingPageComponent implements OnInit, OnDestroy {
   landingPageContent: Content[];
   language: String;
   langSubscription: Subscription;
-  apartmentsData: String[];
+  apartmentsData: [];
   errorMessage: string;
 
   constructor(private  aptSer: ApartmentService,

@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 
 // App specific
 import { ContactUsComponent } from './contact-us.component';
-import { MaterialModule } from '../../sharedMaterialModule';
+import { MaterialModule } from '../../materialModule';
 import { SharedModule } from '../../shared/shared.module';
 
 

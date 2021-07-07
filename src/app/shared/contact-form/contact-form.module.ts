@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 
 // App specific
 import { ContactFormComponent } from './contact-form.component';
-import { MaterialModule } from '../../sharedMaterialModule';
+import { MaterialModule } from '../../materialModule';
 
 @NgModule({
   imports: [

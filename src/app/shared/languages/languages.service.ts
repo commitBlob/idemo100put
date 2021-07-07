@@ -5,6 +5,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Subject } from 'rxjs/Subject';
+import { of } from 'rxjs/internal/observable/of';
+import { _throw } from 'rxjs/observable/throw';
 
 @Injectable()
 export class LanguagesService {
@@ -15,7 +17,7 @@ export class LanguagesService {
   constructor(private http: HttpClient) {
   }
 
-  getFlags(): Observable<string[]> {
+  getFlags(): Observable<any> {
     return this.http.get('./api/flags').catch(this.handleError);
   }
 
@@ -35,7 +37,7 @@ export class LanguagesService {
     const errMsg = (error.message) ? error.message :
       error.status ? `${error.status} - ${error.statusText}` : 'Server error';
     console.error(errMsg);
-    return Observable.throw(errMsg);
+    return of(_throw(errMsg));
   }
 
 }

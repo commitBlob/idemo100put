@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
-import { Observable, Subject, Subscription } from 'rxjs';
-import { startWith, switchMap } from 'rxjs/operators';
 import { timer } from 'rxjs/observable/timer';
+import { Observable } from 'rxjs/Rx';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-gallery-image',

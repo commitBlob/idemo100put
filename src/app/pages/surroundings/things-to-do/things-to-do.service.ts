@@ -7,17 +7,19 @@ import 'rxjs/add/operator/catch';
 
 // Models
 import { ThingsToDo } from './things-to-do.interface';
+import { of } from 'rxjs/internal/observable/of';
+import { _throw } from 'rxjs/observable/throw';
 
 @Injectable()
 export class ThingsToDoService {
   constructor(private http: HttpClient) {
   }
 
-  getToDoList(language): Observable<ThingsToDo[]> {
+  getToDoList(language): Observable<any> {
     return this.http.get('/api/thingstodo/' + language).catch(this.handleError);
   }
 
-  getActivity(language, activityName): Observable<ThingsToDo[]> {
+  getActivity(language, activityName): Observable<any> {
     return this.http.get('/api/thingstodo/' + activityName + '/' + language).catch(this.handleError);
   }
 
@@ -36,6 +38,6 @@ export class ThingsToDoService {
     const errMsg = (error.message) ? error.message :
       error.status ? `${error.status} - ${error.statusText}` : 'Server error';
     console.error(errMsg);
-    return Observable.throw(errMsg);
+    return of(_throw(errMsg));
   }
 }

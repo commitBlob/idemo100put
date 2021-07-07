@@ -41,9 +41,9 @@ export class GoogleMapsComponent implements OnInit {
     };
     const infoWindow = new google.maps.InfoWindow();
     function closeInfoWindow() {
-      setTimeout(function(){
+      setTimeout(function() {
         infoWindow.close();
-        }, '4000');
+        }, 4000);
     }
 
     this.map = new google.maps.Map(mapCanvas, mapOptions);
