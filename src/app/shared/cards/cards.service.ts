@@ -11,7 +11,7 @@ import { Cards } from './cards.interface';
 export class CardsService {
   constructor( private  http: HttpClient) {}
 
-  getCards(language): Observable<Cards[]> {
+  getCards(language): Observable<any> {
     return this.http.get('./api/cards/' + language).catch(this.handleError);
   }
 
