@@ -1,5 +1,5 @@
 // Core
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 // App specific
 import { GlobalVariables } from '../../globals';
@@ -9,24 +9,23 @@ import { LanguagesService } from './languages.service';
   selector: 'app-lang',
   templateUrl: './languages.component.html',
 })
-export class LanguagesComponent implements OnInit {
+export class LanguagesComponent {
 
   globalImagePath = GlobalVariables.imagesPath;
-  flagItems: any;
+  flagItems = [
+    {
+      countryFlag: 'eng',
+      folder: 'flags/',
+      name: 'uk_flag_small.png'
+    },
+    {
+      countryFlag: 'cro',
+      folder: 'flags/',
+      name: 'cro_flag_small.png'
+    }
+  ];
 
   constructor(private ls: LanguagesService) { }
-
-  ngOnInit() {
-    this.getFlags();
-  }
-
-  getFlags() {
-    this.ls.getFlags().subscribe(
-      (values) => {
-        this.flagItems = values;
-      }
-    );
-  }
 
   setLanguage(languageValue) {
     this.ls.languageChange(languageValue);
