@@ -3,7 +3,7 @@
 
 .side_nav {
   background-color: $dirty-white;
-  color: $brand-primary;
+  color: $brand-primary-darker;
   width: 250px;
   height: 100%;
   position: absolute;
@@ -36,7 +36,7 @@
   }
 
   .navigation_elements {
-    color: $brand-primary;
+    color: $brand-primary-darker;
     padding: 10px 15px;
     border-radius: 3px;
     cursor: pointer;
@@ -84,7 +84,7 @@
 
   .is-active {
     background-color: $brand-secondary;
-    color: $dirty-white;
+    color: $brand-primary-darkest;
     box-shadow: 0 14px 5px -10px rgba($black, 0.4);
     transform: translateY(8px);
     font-weight: bold;
