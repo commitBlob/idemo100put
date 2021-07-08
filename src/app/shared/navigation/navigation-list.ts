@@ -4,6 +4,11 @@ import { NavLinks } from './navigation-links.interface';
 
 export const GlobalNavigation: NavLinks[] = [
   {
+    linkName: 'Home',
+    linkPath: '',
+    linkIcon: 'home'
+  },
+  {
     linkName: 'About Us',
     linkPath: 'about-us',
     linkIcon: 'people',
