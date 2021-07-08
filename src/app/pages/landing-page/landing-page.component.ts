@@ -4,13 +4,8 @@ import { Subscription } from 'rxjs/Subscription';
 
 // App specific
 import { ApartmentService } from '../../shared/apartments-service/apartments.service';
-import { ContentService } from '../../shared/content-service/content.service';
 import { GlobalVariables } from '../../globals';
 import { LanguagesService } from '../../shared/languages/languages.service';
-
-// Models
-import { Content } from '../../shared/content-service/content.interface';
-
 
 @Component({
   selector: 'app-landing-page',
@@ -45,8 +40,7 @@ export class LandingPageComponent implements OnInit, OnDestroy {
   errorMessage: string;
 
   constructor(private  aptSer: ApartmentService,
-              private languageService: LanguagesService,
-              private contentService: ContentService) {
+              private languageService: LanguagesService) {
     this.langSubscription = languageService.subjectSourceAnnounced$.subscribe(
       (value) => {
         if (this.language !== value) {
@@ -57,22 +51,11 @@ export class LandingPageComponent implements OnInit, OnDestroy {
     );
   }
 
-  generateImage(image) {
-    return 'data:image/jpeg;base64,' + image;
-  }
-
-  ngOnInit() {
+  ngOnInit(): void {
     this.languageService.getLanguage();
-    // this.aptSer.getApartments().subscribe(
-    //   (response) => {
-    //     this.apartmentsData = response;
-    //     sessionStorage.setItem('apartmentsData', JSON.stringify(this.apartmentsData));
-    //   },
-    //   (error) => this.errorMessage = <any>error
-    // );
   }
 
-  getContent(language) {
+  getContent(language): void {
     const languagesContent = [
       {
         header: 'Welcome!',
@@ -96,7 +79,7 @@ export class LandingPageComponent implements OnInit, OnDestroy {
     this.landingPageContent = languagesContent.find((content) => { return content.language === language});
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.langSubscription.unsubscribe();
   }
 }
