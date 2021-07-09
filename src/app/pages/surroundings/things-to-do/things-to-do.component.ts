@@ -1,14 +1,15 @@
 // Core
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
 // App specific
 import { LanguagesService } from '../../../shared/languages/languages.service';
 import { ThingsToDoService } from './things-to-do.service';
+import { todoContent } from './things-to-do.content';
 
 // Models
 import { ThingsToDo } from './things-to-do.interface';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-things-to-do',
@@ -16,7 +17,7 @@ import { Router } from '@angular/router';
 })
 export class ThingsToDoComponent implements OnInit, OnDestroy {
 
-  toDoContent: ThingsToDo[];
+  toDoContent: ThingsToDo[] = [];
   langSubscription: Subscription;
   language: String;
 
@@ -33,27 +34,19 @@ export class ThingsToDoComponent implements OnInit, OnDestroy {
     );
   }
 
-  getContent(language) {
-    this.thingsToDoService.getToDoList(language).subscribe(
-      (content) => {
-        this.toDoContent = <ThingsToDo[]>content;
-      }
-    );
+  getContent(language): void {
+    this.toDoContent = todoContent.filter(toDo => toDo.language === language);
   }
 
-  generateImage(image) {
-    return 'data:image/png;base64,' + image;
-  }
-
-  cardTrigger(cardName) {
+  cardTrigger(cardName): void {
     this.router.navigate(['surroundings/' + cardName]);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.languageService.getLanguage();
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.langSubscription.unsubscribe();
   }
 }

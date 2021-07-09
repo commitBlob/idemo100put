@@ -53,6 +53,7 @@ export class LandingPageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.languageService.getLanguage();
+    sessionStorage.setItem('apartmentsData', JSON.stringify(this.apartmentsData))
   }
 
   getContent(language): void {

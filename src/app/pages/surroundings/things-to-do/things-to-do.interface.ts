@@ -1,5 +1,5 @@
 export interface ThingsToDo {
-  _id: string;
+  _id?: string;
   language: string,
   header: string,
   subHeader: string,

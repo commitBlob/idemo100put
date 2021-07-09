@@ -1,5 +1,5 @@
 export interface Content {
-  _id: string;
+  _id?: string;
   language: string;
   header: string;
   content: string;

@@ -2,27 +2,21 @@
   <div class="wrapper">
     <div class="row">
       <div class="col-12">
-        <h3>{{attractionContent[0].header}}</h3>
-        <p class="small_header">{{attractionContent[0].subHeader}}</p>
+        <h3>{{attractionContent.header}}</h3>
+        <p class="small_header">{{attractionContent.subHeader}}</p>
       </div>
     </div>
-    <div class="row">
+    <div class="row" *ngIf="bannerImage">
       <div class="image_container" [ngClass]="{'col-8': sideTableContent,
                                      'col-12': !sideTableContent}">
-        <img *ngIf="bannerImage" [src]="generateBannerImage(bannerImage)"
-             [alt]="attractionContent[0].shortName + ' image'"/>
-      </div>
-      <div class="col-4" *ngIf="sideTableContent">
-        <div class="row" *ngFor="let element of generateArray(sideTableContent)">
-          <div class="col-4">{{breakWords(element.key)}}</div>
-          <div class="col-8">{{element.value}}</div>
-        </div>
+        <img [src]="bannerImage"
+             [alt]="attractionContent.shortName + ' image'"/>
       </div>
     </div>
 
     <div class="row">
       <div class="col-12">
-        <div [innerHTML]="attractionContent[0].content"></div>
+        <div [innerHTML]="attractionContent.content"></div>
       </div>
     </div>
   </div>

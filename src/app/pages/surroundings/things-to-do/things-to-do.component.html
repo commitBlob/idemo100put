@@ -2,15 +2,12 @@
   <div class="module_card_wrap">
     <div class="module_card" *ngFor="let data of toDoContent" (click)="cardTrigger(data.shortName)">
       <div class="module_card_bottom">
-        <img [src]="generateImage(data.image)" [alt]="data.header + ' image'" class="module_card_img" />
-
+        <img [src]="data.image" [alt]="data.header + ' image'" class="module_card_img" />
         <div>
           <h3>{{data.header}}</h3>
           <p>{{data.shortDescription}}</p>
         </div>
-
         <p class="find_out">Find out More</p>
-        <!--<button class="module-card-button">See More</button>-->
       </div>
     </div>
   </div>
