@@ -31,10 +31,11 @@ export class DuFactsBusiestMonthsComponent implements OnInit, OnDestroy {
     );
   }
 
+  // TODO: sort content
   getContent(language) {
-    this.contentService.getDuFactsBusiestMonths(language).subscribe(
-      (content) => this.duFactsBusiestMonthsContent = <Content[]>content
-    );
+    // this.contentService.getDuFactsBusiestMonths(language).subscribe(
+    //   (content) => this.duFactsBusiestMonthsContent = <Content[]>content
+    // );
   }
 
   ngOnInit() {

@@ -3,7 +3,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 // App specific
-import { ContentService } from '../../../shared/content-service/content.service';
 import { LanguagesService } from '../../../shared/languages/languages.service';
 
 // Models
@@ -19,8 +18,7 @@ export class DuFactsUsefulComponent implements OnInit, OnDestroy {
   langSubscription: Subscription;
   language: String;
 
-  constructor(private contentService: ContentService,
-              private languageService: LanguagesService) {
+  constructor(private languageService: LanguagesService) {
     this.langSubscription = languageService.subjectSourceAnnounced$.subscribe(
       (value) => {
         if (this.language !== value) {
@@ -31,19 +29,47 @@ export class DuFactsUsefulComponent implements OnInit, OnDestroy {
     );
   }
 
-  getContent(language) {
-    this.contentService.getDuFactsUsefulContent(language).subscribe(
-      (content) => {
-        this.duFactsUsefulContent = <Content[]>content;
+  getContent(language): void {
+    const usefulContent: Content[] = [
+      {
+        header: 'Airport Dubrovnik',
+        language: 'eng',
+        content: 'https://www.airport-dubrovnik.hr/en'
+      },
+      {
+        header: 'Zračna Luka Dubrovnik',
+        language: 'cro',
+        content: 'https://www.airport-dubrovnik.hr/'
+      },
+      {
+        header: 'Libertas City Bus Timetable',
+        language: 'eng',
+        content: 'https://www.libertasdubrovnik.hr/city-timetable/'
+      },
+      {
+        header: 'Libertas Gradski Vozni Red',
+        language: 'cro',
+        content: 'https://www.libertasdubrovnik.hr/gradski-raspored/'
+      },
+      {
+        header: 'Jadrolinija Dubrovnik',
+        language: 'cro',
+        content: 'https://www.jadrolinija.hr/o-nama/brodovi/trajekti/trajekti-za-duzobalne-i-medjunarodne-linije/dubrovnik'
+      },
+      {
+        header: 'Jadrolinija Ferry Dubrovnik',
+        language: 'eng',
+        content: 'https://www.jadrolinija.hr/en/about-us/ships/ferries/ferries-for-coastal-and-international-shipping/dubrovnik'
       }
-    );
+    ];
+    this.duFactsUsefulContent = usefulContent.filter(records => records.language === language);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.languageService.getLanguage();
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.langSubscription.unsubscribe();
   }
 }

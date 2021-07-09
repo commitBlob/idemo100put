@@ -16,7 +16,7 @@ import { Content } from '../../../shared/content-service/content.interface';
 })
 export class DubrovnikFactsWeRecommendComponent implements OnInit, OnDestroy {
 
-  weRecommendContent: Content[];
+  weRecommendContent: Content[] = [];
   langSubscription: Subscription;
   language: String;
 
@@ -33,9 +33,75 @@ export class DubrovnikFactsWeRecommendComponent implements OnInit, OnDestroy {
   }
 
   getContent(language) {
-    this.contentService.getDuWeRecommendContent(language).subscribe(
-      (content) => this.weRecommendContent = <Content[]>content
-    );
+    const weRecommendRecords: Content[] = [
+      {
+        image: '',
+        header: 'Stradun (Main Street)',
+        content: 'Dubrovnik',
+        language: 'eng'
+      },
+      {
+        image: '',
+        header: 'City Walls',
+        content: 'Dubrovnik',
+        language: 'eng'
+      },
+      {
+        image: '',
+        header: 'Cable Car',
+        content: 'Dubrovnik',
+        language: 'eng'
+      },
+      {
+        image: '',
+        header: 'Lokrum Island',
+        content: 'Dubrovnik',
+        language: 'eng'
+      },
+      {
+        image: '',
+        header: 'Restaurant Dubrovnik',
+        content: 'Dubrovnik',
+        language: 'eng'
+      },
+      {
+        image: '',
+        header: 'Wine Tours',
+        content: 'Pelješac',
+        language: 'eng'
+      },
+      {
+        image: '',
+        header: 'Stradun',
+        content: 'Dubrovnik',
+        language: 'cro'
+      },
+      {
+        image: '',
+        header: 'Gradske Zidine',
+        content: 'Dubrovnik',
+        language: 'cro'
+      },
+      {
+        image: '',
+        header: 'Žičara',
+        content: 'Dubrovnik',
+        language: 'cro'
+      },
+      {
+        image: '',
+        header: 'Restoran Dubrovnik',
+        content: 'Dubrovnik',
+        language: 'cro'
+      },
+      {
+        image: '',
+        header: 'Wine Tours',
+        content: 'Pelješac',
+        language: 'cro'
+      }
+    ];
+    this.weRecommendContent = weRecommendRecords.filter(record => record.language === language);
   }
 
   generateImage(image) {
