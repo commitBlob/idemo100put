@@ -19,6 +19,6 @@ export class CroatiaFactsWordsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.wordsService.getWords().subscribe((result) => this.words = result);
+    // this.wordsService.getWords().subscribe((result) => this.words = result);
   }
 }

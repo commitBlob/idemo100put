@@ -2,8 +2,8 @@
 
 <app-tabs-nav></app-tabs-nav>
 <div class="content" *ngIf="croatiaFactsContent">
-  <h2>{{croatiaFactsContent[0].header}}</h2>
-  <p>{{croatiaFactsContent[0].content}}</p>
+  <h2>{{croatiaFactsContent.header}}</h2>
+  <p>{{croatiaFactsContent.content}}</p>
   <app-cro-money></app-cro-money>
   <div *ngIf="language === 'eng'">
     <app-cro-data-power></app-cro-data-power>

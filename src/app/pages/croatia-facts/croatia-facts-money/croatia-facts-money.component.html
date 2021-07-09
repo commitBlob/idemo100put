@@ -1,7 +1,6 @@
 <div *ngIf="moneyContent">
-  <h3>{{moneyContent[0].header}}</h3>
-  <div [innerHTML]="moneyContent[0].content"></div>
-
+  <h3>{{moneyContent.header}}</h3>
+  <div [innerHTML]="moneyContent.content"></div>
   <div *ngIf="defaultCurrencyValue" class="currency_container">
     <h4 *ngIf="language === 'eng'">Currency List</h4>
     <div class="currency_card">
@@ -28,9 +27,9 @@
         <p> ~ {{kunaBaseList['USD'] | number:'1.2-2'}} Kuna</p>
       </div>
     </div>
-    <p class="small_italic">{{moneyContent[0].note}}
+    <p class="small_italic">{{moneyContent.note}}
       <a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html" target="_blank">
-        {{moneyContent[0].ECB}}
+        {{moneyContent.ECB}}
       </a>
     </p>
     <div *ngIf="language === 'eng'">

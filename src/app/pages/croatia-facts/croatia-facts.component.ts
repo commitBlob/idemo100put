@@ -3,7 +3,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 // App specific
-import { ContentService } from '../../shared/content-service/content.service';
 import { LanguagesService } from '../../shared/languages/languages.service';
 
 // Models
@@ -14,13 +13,12 @@ import { Content } from '../../shared/content-service/content.interface';
 })
 export class CroatiaFactsComponent implements OnInit, OnDestroy {
 
-  croatiaFactsContent: Content[];
+  croatiaFactsContent: Content;
   langSubscription: Subscription;
   language: String;
 
   constructor(
-    private languageService: LanguagesService,
-    private contentService: ContentService
+    private languageService: LanguagesService
   ) {
     this.langSubscription = languageService.subjectSourceAnnounced$.subscribe(
       (value) => {
@@ -32,19 +30,28 @@ export class CroatiaFactsComponent implements OnInit, OnDestroy {
     );
   }
 
-  public ngOnInit() {
+  public ngOnInit(): void {
     this.languageService.getLanguage();
   }
 
-  public getContent(language) {
-    this.contentService.getCroatiaFactsContent(language).subscribe(
-      (content) => {
-        this.croatiaFactsContent = <Content[]>content;
+  public getContent(language): void {
+    const croFactsText: Content[] = [
+      {
+        header: 'Croatia Facts',
+        language: 'eng',
+        content: 'Before you join the ever-growing group of people who already visited Croatia and fell in love with its culture, ' +
+          'food, coastline, and people; you might find it handy to familiarize yourself with a couple of useful facts about Croatia.'
+      },
+      {
+        header: 'O Hrvatskoj',
+        language: 'cro',
+        content: ''
       }
-    );
+    ];
+    this.croatiaFactsContent = croFactsText.find(pageContent => pageContent.language === language);
   }
 
-  public ngOnDestroy() {
+  public ngOnDestroy(): void {
     this.langSubscription.unsubscribe();
   }
 }
