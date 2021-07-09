@@ -21,7 +21,7 @@
       position: absolute;
       width: 16px;
       height: 16px;
-      background: $brand-secondary;
+      background: $brand-primary-darker;
       top: 10px;
       left: 10px;
       transform-origin: 20px 20px;
@@ -62,7 +62,7 @@
     margin-left: -50px;
     top: 50%;
     margin-top: 30px;
-    color: $brand-secondary;
+    color: $brand-primary-darker;
     font-size: 12px;
     text-align: center;
   }
