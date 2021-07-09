@@ -17,10 +17,8 @@ export class TabsNavigationComponent implements OnInit {
   ngOnInit() {
     this.apartmentList = JSON.parse(sessionStorage.getItem('apartmentsData'));
     if (!this.apartmentList) {
-      this.tns.getApartments().subscribe(
-        (res) => this.apartmentList = res,
-        error => this.errorMessage = <any>error,
-      );
+      this.apartmentList = this.tns.getApartments();
+      sessionStorage.setItem('apartmentsData', JSON.stringify(this.apartmentList));
     }
   }
 }
