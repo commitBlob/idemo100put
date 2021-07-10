@@ -1,6 +1,6 @@
 <div class="row_wrapper" *ngIf="galleryData">
   <div class="image_container" *ngFor="let imageData of galleryData.slice(0,6); let i = index" [class]="'image-'+ i"  (click)="openGallery(i)">
-    <img class="image_element" [src]="'data:image/jpg;base64,' + imageData.image" alt="Image">
+    <img class="image_element" [src]="imageData" alt="Image">
   </div>
 </div>
 <p class="gallery_note">Click on the images to open gallery</p>

@@ -14,6 +14,7 @@ import { NearbyPlaces } from './apartment-details/nearby-places.interface';
 import { of } from 'rxjs/internal/observable/of';
 import { _throw } from 'rxjs/observable/throw';
 import { apartmentsData } from './apartment-details/apartments.data';
+import { GlobalVariables } from '../../globals';
 
 // TODO: add all apartments data
 
