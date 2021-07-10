@@ -1,9 +1,9 @@
 
 export interface ApartmentDetails {
-  _id: string;
-  apartmentShortName: string;
-  apartmentName: string;
-  apartmentDescription: string;
+  _id?: string;
+  shortName: string;
+  name: string;
+  description: string;
   address: string;
   language: string;
   facilities: {

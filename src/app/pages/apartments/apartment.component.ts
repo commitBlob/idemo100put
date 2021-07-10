@@ -13,6 +13,7 @@ import { ApartmentDetails } from './apartment-details/apartment-details.interfac
 import { NearbyPlaces } from './apartment-details/nearby-places.interface';
 import { of } from 'rxjs/internal/observable/of';
 import { _throw } from 'rxjs/observable/throw';
+import { apartmentsData } from './apartment-details/apartments.data';
 
 // TODO: add all apartments data
 
@@ -24,7 +25,8 @@ export class ApartmentComponent implements OnInit, OnDestroy {
   private sub: any;
   langSubscription: Subscription;
   language: String;
-  apartmentData: ApartmentDetails[];
+  allApartments: ApartmentDetails[] = apartmentsData;
+  apartmentsData: ApartmentDetails;
   nearbyPlacesData: NearbyPlaces[];
   displayWarning = true;
 
@@ -57,22 +59,7 @@ export class ApartmentComponent implements OnInit, OnDestroy {
   }
 
   public getApartmentData(apName, lang) {
-    this.apartmentDetailsService.getApartmentData(apName, lang).subscribe(
-      (apData) => {
-        // check if there is any content returned. If not redirect to 404 page
-        if (apData.length === 0) {
-          this.router.navigate(['/four-oh-four']);
-        } else {
-          this.apartmentData = <ApartmentDetails[]>apData;
-        }
-      },
-      (error) => {
-        this.handleError(error);
-      },
-      () => {
-        this.getNearbyPlaces(apName);
-      }
-    );
+    this.apartmentsData = apartmentsData.find((apartment) => apartment.language === lang && apartment.shortName === apName);
   }
 
   public getNearbyPlaces(apartment) {
