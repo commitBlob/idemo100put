@@ -38,7 +38,6 @@ export class GalleryListComponent implements OnInit {
     }
   ];
   galleryData = [];
-
   imagesArray = [];
 
   constructor( private galleryService: GalleryService,
@@ -51,7 +50,6 @@ export class GalleryListComponent implements OnInit {
 
   generatePaths(): void {
     const collection = this.imageCollections.find((collectionData) => collectionData.name === this.apartmentShortName);
-    console.log('coll', collection);
     const counter = collection.count;
     for (let i = 1; i < counter; i++ ) {
       this.galleryData.push(`${collection.path}/${i}.jpg`);

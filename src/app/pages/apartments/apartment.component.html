@@ -23,11 +23,11 @@
     <div class="facilities_container">
       <h3>Facilities</h3>
       <div *ngFor="let facility of generateArray(apartmentsData.facilities)" class="facilities_card">
-        <div class="facilities_icon_container">
-          <i class="material-icons facilities_icon">{{facility.value}}</i>
+        <div class="facilities_icon_container" [ngClass]="{'red_container': facility.key === 'smoke_free'}">
+          <i class="material-icons facilities_icon">{{facility.key}}</i>
         </div>
         <div class="facilities_icon_name">
-          <span>{{facility.key | wordBreakPipe}}</span>
+          <span>{{facility.value }}</span>
         </div>
       </div>
     </div>

@@ -7,13 +7,13 @@ export interface ApartmentDetails {
   address: string;
   language: string;
   facilities: {
-    ac?: string;
-    freeWifi?: string;
-    heating?: string;
-    laundry?: string;
-    parking?: string;
-    saTV?: string;
-    smoking?: string;
+    ac_unit?: string;
+    wifi?: string;
+    whatshot?: string;
+    local_laundry_service?: string;
+    local_parking?: string;
+    tv?: string;
+    smoke_free?: string;
   };
   note: string;
   bookingLink: string;
