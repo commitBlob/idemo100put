@@ -19,7 +19,20 @@ export class ContactFormComponent implements OnInit {
 
   contactForm: FormGroup;
 
-  apartmentDetails = JSON.parse(sessionStorage.getItem('apartmentsData'));
+  apartmentDetails = [
+    {
+      name: 'Apartment Dubrovnik Center'
+    },
+    {
+      name: 'Lavanda'
+    },
+    {
+      name: 'Love & Hope'
+    },
+    {
+      name: 'Old Port'
+    }
+  ];
   minDate = moment();
 
   // tslint:disable-next-line

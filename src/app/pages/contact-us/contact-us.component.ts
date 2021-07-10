@@ -3,8 +3,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 // App specific
-import { ApartmentService } from '../../shared/apartments-service/apartments.service';
-import { ContentService } from '../../shared/content-service/content.service';
 import { LanguagesService } from '../../shared/languages/languages.service';
 
 // Models
@@ -15,17 +13,11 @@ import { Content } from '../../shared/content-service/content.interface';
 })
 export class ContactUsComponent implements OnInit, OnDestroy {
 
-  apartmentsData: String[];
-  apartmentSelected: any;
-  contactUsContent: Content[];
-  errorMessage: string;
+  contactUsContent: Content;
   langSubscription: Subscription;
   language: String;
 
-  constructor(
-    private  apartmentService: ApartmentService,
-    private languageService: LanguagesService,
-    private contentService: ContentService,
+  constructor(private languageService: LanguagesService,
   ) {
     this.langSubscription = languageService.subjectSourceAnnounced$.subscribe(
       (value) => {
@@ -37,23 +29,28 @@ export class ContactUsComponent implements OnInit, OnDestroy {
     );
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.languageService.getLanguage();
-    this.apartmentService.getApartments().subscribe(
-      (response) => this.apartmentsData = response,
-      (error) => this.errorMessage = <any>error
-    );
   }
 
-  getContent(language) {
-    this.contentService.getContactUsContent(language).subscribe(
-      (content) => {
-        this.contactUsContent = <Content[]>content;
+  getContent(language): void {
+    const contactUsText: Content[] = [
+      {
+        language: 'cro',
+        header: 'Pišite Nam',
+        content: 'Za sve upite molimo vas kontaktirajte nas koristeći kontakt formu ili pošaljite upit na email ' +
+          '<a href="mailto:bakara.is@net.hr">bakara.is@net.hr</a>'
+      },
+      {
+        language: 'eng',
+        header: 'Get in Touch',
+        content: 'For any inquiries please contact us using the form below or send a query to <a href="mailto:bakara.is@net.hr">bakara.is@net.hr</a>'
       }
-    );
+    ];
+    this.contactUsContent = contactUsText.find(record => record.language === language);
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.langSubscription.unsubscribe();
   }
 }

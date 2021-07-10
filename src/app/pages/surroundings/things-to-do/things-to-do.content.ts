@@ -1,4 +1,6 @@
 import { ThingsToDo } from './things-to-do.interface';
+import { GlobalVariables } from '../../../globals';
+
 export const todoContent: ThingsToDo[] = [
   {
     language: 'eng',
@@ -17,7 +19,7 @@ export const todoContent: ThingsToDo[] = [
       'entrance fee to the nature reserve (Lokrum island).  Please note, that overnight stay and ' +
       'smoking is not permitted on the island.</p>',
     shortName: 'lokrum',
-    image: '',
+    image: `${GlobalVariables.imagesPath}/things_to_do/lokrum.png`,
     visible: true
   },
   {
@@ -35,7 +37,7 @@ export const todoContent: ThingsToDo[] = [
       'svakih 30 minuta, dok tijekom ostalih mjeseci turističke sezone polazi svaki sat. Pušenje na Lokrumu' +
       ' je zabranjeno kao i kampiranje i nočenje.</p>',
     shortName: 'lokrum',
-    image: '',
+    image:`${GlobalVariables.imagesPath}/things_to_do/lokrum.png`,
     visible: true
   },
   {
@@ -54,7 +56,7 @@ export const todoContent: ThingsToDo[] = [
       'gorgeous knobbly lemons that also drip from the surrounding trees like blobs of yellow candle wax.</p>' +
       '<p>The celebrated Croatian painter Vlaho Bukovac (1855-1922) remains Cavtat\'s most famous son.</p>',
     shortName: 'cavtat',
-    image: '',
+    image:`${GlobalVariables.imagesPath}/things_to_do/cavtat.png`,
     visible: true
   },
   {
@@ -74,7 +76,7 @@ export const todoContent: ThingsToDo[] = [
       'miru skrovitih uvala i dugih šetnji uz more ili provoditi aktivan odmor uz brojne sportsko-rekreacijske' +
       ', zabavne i kulturne programe koji se nude.</p>',
     shortName: 'cavtat',
-    image: '',
+    image:`${GlobalVariables.imagesPath}/things_to_do/cavtat.png`,
     visible: true
   },
   {
@@ -91,7 +93,7 @@ export const todoContent: ThingsToDo[] = [
       'ceste, i probati vrhunska vina, kao što su Dingač i Postup, bio bi veliki propust.</p> <p>Malostonske ' +
       'kamenice i vrhunsko maslinovo ulje su delicije koje bi svaki ljubitelj hrane i garstronomije trebao provati.</p>',
     shortName: 'peljesac',
-    image: '',
+    image:`${GlobalVariables.imagesPath}/things_to_do/peljesac.png`,
     visible: true
   },
   {
@@ -111,7 +113,7 @@ export const todoContent: ThingsToDo[] = [
       ' premium quality wine is Postup, sometimes called the younger brother of Dingač.</p> <p>Red wine, oysters ' +
       'from the Mali Ston bay and highest quality extra virgin olive oil are must taste products for every visitor.</p>',
     shortName: 'peljesac',
-    image: '',
+    image:`${GlobalVariables.imagesPath}/things_to_do/peljesac.png`,
     visible: true
   },
   {
@@ -125,7 +127,7 @@ export const todoContent: ThingsToDo[] = [
       ' rest is dotted with fields, vineyards, and small villages. The western tip contains Mljet National Park, where you' +
       ' will find the lush vegetation, pine forests and spectacular saltwater lakes exceptionally scenic.</p>',
     shortName: 'mljet',
-    image: '',
+    image:`${GlobalVariables.imagesPath}/things_to_do/mljet.png`,
     visible: true
   },
   {
@@ -139,7 +141,7 @@ export const todoContent: ThingsToDo[] = [
       'vegetacija, borove šume i spektakularna morska jezera iznimno slikovita. To je netaknuta oaza mira koja je, prema ' +
       'legendi, osvojila Odiseja sedam godina.</p>',
     shortName: '',
-    image: '',
+    image:`${GlobalVariables.imagesPath}/things_to_do/mljet`,
     visible: true
   },
   {
@@ -155,7 +157,7 @@ export const todoContent: ThingsToDo[] = [
       'is a must-see performance of sword dance.</p><p>Arguably, the best of all Croatian white wines are produced from pošip' +
       ' grapes, which are only grown here.</p><p>It is also to believe, that one of the greatest explorers, Marco Polo was born in Korčula.</p>',
     shortName: 'korcula',
-    image: '',
+    image:`${GlobalVariables.imagesPath}/things_to_do/korcula.png`,
     visible: true
   },
   {
@@ -171,7 +173,7 @@ export const todoContent: ThingsToDo[] = [
       'najbolje od svih hrvatskih bijelih vina proizvodi se od grožđa Pošipa koje se ovdje uzgaja. </p><p>Također treba ' +
       'vjerovati da je na Korčuli rođen Marko Polo, jedan od najvećih istraživača.</p>',
     shortName: 'korcula',
-    image: '',
+    image:`${GlobalVariables.imagesPath}/things_to_do/korcula.png`,
     visible: true
   },
   {
@@ -188,7 +190,7 @@ export const todoContent: ThingsToDo[] = [
       'they all have one thing in common - exceptional beauty.</p><hr /> <p class="small_header">For timetable please visit ' +
       'folowing link <a href="http://www.jadrolinija.hr/en/sailing-schedule/" target="_blank">Jadrolinija Sailing Schedule</a></p>',
     shortName: 'elafiti',
-    image: '',
+    image:`${GlobalVariables.imagesPath}/things_to_do/elafiti.png`,
     visible: true
   },
   {
@@ -203,7 +205,7 @@ export const todoContent: ThingsToDo[] = [
       'su posebno poznati po najsposobnijim pomorcima koji potijeću odavde.</p><p>Svi otoci imaju jednu zajedničku stvar - ' +
       'iznimnu ljepotu.</p>',
     shortName: 'elafiti',
-    image: '',
+    image:`${GlobalVariables.imagesPath}/things_to_do/elafiti.png`,
     visible: true
   },
   {
@@ -221,7 +223,7 @@ export const todoContent: ThingsToDo[] = [
       'those, who want to experience the idyllic rural life inside Konavle, will certainly find many features of rural tourism ' +
       'that will enable them, at least for a second, to escape from the city noise and revive forgotten images of their childhood.</p>',
     shortName: 'konavle',
-    image: '',
+    image:`${GlobalVariables.imagesPath}/things_to_do/konavle.png`,
     visible: true
   },
   {
@@ -237,7 +239,7 @@ export const todoContent: ThingsToDo[] = [
       'žele doživjeti idilični seoski život u Konavlima sigurno će pronaći mnoge značajke ruralnog turizma koje će im omogućiti, ' +
       'barem na trenutak, pobjeći iz gradske buke i oživjeti zaboravljene slike djetinjstva.</p>',
     shortName: 'konavle',
-    image: '',
+    image:`${GlobalVariables.imagesPath}/things_to_do/konavle.png`,
     visible: true
   },
   {
@@ -254,7 +256,7 @@ export const todoContent: ThingsToDo[] = [
       'white pebbles of the streets and walls.</p><p>The clash of western and eastern worlds, is one of the most ' +
       'interesting features of the city, which one must experience strolling through the city’s narrow little streets.</p>',
     shortName: 'mostar',
-    image: '',
+    image:`${GlobalVariables.imagesPath}/things_to_do/mostar.png`,
     visible: true
   },
   {
@@ -267,7 +269,7 @@ export const todoContent: ThingsToDo[] = [
       'spajajući istok sa zapadom.</p><p>Sukob zapadnih i istočnih svjetova jedan je od najzanimljivijih obilježja grada, ' +
       'koje se mora doživjeti šetajući uskim gradskim uličicama.</p>',
     shortName: 'mostar',
-    image: '',
+    image:`${GlobalVariables.imagesPath}/things_to_do/mostar.png`,
     visible: true
   }
 ];

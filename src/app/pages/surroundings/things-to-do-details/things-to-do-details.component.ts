@@ -48,7 +48,7 @@ export class ThingsToDoDetailsComponent implements OnInit, OnDestroy {
 
   getContent(language, attraction) {
     this.attractionContent = todoContent.find(toDo => toDo.language === language && toDo.shortName === attraction);
-    this.bannerImage = `${GlobalVariables.imagesPath}/banners/${attraction}.jpg`;
+    this.bannerImage = `${GlobalVariables.imagesPath}/banners/${attraction}.png`;
   }
 
   getSideTable(language, attraction) {

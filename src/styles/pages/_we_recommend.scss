@@ -7,7 +7,6 @@
     flex-flow: column;
   }
 
-
   .recommend_card {
     $box-width: 100%;
     $max-width: 300px;
@@ -37,6 +36,7 @@
         z-index: z(default);
         position: relative;
         margin-top: .5em;
+        max-height: 345px;
       }
 
       .recommend_card_content {

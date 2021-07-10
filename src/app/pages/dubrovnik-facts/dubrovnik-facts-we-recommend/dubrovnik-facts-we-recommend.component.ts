@@ -1,11 +1,10 @@
 // Core
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 // App specific
 import { LanguagesService } from '../../../shared/languages/languages.service';
-import { ContentService } from '../../../shared/content-service/content.service';
+import { GlobalVariables } from '../../../globals';
 
 // Models
 import { Content } from '../../../shared/content-service/content.interface';
@@ -20,8 +19,7 @@ export class DubrovnikFactsWeRecommendComponent implements OnInit, OnDestroy {
   langSubscription: Subscription;
   language: String;
 
-  constructor(private languageService: LanguagesService,
-              private contentService: ContentService) {
+  constructor(private languageService: LanguagesService) {
     this.langSubscription = languageService.subjectSourceAnnounced$.subscribe(
       (value) => {
         if (this.language !== value) {
@@ -32,70 +30,76 @@ export class DubrovnikFactsWeRecommendComponent implements OnInit, OnDestroy {
     )
   }
 
-  getContent(language) {
+  getContent(language): void {
     const weRecommendRecords: Content[] = [
       {
-        image: '',
+        image: `${GlobalVariables.imagesPath}/recommendations/stradun.png`,
         header: 'Stradun (Main Street)',
         content: 'Dubrovnik',
         language: 'eng'
       },
       {
-        image: '',
+        image: `${GlobalVariables.imagesPath}/recommendations/city_walls.png`,
         header: 'City Walls',
         content: 'Dubrovnik',
         language: 'eng'
       },
       {
-        image: '',
+        image: `${GlobalVariables.imagesPath}/recommendations/cable_car.png`,
         header: 'Cable Car',
         content: 'Dubrovnik',
         language: 'eng'
       },
       {
-        image: '',
+        image: `${GlobalVariables.imagesPath}/recommendations/lokrum.png`,
         header: 'Lokrum Island',
         content: 'Dubrovnik',
         language: 'eng'
       },
       {
-        image: '',
+        image: `${GlobalVariables.imagesPath}/recommendations/lokrum.png`,
+        header: 'Lokrum',
+        content: 'Dubrovnik',
+        language: 'cro'
+      },
+      {
+        image: `${GlobalVariables.imagesPath}/recommendations/restaurant_du.png`,
         header: 'Restaurant Dubrovnik',
         content: 'Dubrovnik',
         language: 'eng'
       },
       {
-        image: '',
+        image: `${GlobalVariables.imagesPath}/recommendations/peljesac.png`,
         header: 'Wine Tours',
         content: 'Pelješac',
         language: 'eng'
       },
       {
-        image: '',
+        image: `${GlobalVariables.imagesPath}/recommendations/stradun.png`,
         header: 'Stradun',
         content: 'Dubrovnik',
         language: 'cro'
       },
       {
-        image: '',
+        image: `${GlobalVariables.imagesPath}/recommendations/city_walls.png`,
         header: 'Gradske Zidine',
         content: 'Dubrovnik',
         language: 'cro'
       },
       {
-        image: '',
+        image: `${GlobalVariables.imagesPath}/recommendations/cable_car.png`,
         header: 'Žičara',
         content: 'Dubrovnik',
         language: 'cro'
       },
       {
-        image: '',
+        image: `${GlobalVariables.imagesPath}/recommendations/restaurant_du.png`,
         header: 'Restoran Dubrovnik',
         content: 'Dubrovnik',
         language: 'cro'
       },
       {
-        image: '',
+        image: `${GlobalVariables.imagesPath}/recommendations/peljesac.png`,
         header: 'Wine Tours',
         content: 'Pelješac',
         language: 'cro'
@@ -104,15 +108,11 @@ export class DubrovnikFactsWeRecommendComponent implements OnInit, OnDestroy {
     this.weRecommendContent = weRecommendRecords.filter(record => record.language === language);
   }
 
-  generateImage(image) {
-    return 'data:image/png;base64,' + image;
-  }
-
-  ngOnInit() {
+  ngOnInit(): void {
     this.languageService.getLanguage();
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.langSubscription.unsubscribe();
   }
 }

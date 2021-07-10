@@ -48,7 +48,16 @@ export class DubrovnikFactsComponent implements OnInit, OnDestroy {
         header: 'Dubrovnik Facts'
       },
       {
-        content: '',
+        content: '<p>Dragi gosti, ono što je posebno za vidjeti u Dubrovniku je Stari Grad. Povijest starog dijela Dubrovnika potječe iz 7 st. tako ' +
+          'da u našem Gradu imamo mnoge znamenitosti kao najstariju apoteku u Evropi iz 15st. Zatim jednu od najstarijih sinagoga u Evropi. ' +
+          'Također Dubrovnik obiluje prekrasnim muzejima od kojih je najpoznatiji muzej Knežev dvor. U staroj gradskoj jezgri se nalazi i pomorski ' +
+          'muzej jer Dubrovnik ima veliku tradiciju pomorstva, također muzej Rupe, Prirodoslovni muzej, galerije...</p><p>Ono što se obavezno treba ' +
+          'vidjeti je glavna ulica Stradun, gradske zidine, otok Lokrum, žičara... Ovisno o Vašem boravku definitivno napravite mjesta za otok ' +
+          'Korčulu gdje možete uživati u vinskim cestama, i vidjeti kuću Marka Pola. Također možete napraviti izlet za Elafitske otoke, nacionalni ' +
+          'park Mljet, jer u okolici Dubrovnika imamo mnogo prekrasnih otoka. Možete posjeti i prekrasan mali gradić Cavtat udaljen svega 18km od ' +
+          'Dubrovnika.</p><p>Prilikom Vašeg dolaska ćemo Vam preporučiti i dobra mjesta gdje se može nešto pojesti, dobra mjesta za ' +
+          'kupanje, pokazati cemo Vam i lokacije gdje su snimani filmovi kao npr. Zvijezdane staze, Robin Hood, Igre prijestolja i mnogi drugi</p><p>' +
+          'Dođite i uživajte u našem Gradu. Mi smo tu za bilo kakvu pomoć za vrijeme Vašeg boravka.</p>',
         language: 'cro',
         header: 'O Dubrovniku'
       }

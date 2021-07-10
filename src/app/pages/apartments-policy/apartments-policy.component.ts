@@ -4,7 +4,6 @@ import { Subscription } from 'rxjs/Subscription';
 
 // App specific
 import { LanguagesService } from '../../shared/languages/languages.service';
-import { ContentService } from '../../shared/content-service/content.service';
 
 // Models
 import { Content } from '../../shared/content-service/content.interface';
@@ -14,13 +13,12 @@ import { Content } from '../../shared/content-service/content.interface';
 })
 export class ApartmentsPolicyComponent implements OnInit, OnDestroy {
 
-  apartmentsPolicyContent: Content[];
+  apartmentsPolicyContent: Content;
   langSubscription: Subscription;
   language: String;
 
   constructor(
     private languageService: LanguagesService,
-    private contentService: ContentService
   ) {
     this.langSubscription = languageService.subjectSourceAnnounced$.subscribe(
       (value) => {
@@ -32,19 +30,27 @@ export class ApartmentsPolicyComponent implements OnInit, OnDestroy {
     );
   }
 
-  public ngOnInit() {
+  public ngOnInit(): void {
     this.languageService.getLanguage();
   }
 
-  public getContent(language) {
-    this.contentService.getPolicyContent(language).subscribe(
-      (content) => {
-        this.apartmentsPolicyContent = <Content[]>content;
+  public getContent(language): void {
+    const policyContent: Content[] = [
+      {
+        language: 'eng',
+        content: '',
+        header: 'Apartment Policy'
+      },
+      {
+        language: 'cro',
+        content: '',
+        header: 'Kućna Pravila'
       }
-    );
+    ];
+    this.apartmentsPolicyContent = policyContent.find((content) => { return content.language === language});
   }
 
-  public ngOnDestroy() {
+  public ngOnDestroy(): void {
     this.langSubscription.unsubscribe();
   }
 }
