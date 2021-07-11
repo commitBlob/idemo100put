@@ -1,5 +1,9 @@
 .dialog-wrapper {
   padding: 10px;
+
+  @include respond((max: 799px)) {
+    padding: 0;
+  }
 }
 
 button {

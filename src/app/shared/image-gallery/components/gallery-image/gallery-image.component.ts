@@ -1,6 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { timer } from 'rxjs/observable/timer';
-import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-gallery-image',
@@ -17,19 +15,11 @@ export class GalleryImageComponent implements OnInit {
   activeImage: string;
   activeImageIndex: number;
 
-  timer$: Observable<any>;
-  subscription: Subscription;
   constructor() {
   }
 
   ngOnInit(): void {
     this.imageSelected(this.imageIndex);
-
-    this.timer$ = timer(5000, 5000);
-
-    this.subscription = this.timer$.subscribe((res) => {
-      this.next('');
-    });
   }
 
   imageSelected(image): void {
@@ -37,10 +27,7 @@ export class GalleryImageComponent implements OnInit {
     this.activeImageIndex = image;
   }
 
-  previous(userClick): void {
-    if (userClick === 'click') {
-      this.resetTimer();
-    }
+  previous(): void {
     let imageIndex = this.activeImageIndex;
     if (imageIndex > 0) {
       imageIndex--;
@@ -51,13 +38,9 @@ export class GalleryImageComponent implements OnInit {
       this.activeImage = this.imagesArray[arrayLength - 1];
       this.activeImageIndex = arrayLength - 1;
     }
-
   }
 
-  next(userClick): void {
-    if (userClick === 'click') {
-      this.resetTimer();
-    }
+  next(): void {
     let imageIndex = this.activeImageIndex;
     const arrayLength = this.imagesArray.length - 1;
     if (imageIndex === arrayLength) {
@@ -68,23 +51,15 @@ export class GalleryImageComponent implements OnInit {
       this.activeImage = this.imagesArray[imageIndex];
       this.activeImageIndex = imageIndex;
     }
-
-  }
-
-  resetTimer(): void {
-    this.subscription.unsubscribe();
-    this.subscription = this.timer$.subscribe((res) => {
-      this.next('');
-    });
   }
 
   swipe(event): void {
     switch (event) {
       case 'swiperight':
-        this.next('');
+        this.next();
         break;
       case 'swipeleft':
-        this.previous('');
+        this.previous();
         break;
     }
   }
