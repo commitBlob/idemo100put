@@ -40,7 +40,7 @@ export class ThingsToDoDetailsComponent implements OnInit, OnDestroy {
         if (this.language !== value) {
           this.language = value;
           this.getContent(value, this.attraction);
-          this.getSideTable(value, this.attraction);
+          // this.getSideTable(value, this.attraction);
         }
       }
     );
