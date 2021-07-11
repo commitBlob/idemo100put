@@ -1,8 +1,7 @@
 // Core
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
+import { Observable, Subscription } from 'rxjs';
 
 // App specific
 import { ApartmentDetailsService } from './apartment-details/apartment-details.service';

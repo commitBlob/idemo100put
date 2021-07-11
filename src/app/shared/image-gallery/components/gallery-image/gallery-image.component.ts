@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { timer } from 'rxjs/observable/timer';
-import { Observable } from 'rxjs/Rx';
-import { Subscription } from 'rxjs/Subscription';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-gallery-image',

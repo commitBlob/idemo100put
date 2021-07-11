@@ -8,16 +8,11 @@ export const GlobalNavigation: NavLinks[] = [
     linkPath: 'welcome',
     linkIcon: 'home'
   },
-  {
-    linkName: 'About Us',
-    linkPath: 'about-us',
-    linkIcon: 'people',
-  },
-  {
-    linkName: 'Contact Us',
-    linkPath: 'contact-us',
-    linkIcon: 'chat',
-  },
+  // {
+  //   linkName: 'About Us',
+  //   linkPath: 'about-us',
+  //   linkIcon: 'people',
+  // },
   {
     linkName: 'Croatia Facts',
     linkPath: 'cro-facts',
@@ -33,14 +28,19 @@ export const GlobalNavigation: NavLinks[] = [
     linkPath: 'location',
     linkIcon: 'place',
   },
-  {
-    linkName: 'Policy',
-    linkPath: 'policy',
-    linkIcon: 'content_paste',
-  },
+  // {
+  //   linkName: 'Policy',
+  //   linkPath: 'policy',
+  //   linkIcon: 'content_paste',
+  // },
   {
     linkName: 'Surroundings',
     linkPath: 'surroundings',
     linkIcon: 'landscape',
+  },
+  {
+    linkName: 'Contact Us',
+    linkPath: 'contact-us',
+    linkIcon: 'chat',
   }
 ]

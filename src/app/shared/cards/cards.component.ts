@@ -1,6 +1,6 @@
 // Core
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 // App specific
 import { CardsService } from './cards.service';
