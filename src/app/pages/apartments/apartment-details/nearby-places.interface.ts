@@ -1,5 +1,5 @@
 export interface NearbyPlaces {
-  _id: string;
+  _id?: string;
   apartmentName: string;
   placeName: string;
   imeLokacije: string;

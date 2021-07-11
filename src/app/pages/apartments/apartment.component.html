@@ -15,10 +15,11 @@
       <p class="warning_message">Note: {{apartmentsData.note}}</p>
       <i class="material-icons dismiss_icon" (click)="closeBlock($event)">close</i>
     </div>
-    <hr class="apartment_details_hr"/>
-    <div class="pricelist_container">
-      <app-pricelist></app-pricelist>
-    </div>
+<!--    TODO: add pricelist -->
+<!--    <hr class="apartment_details_hr"/>-->
+<!--    <div class="pricelist_container">-->
+<!--      <app-pricelist></app-pricelist>-->
+<!--    </div>-->
     <hr class="apartment_details_hr"/>
     <div class="facilities_container">
       <h3>Facilities</h3>
@@ -32,9 +33,9 @@
       </div>
     </div>
     <hr class="apartment_details_hr"/>
-    <div *ngIf="nearbyPlacesData" class="nearby_places_container">
+    <div *ngIf="nearbyPlaces" class="nearby_places_container">
       <h3>Nearby Places</h3>
-      <div *ngFor="let place of nearbyPlacesData" class="nearby_place_card">
+      <div *ngFor="let place of nearbyPlaces" class="nearby_place_card">
         <div *ngIf="language === 'eng'; then english else croatian"></div>
           <ng-template #english>
             <div class="nearby_icon_container">

@@ -15,6 +15,7 @@ import { of } from 'rxjs/internal/observable/of';
 import { _throw } from 'rxjs/observable/throw';
 import { apartmentsData } from './apartment-details/apartments.data';
 import { GlobalVariables } from '../../globals';
+import { nearbyPlacesData } from './apartment-details/nearby-places.data';
 
 // TODO: add all apartments data
 
@@ -28,7 +29,7 @@ export class ApartmentComponent implements OnInit, OnDestroy {
   language: String;
   allApartments: ApartmentDetails[] = apartmentsData;
   apartmentsData: ApartmentDetails;
-  nearbyPlacesData: NearbyPlaces[];
+  nearbyPlaces: NearbyPlaces[];
   displayWarning = true;
 
   constructor(private route: ActivatedRoute,
@@ -52,6 +53,7 @@ export class ApartmentComponent implements OnInit, OnDestroy {
 
   public ngOnInit() {
     this.languageService.getLanguage();
+    this.getNearbyPlaces(this.apartmentName);
   }
 
   public ngOnDestroy() {
@@ -64,11 +66,7 @@ export class ApartmentComponent implements OnInit, OnDestroy {
   }
 
   public getNearbyPlaces(apartment) {
-    this.apartmentDetailsService.getNearbys(apartment).subscribe(
-      (data) => {
-        this.nearbyPlacesData = <NearbyPlaces[]>data;
-      }
-    );
+    this.nearbyPlaces = nearbyPlacesData.filter(place => place.apartmentName === apartment);
   }
 
   public generateArray(obj) {

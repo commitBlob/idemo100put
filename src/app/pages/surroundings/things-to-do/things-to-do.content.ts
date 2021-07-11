@@ -141,7 +141,7 @@ export const todoContent: ThingsToDo[] = [
       'vegetacija, borove šume i spektakularna morska jezera iznimno slikovita. To je netaknuta oaza mira koja je, prema ' +
       'legendi, osvojila Odiseja sedam godina.</p>',
     shortName: '',
-    image:`${GlobalVariables.imagesPath}/things_to_do/mljet`,
+    image:`${GlobalVariables.imagesPath}/things_to_do/mljet.png`,
     visible: true
   },
   {
