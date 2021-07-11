@@ -316,4 +316,32 @@ export const nearbyPlacesData: NearbyPlaces[] = [
     distance: 0,
     icon: 'center_focus_strong'
   },
+  {
+    apartmentName: 'old-town',
+    placeName: 'Dubrovnik main bus station',
+    imeLokacije: 'Autobusni Kolodvor',
+    distance: 3500,
+    icon: 'directions_bus'
+  },
+  {
+    apartmentName: 'love-and-hope',
+    placeName: 'Dubrovnik main bus station',
+    imeLokacije: 'Autobusni Kolodvor',
+    distance: 6000,
+    icon: 'directions_bus'
+  },
+  {
+    apartmentName: 'old-port',
+    placeName: 'Dubrovnik main bus station',
+    imeLokacije: 'Autobusni Kolodvor',
+    distance: 4400,
+    icon: 'directions_bus'
+  },
+  {
+    apartmentName: 'lavanda',
+    placeName: 'Dubrovnik main bus station',
+    imeLokacije: 'Autobusni Kolodvor',
+    distance: 4400,
+    icon: 'directions_bus'
+  }
 ];
