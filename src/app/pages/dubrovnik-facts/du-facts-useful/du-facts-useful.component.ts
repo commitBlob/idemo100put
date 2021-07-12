@@ -60,6 +60,36 @@ export class DuFactsUsefulComponent implements OnInit, OnDestroy {
         header: 'Jadrolinija Ferry Dubrovnik',
         language: 'eng',
         content: 'https://www.jadrolinija.hr/en/about-us/ships/ferries/ferries-for-coastal-and-international-shipping/dubrovnik'
+      },
+      {
+        header: 'Dubrovnik Summer Festival',
+        language: 'eng',
+        content: 'https://www.dubrovnik-festival.hr/en/'
+      },
+      {
+        header: 'Dubrovačke Ljetne Igre',
+        language: 'cro',
+        content: 'https://www.dubrovnik-festival.hr/'
+      },
+      {
+        header: 'Hrvatska Turistička Zajednica',
+        language: 'cro',
+        content: 'https://www.htz.hr/hr-HR'
+      },
+      {
+        header: 'Croatia National Tourist Board',
+        language: 'eng',
+        content: 'https://www.htz.hr/en-GB'
+      },
+      {
+        header: 'Koronavirus Upute',
+        language: 'cro',
+        content: 'https://croatia.hr/hr-HR/koronavirus-covid-19-pitanja-i-odgovori'
+      },
+      {
+        header: 'Covid-19 and Travel Information',
+        language: 'eng',
+        content: 'https://croatia.hr/en-GB/coronavirus-2019-ncov-q-and-a'
       }
     ];
     this.duFactsUsefulContent = usefulContent.filter(records => records.language === language);
