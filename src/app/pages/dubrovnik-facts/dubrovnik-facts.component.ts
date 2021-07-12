@@ -42,8 +42,9 @@ export class DubrovnikFactsComponent implements OnInit, OnDestroy {
           'Old Town, surrounded by 2 kilometres of city walls, is dating from the 7th century, and one can find plenty of museums, monuments, and ' +
           'galleries built in baroque style. The most famous of all them is Rector\'s Palace, which is highly recommended to visit.</p><p>We would ' +
           'also recommend visiting island Lokrum, taking a ride with the cable car to the top of Srd hill, going on a trip to the small town of ' +
-          'Cavtat, and many other activities.,</p><p>Come and enjoy our city and its surroundings. We are here to help should you need any assistance' +
-          ' during your stay.</p>',
+          'Cavtat, and many other activities.,</p><p>We would aslo advise to buy Dubrovnik Card as it allows acces to some of the top attractions. ' +
+          'For more information visit <a target="_blank" href="http://www.dubrovnikcard.com/">Dubrovnik Card</a>.</p><p>Come and enjoy our city and ' +
+          'its surroundings. We are here to help should you need any assistance during your stay.</p>',
         language: 'eng',
         header: 'Dubrovnik Facts'
       },
@@ -57,7 +58,8 @@ export class DubrovnikFactsComponent implements OnInit, OnDestroy {
           'park Mljet, jer u okolici Dubrovnika imamo mnogo prekrasnih otoka. Možete posjeti i prekrasan mali gradić Cavtat udaljen svega 18km od ' +
           'Dubrovnika.</p><p>Prilikom Vašeg dolaska ćemo Vam preporučiti i dobra mjesta gdje se može nešto pojesti, dobra mjesta za ' +
           'kupanje, pokazati cemo Vam i lokacije gdje su snimani filmovi kao npr. Zvijezdane staze, Robin Hood, Igre prijestolja i mnogi drugi</p><p>' +
-          'Dođite i uživajte u našem Gradu. Mi smo tu za bilo kakvu pomoć za vrijeme Vašeg boravka.</p>',
+          'Također Predlažemo da kupit <a target="_blank" href="http://www.dubrovnikcard.com/language/hr/">Dubrovačku Karticu</a> s kojom mozete ' +
+          'posjetiti najznačajnije znamenitosti Grada Dubrovnika. Dođite i uživajte u našem Gradu. Mi smo tu za bilo kakvu pomoć za vrijeme Vašeg boravka.</p>',
         language: 'cro',
         header: 'O Dubrovniku'
       }

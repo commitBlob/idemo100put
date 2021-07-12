@@ -90,6 +90,16 @@ export class DuFactsUsefulComponent implements OnInit, OnDestroy {
         header: 'Covid-19 and Travel Information',
         language: 'eng',
         content: 'https://croatia.hr/en-GB/coronavirus-2019-ncov-q-and-a'
+      },
+      {
+        header: 'Dubrovačka Kartica',
+        language: 'cro',
+        content: 'http://www.dubrovnikcard.com/language/hr/'
+      },
+      {
+        header: 'Dubrovnik Card',
+        language: 'eng',
+        content: 'http://www.dubrovnikcard.com/'
       }
     ];
     this.duFactsUsefulContent = usefulContent.filter(records => records.language === language);
