@@ -16,10 +16,10 @@
       <i class="material-icons dismiss_icon" (click)="closeBlock($event)">close</i>
     </div>
 <!--    TODO: add pricelist -->
-<!--    <hr class="apartment_details_hr"/>-->
-<!--    <div class="pricelist_container">-->
-<!--      <app-pricelist></app-pricelist>-->
-<!--    </div>-->
+    <hr class="apartment_details_hr"/>
+    <div class="pricelist_container">
+      <app-pricelist [apartmentName]="apartmentName"></app-pricelist>
+    </div>
     <hr class="apartment_details_hr"/>
     <div class="facilities_container">
       <h3>Facilities</h3>
