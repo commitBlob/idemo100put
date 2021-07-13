@@ -33,7 +33,7 @@ export const nearbyPlacesData: NearbyPlaces[] = [
     apartmentName: 'lavanda',
     placeName: 'Supermarket',
     imeLokacije: 'Supermarket',
-    distance: 350,
+    distance: 100,
     icon: 'local_grocery_store'
   },
   {
@@ -110,7 +110,7 @@ export const nearbyPlacesData: NearbyPlaces[] = [
     apartmentName: 'old-port',
     placeName: 'Supermarket',
     imeLokacije: 'Supermarket',
-    distance: 350,
+    distance: 100,
     icon: 'local_grocery_store'
   },
   {
