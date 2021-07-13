@@ -4,18 +4,10 @@
     <p class="location_details"><i class="material-icons location_icon">place</i>{{apartmentsData.address}}</p>
     <app-gallery-list [apartmentShortName]="apartmentName"></app-gallery-list>
     <div class="apartment_description" [innerHTML]="apartmentsData.description"></div>
-    <div *ngIf="language === 'eng'; then minEng else minCro"></div>
-    <ng-template #minEng>
-      <p>Minimum stay: {{apartmentsData.minStay}} Nights</p>
-    </ng-template>
-    <ng-template #minCro>
-      <p>Minimalan broj nocenja: {{apartmentsData.minStay}}</p>
-    </ng-template>
-    <div class="warning_block" *ngIf="displayWarning">
+    <div class="warning_block" *ngIf="apartmentsData.note">
       <p class="warning_message">Note: {{apartmentsData.note}}</p>
       <i class="material-icons dismiss_icon" (click)="closeBlock($event)">close</i>
     </div>
-<!--    TODO: add pricelist -->
     <hr class="apartment_details_hr"/>
     <div class="pricelist_container">
       <app-pricelist [apartmentName]="apartmentName"></app-pricelist>

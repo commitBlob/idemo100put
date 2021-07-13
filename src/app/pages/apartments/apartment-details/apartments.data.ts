@@ -8,7 +8,7 @@ export const apartmentsData: ApartmentDetails[] = [
       ', as well as the endless sea with Island Lokrum.</p><p>Thanks to its great location Ploče Gate can be reached within 10 minutes on foot, ' +
       'while another entrance to the Old Town, Pile Gate is only 1.4 km away.</p><p>The nearest coffee shop and grocery store is 300 metres away,' +
       ' while ATM’s, restaurants, and different beaches can be reached within 500 metres. The apartment features free parking in front of the house' +
-      ' in the residential neighbourhood.</p>',
+      ' in the residential neighbourhood.</p><p>We can also help you organize transfer from and to the Dubrovnik Airport if necessary.</p>',
     address: 'Dubrovačkog odreda 16, 20000 Dubrovnik, Croatia',
     language: 'eng',
     facilities: {
@@ -16,13 +16,11 @@ export const apartmentsData: ApartmentDetails[] = [
       wifi: 'WiFi',
       whatshot: 'Heating',
       local_laundry_service: 'Laundry machine',
-      local_parking: 'Free parking',
       tv: 'SAT TV',
       smoke_free: 'No smoking',
     },
     note: 'Please note, that there are 4 sets of stairs leading to the entrance, hence it’s not wheelchair accessible.',
-    bookingLink: '',
-    minStay: 3,
+    bookingLink: ''
   },
   {
     shortName: 'love-and-hope',
@@ -38,13 +36,11 @@ export const apartmentsData: ApartmentDetails[] = [
       wifi: 'WiFi',
       whatshot: 'Heating',
       local_laundry_service: 'Laundry machine',
-      local_parking: 'Free parking',
       tv: 'SAT TV',
       smoke_free: 'No smoking',
     },
     note: '',
-    bookingLink: '',
-    minStay: 3,
+    bookingLink: ''
   },
   {
     shortName: 'lavanda',
@@ -56,20 +52,18 @@ export const apartmentsData: ApartmentDetails[] = [
       'or dinner watching the blue of the sea or the green of the pines, and the sunset behind the old stone fortresses.</p>' +
       '<p>Only 50 meters from our house there is a long sandy beach with many facilities, called Banje. It is known as one ' +
       'of the most beautiful beaches of the Mediterranean. The nearest grocery store is 200 meters away, as well as the ' +
-      'entrance gate to the Old Town.</p>',
+      'entrance gate to the Old Town.</p><p>We can also help you organize transfer from and to the Dubrovnik Airport if necessary.</p>',
     address: 'Ul. Vicka Lovrina 2, 20000 Dubrovnik, Croatia',
     language: 'eng',
     facilities: {
       ac_unit: 'AC',
       wifi: 'WiFi',
       whatshot: 'Heating',
-      local_parking: 'Free parking',
       tv: 'SAT TV',
       smoke_free: 'No smoking',
     },
     note: '',
-    bookingLink: '',
-    minStay: 2,
+    bookingLink: ''
   },
   {
     shortName: 'lavanda',
@@ -85,13 +79,11 @@ export const apartmentsData: ApartmentDetails[] = [
       ac_unit: 'AC',
       wifi: 'WiFi',
       whatshot: 'Heating',
-      local_parking: 'Free parking',
       tv: 'SAT TV',
       smoke_free: 'No smoking',
     },
     note: '',
-    bookingLink: '',
-    minStay: 2,
+    bookingLink: ''
   },
   {
     shortName: 'old-port',
@@ -102,20 +94,19 @@ export const apartmentsData: ApartmentDetails[] = [
       'lunch or dinner watching the blue of the sea or the green of the pines, and the sunset behind the old stone ' +
       'fortresses.</p><p>Only 50 meters from our house there is a long sandy beach with many facilities, called Banje. It is' +
       ' known as one of the most beautiful beaches of the Mediterranean. The nearest grocery store is 200 meters away, as well' +
-      ' as the entrance gate to the Old Town.</p>',
+      ' as the entrance gate to the Old Town.</p><p>We can also help you organize transfer from and to the Dubrovnik Airport ' +
+      'if necessary.</p>',
     address: 'Ul. Vicka Lovrina 2, 20000 Dubrovnik, Croatia',
     language: 'eng',
     facilities: {
       ac_unit: 'AC',
       wifi: 'WiFi',
       whatshot: 'Heating',
-      local_parking: 'Free parking',
       tv: 'SAT TV',
       smoke_free: 'No smoking',
     },
     note: '',
-    bookingLink: '',
-    minStay: 2,
+    bookingLink: ''
   },
   {
     shortName: 'old-port',
@@ -131,13 +122,11 @@ export const apartmentsData: ApartmentDetails[] = [
       ac_unit: 'AC',
       wifi: 'WiFi',
       whatshot: 'Heating',
-      local_parking: 'Free parking',
       tv: 'SAT TV',
       smoke_free: 'No smoking',
     },
     note: '',
-    bookingLink: '',
-    minStay: 2,
+    bookingLink: ''
   },
   {
     shortName: 'old-town',
@@ -154,13 +143,11 @@ export const apartmentsData: ApartmentDetails[] = [
       ac_unit: 'AC',
       wifi: 'WiFi',
       whatshot: 'Heating',
-      local_parking: 'Free parking',
       tv: 'SAT TV',
       smoke_free: 'No smoking',
     },
     note: '',
-    bookingLink: '',
-    minStay: 2,
+    bookingLink: ''
   },
   {
     shortName: 'old-town',
@@ -173,19 +160,17 @@ export const apartmentsData: ApartmentDetails[] = [
       'of the most romantic spots in the city. Another beach - Buža 2 - is just 200 meters away, while the long sandy beach ' +
       'of Banje with many facilities is a 10 minutes’ walk from the apartment. The nearest green market and grocery store is' +
       ' only 100 meters from the apartment, while banks, exchange offices, post offices, shops, and the local bus station can' +
-      ' be found within 200 meters.</p>',
+      ' be found within 200 meters.</p><p>We can also help you organize transfer from and to the Dubrovnik Airport if necessary.</p>',
     address: 'Zvijezdićeva ul. 15, 20000 Dubrovnik, Croatia',
     language: 'eng',
     facilities: {
       ac_unit: 'AC',
       wifi: 'WiFi',
       whatshot: 'Heating',
-      local_parking: 'Free parking',
       tv: 'SAT TV',
       smoke_free: 'No smoking',
     },
     note: '',
     bookingLink: '',
-    minStay: 2,
   }
 ];
