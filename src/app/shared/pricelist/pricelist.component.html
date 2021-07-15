@@ -1,0 +1,21 @@
+<h3>Pricelist</h3>
+<div class="select-wrapper">
+  <mat-select [(ngModel)]="selectedValue" (ngModelChange)="currencyChange($event)">
+    <mat-option *ngFor="let currency of currencyList" value="{{currency}}">{{currency}}</mat-option>
+  </mat-select>
+</div>
+<div class="pricelist-wrapper" *ngIf="priceList">
+  <div class="pricelist">
+    <div class="pricelist-element" *ngFor="let monthPr of generateArray(priceList[0].monthlyPrice, course)">
+      <div class="pricelist-elements-container">
+        <div class="pricelist-circle">{{monthPr.key | capitalize}}</div>
+        <div class="pricelist-text">{{monthPr.value | myCurrencyPipe:defaultCurrency}}</div>
+      </div>
+    </div>
+  </div>
+  <p class="pricelist-note">Prices are calculated using today's course rate obtained from
+    <a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html" target="_blank"> European Central Bank</a>
+  </p>
+</div>
+
+

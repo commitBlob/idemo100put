@@ -1,0 +1,21 @@
+<div *ngIf="language === 'cro'; then weRecommendCro else weRecommendEng"></div>
+<ng-template #weRecommendCro>
+  <h3>Nasa Preporuka</h3>
+</ng-template>
+<ng-template #weRecommendEng>
+  <h3>We Recommend</h3>
+</ng-template>
+<div *ngIf="weRecommendContent">
+  <div class="we_recommend_cards">
+    <div class="recommend_card" *ngFor="let item of weRecommendContent">
+      <div class="recommend_card_container">
+        <img [src]="item.image" [alt]="item.header + 'image'">
+        <div class="recommend_card_content">
+          <div class="corner_element"></div>
+          <h3>{{item.header}}</h3>
+          <p>{{item.content}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

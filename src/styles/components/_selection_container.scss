@@ -1,0 +1,27 @@
+.selection-container {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1em;
+  margin: 0 auto;
+
+  .row {
+    display: flex;
+    width: 100%;
+
+    & > div {
+      display: flex;
+      flex: 1 1 50%;
+      border-bottom: solid 1px #dcdcdc;
+      margin: .3em;
+
+      .field-name {
+        font-size: .8em;
+        color: $brand-primary;
+      }
+
+      .field-value {
+        margin: 0 0 .2em 0;
+      }
+    }
+  }
+}

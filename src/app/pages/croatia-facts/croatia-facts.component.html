@@ -1,0 +1,13 @@
+<!--TODO: add content-->
+
+<app-tabs-nav></app-tabs-nav>
+<div class="content" *ngIf="croatiaFactsContent">
+  <h2>{{croatiaFactsContent.header}}</h2>
+  <p>{{croatiaFactsContent.content}}</p>
+  <app-cro-money></app-cro-money>
+  <div *ngIf="language === 'eng'">
+    <app-cro-data-power></app-cro-data-power>
+    <app-cro-visa></app-cro-visa>
+    <app-cro-words></app-cro-words>
+  </div>
+</div>

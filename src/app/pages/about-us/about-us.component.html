@@ -1,0 +1,11 @@
+<!--TODO: Refactor content CRO/ENG-->
+
+<app-tabs-nav></app-tabs-nav>
+<div class="content">
+  <div *ngIf="aboutUsContent">
+    <h2>{{aboutUsContent[0].header}}</h2>
+    <div [innerHTML]="aboutUsContent[0].content"></div>
+  </div>
+  <app-cards></app-cards>
+</div>
+

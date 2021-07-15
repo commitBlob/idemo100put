@@ -1,0 +1,40 @@
+<app-tabs-nav></app-tabs-nav>
+<div class="content" *ngIf="dubrovnikFactsContent">
+  <h2>{{dubrovnikFactsContent.header}}</h2>
+  <div [innerHTML]="dubrovnikFactsContent.content"></div>
+  <div *ngIf="language === 'cro'; then croVisitors else engVisitors"></div>
+  <ng-template #croVisitors>
+    <h3>Broj Posjetitelja Kroz Godinu</h3>
+  </ng-template>
+  <ng-template #engVisitors>
+    <h3>Number of Visitors Throughout the Year</h3>
+  </ng-template>
+
+  <!-- Visitors Graphs -->
+  <app-column-chart *ngIf="displayColumnChart"></app-column-chart>
+  <app-bar-chart *ngIf="displayBarChart"></app-bar-chart>
+  <!-- Visitors Graphs -->
+
+  <div *ngIf="language === 'cro'; then croWeather else engWeather"></div>
+  <ng-template #croWeather>
+    <h3>Temperature i Padaline Kroz Godinu</h3>
+  </ng-template>
+  <ng-template #engWeather>
+    <h3>Weather Throughout the Year</h3>
+  </ng-template>
+  <!-- Weather Graphs -->
+  <app-line-chart></app-line-chart>
+  <app-rainfall-chart></app-rainfall-chart>
+  <app-du-recommend></app-du-recommend>
+  <app-du-facts-busy></app-du-facts-busy>
+  <app-du-interesting></app-du-interesting>
+
+  <div *ngIf="language === 'cro'; then croUseful else engUseful"></div>
+  <ng-template #croUseful>
+    <h3>Korisni Linkovi</h3>
+  </ng-template>
+  <ng-template #engUseful>
+    <h3>Useful Links</h3>
+  </ng-template>
+  <app-du-useful></app-du-useful>
+</div>

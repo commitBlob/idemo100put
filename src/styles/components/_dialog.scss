@@ -1,0 +1,35 @@
+.dialog-wrapper {
+  padding: 10px;
+
+  @include respond((max: 799px)) {
+    padding: 0;
+  }
+}
+
+button {
+  &:hover {
+    background-color: $brand-secondary !important;
+    color: $brand-primary-darker !important;
+  }
+}
+
+.cancel {
+  background-color: $brand-google !important;
+}
+
+.close {
+  background-color: $dirty-white !important;
+  border: solid 1px $gray-darker;
+}
+
+.heading {
+  color: $brand-primary-darker;
+  font-size: 1.3em;
+  padding-bottom: 20px;
+  font-weight: bold;
+}
+
+.message {
+  font-size: 1em;
+  padding-bottom: 20px;
+}

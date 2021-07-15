@@ -1,0 +1,7 @@
+<div *ngIf="duFactsUsefulContent">
+  <ul class="du_facts_useful_list">
+    <li *ngFor="let link of duFactsUsefulContent" class="du_facts_useful_links">
+      <a [href]="link.content" target="_blank">{{link.header}}</a>
+    </li>
+  </ul>
+</div>

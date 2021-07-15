@@ -1,0 +1,7 @@
+<app-tabs-nav></app-tabs-nav>
+<div class="content" *ngIf="contactUsContent">
+  <h2>{{contactUsContent.header}}</h2>
+  <p [innerHTML]="contactUsContent.content"></p>
+  <hr />
+  <app-contact-form></app-contact-form>
+</div>

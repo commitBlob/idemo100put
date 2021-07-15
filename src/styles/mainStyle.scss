@@ -1,0 +1,92 @@
+@import '~@angular/material/theming';
+$fa-font-path: "../../node_modules/font-awesome/fonts";
+
+// Plus imports for other components in your app.
+
+// Include the base styles for Angular Material core. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+@include mat-core();
+
+$apartments-palette-primary: (
+    50 : #edeaf4,
+    100 : #d1cae5,
+    200 : #b3a7d3,
+    300 : #9583c1,
+    400 : #7e69b4,
+    500 : #674ea7,
+    600 : #5f479f,
+    700 : #543d96,
+    800 : #4a358c,
+    900 : #39257c,
+    A100 : #cbbdff,
+    A200 : #a28aff,
+    A400 : #7a57ff,
+    A700 : #663dff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$apartments-palette-secondary: (
+    50 : #fdf8e6,
+    100 : #fbedc2,
+    200 : #f8e199,
+    300 : #f5d470,
+    400 : #f3cb51,
+    500 : #f1c232,
+    600 : #efbc2d,
+    700 : #edb426,
+    800 : #ebac1f,
+    900 : #e79f13,
+    A100 : #ffffff,
+    A200 : #fff4e2,
+    A400 : #ffe2af,
+    A700 : #ffd896,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue.
+$apartments-app-primary: mat-palette($apartments-palette-primary);
+$apartments-app-accent: mat-palette($apartments-palette-secondary, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$apartments-app-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$apartments-app-theme: mat-light-theme($apartments-app-primary, $apartments-app-accent, $apartments-app-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($apartments-app-theme);

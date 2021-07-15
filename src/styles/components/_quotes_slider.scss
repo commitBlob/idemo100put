@@ -1,0 +1,62 @@
+.interesting_facts_container {
+  margin-top: 2em;
+
+  .active_quote_container {
+    border: solid 2px #A191C8;
+    padding: 5px;
+    box-shadow: 2px 4px 4px 1px rgba(0,0,0,.14);
+
+    .quote_header {
+      justify-content: center;
+      position: relative;
+      display: block;
+      top: -1.2em;
+
+      h3 {
+        display: inline;
+        margin:0;
+        top: -1em;
+        padding: .5em;
+        background-color: #fafafa;
+      }
+    }
+
+    > h3, p {
+      margin: 0 .5em;
+    }
+  }
+
+  .quotes_list_container {
+    vertical-align: center;
+    text-align: center;
+    height: 50px;
+
+    .dot_list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      .dot {
+        display: inline-block;
+        cursor: pointer;
+        transition: all .2s ease-in-out;
+
+        &.active {
+          transform: scale(1.5);
+        }
+
+        &:hover {
+          transform: scale(1.5);
+        }
+
+        &:before {
+          content: ' \25CF';
+          font-size: 2.2em;
+          color: #A191C8;
+          text-shadow: 1px 2px 2px #8770C1;
+        }
+      }
+    }
+  }
+}
+

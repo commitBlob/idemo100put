@@ -1,0 +1,49 @@
+.details-form {
+
+  .row {
+    font-size: 0;
+    width: 100%;
+
+    .item {
+      display: inline-block;
+      font-size: 16px;
+      width: 100%;
+
+      mat-select {
+        width: 100%;
+      }
+
+      mat-input-container {
+        width: 100%;
+      }
+
+      &.half {
+        width: 50%;
+
+        &.one {
+          mat-select {
+            margin: .5em 0;
+            padding-right: .5em;
+          }
+
+          mat-input-container {
+            padding-right: .5em;
+          }
+
+        }
+        &.two {
+          mat-select {
+            margin: .5em 0;
+            padding-left: .5em;
+          }
+
+          mat-input-container {
+            padding-left: .5em;
+          }
+        }
+      }
+
+    }
+  }
+
+}

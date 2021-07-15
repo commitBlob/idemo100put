@@ -1,0 +1,39 @@
+.warning_block {
+  margin: 1em 0;
+  padding: 1.2em;
+  background-color: $brand-info;
+  color: $dirty-white;
+  border-radius: .2em;
+  position: relative;
+
+  .warning_message {
+    margin: 0;
+  }
+
+  &.hide {
+    animation: hide .55s linear;
+    animation-fill-mode: forwards;
+  }
+
+  .dismiss_icon {
+    position: absolute;
+    top: .2em;
+    right: .2em;
+    font-size: $font-size-base * 1.4;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+}
+
+
+@keyframes hide {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

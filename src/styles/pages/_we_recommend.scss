@@ -1,0 +1,81 @@
+.we_recommend_cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @include respond((max: 599px)) {
+    flex-flow: column;
+  }
+
+  .recommend_card {
+    $box-width: 100%;
+    $max-width: 300px;
+    $elements-num: calc(#{$box-width} / #{$max-width});
+
+    width: calc(#{$box-width} / #{$elements-num});
+    height: auto;
+    max-width: $max-width;
+
+    @include respond((max: 599px)) {
+
+      .recommend_card_container {
+        max-width: 400px;
+        margin: 0 auto;
+      }
+    }
+
+    .recommend_card_container {
+      height: inherit;
+      width: calc(100% / 1);
+
+      img {
+        // max width minus margin left
+        width: calc(100% - 1.5em);
+        left: 1em;
+        right: .5em;
+        z-index: z(default);
+        position: relative;
+        margin-top: .5em;
+        max-height: 345px;
+      }
+
+      .recommend_card_content {
+        background-color: $brand-primary;
+        padding: 0;
+        height: 5em;
+        margin-top: -5em;
+        z-index: z(above-default);
+        position: relative;
+        margin-right: .5em;
+
+        p {
+          color: $dirty-white;
+          margin: 0;
+          padding: .5em;
+          text-shadow: 1px 1px 2px $black;
+          text-align: center;
+          font-style: italic;
+        }
+
+        h3 {
+          color: $dirty-white;
+          margin: 0;
+          padding: .5em;
+          text-shadow: 2px 2px 3px $black;
+          text-align: center;
+        }
+
+        .corner_element {
+          content: ' ';
+          position: absolute;
+          left: 0;
+          top: -16px;
+          width: 0;
+          border: 8px solid $brand-primary-darker;
+          border-top-color: transparent;
+          border-left-color: transparent;
+        }
+      }
+    }
+  }
+}

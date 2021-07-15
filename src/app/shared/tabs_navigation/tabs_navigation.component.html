@@ -1,0 +1,6 @@
+
+<nav role='navigation' class="tabs_wrapper fade_in">
+    <div *ngFor="let links of apartmentList" class="tab_button tabs" [routerLink]="['/apartments', links.apartmentShortName]">
+      <span>{{links.apartmentName}}</span>
+    </div>
+</nav>

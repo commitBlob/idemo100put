@@ -1,0 +1,26 @@
+<div class="words_container">
+  <h4>Croatian in 5 minutes</h4>
+  <p>The Croatian language is one of the hardest languages to learn, as it has fairly complex grammar and word
+    pronunciation.</p>
+  <p>What makes Croatian even more difficult is the variety of slangs and dialects. For example, Dubrovnik has its own
+    language (Dubrovaćki). Some Dubrovaćke words differ from Croatian, and other Croatians might have a hard time
+    understanding everything.</p>
+  <div *ngIf="words">
+    <div class="words_card" *ngFor="let word of words">
+      <div class="words_container">
+        <i class="material-icons words_symbol">translate</i>
+      </div>
+      <div class="words_text">
+        <p>{{word.wordCro}} - {{word.wordEng}}</p>
+      </div>
+      <div class="words_pronouncing">
+        <span>{{word.pronoun}}</span>
+      </div>
+    </div>
+  </div>
+  <p class="small_italic">For some words and phrases, please visit the following
+    <a href="https://www.chasingthedonkey.com/language-in-croatia-learn-croatian-phrases/" target="_blank">
+      link
+    </a>
+  </p>
+</div>

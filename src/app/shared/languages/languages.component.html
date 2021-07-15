@@ -1,0 +1,6 @@
+<div *ngFor="let elements of flagItems">
+  <img id="elements.countryFlag"
+       (click)="setLanguage(elements.countryFlag)"
+       [src]="globalImagePath+elements.folder+elements.name"
+       alt="{{elements.countryFlag}}">
+</div>

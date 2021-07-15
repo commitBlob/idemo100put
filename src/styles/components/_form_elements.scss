@@ -1,0 +1,46 @@
+form {
+  margin: 1em 0;
+
+  .form-group {
+    display: flex;
+    flex-flow: row wrap;
+
+    .flexer {
+      flex: 1 1 auto;
+      margin:1em;
+    }
+
+    .app-input-subject {
+      flex: 1 1 auto;
+      margin: 0 1em;
+    }
+
+    .app-textarea {
+      flex: 1 1 auto;
+      margin: 0 1em;
+    }
+
+    .app-selectlist {
+      flex: 1 1 auto;
+      margin: 0 1em;
+    }
+
+    .errors {
+      color: $brand-danger;
+      margin-bottom: 1em;
+    }
+  }
+
+  .button-container {
+    margin: 1em 0;
+  }
+
+
+  @include respond((max: 599px)) {
+    .form-group {
+      flex-direction: column;
+    }
+  }
+}
+
+
