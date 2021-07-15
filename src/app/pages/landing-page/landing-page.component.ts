@@ -17,24 +17,24 @@ export class LandingPageComponent implements OnInit, OnDestroy {
   langSubscription: Subscription;
   apartmentsData = [
     {
-      apartmentShortName: 'lavanda',
-      apartmentImage: `${GlobalVariables.imagesPath}/ap_lavanda.jpg`,
-      apartmentName: 'Lavanda'
-    },
-    {
       apartmentShortName: 'love-and-hope',
       apartmentImage: `${GlobalVariables.imagesPath}/ap_LandH.jpg`,
       apartmentName: 'Love & Hope'
     },
     {
-      apartmentShortName: 'old-town',
-      apartmentImage: `${GlobalVariables.imagesPath}/ap_old_town.jpg`,
-      apartmentName: 'Apartment Dubrovnik Center'
+      apartmentShortName: 'lavanda',
+      apartmentImage: `${GlobalVariables.imagesPath}/ap_lavanda.jpg`,
+      apartmentName: 'Lavanda'
     },
     {
       apartmentShortName: 'old-port',
       apartmentImage: `${GlobalVariables.imagesPath}/ap_old_port.jpg`,
       apartmentName: 'Old Port'
+    },
+    {
+      apartmentShortName: 'old-town',
+      apartmentImage: `${GlobalVariables.imagesPath}/ap_old_town.jpg`,
+      apartmentName: 'Apartment Dubrovnik Center'
     },
   ];
   errorMessage: string;

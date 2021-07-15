@@ -2,12 +2,46 @@
 
 <app-tabs-nav></app-tabs-nav>
 <div class="content" *ngIf="croatiaFactsContent">
-  <h2>{{croatiaFactsContent.header}}</h2>
-  <p>{{croatiaFactsContent.content}}</p>
-  <app-cro-money></app-cro-money>
-  <div *ngIf="language === 'eng'">
-    <app-cro-data-power></app-cro-data-power>
-    <app-cro-visa></app-cro-visa>
-    <app-cro-words></app-cro-words>
-  </div>
+    <h2>{{croatiaFactsContent.header}}</h2>
+    <p>{{croatiaFactsContent.content}}</p>
+
+    <div id="covid-block" *ngIf="language === 'eng'; then covidEng else covidCro"></div>
+    <ng-template #covidCro class="card">
+        <h4>Koronavirus Upute</h4>
+        <div class="covid_card">
+            <div class="covid_container">
+                <div class="covid_symbol">
+                    <i class="material-icons data-power_symbol">coronavirus</i>
+                </div>
+            </div>
+            <div class="covid_text">
+                <p>Za Koronavirus mjere molimo vas da posjetite "Covid-19 and Travel Information" web stranicu
+                    <a target="_blank" href="https://croatia.hr/en-GB/coronavirus-2019-ncov-q-and-a">
+                        Hrvatske turističke zajednice
+                    </a>
+                </p>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template #covidEng>
+        <h4>Covid-19 Guidance</h4>
+        <div class="covid_card">
+            <div class="covid_container">
+                <i class="material-icons covid_symbol">coronavirus</i>
+            </div>
+            <div class="covid_text">
+                <p>Please refer to Covid-19 and Travel Information guidance provided by
+                    <a target="_blank" href="https://croatia.hr/en-GB/coronavirus-2019-ncov-q-and-a">
+                        Croatia National Tourist Board
+                    </a>
+                </p>
+            </div>
+        </div>
+    </ng-template>
+    <app-cro-money></app-cro-money>
+    <div *ngIf="language === 'eng'">
+        <app-cro-data-power></app-cro-data-power>
+        <app-cro-visa></app-cro-visa>
+        <app-cro-words></app-cro-words>
+    </div>
 </div>

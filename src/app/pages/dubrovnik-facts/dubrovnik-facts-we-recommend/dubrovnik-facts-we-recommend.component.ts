@@ -63,12 +63,6 @@ export class DubrovnikFactsWeRecommendComponent implements OnInit, OnDestroy {
         language: 'cro'
       },
       {
-        image: `${GlobalVariables.imagesPath}/recommendations/restaurant_du.png`,
-        header: 'Restaurant Dubrovnik',
-        content: 'Dubrovnik',
-        language: 'eng'
-      },
-      {
         image: `${GlobalVariables.imagesPath}/recommendations/peljesac.png`,
         header: 'Wine Tours',
         content: 'Pelješac',
@@ -89,12 +83,6 @@ export class DubrovnikFactsWeRecommendComponent implements OnInit, OnDestroy {
       {
         image: `${GlobalVariables.imagesPath}/recommendations/cable_car.png`,
         header: 'Žičara',
-        content: 'Dubrovnik',
-        language: 'cro'
-      },
-      {
-        image: `${GlobalVariables.imagesPath}/recommendations/restaurant_du.png`,
-        header: 'Restoran Dubrovnik',
         content: 'Dubrovnik',
         language: 'cro'
       },
