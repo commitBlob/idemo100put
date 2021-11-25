@@ -146,7 +146,7 @@ export const apartmentsData: ApartmentDetails[] = [
       tv: 'SAT TV',
       smoke_free: 'No smoking',
     },
-    note: '',
+    note: 'Za goste sa poteškoćama u kretanju ne preporučavamo ovaj apartman jer do apartmana ima puno skalina kao i svugdje u Starome Gradu.',
     bookingLink: ''
   },
   {
@@ -170,7 +170,7 @@ export const apartmentsData: ApartmentDetails[] = [
       tv: 'SAT TV',
       smoke_free: 'No smoking',
     },
-    note: '',
+    note: 'As there are couple sets of stairs leading to the entrance we don\'t recommend it for guests with walking disabilities.',
     bookingLink: '',
   }
 ];
