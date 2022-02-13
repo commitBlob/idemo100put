@@ -4,12 +4,12 @@
     <p class="location_details"><i class="material-icons location_icon">place</i>{{apartmentsData.address}}</p>
     <app-gallery-list [apartmentShortName]="apartmentName"></app-gallery-list>
     <div class="apartment_description" [innerHTML]="apartmentsData.description"></div>
-    <div class="warning_block" *ngIf="apartmentsData.note">
+    <div class="warning_block" [ngClass]="{'red_container': apartmentsData.shortName === 'old-port' || apartmentsData.shortName === 'lavanda'}" *ngIf="apartmentsData.note">
       <p class="warning_message">Note: {{apartmentsData.note}}</p>
       <i class="material-icons dismiss_icon" (click)="closeBlock($event)">close</i>
     </div>
     <hr class="apartment_details_hr"/>
-    <div class="pricelist_container">
+    <div class="pricelist_container" *ngIf="displayBlock(apartmentsData.shortName)">
       <app-pricelist [apartmentName]="apartmentName"></app-pricelist>
     </div>
     <hr class="apartment_details_hr"/>
