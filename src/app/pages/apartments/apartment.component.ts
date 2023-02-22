@@ -68,10 +68,6 @@ export class ApartmentComponent implements OnInit, OnDestroy {
     });
   }
 
-  public displayBlock(apartmentName): boolean {
-    return !(apartmentName === 'old-port' || apartmentName === 'lavanda');
-  }
-
   private closeBlock(event) {
     event.target.parentElement.classList.add('hide');
   }
