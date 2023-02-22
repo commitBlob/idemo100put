@@ -62,7 +62,7 @@ export const apartmentsData: ApartmentDetails[] = [
       tv: 'SAT TV',
       smoke_free: 'No smoking',
     },
-    note: 'Due to technical difficulties apartment is temporarily closed.',
+    note: '',
     bookingLink: ''
   },
   {
@@ -82,7 +82,7 @@ export const apartmentsData: ApartmentDetails[] = [
       tv: 'SAT TV',
       smoke_free: 'No smoking',
     },
-    note: 'Radi tehničkih problema nismo u mogučnosti iznajmljivati ovaj apartman.',
+    note: '',
     bookingLink: ''
   },
   {
@@ -105,7 +105,7 @@ export const apartmentsData: ApartmentDetails[] = [
       tv: 'SAT TV',
       smoke_free: 'No smoking',
     },
-    note: 'Due to technical difficulties apartment is temporarily closed.',
+    note: '',
     bookingLink: ''
   },
   {
@@ -125,7 +125,7 @@ export const apartmentsData: ApartmentDetails[] = [
       tv: 'SAT TV',
       smoke_free: 'No smoking',
     },
-    note: 'Radi tehničkih problema nismo u mogučnosti iznajmljivati ovaj apartman.',
+    note: '',
     bookingLink: ''
   },
   {
