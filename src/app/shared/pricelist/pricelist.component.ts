@@ -51,35 +51,35 @@ export class PricelistComponent implements OnInit {
     {
       apartmentShortName: 'old-town',
       monthlyPrice: {
-        jan: 50,
-        feb: 50,
-        mar: 50,
-        apr: 50,
-        may: 80,
-        jun: 80,
-        jul: 90,
-        aug: 90,
-        sep: 80,
-        oct: 80,
-        nov: 50,
-        dec: 50
+        jan: 60,
+        feb: 60,
+        mar: 60,
+        apr: 60,
+        may: 100,
+        jun: 100,
+        jul: 110,
+        aug: 110,
+        sep: 100,
+        oct: 100,
+        nov: 60,
+        dec: 60
       }
     },
     {
       apartmentShortName: 'love-and-hope',
       monthlyPrice: {
-        jan: 70,
-        feb: 70,
-        mar: 70,
-        apr: 70,
-        may: 135,
-        jun: 135,
-        jul: 155,
-        aug: 155,
-        sep: 135,
-        oct: 135,
-        nov: 70,
-        dec: 70
+        jan: 80,
+        feb: 80,
+        mar: 80,
+        apr: 80,
+        may: 150,
+        jun: 150,
+        jul: 165,
+        aug: 165,
+        sep: 150,
+        oct: 150,
+        nov: 80,
+        dec: 80
       }
     }
   ];
